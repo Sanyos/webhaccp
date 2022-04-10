@@ -7,6 +7,11 @@ import {
   trigger,
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-nav-menu',
@@ -42,13 +47,25 @@ import { Router } from '@angular/router';
   ],
 })
 export class NavMenuComponent implements OnInit {
-  loggedIn: boolean;
+  loggedIn: boolean = true;
   navItems: any[];
   isHamburguer: boolean = true;
-  constructor(private router: Router) {}
+  isSmallScreen: boolean = false;
+  constructor(
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
     this.setNavItems();
+
+    this.smallScreen().subscribe((state: BreakpointState) => {
+      if (state.matches) {
+        this.isSmallScreen = true;
+      } else {
+        this.isSmallScreen = false;
+      }
+    });
   }
 
   onClick() {
@@ -80,6 +97,14 @@ export class NavMenuComponent implements OnInit {
       (err) => err,
       () => this.router.navigate(['/home'])
     ); */
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
+    this.loggedIn = false;
+  }
+
+  smallScreen() {
+    return this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+    ]);
   }
 }

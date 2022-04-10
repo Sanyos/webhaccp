@@ -29,7 +29,10 @@
         </div>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="navbar-nav mx-auto mb-2 mb-lg-0">
+        <div
+          class="navbar-nav mx-auto mb-2 mb-lg-0"
+          (click)="isSmallScreen && onClick()"
+        >
           <a
             *ngFor="let item of navItems"
             class="nav-item nav-link"
@@ -40,19 +43,35 @@
             {{ item.title }}
           </a>
           <a
+            *ngIf="loggedIn"
+            routerLink="companies"
+            class="nav-item nav-link"
+            routerLinkActive="active"
+            >Üzeleteim</a
+          >
+          <a
             *ngIf="!loggedIn"
             routerLink="login"
             class="nav-item nav-link"
             routerLinkActive="active"
             >Bejelentkezés</a
           >
-          <a
+          <button
+            mat-icon-button
+            class="icon-btn"
+            routerLink="profile"
             *ngIf="loggedIn"
-            (click)="signOut()"
-            class="nav-item nav-link"
-            routerLinkActive="active"
-            >Kijelentkezés</a
           >
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="icon-btn"
+            (click)="signOut()"
+            *ngIf="loggedIn"
+          >
+            <mat-icon>logout</mat-icon>
+          </button>
         </div>
       </div>
     </div>

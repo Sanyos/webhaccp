@@ -1,0 +1,40 @@
+.table-holder {
+  width: 100%;
+  padding: 1rem;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.container {
+  width: 100%;
+  height: 500px;
+  max-width: 100%;
+  overflow: auto;
+  .mat-table {
+    width: 100%;
+    z-index: -1;
+    overflow-x: scroll;
+    .mat-header-row {
+      width: auto;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .mat-header-cell {
+      white-space: nowrap;
+      min-width: 24px;
+      padding: 0 0.6rem;
+      margin: 0;
+    }
+    .header-cell {
+      min-width: 80px;
+    }
+    .mat-cell {
+      min-width: 24px;
+      padding: 0 0.6rem;
+      margin: 0;
+    }
+  }
+}

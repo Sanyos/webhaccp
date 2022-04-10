@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -12,7 +13,7 @@ export class LoginFormComponent implements OnInit {
   emailOrPasswordIsWrong: boolean;
   userId: any;
   @Output() loginFormEvent: EventEmitter<FormGroup> = new EventEmitter();
-  constructor() {
+  constructor(private router: Router) {
     this.createForm();
   }
 
@@ -29,6 +30,7 @@ export class LoginFormComponent implements OnInit {
 
   login() {
     const userObject = this.loginForm.value;
+    this.router.navigate(['/home']);
     /*  this.authService.loginUser(userObject).subscribe(
       (res) => {
         this.activePage.setActivePage('home');

@@ -32,8 +32,8 @@
       height: 100%;
     }
     h1 {
-      font-family: "Pacifico", cursive;
       margin-top: 0.5rem;
+      font-family: map.get(s.$fonts-map, title);
     }
     img {
       width: 180px;

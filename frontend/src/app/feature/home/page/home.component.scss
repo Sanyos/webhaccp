@@ -1,8 +1,24 @@
-/* https://www.pexels.com/hu-hu/foto/elelmiszer-tanyer-etterem-ferfi-1251196/ */
 .container {
   min-height: 100vh;
   h1 {
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
+  }
+  .content {
+    display: flex;
+    .description {
+      width: 60%;
+      padding: 1rem;
+      h2 {
+        font-weight: bold;
+      }
+    }
+    .img-container {
+      padding: 1rem;
+      width: 40%;
+      img {
+        width: 100%;
+      }
+    }
   }
 }

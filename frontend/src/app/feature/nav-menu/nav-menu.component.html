@@ -35,12 +35,22 @@
             class="nav-item nav-link"
             routerLinkActive="active"
             routerLink="{{ item.route }}"
-            >{{ item.title }}
+            data-hover="item.title"
+          >
+            {{ item.title }}
           </a>
-          <a *ngIf="!loggedIn" routerLink="login" class="nav-item nav-link"
+          <a
+            *ngIf="!loggedIn"
+            routerLink="login"
+            class="nav-item nav-link"
+            routerLinkActive="active"
             >Bejelentkezés</a
           >
-          <a *ngIf="loggedIn" (click)="signOut()" class="nav-item nav-link"
+          <a
+            *ngIf="loggedIn"
+            (click)="signOut()"
+            class="nav-item nav-link"
+            routerLinkActive="active"
             >Kijelentkezés</a
           >
         </div>

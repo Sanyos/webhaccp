@@ -10,10 +10,10 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .logo {
-  height: 150px;
+  height: 70px;
+  padding: 1rem;
   img {
     height: 100%;
-    padding: 1rem;
   }
   @media only screen and(max-width: 1000px) {
     position: absolute;
@@ -31,6 +31,7 @@
   bottom: 0;
   z-index: 1;
   padding-bottom: 0.5rem;
+  letter-spacing: 1px;
   cursor: pointer;
 }
 
@@ -39,7 +40,7 @@
     border-bottom: none;
   }
   transform: scaleX(0);
-  border-bottom: 3px dotted map.get(s.$colors-map, my-light-blue);
+  border-bottom: 3px solid grey;
   transform-origin: left;
   position: absolute;
   bottom: 0;
@@ -48,7 +49,7 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  transition: all 0.3s ease-in;
+  transition: all 0.4s ease-in;
 }
 
 .navbar-nav .nav-link:hover::after {

@@ -18,7 +18,7 @@
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <mat-label>Email</mat-label>
+          <mat-label>E-mail cím</mat-label>
           <input formControlName="email" matInput />
           <mat-error
             *ngIf="
@@ -26,12 +26,25 @@
               registerForm.controls['email'].touched
             "
           >
-            Az email cím formátuma nem megfelelő
+            Az e-mail cím formátuma nem megfelelő
           </mat-error>
         </mat-form-field>
         <mat-error *ngIf="emailIsAlreadyTaken">
-          Ezzel az email címmel már regisztráltak
+          Ezzel az e-mail címmel már regisztráltak
         </mat-error>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Telefonszám</mat-label>
+          <input formControlName="phone" matInput />
+          <mat-error
+            *ngIf="
+              registerForm.controls['phone'].dirty ||
+              registerForm.controls['phone'].touched
+            "
+          >
+            A telefonszám formátuma nem megfelelő
+          </mat-error>
+        </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Jelszó</mat-label>

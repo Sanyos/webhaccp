@@ -6,9 +6,15 @@
   }
   .content {
     display: flex;
+    @media only screen and(max-width: 890px) {
+      flex-direction: column;
+    }
     .description {
       width: 60%;
       padding: 1rem;
+      @media only screen and(max-width: 890px) {
+        width: 100%;
+      }
       h2 {
         font-weight: bold;
       }
@@ -16,6 +22,9 @@
     .img-container {
       padding: 1rem;
       width: 40%;
+      @media only screen and(max-width: 890px) {
+        width: 100%;
+      }
       img {
         width: 100%;
       }

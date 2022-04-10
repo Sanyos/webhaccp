@@ -40,6 +40,12 @@ export class RegisterFormComponent implements OnInit {
           Validators.maxLength(20),
         ]),
         email: new FormControl('', [Validators.required, Validators.email]),
+        phone: new FormControl('', [
+          Validators.required,
+          Validators.pattern(
+            /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
+          ),
+        ]),
         password: new FormControl('', [
           Validators.required,
           Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),

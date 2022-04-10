@@ -1,0 +1,41 @@
+<div class="login-card-holder">
+  <div class="login-bg"></div>
+  <div class="login-card">
+    <h1>Bejelentkezés</h1>
+
+    <div class="login-form">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <mat-form-field appearance="fill">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Jelszó</mat-label>
+          <input
+            [type]="hide ? 'password' : 'text'"
+            formControlName="password"
+            matInput
+          />
+          <mat-icon matSuffix (click)="hide = !hide">{{
+            hide ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </mat-form-field>
+        <mat-error *ngIf="emailOrPasswordIsWrong">
+          Email vagy jelszó helytelen
+        </mat-error>
+
+        <div class="button-holder">
+          <button id="login-btn" mat-raised-button>Bejelentkezés</button>
+        </div>
+
+        <p id="sign-in">
+          Nincs még felhasználód?
+          <button matStepperNext mat-button color="primary">
+            Regisztráció
+          </button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

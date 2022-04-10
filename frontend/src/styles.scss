@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@use "sass:map";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+html,
+body {
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: whitesmoke;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+//Angular material theming
+@import "../node_modules/@angular/material/theming";
+$custom-typography: mat-typography-config(
+  $font-family: "Cabin",
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(14px, 18px, 500),
+);
+@include mat-core($custom-typography);
+
+//Only 3 options avaible (+3 dark vesrion)
+$mat-theming-primary: mat-palette($mat-blue-grey, 500);
+$mat-theming-accent: mat-palette($mat-amber, 500);
+$mat-theming-warn: mat-palette($mat-red, 800);
+
+$mat-theming-theme: mat-dark-theme(
+  $mat-theming-primary,
+  $mat-theming-accent,
+  $mat-theming-warn
+);
+
+//@include angular-material-theme($mat-theming-theme);
+@include angular-material-typography($custom-typography);
+
+.custom-dialog-container .mat-dialog-container {
+  padding: 0;
+}
+
+$colors-map: (
+  my-blue: #31525b,
+  my-light-blue: rgb(92, 153, 199),
+  my-orange: #ffa101,
+  my-light-orange: #ecc67b,
+);
+
+// FONTS
+
+$fonts-map: (
+  title: "Cabin",
+  text: "Pacifico",
+);
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -1,0 +1,83 @@
+@use "../../../styles.scss" as s;
+@use "sass:map";
+.navbar,
+.logo {
+  z-index: 1;
+  cursor: pointer;
+}
+.navbar {
+  background: #ffffff !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.logo {
+  height: 150px;
+  img {
+    height: 100%;
+    padding: 1rem;
+  }
+  @media only screen and(max-width: 1000px) {
+    position: absolute;
+    right: 1rem;
+    top: 0;
+  }
+}
+.nav-item {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin: 1rem !important;
+  font-weight: bold;
+  width: auto;
+  position: relative;
+  bottom: 0;
+  z-index: 1;
+  padding-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.navbar-nav .nav-link::after {
+  @media only screen and(max-width: 1000px) {
+    border-bottom: none;
+  }
+  transform: scaleX(0);
+  border-bottom: 3px dotted map.get(s.$colors-map, my-light-blue);
+  transform-origin: left;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.3s ease-in;
+}
+
+.navbar-nav .nav-link:hover::after {
+  transform: scaleY(1);
+}
+
+.navbar-nav .nav-link.active {
+  color: map.get(s.$colors-map, my-light-blue) !important;
+}
+
+.navbar-nav .nav-link:hover {
+  color: map.get(s.$colors-map, my-light-blue) !important;
+}
+
+.navbar-toggler {
+  padding: 0;
+  border: none;
+}
+
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+.icon-bar {
+  width: 42px;
+  height: 4px;
+  background: black;
+  margin: 6px 0;
+  position: relative;
+}

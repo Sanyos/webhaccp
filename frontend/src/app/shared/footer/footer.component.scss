@@ -1,0 +1,12 @@
+footer {
+  color: rgb(229, 229, 229);
+  background: grey;
+}
+
+.footer-text-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1rem;
+}

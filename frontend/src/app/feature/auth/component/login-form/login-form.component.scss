@@ -1,0 +1,65 @@
+@use "../../../../../styles.scss" as s;
+@use "sass:map";
+
+.login-card-holder {
+  width: 95%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 1rem auto;
+  margin-top: 2rem;
+  display: flex;
+  position: relative;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  min-height: 500px;
+  height: auto;
+  @media only screen and(max-width: 890px) {
+    flex-direction: column;
+  }
+  .login-bg {
+    width: 60%;
+    background: url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+    @media only screen and(max-width: 890px) {
+      display: none;
+    }
+  }
+  .login-card {
+    width: 40%;
+    background: white;
+    padding: 1rem 2rem;
+    height: auto;
+    @media only screen and(max-width: 890px) {
+      width: 100%;
+      height: 100%;
+    }
+    h1 {
+      font-family: "Pacifico", cursive;
+      margin-top: 0.5rem;
+    }
+    img {
+      width: 180px;
+      margin: 1.5rem 0;
+    }
+    .login-form {
+      padding-top: 1rem;
+      .mat-form-field {
+        width: 100%;
+        background: white;
+        mat-icon {
+          cursor: pointer;
+        }
+      }
+      #login-btn {
+        width: 100%;
+        background: map.get(s.$colors-map, my-light-blue);
+        color: white;
+        margin-top: 1rem;
+        &:hover {
+          background: map.get(s.$colors-map, my-blue);
+        }
+      }
+      #sign-in {
+        margin-top: 1rem;
+      }
+    }
+  }
+}

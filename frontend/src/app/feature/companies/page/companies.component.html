@@ -1,4 +1,13 @@
 <div class="container">
   <h1>Üzleteim</h1>
-  <app-companies-table></app-companies-table>
+  <div class="table-holder">
+    <app-companies-table
+      [headerTexts]="headerTexts"
+      [actionItems]="actionItems"
+      [columns]="columns"
+      [displayedColumns]="displayedColumns"
+      [tableData]="tableData"
+      (addNewCompanyEvent)="addNewCompany()"
+    ></app-companies-table>
+  </div>
 </div>

@@ -31,13 +31,13 @@ $mat-theming-primary: mat-palette($mat-blue-grey, 500);
 $mat-theming-accent: mat-palette($mat-amber, 500);
 $mat-theming-warn: mat-palette($mat-red, 800);
 
-$mat-theming-theme: mat-dark-theme(
+$mat-theming-theme: mat-light-theme(
   $mat-theming-primary,
   $mat-theming-accent,
   $mat-theming-warn
 );
 
-//@include angular-material-theme($mat-theming-theme);
+@include angular-material-theme($mat-theming-theme);
 @include angular-material-typography($custom-typography);
 
 .custom-dialog-container .mat-dialog-container {

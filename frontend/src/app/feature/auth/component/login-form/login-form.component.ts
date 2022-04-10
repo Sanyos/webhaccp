@@ -12,14 +12,11 @@ export class LoginFormComponent implements OnInit {
   hide = true;
   emailOrPasswordIsWrong: boolean;
   userId: any;
-  @Output() loginFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   constructor(private router: Router) {
     this.createForm();
   }
 
-  ngOnInit(): void {
-    this.loginFormEvent.emit(this.loginForm);
-  }
+  ngOnInit(): void {}
 
   createForm() {
     this.loginForm = new FormGroup({
@@ -30,7 +27,7 @@ export class LoginFormComponent implements OnInit {
 
   login() {
     const userObject = this.loginForm.value;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/companies']);
     /*  this.authService.loginUser(userObject).subscribe(
       (res) => {
         this.activePage.setActivePage('home');

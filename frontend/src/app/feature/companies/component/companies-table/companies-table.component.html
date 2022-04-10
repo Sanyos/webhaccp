@@ -4,6 +4,11 @@
       <mat-label> Szűrés <mat-icon>search</mat-icon> </mat-label>
       <input matInput (keyup)="applyFilter($event)" #input />
     </mat-form-field>
+    <div class="add-new-product">
+      <button mat-button (click)="addNewCompany()">
+        <mat-icon>add_new</mat-icon>Új üzlet hozzáadása
+      </button>
+    </div>
   </div>
 
   <div class="mat-elevation-z8">
@@ -40,15 +45,12 @@
             </button>
 
             <mat-menu #menu="matMenu">
-              <button mat-menu-item (click)="edit(element)">
-                <mat-icon>edit</mat-icon>
-                <span>Üzlet szerkesztése</span>
-              </button>
-
-              <button mat-menu-item (click)="delete(element)">
-                <mat-icon>delete</mat-icon>
-                <span>Üzlet törlése</span>
-              </button>
+              <ng-container *ngFor="let actionItem of actionItems">
+                <button mat-menu-item routerLink="{{ actionItem.route }}">
+                  <mat-icon>{{ actionItem.icon }}</mat-icon>
+                  <span>{{ actionItem.label }}</span>
+                </button>
+              </ng-container>
             </mat-menu>
           </td>
         </ng-container>
@@ -65,6 +67,6 @@
     </div>
 
     <!-- Paginator -->
-    <mat-paginator [pageSizeOptions]="[10, 15, 25, 100]"></mat-paginator>
+    <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
   </div>
 </div>

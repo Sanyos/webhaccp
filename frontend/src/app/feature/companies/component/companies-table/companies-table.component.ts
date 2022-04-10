@@ -1,32 +1,41 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Subject } from 'rxjs';
+import { CompanyResponseModel } from 'src/app/core/model/company.model';
+
 @Component({
   selector: 'app-companies-table',
   templateUrl: './companies-table.component.html',
   styleUrls: ['./companies-table.component.scss'],
 })
-export class CompaniesTableComponent implements OnInit, OnDestroy {
+export class CompaniesTableComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
   dataSource: any;
-  displayedColumns: string[];
-  columns: string[];
-  headerTexts: string[];
-  unsubscribe = new Subject<void>();
+  @Output() addNewCompanyEvent: EventEmitter<any> = new EventEmitter();
+  @Input() displayedColumns: string[];
+  @Input() columns: string[];
+  @Input() headerTexts: string[];
+  @Input() actionItems: any[];
+  @Input() tableData: CompanyResponseModel[] = [];
+
   constructor() {
     this.dataSource = new MatTableDataSource();
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {
-    this.unsubscribe.next();
-    this.unsubscribe.complete();
+  ngOnInit(): void {
+    this.getTableData();
   }
 
   applyFilter(event: Event): void {
@@ -43,11 +52,11 @@ export class CompaniesTableComponent implements OnInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
   }
 
-  edit(company: any) {
-    console.log('edit');
+  getTableData() {
+    this.setDataSource(this.tableData);
   }
 
-  delete(company: any) {
-    console.log('delete');
+  addNewCompany() {
+    this.addNewCompanyEvent.emit();
   }
 }

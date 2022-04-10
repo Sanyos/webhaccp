@@ -19,17 +19,12 @@ export class RegisterFormComponent implements OnInit {
   userObject: any;
   emailIsAlreadyTaken: boolean;
   hide = true;
-  @Output() registerFormEvent: EventEmitter<FormGroup> = new EventEmitter();
 
   constructor(private fb: FormBuilder, private readonly stepper: CdkStepper) {
     this.createForm();
   }
 
   ngOnInit(): void {}
-
-  ngAfterViewInit() {
-    this.registerFormEvent.emit(this.registerForm);
-  }
 
   createForm() {
     this.registerForm = this.fb.group(

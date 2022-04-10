@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   EventEmitter,
   Input,
@@ -10,14 +11,14 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { CompanyResponseModel } from 'src/app/core/mock-data/model/company.model';
 
 @Component({
   selector: 'app-companies-table',
   templateUrl: './companies-table.component.html',
   styleUrls: ['./companies-table.component.scss'],
 })
-export class CompaniesTableComponent implements OnInit {
+export class CompaniesTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -36,6 +37,11 @@ export class CompaniesTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTableData();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(event: Event): void {

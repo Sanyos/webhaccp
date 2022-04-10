@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { CompanyResponseModel } from 'src/app/core/mock-data/model/company.model';
 
 @Component({
   selector: 'app-companies',

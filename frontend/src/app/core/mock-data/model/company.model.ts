@@ -1,4 +1,4 @@
-import { CompanyCategoryType } from '../enum/company-category-type.enum';
+import { CompanyCategoryType } from '../../enum/company-category-type.enum';
 
 export interface CompanyRequestModel {
   category: CompanyCategoryType;

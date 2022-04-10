@@ -4,7 +4,7 @@
     <h1>Bejelentkezés</h1>
 
     <div class="login-form">
-      <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <form [formGroup]="loginForm">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput />
@@ -26,7 +26,9 @@
         </mat-error>
 
         <div class="button-holder">
-          <button id="login-btn" mat-raised-button>Bejelentkezés</button>
+          <button id="login-btn" mat-raised-button (click)="login()">
+            Bejelentkezés
+          </button>
         </div>
 
         <p id="sign-in">

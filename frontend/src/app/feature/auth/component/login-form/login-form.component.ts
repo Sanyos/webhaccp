@@ -12,6 +12,7 @@ export class LoginFormComponent implements OnInit {
   hide = true;
   emailOrPasswordIsWrong: boolean;
   userId: any;
+
   constructor(private router: Router) {
     this.createForm();
   }

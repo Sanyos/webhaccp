@@ -14,7 +14,7 @@ export interface CompanyRequestModel {
 }
 
 export interface CompanyResponseModel {
-  _id: string;
+  _id?: string;
   category: CompanyCategoryType;
   companyName: string;
   address: string;

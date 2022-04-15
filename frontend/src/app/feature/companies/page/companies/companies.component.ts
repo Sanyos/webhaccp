@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
 import {
   CompanyRequestModel,
@@ -103,7 +104,8 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   unsubscribe = new Subject<void>();
   constructor(
     private readonly router: Router,
-    private readonly sweetAlertPopupService: SweetAlertPopupService
+    private readonly sweetAlertPopupService: SweetAlertPopupService,
+    private readonly companyApiService: CompanyApiService
   ) {}
 
   ngOnInit(): void {
@@ -116,29 +118,34 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
+  getCompanes(): void {
+    this.companyApiService.getList().subscribe((res) => {
+      console.log(res);
+      this.tableData = res;
+    });
+  }
+
   addNewCompany(): void {
     this.router.navigate(['/company/details']);
   }
 
-  deleteCompany(company: CompanyResponseModel) {
+  deleteCompany(company: CompanyResponseModel): void {
     this.sweetAlertPopupService.openConfirmPopup().then((result) => {
       if (result.isConfirmed) {
         const id = company._id;
         const data = company;
         data.archived = true;
-
-        /*       this.productInInventoryService
-          .update(data, `location/all/${id}`)
-          .subscribe((res) => {
-            if (res) {
-              Swal.fire({
-                title: 'Confirmed!',
-                text: 'Locations changed',
-                icon: 'success',
-                confirmButtonColor: '#0097a7'
-              });
-            }
-          }); */
+        this.companyApiService.update(data, id).subscribe((res) => {
+          console.log(res);
+          if (res) {
+            Swal.fire({
+              title: 'Sikeres törlés',
+              text: 'Üzleted törölve lett!',
+              icon: 'success',
+              confirmButtonColor: '#0097a7',
+            });
+          }
+        });
       }
     });
   }

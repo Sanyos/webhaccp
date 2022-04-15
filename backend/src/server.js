@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 const staticUrl = path.join(__dirname, "..", "public", "angular");
-
+const companyEnums = require("./enums/enums");
 const authHandler = require("./auth/authHandler");
 
 app.use(express.json());
@@ -25,7 +25,9 @@ app.use("/", (req, res, next) => {
 app.post("/login", authHandler.login);
 app.use("/user", require("./controllers/user/user.routes"));
 app.use("/company", require("./controllers/company/company.routes"));
-
+app.get("/enums", (req, res) => {
+  res.send(companyEnums);
+});
 app.get("*/*", express.static(staticUrl));
 app.all("*", function (req, res) {
   res.status(200).sendFile(`${staticUrl}/index.html`);

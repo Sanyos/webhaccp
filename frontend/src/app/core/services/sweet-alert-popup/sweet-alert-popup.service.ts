@@ -8,12 +8,13 @@ export class SweetAlertPopupService {
 
   openConfirmPopup() {
     return Swal.fire({
-      title: 'Are you sure?',
+      title: 'Biztos hogy törölni szeretnéd az üzletet?',
       icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#607D8B',
       confirmButtonColor: '#0097a7',
-      confirmButtonText: 'Yes',
+      confirmButtonText: 'Igen',
+      cancelButtonText: 'Mégse',
       showClass: {
         popup: '',
         backdrop: 'swal2-backdrop-show',

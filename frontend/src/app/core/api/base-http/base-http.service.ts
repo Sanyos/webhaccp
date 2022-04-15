@@ -29,20 +29,6 @@ export class BaseHttpService<T> {
     );
   }
 
-  async createAsync(paramObject: any, query: string = ''): Promise<boolean> {
-    return new Promise((resolve) => {
-      this.http
-        .post<T>(`${this.API_BASE_URL}/${this.entity}/${query}`, paramObject)
-        .subscribe((res: any) => {
-          if (res._id) {
-            resolve(true);
-          } else {
-            resolve(false);
-          }
-        });
-    });
-  }
-
   update(paramObject: any, query: string = ''): Observable<T> {
     return this.http.put<T>(
       `${this.API_BASE_URL}/${this.entity}/${query}`,

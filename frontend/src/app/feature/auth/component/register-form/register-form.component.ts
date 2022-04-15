@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserRegistrationModel } from 'src/app/core/model/user.model';
 
 @Component({
@@ -21,13 +22,17 @@ export class RegisterFormComponent implements OnInit {
   emailIsAlreadyTaken: boolean;
   hide = true;
 
-  constructor(private fb: FormBuilder, private readonly stepper: CdkStepper) {
+  constructor(
+    private fb: FormBuilder,
+    private readonly stepper: CdkStepper,
+    private readonly userApiService: UserApiService
+  ) {
     this.createForm();
   }
 
   ngOnInit(): void {}
 
-  createForm() {
+  createForm(): void {
     this.registerForm = this.fb.group(
       {
         name: new FormControl('', [
@@ -55,7 +60,10 @@ export class RegisterFormComponent implements OnInit {
     );
   }
 
-  passwordsNotMatch(password: string, confirmPassword: string) {
+  passwordsNotMatch(
+    password: string,
+    confirmPassword: string
+  ): ValidationErrors | null {
     return (control: AbstractControl): ValidationErrors | null => {
       const input = control.get(password);
       const matchingInput = control.get(confirmPassword);
@@ -75,9 +83,9 @@ export class RegisterFormComponent implements OnInit {
     };
   }
 
-  register() {
+  register(): void {
     this.userObject = this.registerForm.value;
-    /* this.userDataProvider.registerUser(this.userObject).subscribe(
+    this.userApiService.register(this.userObject).subscribe(
       (user) => {
         console.log(user);
         this.stepper.next();
@@ -86,6 +94,6 @@ export class RegisterFormComponent implements OnInit {
         console.log(err);
         this.emailIsAlreadyTaken = true;
       }
-    ); */
+    );
   }
 }

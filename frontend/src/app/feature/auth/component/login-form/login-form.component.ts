@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 
 @Component({
   selector: 'app-login-form',
@@ -13,31 +14,33 @@ export class LoginFormComponent implements OnInit {
   emailOrPasswordIsWrong: boolean;
   userId: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private readonly userApiService: UserApiService
+  ) {
     this.createForm();
   }
 
   ngOnInit(): void {}
 
-  createForm() {
+  createForm(): void {
     this.loginForm = new FormGroup({
       email: new FormControl(''),
       password: new FormControl(''),
     });
   }
 
-  login() {
+  login(): void {
     const userObject = this.loginForm.value;
-    this.router.navigate(['/companies']);
-    /*  this.authService.loginUser(userObject).subscribe(
+    this.userApiService.login(userObject).subscribe(
       (res) => {
-        this.activePage.setActivePage('home');
-        this.router.navigate(['/home']);
+        console.log(res);
+        this.router.navigate(['/companies']);
       },
       (err) => {
         console.log(err);
         this.emailOrPasswordIsWrong = true;
       }
-    ); */
+    );
   }
 }

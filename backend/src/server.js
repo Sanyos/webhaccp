@@ -24,6 +24,7 @@ app.use("/", (req, res, next) => {
 
 app.post("/login", authHandler.login);
 app.use("/user", require("./controllers/user/user.routes"));
+app.use("/company", require("./controllers/company/company.routes"));
 
 app.get("*/*", express.static(staticUrl));
 app.all("*", function (req, res) {

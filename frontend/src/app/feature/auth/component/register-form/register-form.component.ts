@@ -36,6 +36,7 @@ export class RegisterFormComponent implements OnInit {
           Validators.maxLength(20),
         ]),
         email: new FormControl('', [Validators.required, Validators.email]),
+        role: new FormControl('user', Validators.required),
         phone: new FormControl('', [
           Validators.required,
           Validators.pattern(

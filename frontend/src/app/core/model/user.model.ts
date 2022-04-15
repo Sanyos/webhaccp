@@ -1,5 +1,5 @@
 export interface UserRegistrationModel {
-  username: string;
+  name: string;
   password: string;
   rePassword: string;
   email: string;
@@ -8,21 +8,21 @@ export interface UserRegistrationModel {
 }
 
 export interface UserLoginModel {
-  username: string;
+  name: string;
   password: string;
 }
 export interface UserResponseModel {
   _id: string;
-  username: string;
+  name: string;
   email: string;
   phone: string;
   role: string;
   accessToken: string;
-  archived?: boolean;
+  archived: boolean;
 }
 
 export interface DecodedUserToken {
-  username: string;
+  name: string;
   role: string;
   iat: number;
 }

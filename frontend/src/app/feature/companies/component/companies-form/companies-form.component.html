@@ -1,1 +1,95 @@
-<p>companies-form works!</p>
+<form [formGroup]="companyForm">
+  <mat-form-field>
+    <mat-label>Kategória</mat-label>
+    <mat-select formControlName="category">
+      <mat-option
+        *ngFor="let option of categories | keyvalue"
+        [value]="option.key"
+        >{{ option.value }}</mat-option
+      >
+    </mat-select>
+    <mat-error *ngIf="companyForm.controls['category'].hasError"
+      >Kategória választása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Név</mat-label>
+    <input formControlName="name" matInput />
+    <mat-error *ngIf="companyForm.controls['name'].hasError"
+      >Név megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cím</mat-label>
+    <input formControlName="address" matInput />
+    <mat-error *ngIf="companyForm.controls['address'].hasError"
+      >Cím megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Telephely</mat-label>
+    <input formControlName="location" matInput />
+    <mat-error *ngIf="companyForm.controls['location'].hasError"
+      >Telephely megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Telefonszám</mat-label>
+    <input formControlName="phoneNumber" matInput />
+    <mat-error *ngIf="companyForm.controls['phoneNumber'].hasError"
+      >Telefonszám megadása kötelező</mat-error
+    >
+    <mat-error
+      *ngIf="
+        companyForm.controls['phoneNumber'].dirty ||
+        companyForm.controls['phoneNumber'].touched
+      "
+    >
+      A telefonszám formátuma nem megfelelő
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cégnév</mat-label>
+    <input formControlName="companyName" matInput />
+    <mat-error *ngIf="companyForm.controls['companyName'].hasError"
+      >Cégnév megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Székhely</mat-label>
+    <input formControlName="headquarters" matInput />
+    <mat-error *ngIf="companyForm.controls['headquarters'].hasError"
+      >Székhely megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Számlázási cím</mat-label>
+    <input formControlName="billingAddress" matInput />
+    <mat-error *ngIf="companyForm.controls['billingAddress'].hasError"
+      >Számlázási cím megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cégjegyzékszám</mat-label>
+    <input formControlName="registrationNumber" matInput />
+    <mat-error *ngIf="companyForm.controls['registrationNumber'].hasError"
+      >Cégjegyzékszám megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Adószám</mat-label>
+    <input formControlName="vatNumber" matInput />
+    <mat-error *ngIf="companyForm.controls['vatNumber'].hasError"
+      >Adószám megadása kötelező</mat-error
+    >
+  </mat-form-field>
+</form>

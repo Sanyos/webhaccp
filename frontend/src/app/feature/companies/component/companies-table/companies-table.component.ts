@@ -11,7 +11,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CompanyResponseModel } from 'src/app/core/mock-data/model/company.model';
+import { CompanyResponseModel } from 'src/app/core/model/company.model';
 
 @Component({
   selector: 'app-companies-table',

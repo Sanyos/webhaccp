@@ -8,6 +8,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { UserRegistrationRequestModel } from 'src/app/core/model/user.model';
 
 @Component({
   selector: 'app-register-form',
@@ -16,7 +17,7 @@ import {
 })
 export class RegisterFormComponent implements OnInit {
   registerForm: FormGroup;
-  userObject: any;
+  userObject: UserRegistrationRequestModel;
   emailIsAlreadyTaken: boolean;
   hide = true;
 

@@ -1,4 +1,4 @@
-export interface UserRequestModel {
+export interface UserRegistrationRequestModel {
   username: string;
   password: string;
   rePassword: string;
@@ -7,7 +7,7 @@ export interface UserRequestModel {
   role: string;
 }
 
-export interface UserResponseModel {
+export interface UserRegistrationResponseModel {
   _id: string;
   username: string;
   email: string;
@@ -17,7 +17,7 @@ export interface UserResponseModel {
   archived?: boolean;
 }
 
-export interface LoginUserModel {
+export interface UserLoginModel {
   username: string;
   password: string;
 }

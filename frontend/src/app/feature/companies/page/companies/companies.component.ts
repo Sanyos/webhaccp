@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
-import { CompanyResponseModel } from 'src/app/core/mock-data/model/company.model';
+import { CompanyResponseModel } from 'src/app/core/model/company.model';
 
 @Component({
   selector: 'app-companies',
@@ -20,7 +21,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       location: 'Budapest',
       registrationNumber: '38247839',
       vatNumber: '43534523',
-      _id: '',
+      _id: '1',
       address: '',
       companyPhoneNumber: '',
       headquarters: '',
@@ -33,7 +34,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       location: 'Budapest',
       registrationNumber: '38247839',
       vatNumber: '43534523',
-      _id: '',
+      _id: '2',
       address: '',
       companyPhoneNumber: '',
       headquarters: '',
@@ -95,7 +96,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     },
   ];
   unsubscribe = new Subject<void>();
-  constructor() {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {
     this.setActionItems();
@@ -107,13 +108,17 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
-  addNewCompany() {
-    console.log('add new');
+  addNewCompany(): void {
+    this.router.navigate(['/company/details']);
   }
 
   setActionItems() {
     this.actionItems = [
-      { label: 'Üzlet szerkesztése', icon: 'edit', route: '' },
+      {
+        label: 'Üzlet szerkesztése',
+        icon: 'edit',
+        route: '/company/details/',
+      },
       { label: 'Üzlet törlése', icon: 'delete', route: '' },
       { label: 'HACCP készítés', icon: 'assignment_turned_in', route: '' },
       { label: 'Tanúsítvány készítés', icon: 'verified', route: '' },

@@ -46,7 +46,10 @@
 
             <mat-menu #menu="matMenu">
               <ng-container *ngFor="let actionItem of actionItems">
-                <button mat-menu-item routerLink="{{ actionItem.route }}">
+                <button
+                  mat-menu-item
+                  routerLink="{{ actionItem.route + element._id }}"
+                >
                   <mat-icon>{{ actionItem.icon }}</mat-icon>
                   <span>{{ actionItem.label }}</span>
                 </button>

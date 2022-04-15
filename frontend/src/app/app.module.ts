@@ -12,9 +12,10 @@ import { LoginComponent } from './feature/auth/login/login.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { LoginFormComponent } from './feature/auth/component/login-form/login-form.component';
 import { RegisterFormComponent } from './feature/auth/component/register-form/register-form.component';
-import { CompaniesComponent } from './feature/companies/page/companies.component';
+import { CompaniesComponent } from './feature/companies/page/companies/companies.component';
 import { CompaniesTableComponent } from './feature/companies/component/companies-table/companies-table.component';
 import { CompaniesFormComponent } from './feature/companies/component/companies-form/companies-form.component';
+import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { CompaniesFormComponent } from './feature/companies/component/companies-
     CompaniesComponent,
     CompaniesTableComponent,
     CompaniesFormComponent,
+    CompanyDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -85,7 +85,7 @@ export class NavMenuComponent implements OnInit {
         route: '/home',
       },
       {
-        title: 'Online készítő',
+        title: 'Online HACCP',
         route: '/recipes',
       },
     ];

@@ -1,0 +1,36 @@
+<div class="company-form-page">
+  <div>
+    <button routerLink="/companies" mat-button id="back-to-dash-btn">
+      <mat-icon>keyboard_backspace</mat-icon>
+      Vissza az üzleteimhez
+    </button>
+  </div>
+  <div class="form mat-elevation-z8">
+    <h2>Új üzlet felvétele</h2>
+
+    <app-companies-form
+      [categoryTypes]="categoryTypes"
+      (companyFormEvent)="companyFormEvent($event)"
+    ></app-companies-form>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        (click)="onSave()"
+        mat-button
+        color="primary"
+        id="save-btn"
+        mat-raised-button
+      >
+        Üzlet felvétele
+      </button>
+      <button
+        routerLink="/companies"
+        mat-button
+        color="accent"
+        id="cancel-btn"
+        mat-raised-button
+      >
+        Mégse
+      </button>
+    </div>
+  </div>
+</div>

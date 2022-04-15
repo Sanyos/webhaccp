@@ -10,6 +10,7 @@ export interface CompanyRequestModel {
   billingAddress: string;
   registrationNumber: string;
   vatNumber: string;
+  archived: boolean;
 }
 
 export interface CompanyResponseModel {

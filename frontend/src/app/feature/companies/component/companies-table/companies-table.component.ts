@@ -11,7 +11,10 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyRequestModel,
+  CompanyResponseModel,
+} from 'src/app/core/model/company.model';
 
 @Component({
   selector: 'app-companies-table',
@@ -24,12 +27,14 @@ export class CompaniesTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
 
   dataSource: any;
-  @Output() addNewCompanyEvent: EventEmitter<any> = new EventEmitter();
+
   @Input() displayedColumns: string[];
   @Input() columns: string[];
   @Input() headerTexts: string[];
   @Input() actionItems: any[];
   @Input() tableData: CompanyResponseModel[] = [];
+  @Output() addNewCompanyEvent: EventEmitter<any> = new EventEmitter();
+  @Output() deleteCompanyEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.dataSource = new MatTableDataSource();
@@ -58,11 +63,15 @@ export class CompaniesTableComponent implements OnInit, AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
-  getTableData() {
+  getTableData(): void {
     this.setDataSource(this.tableData);
   }
 
-  addNewCompany() {
+  addNewCompany(): void {
     this.addNewCompanyEvent.emit();
+  }
+
+  onDeleteCompany(company: CompanyResponseModel): void {
+    this.deleteCompanyEvent.emit(company);
   }
 }

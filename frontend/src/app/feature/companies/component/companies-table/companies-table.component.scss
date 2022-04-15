@@ -25,15 +25,13 @@
       top: 0;
       z-index: 5;
     }
-
     .mat-header-cell {
-      background: map.get(s.$colors-map, my-light-blue);
+      background: map.get(s.$colors-map, my-blue);
       color: white;
       white-space: nowrap;
       min-width: 24px;
       padding: 0 0.6rem;
       margin: 0;
-      z-index: 5;
     }
     .header-cell {
       min-width: 80px;
@@ -44,7 +42,7 @@
       margin: 0;
     }
     .mat-row:nth-child(even) {
-      background-color: rgba(70, 103, 130, 0.097);
+      background-color: #b0bec52e;
     }
   }
 }

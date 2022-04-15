@@ -28,7 +28,7 @@ $custom-typography: mat-typography-config(
 
 //Only 3 options avaible (+3 dark vesrion)
 $mat-theming-primary: mat-palette($mat-blue-grey, 500);
-$mat-theming-accent: mat-palette($mat-amber, 500);
+$mat-theming-accent: mat-palette($mat-cyan, 700);
 $mat-theming-warn: mat-palette($mat-red, 800);
 
 $mat-theming-theme: mat-light-theme(
@@ -45,10 +45,11 @@ $mat-theming-theme: mat-light-theme(
 }
 
 $colors-map: (
-  my-blue: #31525b,
-  my-light-blue: rgb(92, 153, 199),
+  // my-blue: #0097a7,
+  my-blue: #0097a7,
+  my-light-blue: #00bcd4,
   my-orange: #ffa101,
-  my-light-orange: #ecc67b,
+  my-light-orange: #ecc67b
 );
 
 // FONTS

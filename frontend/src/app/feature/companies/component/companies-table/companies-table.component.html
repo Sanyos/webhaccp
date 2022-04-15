@@ -54,6 +54,10 @@
                   <span>{{ actionItem.label }}</span>
                 </button>
               </ng-container>
+              <button mat-menu-item (click)="onDeleteCompany(element)">
+                <mat-icon>delete</mat-icon>
+                <span>Üzlet törlése</span>
+              </button>
             </mat-menu>
           </td>
         </ng-container>

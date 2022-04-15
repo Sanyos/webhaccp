@@ -2,7 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyRequestModel,
+  CompanyResponseModel,
+} from 'src/app/core/model/company.model';
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-companies',
@@ -96,7 +101,10 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     },
   ];
   unsubscribe = new Subject<void>();
-  constructor(private readonly router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {}
 
   ngOnInit(): void {
     this.setActionItems();
@@ -112,6 +120,29 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     this.router.navigate(['/company/details']);
   }
 
+  deleteCompany(company: CompanyResponseModel) {
+    this.sweetAlertPopupService.openConfirmPopup().then((result) => {
+      if (result.isConfirmed) {
+        const id = company._id;
+        const data = company;
+        data.archived = true;
+
+        /*       this.productInInventoryService
+          .update(data, `location/all/${id}`)
+          .subscribe((res) => {
+            if (res) {
+              Swal.fire({
+                title: 'Confirmed!',
+                text: 'Locations changed',
+                icon: 'success',
+                confirmButtonColor: '#0097a7'
+              });
+            }
+          }); */
+      }
+    });
+  }
+
   setActionItems() {
     this.actionItems = [
       {
@@ -119,7 +150,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         icon: 'edit',
         route: '/company/details/',
       },
-      { label: 'Üzlet törlése', icon: 'delete', route: '' },
       { label: 'HACCP készítés', icon: 'assignment_turned_in', route: '' },
       { label: 'Tanúsítvány készítés', icon: 'verified', route: '' },
       { label: 'Dokumentum lista', icon: 'source', route: '' },

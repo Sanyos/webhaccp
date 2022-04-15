@@ -15,7 +15,7 @@
   img {
     height: 100%;
   }
-  @media only screen and(max-width: 990px) {
+  @media only screen and(max-width: 988px) {
     position: absolute;
     right: 1rem;
     top: 0;
@@ -36,7 +36,7 @@
 }
 
 .navbar-nav .nav-link::after {
-  @media only screen and(max-width: 990px) {
+  @media only screen and(max-width: 988px) {
     border-bottom: none;
   }
   transform: scaleX(0);
@@ -76,8 +76,8 @@
   box-shadow: none;
 }
 .icon-bar {
-  width: 42px;
-  height: 4px;
+  width: 38px;
+  height: 3px;
   background: black;
   margin: 6px 0;
   position: relative;

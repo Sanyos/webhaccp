@@ -39,6 +39,7 @@ export class CompaniesFormComponent implements OnInit {
       billingAddress: new FormControl('', Validators.required),
       registrationNumber: new FormControl('', Validators.required),
       vatNumber: new FormControl('', Validators.required),
+      archived: new FormControl(false),
     });
   }
 

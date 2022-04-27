@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
-
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
@@ -46,6 +45,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyResponseModel[]) => {
+          console.log(res);
           this.tableData = res;
         },
         (err) => {

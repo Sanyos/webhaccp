@@ -46,7 +46,7 @@ export class CompanyDetailsComponent implements OnInit {
     });
   }
 
-  getCompanyData(id: string) {
+  getCompanyData(id: string): void {
     this.companyApiService
       .getSingleItem(id)
       .subscribe((res: CompanyResponseModel) => {

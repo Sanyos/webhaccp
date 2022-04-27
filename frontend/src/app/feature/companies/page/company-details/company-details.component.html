@@ -6,7 +6,11 @@
     </button>
   </div>
   <div class="form mat-elevation-z8">
-    <h2>Új üzlet felvétele</h2>
+    <h2>
+      {{
+        (companyIdParam$ | async) ? "Üzlet szerkesztése" : "Új üzlet felvétele"
+      }}
+    </h2>
 
     <app-companies-form
       [categoryTypes]="categoryTypes"
@@ -20,7 +24,7 @@
         id="save-btn"
         mat-raised-button
       >
-        Üzlet felvétele
+        {{ (companyIdParam$ | async) ? "Mentés" : "Üzlet létrehozása" }}
       </button>
       <button
         routerLink="/companies"

@@ -1,5 +1,4 @@
 const createError = require("http-errors");
-const { companies } = require("../../mock_data/companies-data");
 
 exports.create = (company) => {
   if (!company) {

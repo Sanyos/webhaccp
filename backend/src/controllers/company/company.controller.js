@@ -63,7 +63,8 @@ exports.getAllCompanies = (req, res, next) => {
 
 exports.getCompanyById = (req, res, next) => {
   const id = req.params.id;
-  res.send(companies.filter((company) => company.id === id));
+  const company = companiesData.filter((company) => company._id === id)[0];
+  res.send(company);
   /* return companyService
     .getById(id)
     .then((company) => {

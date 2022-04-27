@@ -25,7 +25,7 @@ export class CompaniesFormComponent implements OnInit {
       name: new FormControl('', Validators.required),
       address: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
-      phoneNumber: new FormControl('', [
+      companyPhoneNumber: new FormControl('', [
         Validators.required,
         Validators.pattern(
           /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g

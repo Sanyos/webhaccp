@@ -1,5 +1,6 @@
 const companyService = require("./company.service");
 const createError = require("http-errors");
+const companiesData = require("../../mock_data/companies-data");
 
 exports.createNewCompany = (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
@@ -45,7 +46,8 @@ exports.createNewCompany = (req, res, next) => {
 };
 
 exports.getAllCompanies = (req, res, next) => {
-  return companyService
+  res.send(companiesData);
+  /* return companyService
     .getAll()
     .then((companies) => {
       if (companies) {
@@ -56,12 +58,13 @@ exports.getAllCompanies = (req, res, next) => {
       return next(
         new createError[500](`Could not find companies Error: ${err}`)
       );
-    });
+    }); */
 };
 
 exports.getCompanyById = (req, res, next) => {
   const id = req.params.id;
-  return companyService
+  res.send(companies.filter((company) => company.id === id));
+  /* return companyService
     .getById(id)
     .then((company) => {
       res.status(200).json(company);
@@ -69,10 +72,10 @@ exports.getCompanyById = (req, res, next) => {
     .catch((err) => {
       return next(
         new createError[500](
-          `Could not find company whit this id: ${id} Error: ${err}`
+          `Could not find company whith this id: ${id} Error: ${err}`
         )
       );
-    });
+    }); */
 };
 
 exports.updateCompanyById = (req, res, next) => {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 
 @Component({
   selector: 'app-companies-form',
@@ -9,7 +9,7 @@ import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enu
 })
 export class CompaniesFormComponent implements OnInit {
   companyForm: FormGroup;
-  @Input() categoryTypes: CompanyCategoryType;
+  @Input() categoryTypes: CompanyCategoryTypes;
   @Output() companyFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   constructor() {
     this.createForm();
@@ -19,7 +19,7 @@ export class CompaniesFormComponent implements OnInit {
     this.companyFormEvent.emit(this.companyForm);
   }
 
-  createForm() {
+  createForm(): void {
     this.companyForm = new FormGroup({
       category: new FormControl('', Validators.required),
       name: new FormControl('', Validators.required),

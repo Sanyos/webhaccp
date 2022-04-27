@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, pluck, tap } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
-import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
 
@@ -16,7 +16,7 @@ import { EnumsModel } from 'src/app/core/model/enums.model';
 export class CompanyDetailsComponent implements OnInit {
   companyForm: FormGroup;
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
-  categoryTypes: CompanyCategoryType;
+  categoryTypes: CompanyCategoryTypes;
   companyId: string;
   companyData: CompanyResponseModel;
   constructor(
@@ -32,7 +32,7 @@ export class CompanyDetailsComponent implements OnInit {
 
   getCategories(): void {
     this.enumsApiService.getSingleItem().subscribe((res: EnumsModel) => {
-      this.categoryTypes = res.companyCategoryTypes;
+      this.categoryTypes = res.CompanyCategoryTypes;
     });
   }
 
@@ -47,31 +47,37 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   getCompanyData(id: string) {
-    this.companyApiService.getSingleItem(id).subscribe((res) => {
-      console.log(res);
-      this.companyData = res;
-      this.companyForm.controls['category'].setValue(this.companyData.category);
-      this.companyForm.controls['companyName'].setValue(
-        this.companyData.companyName
-      );
-      this.companyForm.controls['address'].setValue(this.companyData.address);
-      this.companyForm.controls['location'].setValue(this.companyData.location);
-      this.companyForm.controls['companyPhoneNumber'].setValue(
-        this.companyData.companyPhoneNumber
-      );
-      this.companyForm.controls['headquarters'].setValue(
-        this.companyData.headquarters
-      );
-      this.companyForm.controls['billingAddress'].setValue(
-        this.companyData.billingAddress
-      );
-      this.companyForm.controls['registrationNumber'].setValue(
-        this.companyData.registrationNumber
-      );
-      this.companyForm.controls['vatNumber'].setValue(
-        this.companyData.vatNumber
-      );
-    });
+    this.companyApiService
+      .getSingleItem(id)
+      .subscribe((res: CompanyResponseModel) => {
+        console.log('company data: ', res);
+        this.companyData = res;
+        this.companyForm.controls['category'].setValue(
+          this.companyData.category
+        );
+        this.companyForm.controls['companyName'].setValue(
+          this.companyData.companyName
+        );
+        this.companyForm.controls['address'].setValue(this.companyData.address);
+        this.companyForm.controls['location'].setValue(
+          this.companyData.location
+        );
+        this.companyForm.controls['companyPhoneNumber'].setValue(
+          this.companyData.companyPhoneNumber
+        );
+        this.companyForm.controls['headquarters'].setValue(
+          this.companyData.headquarters
+        );
+        this.companyForm.controls['billingAddress'].setValue(
+          this.companyData.billingAddress
+        );
+        this.companyForm.controls['registrationNumber'].setValue(
+          this.companyData.registrationNumber
+        );
+        this.companyForm.controls['vatNumber'].setValue(
+          this.companyData.vatNumber
+        );
+      });
   }
 
   onSave(): void {

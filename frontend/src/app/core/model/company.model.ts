@@ -1,7 +1,7 @@
-import { CompanyCategoryType } from '../enum/company-category-type.enum';
+import { CompanyCategoryTypes } from '../enum/company-category-type.enum';
 
 export interface CompanyRequestModel {
-  category: CompanyCategoryType;
+  category: CompanyCategoryTypes;
   companyName: string;
   address: string;
   location: string;
@@ -15,7 +15,7 @@ export interface CompanyRequestModel {
 
 export interface CompanyResponseModel {
   _id?: string;
-  category: CompanyCategoryType;
+  category: CompanyCategoryTypes;
   companyName: string;
   address: string;
   location: string;

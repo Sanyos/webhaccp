@@ -1,12 +1,12 @@
 const productEnums = {
-  companyCategoryTypes: {
+  CompanyCategoryTypes: {
     RESTAURANT: "Étterem",
     BUFFET: "Büfé",
     PUB: "Kávézó-Pub-Presszó",
     CASUALRESTAURANT: "Alkalmi vendéglátóhely",
   },
 
-  roles: {
+  Roles: {
     ADMIN: "Admin",
     USER: "User",
   },

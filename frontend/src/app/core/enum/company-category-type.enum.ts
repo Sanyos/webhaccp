@@ -1,4 +1,4 @@
-export enum CompanyCategoryType {
+export enum CompanyCategoryTypes {
   RESTAURANT = 'Étterem',
   BUFFET = 'Büfé',
   PUB = 'Kávézó-Pub-Presszó',

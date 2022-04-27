@@ -1,14 +1,13 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
-import { CompanyCategoryType } from 'src/app/core/enum/company-category-type.enum';
-import {
-  CompanyRequestModel,
-  CompanyResponseModel,
-} from 'src/app/core/model/company.model';
+
+import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
+import { CompaniesTableComponent } from '../../component/companies-table/companies-table.component';
 
 @Component({
   selector: 'app-companies',
@@ -16,91 +15,13 @@ import Swal from 'sweetalert2';
   styleUrls: ['./companies.component.scss'],
 })
 export class CompaniesComponent implements OnInit, OnDestroy {
+  @ViewChild(CompaniesTableComponent) companiesTable: CompaniesTableComponent;
   dataSource: any;
   displayedColumns: string[];
   columns: string[];
   headerTexts: string[];
   actionItems: any[];
-  tableData: CompanyResponseModel[] = [
-    {
-      companyName: 'Aranykorsó',
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '1',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.PUB,
-      archived: false,
-    },
-    {
-      companyName: "Stacy's food",
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '2',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.PUB,
-      archived: false,
-    },
-    {
-      companyName: 'Aranykorsó',
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.PUB,
-      archived: false,
-    },
-    {
-      companyName: "Stacy's food",
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.RESTAURANT,
-      archived: false,
-    },
-    {
-      companyName: 'Aranykorsó',
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.PUB,
-      archived: false,
-    },
-    {
-      companyName: "Stacy's food",
-      location: 'Budapest',
-      registrationNumber: '38247839',
-      vatNumber: '43534523',
-      _id: '',
-      address: '',
-      companyPhoneNumber: '',
-      headquarters: '',
-      billingAddress: '',
-      category: CompanyCategoryType.PUB,
-      archived: false,
-    },
-  ];
+  tableData: CompanyResponseModel[] = [];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly router: Router,
@@ -109,6 +30,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.getCompanies();
     this.setActionItems();
     this.setTableData();
   }
@@ -118,11 +40,22 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
-  getCompanes(): void {
-    this.companyApiService.getList().subscribe((res) => {
-      console.log(res);
-      this.tableData = res;
-    });
+  getCompanies(): void {
+    this.companyApiService
+      .getList()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (res: CompanyResponseModel[]) => {
+          this.tableData = res;
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          this.setTableData();
+          this.companiesTable.setDataSource(this.tableData);
+        }
+      );
   }
 
   addNewCompany(): void {
@@ -135,17 +68,19 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         const id = company._id;
         const data = company;
         data.archived = true;
-        this.companyApiService.update(data, id).subscribe((res) => {
-          console.log(res);
-          if (res) {
-            Swal.fire({
-              title: 'Sikeres törlés',
-              text: 'Üzleted törölve lett!',
-              icon: 'success',
-              confirmButtonColor: '#0097a7',
-            });
-          }
-        });
+        this.companyApiService
+          .update(data, id)
+          .subscribe((res: CompanyResponseModel) => {
+            console.log(res);
+            if (res) {
+              Swal.fire({
+                title: 'Sikeres törlés',
+                text: 'Üzleted törölve lett!',
+                icon: 'success',
+                confirmButtonColor: '#0097a7',
+              });
+            }
+          });
       }
     });
   }

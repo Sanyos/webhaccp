@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './feature/auth/login/login.component';
 import { CompaniesComponent } from './feature/companies/page/companies/companies.component';
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
+import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 import { HomeComponent } from './feature/home/page/home.component';
 
 const routes: Routes = [
@@ -32,6 +33,10 @@ const routes: Routes = [
     path: 'company/details/:id',
     component: CompanyDetailsComponent,
     // canActivate: [AuthGuardService],
+  },
+  {
+    path: 'company/documents/:id',
+    component: DocumentListComponent,
   },
 ];
 

@@ -1,0 +1,48 @@
+@use "../../../../../styles.scss" as s;
+@use "sass:map";
+.table-holder {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+.container {
+  width: 100%;
+  height: 300px;
+  max-width: 100%;
+  overflow: auto;
+  padding: 0;
+  .mat-table {
+    width: 100%;
+    z-index: -1;
+    overflow-x: scroll;
+    .mat-header-row {
+      width: auto;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .mat-header-cell {
+      background: map.get(s.$colors-map, my-blue);
+      color: white;
+      white-space: nowrap;
+      min-width: 24px;
+      padding: 0 0.6rem;
+      margin: 0;
+    }
+    .header-cell {
+      min-width: 80px;
+    }
+    .mat-cell {
+      min-width: 24px;
+      padding: 0 0.6rem;
+      margin: 0;
+    }
+    .mat-row:nth-child(even) {
+      background-color: #b0bec52e;
+    }
+  }
+}

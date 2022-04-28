@@ -16,6 +16,8 @@ import { CompaniesComponent } from './feature/companies/page/companies/companies
 import { CompaniesTableComponent } from './feature/companies/component/companies-table/companies-table.component';
 import { CompaniesFormComponent } from './feature/companies/component/companies-form/companies-form.component';
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
+import { DocumentsTableComponent } from './feature/companies/component/documents-table/documents-table.component';
+import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { CompanyDetailsComponent } from './feature/companies/page/company-detail
     CompaniesTableComponent,
     CompaniesFormComponent,
     CompanyDetailsComponent,
+    DocumentsTableComponent,
+    DocumentListComponent,
   ],
   imports: [
     BrowserModule,

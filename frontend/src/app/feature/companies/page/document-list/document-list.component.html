@@ -1,0 +1,19 @@
+<div class="container">
+  <button routerLink="/companies" mat-button>
+    <mat-icon>keyboard_backspace</mat-icon>
+    Vissza az üzleteimhez
+  </button>
+
+  <h1>{{ companyName$ | async }}</h1>
+
+  <h2>Dokumentum lista</h2>
+  <div class="table-holder">
+    <app-documents-table
+      [headerTexts]="headerTexts"
+      [actionItems]="actionItems"
+      [columns]="columns"
+      [displayedColumns]="displayedColumns"
+      [tableData]="tableData"
+    ></app-documents-table>
+  </div>
+</div>

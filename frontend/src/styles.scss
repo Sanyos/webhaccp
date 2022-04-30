@@ -10,7 +10,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background: whitesmoke;
+  background: rgb(235, 235, 235);
 }
 
 * {
@@ -27,8 +27,8 @@ $custom-typography: mat-typography-config(
 @include mat-core($custom-typography);
 
 //Only 3 options avaible (+3 dark vesrion)
-$mat-theming-primary: mat-palette($mat-blue-grey, 500);
-$mat-theming-accent: mat-palette($mat-cyan, 700);
+$mat-theming-primary: mat-palette($mat-teal, 500);
+$mat-theming-accent: mat-palette($mat-blue-grey, 700);
 $mat-theming-warn: mat-palette($mat-red, 800);
 
 $mat-theming-theme: mat-light-theme(
@@ -45,11 +45,9 @@ $mat-theming-theme: mat-light-theme(
 }
 
 $colors-map: (
-  // my-blue: #0097a7,
-  my-blue: #0097a7,
-  my-light-blue: #00bcd4,
-  my-orange: #ffa101,
-  my-light-orange: #ecc67b
+  my-blue: #00796b,
+  my-light-blue: #009688,
+  my-grey: #455a64,
 );
 
 // FONTS

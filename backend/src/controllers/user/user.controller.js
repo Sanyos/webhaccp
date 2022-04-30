@@ -7,9 +7,9 @@ exports.createNewUser = (req, res, next) => {
     return next(new createError.BadRequest("Invalid request body"));
   }
 
-  const { username, email, password, rePassword, role } = req.body;
+  const { username, email, phone, password, rePassword, role } = req.body;
   if (password === rePassword) {
-    const newUser = { username, email, password, role };
+    const newUser = { username, email, phone, password, role };
     return userService
       .create(newUser)
       .then((user) => {
@@ -32,6 +32,7 @@ exports.getAllUser = (req, res, next) => {
           role: user.role,
           archived: user.archived,
           email: user.email,
+          phone: user.phoneNumber,
           _id: user._id,
         };
         responseUsers.push(responseUser);
@@ -57,7 +58,7 @@ exports.archivingById = (req, res, next) => {
 
 exports.userUpdate = async (req, res, next) => {
   const id = req.params.id;
-  let { role, password, rePassword, email } = req.body;
+  let { role, password, rePassword, email, phone } = req.body;
   let paramObj = {};
   if (password && password === rePassword) {
     const salt = await bcrypt.genSalt(10);
@@ -66,6 +67,7 @@ exports.userUpdate = async (req, res, next) => {
       role: role,
       password: hashedPassword,
       email: email,
+      phone: phone,
     };
   } else {
     paramObj = {

@@ -1,13 +1,22 @@
 const jwt = require("jsonwebtoken");
-require("dotenv").config;
+require("dotenv").config();
 const bcrypt = require("bcrypt");
 
 module.exports.login = async (req, res) => {
-  const user = "";
+  console.log(req.body);
+  const user = {
+    name: "TestUser",
+    phone: "06304446656",
+    email: "test@gmail.com",
+    _id: "1",
+    role: "admin",
+    password: "Test1234",
+  };
 
   if (!user) return res.status(400).send("Email or password is wrong");
 
-  const validPass = await bcrypt.compare(req.body.password, user.password);
+  // const validPass = await bcrypt.compare(req.body.password, user.password);
+  const validPass = req.body.password === user.password;
   if (!validPass) return res.status(400).send("Invalid password");
 
   if (user && !user.archived) {
@@ -18,7 +27,7 @@ module.exports.login = async (req, res) => {
 
     res.json({
       _id: user._id,
-      name: user.username,
+      name: user.name,
       email: user.email,
       phone: user.phone,
       role: user.role,

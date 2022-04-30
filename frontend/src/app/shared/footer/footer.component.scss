@@ -1,6 +1,9 @@
+@use "../../../styles.scss" as s;
+@use "sass:map";
+
 footer {
   color: rgb(229, 229, 229);
-  background: #607d8b;
+  background: map.get(s.$colors-map, my-grey);
 }
 
 .footer-text-holder {

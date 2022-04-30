@@ -19,6 +19,10 @@ import { CompanyDetailsComponent } from './feature/companies/page/company-detail
 import { DocumentsTableComponent } from './feature/companies/component/documents-table/documents-table.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 import { HeaderComponent } from './feature/home/component/header/header.component';
+import { CardsSectionComponent } from './feature/home/component/cards-section/cards-section.component';
+import { AboutComponent } from './feature/home/component/about/about.component';
+import { ProfileComponent } from './feature/profile/page/profile.component';
+import { SettingsFormComponent } from './feature/profile/component/settings-form/settings-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +40,10 @@ import { HeaderComponent } from './feature/home/component/header/header.componen
     DocumentsTableComponent,
     DocumentListComponent,
     HeaderComponent,
+    CardsSectionComponent,
+    AboutComponent,
+    ProfileComponent,
+    SettingsFormComponent,
   ],
   imports: [
     BrowserModule,

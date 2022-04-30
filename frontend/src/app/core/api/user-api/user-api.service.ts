@@ -18,7 +18,8 @@ import jwt_decode from 'jwt-decode';
   providedIn: 'root',
 })
 export class UserApiService extends BaseHttpService<UserResponseModel> {
-  userSubject$: BehaviorSubject<any> = new BehaviorSubject('');
+  userSubject$: BehaviorSubject<any> = new BehaviorSubject(null);
+  userObject: UserResponseModel;
   BASE_URL: string = environment.apiUrl;
   accessToken: any;
   private role: string;
@@ -28,11 +29,17 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     this.entity = apiConfig.user.default;
     let accessToken = localStorage.getItem('accessToken');
     let id = localStorage.getItem('id');
+    let phone = localStorage.getItem('phone');
+    let email = localStorage.getItem('email');
+    let name = localStorage.getItem('name');
     if (accessToken) {
       this.userSubject$.next({
         accessToken,
         id,
         role: this.jwtDecoder(accessToken)?.role,
+        email,
+        phone,
+        name,
       });
     }
   }
@@ -52,10 +59,16 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
             this.accessToken = loginData.accessToken;
             localStorage.setItem('accessToken', loginData.accessToken);
             localStorage.setItem('id', loginData._id);
+            localStorage.setItem('phone', loginData.phone);
+            localStorage.setItem('email', loginData.email);
+            localStorage.setItem('name', loginData.name);
             this.userSubject$.next({
               accessToken: loginData.accessToken,
               id: loginData._id,
               role: loginData.role,
+              phone: loginData.phone,
+              email: loginData.email,
+              name: loginData.name,
             });
           }
         },

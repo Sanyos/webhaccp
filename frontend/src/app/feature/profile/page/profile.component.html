@@ -1,0 +1,29 @@
+<div class="page">
+  <div class="form mat-elevation-z8">
+    <h2>Profil adatok módosítása</h2>
+
+    <app-settings-form
+      (profileFormEvent)="profileFormEvent($event)"
+    ></app-settings-form>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        (click)="onSave()"
+        mat-button
+        color="primary"
+        id="save-btn"
+        mat-raised-button
+      >
+        Mentés
+      </button>
+      <button
+        routerLink="/companies"
+        mat-button
+        color="accent"
+        id="cancel-btn"
+        mat-raised-button
+      >
+        Mégse
+      </button>
+    </div>
+  </div>
+</div>

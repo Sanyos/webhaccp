@@ -1,0 +1,12 @@
+<div class="cards-container">
+  <h2>Aenean porttitor, elit non pharetra commodo?</h2>
+  <div class="flex">
+    <div class="card" *ngFor="let card of cards">
+      <mat-icon>{{ card.icon }}</mat-icon>
+      <h3>{{ card.title }}</h3>
+      <p>
+        {{ card.description }}
+      </p>
+    </div>
+  </div>
+</div>

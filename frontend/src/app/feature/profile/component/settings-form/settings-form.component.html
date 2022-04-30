@@ -1,0 +1,83 @@
+<form [formGroup]="profileForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Név</mat-label>
+    <input formControlName="name" matInput />
+    <mat-error
+      *ngIf="
+        profileForm.controls['name'].dirty ||
+        profileForm.controls['name'].touched
+      "
+    >
+      Legalább 4, maximum 20 karakter
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>E-mail cím</mat-label>
+    <input formControlName="email" matInput />
+    <mat-error
+      *ngIf="
+        profileForm.controls['email'].dirty ||
+        profileForm.controls['email'].touched
+      "
+    >
+      Az e-mail cím formátuma nem megfelelő
+    </mat-error>
+  </mat-form-field>
+  <mat-error *ngIf="emailIsAlreadyTaken">
+    Ezzel az e-mail címmel már regisztráltak
+  </mat-error>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Telefonszám</mat-label>
+    <input formControlName="phone" matInput />
+    <mat-error
+      *ngIf="
+        profileForm.controls['phone'].dirty ||
+        profileForm.controls['phone'].touched
+      "
+    >
+      A telefonszám formátuma nem megfelelő
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Jelszó</mat-label>
+    <input
+      [type]="hide ? 'password' : 'text'"
+      formControlName="password"
+      matInput
+    />
+    <mat-icon matSuffix (click)="hide = !hide">{{
+      hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+    <mat-error
+      *ngIf="
+        profileForm.controls['password'].dirty ||
+        profileForm.controls['password'].touched
+      "
+    >
+      Jelszó erőssége nem megfelelő
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Jelszó újra</mat-label>
+    <input
+      [type]="hide ? 'password' : 'text'"
+      formControlName="rePassword"
+      matInput
+    />
+    <mat-icon matSuffix (click)="hide = !hide">{{
+      hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+    <mat-error
+      *ngIf="
+        (passwordsNotMatch && profileForm.controls['rePassword'].dirty) ||
+        profileForm.controls['rePassword'].touched
+      "
+    >
+      A jelszavak nem egyeznek
+    </mat-error>
+  </mat-form-field>
+</form>

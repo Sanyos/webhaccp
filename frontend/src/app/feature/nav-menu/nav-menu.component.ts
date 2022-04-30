@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -12,6 +12,8 @@ import {
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { UserResponseModel } from 'src/app/core/model/user.model';
 
 @Component({
   selector: 'app-nav-menu',
@@ -46,14 +48,16 @@ import {
     ]),
   ],
 })
-export class NavMenuComponent implements OnInit {
+export class NavMenuComponent implements OnInit, AfterViewInit {
   loggedIn: boolean = true;
+  adminLoggedIn: boolean;
   navItems: any[];
   isHamburguer: boolean = true;
   isSmallScreen: boolean = false;
   constructor(
     private router: Router,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private userApiService: UserApiService
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +70,10 @@ export class NavMenuComponent implements OnInit {
         this.isSmallScreen = false;
       }
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.isLoggedIn();
   }
 
   onClick() {
@@ -91,12 +99,18 @@ export class NavMenuComponent implements OnInit {
     ];
   }
 
-  signOut() {
-    /*     this.authService.logout().subscribe(
-      () => {},
-      (err) => err,
-      () => this.router.navigate(['/home'])
-    ); */
+  isLoggedIn(): void {
+    this.userApiService.personLoggedInObj.subscribe(
+      (res: UserResponseModel) => {
+        if (res) {
+          this.loggedIn = res.accessToken !== null;
+        }
+      }
+    );
+  }
+
+  signOut(): void {
+    this.userApiService.logout();
     this.router.navigate(['/login']);
     this.loggedIn = false;
   }

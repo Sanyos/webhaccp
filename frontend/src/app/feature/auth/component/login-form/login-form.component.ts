@@ -32,6 +32,7 @@ export class LoginFormComponent implements OnInit {
 
   login(): void {
     const userObject = this.loginForm.value;
+    console.log(userObject);
     this.userApiService.login(userObject).subscribe(
       (res) => {
         console.log(res);

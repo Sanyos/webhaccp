@@ -40,7 +40,7 @@
     border-bottom: none;
   }
   transform: scaleX(0);
-  border-bottom: 3px solid grey;
+  border-bottom: 2px solid map.get(s.$colors-map, my-grey);
   transform-origin: left;
   position: absolute;
   bottom: 0;
@@ -83,5 +83,5 @@
   position: relative;
 }
 .icon-btn {
-  margin: 0.6rem;
+  margin: 0.6rem !important;
 }

@@ -26,7 +26,7 @@
       z-index: 5;
     }
     .mat-header-cell {
-      background: map.get(s.$colors-map, my-blue);
+      background: map.get(s.$colors-map, my-light-blue);
       color: white;
       white-space: nowrap;
       min-width: 24px;

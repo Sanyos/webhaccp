@@ -7,7 +7,6 @@
 .flex {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
 }
 .container {
   width: 100%;
@@ -26,7 +25,7 @@
       z-index: 5;
     }
     .mat-header-cell {
-      background: map.get(s.$colors-map, my-blue);
+      background: map.get(s.$colors-map, my-light-blue);
       color: white;
       white-space: nowrap;
       min-width: 24px;

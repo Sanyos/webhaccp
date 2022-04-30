@@ -18,6 +18,7 @@ import { CompaniesFormComponent } from './feature/companies/component/companies-
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 import { DocumentsTableComponent } from './feature/companies/component/documents-table/documents-table.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
+import { HeaderComponent } from './feature/home/component/header/header.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DocumentListComponent } from './feature/companies/page/document-list/do
     CompanyDetailsComponent,
     DocumentsTableComponent,
     DocumentListComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

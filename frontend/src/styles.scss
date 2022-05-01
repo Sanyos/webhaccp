@@ -3,6 +3,7 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lato&family=Open+Sans&family=Raleway&family=Roboto&display=swap");
 
 html,
 body {
@@ -20,7 +21,7 @@ body {
 //Angular material theming
 @import "../node_modules/@angular/material/theming";
 $custom-typography: mat-typography-config(
-  $font-family: "Cabin",
+  $font-family: "Josefin Sans",
   $headline: mat-typography-level(32px, 48px, 700),
   $body-1: mat-typography-level(14px, 18px, 500),
 );
@@ -53,6 +54,6 @@ $colors-map: (
 // FONTS
 
 $fonts-map: (
-  title: "Cabin",
-  text: "Lato",
+  title: "Josefin Sans",
+  text: "Cabin",
 );

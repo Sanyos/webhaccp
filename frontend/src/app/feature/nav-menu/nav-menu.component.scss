@@ -12,6 +12,8 @@
 .logo {
   height: 70px;
   padding: 1rem;
+  font-weight: bold;
+  color: map.get(s.$colors-map, my-blue);
   img {
     height: 100%;
   }

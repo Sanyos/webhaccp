@@ -2,7 +2,7 @@
 @use "sass:map";
 .table-holder {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .flex {
   display: flex;
@@ -39,6 +39,7 @@
       min-width: 24px;
       padding: 0 0.6rem;
       margin: 0;
+      font-family: map.get(s.$fonts-map, text);
     }
     .mat-row:nth-child(even) {
       background-color: #b0bec52e;

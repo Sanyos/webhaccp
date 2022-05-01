@@ -1,6 +1,10 @@
+@use "../../../../../styles.scss" as s;
+@use "sass:map";
+
 .content {
   width: 90%;
-  margin: 1rem auto;
+  margin: 0 auto;
+  padding: 3rem 0;
   .flex-container {
     display: flex;
     justify-content: space-between;
@@ -15,12 +19,15 @@
         width: 100%;
       }
       p {
-        font-size: 1.1rem;
-        line-height: 1.4;
+        font-size: 1.2rem;
+        line-height: 1.5;
         text-align: justify;
+        font-family: map.get(s.$fonts-map, text);
       }
       h2 {
         font-weight: bold;
+        font-size: 1.5rem;
+        padding-bottom: 1rem;
       }
     }
     .img-container {

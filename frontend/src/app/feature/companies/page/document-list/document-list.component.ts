@@ -1,10 +1,18 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { map, pluck, shareReplay, switchMap, takeUntil } from 'rxjs/operators';
+import {
+  map,
+  pluck,
+  shareReplay,
+  switchMap,
+  takeUntil,
+  tap,
+} from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { DocumentsTableComponent } from '../../component/documents-table/documents-table.component';
 
 @Component({
@@ -16,6 +24,7 @@ export class DocumentListComponent implements OnInit {
   @ViewChild(DocumentsTableComponent) documentsTable: DocumentsTableComponent;
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   company$: Observable<CompanyResponseModel> = this.companyIdParam$.pipe(
+    tap((id) => this.getDocuments(id)),
     switchMap((id) =>
       this.companyApiService.getSingleItem(id).pipe(shareReplay())
     )
@@ -27,8 +36,7 @@ export class DocumentListComponent implements OnInit {
   displayedColumns: string[];
   columns: string[];
   headerTexts: string[];
-  actionItems: any[];
-  tableData: any[] = [];
+  tableData: DocumentResponseModel[] = [];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -37,7 +45,6 @@ export class DocumentListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getDocuments();
     this.setTableData();
   }
 
@@ -46,30 +53,14 @@ export class DocumentListComponent implements OnInit {
     this.unsubscribe.complete();
   }
 
-  getDocuments(): void {
+  getDocuments(companyId: any): void {
     this.documentApiService
-      .getList()
+      .getList(companyId)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: any[]) => {
-          console.log(res);
-          this.tableData = [
-            {
-              name: 'Első',
-              date: '2022.03.26.',
-              valid: 'Érvényes',
-            },
-            {
-              name: 'Második',
-              date: '2022.03.26.',
-              valid: 'Érvényes',
-            },
-            {
-              name: 'Harmadik',
-              date: '2022.03.26.',
-              valid: 'Nem érvényes',
-            },
-          ];
+        (res: DocumentResponseModel[]) => {
+          console.log('documents: ', res);
+          this.tableData = res;
         },
         (err) => {
           console.log(err);

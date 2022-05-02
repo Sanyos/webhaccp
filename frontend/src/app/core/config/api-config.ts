@@ -9,6 +9,9 @@ export const apiConfig = {
   company: {
     default: 'company',
   },
+  document: {
+    default: 'document',
+  },
   enums: {
     default: 'enums',
   },

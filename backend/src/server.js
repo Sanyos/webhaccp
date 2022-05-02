@@ -25,6 +25,7 @@ app.use("/", (req, res, next) => {
 app.post("/login", authHandler.login);
 app.use("/user", require("./controllers/user/user.routes"));
 app.use("/company", require("./controllers/company/company.routes"));
+app.use("/document", require("./controllers/document/document.routes"));
 app.get("/enums", (req, res) => {
   res.send(companyEnums);
 });

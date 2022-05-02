@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { DocumentResponseModel } from 'src/app/core/model/document.model';
 
 @Component({
   selector: 'app-documents-table',
@@ -21,14 +22,11 @@ export class DocumentsTableComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
   dataSource: any;
-
   @Input() displayedColumns: string[];
   @Input() columns: string[];
   @Input() headerTexts: string[];
-  @Input() actionItems: any[];
-  @Input() tableData: CompanyResponseModel[] = [];
+  @Input() tableData: DocumentResponseModel[] = [];
 
   constructor() {
     this.dataSource = new MatTableDataSource();

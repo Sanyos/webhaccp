@@ -15,10 +15,6 @@ exports.getById = (id) => {
   return;
 };
 
-exports.getProductIds = () => {
-  return;
-};
-
 exports.updateById = (id, updatedCompany) => {
   return;
 };

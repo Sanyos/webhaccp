@@ -2,7 +2,7 @@ const documentService = require("./document.service");
 const createError = require("http-errors");
 const documentsData = require("../../mock_data/documents-data");
 
-exports.createNewDOcument = (req, res, next) => {
+exports.createNewDocument = (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     return next(new createError.BadRequest("Invalid req body"));
   }
@@ -20,6 +20,7 @@ exports.createNewDOcument = (req, res, next) => {
 };
 
 exports.getAllDocuments = (req, res, next) => {
+  console.log(req.params);
   const companyId = req.params.companyId;
   console.log("companyId", companyId);
   res.send(documentsData);

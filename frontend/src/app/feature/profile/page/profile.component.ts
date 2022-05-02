@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {}
 
   getUserData(): void {
-    this.userApiService.userSubject$.subscribe((res: any) => {
+    this.userApiService.userSubject$.subscribe((res: UserResponseModel) => {
       console.log('user data: ', res);
       this.profileData = res;
       this.profileForm.controls['name'].setValue(this.profileData.name);
@@ -30,5 +30,14 @@ export class ProfileComponent implements OnInit {
     this.getUserData();
   }
 
-  onSave() {}
+  onSave(): void {
+    const userData = this.profileForm.value;
+    if (this.profileForm.valid) {
+      this.userApiService
+        .update(userData, `edit/${this.profileData._id}`)
+        .subscribe((res) => {
+          console.log('user updated: ', res);
+        });
+    }
+  }
 }

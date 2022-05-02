@@ -33,16 +33,15 @@ exports.createNewCompany = (req, res, next) => {
     archived,
   };
 
-  return companyService
-    .create(newCompany)
-    .then((company) => {
+  return companyService.create(newCompany);
+  /* .then((company) => {
       res.status(201).json(company);
     })
     .catch((err) => {
       return next(
         new createError[500](`Could not saved company Error: ${err}`)
       );
-    });
+    }); */
 };
 
 exports.getAllCompanies = (req, res, next) => {

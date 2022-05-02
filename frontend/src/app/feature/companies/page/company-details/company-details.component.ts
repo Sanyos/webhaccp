@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, pluck, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
@@ -19,6 +20,7 @@ export class CompanyDetailsComponent implements OnInit {
   categoryTypes: CompanyCategoryTypes;
   companyId: string;
   companyData: CompanyResponseModel;
+  unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
@@ -30,15 +32,23 @@ export class CompanyDetailsComponent implements OnInit {
     this.getCategories();
   }
 
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+  }
+
   getCategories(): void {
-    this.enumsApiService.getSingleItem().subscribe((res: EnumsModel) => {
-      this.categoryTypes = res.CompanyCategoryTypes;
-    });
+    this.enumsApiService
+      .getSingleItem()
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((res: EnumsModel) => {
+        this.categoryTypes = res.CompanyCategoryTypes;
+      });
   }
 
   companyFormEvent(form: FormGroup): void {
     this.companyForm = form;
-    this.companyIdParam$.subscribe((id) => {
+    this.companyIdParam$.pipe(takeUntil(this.unsubscribe)).subscribe((id) => {
       if (id) {
         this.companyId = id;
         this.getCompanyData(id);
@@ -49,6 +59,7 @@ export class CompanyDetailsComponent implements OnInit {
   getCompanyData(id: string): void {
     this.companyApiService
       .getSingleItem(id)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: CompanyResponseModel) => {
         console.log('company data: ', res);
         this.companyData = res;
@@ -83,9 +94,21 @@ export class CompanyDetailsComponent implements OnInit {
   onSave(): void {
     console.log(this.companyForm.value);
     const data = this.companyForm.value;
-    this.companyApiService.create(data).subscribe((res) => {
-      console.log(res);
-    });
+    if (this.companyId) {
+      this.companyApiService
+        .update(data, this.companyId)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((res: CompanyResponseModel) => {
+          console.log('company updated: ', res);
+        });
+    } else {
+      this.companyApiService
+        .create(data)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((res: CompanyResponseModel) => {
+          console.log('company created: ', res);
+        });
+    }
   }
 
   cancel(): void {

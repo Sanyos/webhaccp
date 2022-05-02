@@ -15,7 +15,7 @@ routes.get("/:id", (req, res, next) => {
   return companyController.getCompanyById(req, res, next);
 });
 
-routes.put("/:id", adminOnly, (req, res, next) => {
+routes.put("/:id", (req, res, next) => {
   return companyController.updateCompanyById(req, res, next);
 });
 

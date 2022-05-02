@@ -57,12 +57,25 @@ exports.archivingById = (req, res, next) => {
 };
 
 exports.userUpdate = async (req, res, next) => {
+  // TODO USER LEKÉRDEZÉS
+  const user = {
+    name: "TestUser",
+    phone: "06304446656",
+    email: "test@gmail.com",
+    _id: "1",
+    role: "admin",
+    password: "Test1234",
+  };
+
   const id = req.params.id;
-  let { role, password, rePassword, email, phone } = req.body;
+  let { role, oldPassword, password, rePassword, email, phone } = req.body;
   let paramObj = {};
-  if (password && password === rePassword) {
+  if (oldPassword === user.password || (password && password === rePassword)) {
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(
+      password ? password : oldPassword,
+      salt
+    );
     paramObj = {
       role: role,
       password: hashedPassword,

@@ -45,6 +45,26 @@
     <mat-label>Jelszó</mat-label>
     <input
       [type]="hide ? 'password' : 'text'"
+      formControlName="oldPassword"
+      matInput
+    />
+    <mat-icon matSuffix (click)="hide = !hide">{{
+      hide ? "visibility_off" : "visibility"
+    }}</mat-icon>
+    <mat-error
+      *ngIf="
+        profileForm.controls['oldPassword'].dirty ||
+        profileForm.controls['oldPassword'].touched
+      "
+    >
+      Jelszó megadása kötelező
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Új jelszó</mat-label>
+    <input
+      [type]="hide ? 'password' : 'text'"
       formControlName="password"
       matInput
     />
@@ -62,7 +82,7 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Jelszó újra</mat-label>
+    <mat-label>Új jelszó újra</mat-label>
     <input
       [type]="hide ? 'password' : 'text'"
       formControlName="rePassword"

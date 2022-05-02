@@ -4,6 +4,7 @@ const bcrypt = require("bcrypt");
 
 module.exports.login = async (req, res) => {
   console.log(req.body);
+  // TODO USER LEKÉRDEZÉS
   const user = {
     name: "TestUser",
     phone: "06304446656",

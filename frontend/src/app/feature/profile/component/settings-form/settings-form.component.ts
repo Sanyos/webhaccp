@@ -42,11 +42,12 @@ export class SettingsFormComponent implements OnInit {
             /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
           ),
         ]),
-        password: new FormControl('', [
-          Validators.required,
-          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
-        ]),
-        rePassword: new FormControl('', [Validators.required]),
+        oldPassword: new FormControl('', [Validators.required]),
+        password: new FormControl(
+          '',
+          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
+        ),
+        rePassword: new FormControl(''),
       },
       {
         validators: this.passwordsNotMatch('password', 'rePassword'),

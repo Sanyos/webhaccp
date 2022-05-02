@@ -11,6 +11,17 @@ export interface UserLoginModel {
   name: string;
   password: string;
 }
+
+export interface UserUpdateModel {
+  name: string;
+  oldPassword: string;
+  password: string;
+  rePassword: string;
+  email: string;
+  phone: string;
+  role: string;
+}
+
 export interface UserResponseModel {
   _id: string;
   name: string;

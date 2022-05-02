@@ -12,7 +12,6 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();
 });
-
 app.use(cors());
 app.options("*", cors());
 app.use(express.urlencoded({ extended: true }));
@@ -29,6 +28,7 @@ app.use("/document", require("./controllers/document/document.routes"));
 app.get("/enums", (req, res) => {
   res.send(companyEnums);
 });
+
 app.get("*/*", express.static(staticUrl));
 app.all("*", function (req, res) {
   res.status(200).sendFile(`${staticUrl}/index.html`);

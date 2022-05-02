@@ -28,14 +28,14 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     super(http);
     this.entity = apiConfig.user.default;
     let accessToken = localStorage.getItem('accessToken');
-    let id = localStorage.getItem('id');
+    let _id = localStorage.getItem('id');
     let phone = localStorage.getItem('phone');
     let email = localStorage.getItem('email');
     let name = localStorage.getItem('name');
     if (accessToken) {
       this.userSubject$.next({
         accessToken,
-        id,
+        _id,
         role: this.jwtDecoder(accessToken)?.role,
         email,
         phone,

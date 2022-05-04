@@ -6,12 +6,13 @@ module.exports.login = async (req, res) => {
   console.log(req.body);
   // TODO USER LEKÉRDEZÉS
   const user = {
-    name: "TestUser",
+    name: "Admin",
     phone: "06304446656",
-    email: "test@gmail.com",
+    email: "admin@test.com",
     _id: "1",
-    role: "admin",
+    role: "ADMIN",
     password: "Test1234",
+    archived: false,
   };
 
   if (!user) return res.status(400).send("Email or password is wrong");
@@ -22,7 +23,7 @@ module.exports.login = async (req, res) => {
 
   if (user && !user.archived) {
     const accessToken = jwt.sign(
-      { username: user.username, role: user.role },
+      { name: user.name, role: user.role },
       process.env.ACCESS_TOKEN_SECRET
     );
 

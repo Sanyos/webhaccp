@@ -94,7 +94,7 @@ export class NavMenuComponent implements OnInit, AfterViewInit {
       },
       {
         title: 'Online HACCP',
-        route: '/recipes',
+        route: '/home',
       },
     ];
   }

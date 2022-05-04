@@ -1,6 +1,7 @@
 const createError = require("http-errors");
 const userService = require("./user.service");
 const bcrypt = require("bcrypt");
+const users = require("../../mock_data/users-data");
 
 exports.createNewUser = (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
@@ -22,7 +23,9 @@ exports.createNewUser = (req, res, next) => {
 };
 
 exports.getAllUser = (req, res, next) => {
-  return userService
+  let responseUsers = users;
+  res.json(responseUsers);
+  /*  return userService
     .getAll()
     .then((users) => {
       let responseUsers = [];
@@ -41,7 +44,7 @@ exports.getAllUser = (req, res, next) => {
     })
     .catch((err) => {
       return next(new createError[500](`Could not find users Error: ${err}`));
-    });
+    }); */
 };
 
 exports.archivingById = (req, res, next) => {

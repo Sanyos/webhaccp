@@ -22,7 +22,7 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
   userObject: UserResponseModel;
   BASE_URL: string = environment.apiUrl;
   accessToken: any;
-  private role: string;
+  public role: string;
 
   constructor(public http: HttpClient, private router: Router) {
     super(http);
@@ -33,10 +33,11 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     let email = localStorage.getItem('email');
     let name = localStorage.getItem('name');
     if (accessToken) {
+      this.role = this.jwtDecoder(accessToken).role;
       this.userSubject$.next({
         accessToken,
         _id,
-        role: this.jwtDecoder(accessToken)?.role,
+        role: this.jwtDecoder(accessToken).role,
         email,
         phone,
         name,
@@ -98,15 +99,11 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     return this.userSubject$.asObservable();
   }
 
-  public get userRole(): string {
+  public getRole(): string {
     return this.role;
   }
 
-  private jwtDecoder(token: string): DecodedUserToken | null {
-    try {
-      return jwt_decode(token);
-    } catch (err) {
-      return null;
-    }
+  private jwtDecoder(token: string): DecodedUserToken {
+    return jwt_decode(token);
   }
 }

@@ -3,7 +3,7 @@ const routes = express.Router();
 const userController = require("./user.controller");
 const adminOnly = require("../../auth/adminOnly");
 
-routes.post("/register", adminOnly, (req, res, next) => {
+routes.post("/register", (req, res, next) => {
   return userController.createNewUser(req, res, next);
 });
 

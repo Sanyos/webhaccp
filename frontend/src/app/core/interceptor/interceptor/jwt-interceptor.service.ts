@@ -21,7 +21,9 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
     const req = request.clone({
       setHeaders: {
         authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        role: this.userApiService.userRole ? this.userApiService.userRole : '',
+        role: this.userApiService.getRole()
+          ? this.userApiService.getRole()
+          : '',
       },
     });
     return next.handle(req);

@@ -1,0 +1,17 @@
+<div class="admin-page" *ngIf="isAdmin">
+  <div class="container">
+    <h1>Admin felület</h1>
+    <h2>Felhasználók</h2>
+    <div class="table-holder">
+      <app-users-table
+        [headerTexts]="headerTexts"
+        [actionItems]="actionItems"
+        [columns]="columns"
+        [displayedColumns]="displayedColumns"
+        [tableData]="tableData"
+        (addNewUserEvent)="addNewUser()"
+        (deleteUserEvent)="deleteUser($event)"
+      ></app-users-table>
+    </div>
+  </div>
+</div>

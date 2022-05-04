@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +23,9 @@ import { CardsSectionComponent } from './feature/home/component/cards-section/ca
 import { AboutComponent } from './feature/home/component/about/about.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
 import { SettingsFormComponent } from './feature/profile/component/settings-form/settings-form.component';
+import { AdminComponent } from './feature/admin/page/admin.component';
+import { UsersTableComponent } from './feature/admin/component/users-table/users-table.component';
+import { JwtInterceptorInterceptor } from './core/interceptor/interceptor/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,6 +47,8 @@ import { SettingsFormComponent } from './feature/profile/component/settings-form
     AboutComponent,
     ProfileComponent,
     SettingsFormComponent,
+    AdminComponent,
+    UsersTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,13 @@ import { SettingsFormComponent } from './feature/profile/component/settings-form
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

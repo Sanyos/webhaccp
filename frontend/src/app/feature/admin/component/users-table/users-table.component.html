@@ -1,14 +1,10 @@
 <div class="table-holder">
   <div class="flex">
-    <mat-form-field class="filter">
+    <h2>Felhasználók</h2>
+    <mat-form-field>
       <mat-label> Szűrés <mat-icon>search</mat-icon> </mat-label>
       <input matInput (keyup)="applyFilter($event)" #input />
     </mat-form-field>
-    <div class="add-new-product">
-      <button mat-button (click)="addNewUser()">
-        <mat-icon>add_new</mat-icon>Új felhasználó regisztrálása
-      </button>
-    </div>
   </div>
 
   <div class="mat-elevation-z8">
@@ -34,11 +30,10 @@
 
         <!--   Actions -->
         <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>LEHETŐSÉGEK</th>
+          <th mat-header-cell *matHeaderCellDef>ARCHIVÁLÁS</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-menu-item (click)="onDeleteUser(element)">
+            <button mat-icon-button (click)="onDeleteUser(element)">
               <mat-icon>delete</mat-icon>
-              <span>Üzlet törlése</span>
             </button>
           </td>
         </ng-container>

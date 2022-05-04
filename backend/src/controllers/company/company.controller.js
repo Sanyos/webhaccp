@@ -7,34 +7,10 @@ exports.createNewCompany = (req, res, next) => {
     return next(new createError.BadRequest("Invalid req body"));
   }
 
-  const {
-    category,
-    companyName,
-    address,
-    location,
-    companyPhoneNumber,
-    headquarters,
-    billingAddress,
-    registrationNumber,
-    vatNumber,
-    archived,
-  } = req.body;
-
-  const newCompany = {
-    category,
-    companyName,
-    address,
-    location,
-    companyPhoneNumber,
-    headquarters,
-    billingAddress,
-    registrationNumber,
-    vatNumber,
-    archived,
-  };
-
-  return companyService.create(newCompany);
-  /* .then((company) => {
+  res.status(201).send(req.body);
+  /*  return companyService
+    .create(newCompany)
+    .then((company) => {
       res.status(201).json(company);
     })
     .catch((err) => {
@@ -45,7 +21,7 @@ exports.createNewCompany = (req, res, next) => {
 };
 
 exports.getAllCompanies = (req, res, next) => {
-  res.send(companiesData);
+  res.status(200).send(companiesData);
   /* return companyService
     .getAll()
     .then((companies) => {
@@ -63,7 +39,7 @@ exports.getAllCompanies = (req, res, next) => {
 exports.getCompanyById = (req, res, next) => {
   const id = req.params.id;
   const company = companiesData.filter((company) => company._id === id)[0];
-  res.send(company);
+  res.status(200).send(company);
   /* return companyService
     .getById(id)
     .then((company) => {
@@ -80,7 +56,9 @@ exports.getCompanyById = (req, res, next) => {
 
 exports.updateCompanyById = (req, res, next) => {
   const id = req.params.id;
-  return companyService
+  res.status(200).send(req.body);
+
+  /* return companyService
     .updateById(id, req.body)
     .then((updatedCompany) => {
       res.status(200).json(updatedCompany);
@@ -91,5 +69,5 @@ exports.updateCompanyById = (req, res, next) => {
           `Could not update company with id: ${id} Error:${err}`
         )
       );
-    });
+    }); */
 };

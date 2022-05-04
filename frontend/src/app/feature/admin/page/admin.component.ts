@@ -45,7 +45,10 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: UserResponseModel[]) => {
-          console.log(res);
+          res.map((user: UserResponseModel) => {
+            user.archived ? (user.archived = 'igen') : (user.archived = 'nem');
+            this.tableData.push(user);
+          });
           this.tableData = res;
         },
         (err) => {
@@ -56,10 +59,6 @@ export class AdminComponent implements OnInit, OnDestroy {
           this.usersTable.setDataSource(this.tableData);
         }
       );
-  }
-
-  addNewUser(): void {
-    this.router.navigate(['/login']);
   }
 
   deleteUser(company: UserResponseModel): void {
@@ -78,6 +77,7 @@ export class AdminComponent implements OnInit, OnDestroy {
                 text: 'Felhasználó archiválva!',
                 icon: 'success',
                 confirmButtonColor: '#0097a7',
+                cancelButtonText: 'Mégse',
               });
             }
           });

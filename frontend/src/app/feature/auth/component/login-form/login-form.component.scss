@@ -57,8 +57,9 @@
           background: map.get(s.$colors-map, my-blue);
         }
       }
-      #sign-in {
-        margin-top: 1rem;
+      .bottom {
+        position: absolute;
+        bottom: 0;
       }
     }
   }

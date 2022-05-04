@@ -7,7 +7,7 @@ exports.createNewDocument = (req, res, next) => {
     return next(new createError.BadRequest("Invalid req body"));
   }
   const newDocument = {};
-  return documentService
+  /* return documentService
     .create(newDocument)
     .then((document) => {
       res.status(201).json(document);
@@ -16,16 +16,16 @@ exports.createNewDocument = (req, res, next) => {
       return next(
         new createError[500](`Could not saved document Error: ${err}`)
       );
-    });
+    }); */
 };
 
 exports.getAllDocuments = (req, res, next) => {
   console.log(req.params);
   const companyId = req.params.companyId;
   console.log("companyId", companyId);
-  res.send(documentsData);
+  res.status(200).send(documentsData);
   /* return documentService
-    .getAll()
+    .getAll(companyId)
     .then((documents) => {
       if (documents) {
         res.status(200).json(documents);

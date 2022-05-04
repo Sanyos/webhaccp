@@ -11,15 +11,19 @@
 .form {
   padding: 2rem;
   margin: 1rem;
+  background-color: whitesmoke;
 
   h2 {
     text-align: center;
   }
   .button-holder {
     display: flex;
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
   #save-btn {
     margin-right: 0.5rem;
+  }
+  .error {
+    color: #c62828;
   }
 }

@@ -1,6 +1,7 @@
 .company-form-page {
   width: 80%;
   margin: 2rem auto;
+
   @media only screen and(max-width: 1200px) {
     width: 90%;
   }
@@ -11,6 +12,7 @@
 .form {
   padding: 2rem;
   margin: 1rem;
+  background-color: whitesmoke;
 
   h2 {
     text-align: center;

@@ -10,7 +10,6 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 
 @Component({
@@ -30,7 +29,6 @@ export class UsersTableComponent implements OnInit {
   @Input() headerTexts: string[];
   @Input() actionItems: any[];
   @Input() tableData: UserResponseModel[] = [];
-  @Output() addNewUserEvent: EventEmitter<any> = new EventEmitter();
   @Output() deleteUserEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {
@@ -62,10 +60,6 @@ export class UsersTableComponent implements OnInit {
 
   getTableData(): void {
     this.setDataSource(this.tableData);
-  }
-
-  addNewUser(): void {
-    this.addNewUserEvent.emit();
   }
 
   onDeleteUser(user: UserResponseModel): void {

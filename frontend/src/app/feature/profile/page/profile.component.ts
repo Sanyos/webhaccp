@@ -11,6 +11,8 @@ import { UserResponseModel } from 'src/app/core/model/user.model';
 export class ProfileComponent implements OnInit {
   profileData: UserResponseModel;
   profileForm: FormGroup;
+  passwordIsWrong: boolean = false;
+  emailIsAlreadyTaken: boolean = false;
   constructor(private readonly userApiService: UserApiService) {}
 
   ngOnInit(): void {}
@@ -32,12 +34,24 @@ export class ProfileComponent implements OnInit {
 
   onSave(): void {
     const userData = this.profileForm.value;
-    if (this.profileForm.valid) {
-      this.userApiService
-        .update(userData, `edit/${this.profileData._id}`)
-        .subscribe((res) => {
+    this.userApiService
+      .update(userData, `edit/${this.profileData._id}`)
+      .subscribe(
+        (res) => {
           console.log('user updated: ', res);
-        });
-    }
+          this.passwordIsWrong = false;
+          this.emailIsAlreadyTaken = false;
+        },
+        (err) => {
+          console.log(err.error.text);
+          if (err.error.text === 'passwordIsWrong') {
+            this.passwordIsWrong = true;
+            this.emailIsAlreadyTaken = false;
+          } else if (err.error.text === 'emailIsAlreadyTaken') {
+            this.emailIsAlreadyTaken = true;
+            this.passwordIsWrong = false;
+          }
+        }
+      );
   }
 }

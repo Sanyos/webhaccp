@@ -75,8 +75,7 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
         },
         (err) => {
           console.error(err);
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('id');
+          this.resetLocalStorage();
           this.userSubject$.next(null);
         }
       )
@@ -84,8 +83,7 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
   }
 
   logout(): void {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('id');
+    this.resetLocalStorage();
     this.userSubject$.next(null);
     this.router.navigate(['/login']);
   }
@@ -105,5 +103,13 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
 
   private jwtDecoder(token: string): DecodedUserToken {
     return jwt_decode(token);
+  }
+
+  resetLocalStorage(): void {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('id');
+    localStorage.removeItem('name');
+    localStorage.removeItem('phone');
+    localStorage.removeItem('email');
   }
 }

@@ -29,7 +29,7 @@ export interface UserResponseModel {
   phone: string;
   role: string;
   accessToken: string;
-  archived: boolean;
+  archived: boolean | string;
 }
 
 export interface DecodedUserToken {

@@ -26,6 +26,7 @@ import { SettingsFormComponent } from './feature/profile/component/settings-form
 import { AdminComponent } from './feature/admin/page/admin.component';
 import { UsersTableComponent } from './feature/admin/component/users-table/users-table.component';
 import { JwtInterceptorInterceptor } from './core/interceptor/interceptor/jwt-interceptor.service';
+import { HaccpComponent } from './feature/haccp/page/haccp.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { JwtInterceptorInterceptor } from './core/interceptor/interceptor/jwt-in
     SettingsFormComponent,
     AdminComponent,
     UsersTableComponent,
+    HaccpComponent,
   ],
   imports: [
     BrowserModule,

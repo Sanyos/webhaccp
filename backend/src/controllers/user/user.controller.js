@@ -11,14 +11,15 @@ exports.createNewUser = (req, res, next) => {
   const { username, email, phone, password, rePassword, role } = req.body;
   if (password === rePassword) {
     const newUser = { username, email, phone, password, role };
-    return userService
+    res.status(201).send(newUser);
+    /*  return userService
       .create(newUser)
       .then((user) => {
         res.status(201).json(user);
       })
       .catch((err) => {
         return next(new createError[500](`Could not saved user Error: ${err}`));
-      });
+      });*/
   }
 };
 
@@ -62,41 +63,48 @@ exports.archivingById = (req, res, next) => {
 exports.userUpdate = async (req, res, next) => {
   // TODO USER LEKÉRDEZÉS
   const user = {
-    name: "TestUser",
+    name: "Admin",
     phone: "06304446656",
-    email: "test@gmail.com",
+    email: "admin@test.com",
     _id: "1",
     role: "admin",
     password: "Test1234",
   };
 
   const id = req.params.id;
-  let { role, oldPassword, password, rePassword, email, phone } = req.body;
-  let paramObj = {};
-  if (oldPassword === user.password || (password && password === rePassword)) {
+  let { role, oldPassword, password, rePassword, email, phone, name } =
+    req.body;
+  let updatedUser = {};
+
+  // const validPass = await bcrypt.compare(oldPassword, user.password);
+  if (oldPassword === user.password) {
+    if (email !== user.email /* && TODO CHECK IF EMAIL IS TAKEN */) {
+      return res.send("emailIsAlreadyTaken");
+    }
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(
-      password ? password : oldPassword,
+      password && password === rePassword ? password : oldPassword,
       salt
     );
-    paramObj = {
+    updatedUser = {
+      name: name,
       role: role,
       password: hashedPassword,
       email: email,
       phone: phone,
     };
+    res.status(200).send(updatedUser);
   } else {
-    paramObj = {
-      role: role,
-      email: email,
-    };
+    return res.send("passwordIsWrong");
   }
-  return userService
-    .updateById(id, paramObj)
+
+  /*  return userService
+    .updateById(id, updatedUser)
     .then((user) => {
       res.status(200).json(user);
     })
     .catch((err) => {
       return next(new createError[500](`Could not updated user Error: ${err}`));
-    });
+    }); */
 };

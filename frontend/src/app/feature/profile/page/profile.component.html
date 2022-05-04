@@ -1,7 +1,6 @@
 <div class="page">
   <div class="form mat-elevation-z8">
     <h2>Profil adatok módosítása</h2>
-
     <app-settings-form
       (profileFormEvent)="profileFormEvent($event)"
     ></app-settings-form>
@@ -25,5 +24,9 @@
         Mégse
       </button>
     </div>
+    <small *ngIf="emailIsAlreadyTaken" class="error">
+      Ezzel az email címmel már regisztráltak
+    </small>
+    <small class="error" *ngIf="passwordIsWrong"> Jelszó helytelen </small>
   </div>
 </div>

@@ -7,6 +7,7 @@ import { LoginComponent } from './feature/auth/login/login.component';
 import { CompaniesComponent } from './feature/companies/page/companies/companies.component';
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
+import { HaccpComponent } from './feature/haccp/page/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
 
@@ -56,6 +57,10 @@ const routes: Routes = [
     data: {
       expected: ['ADMIN'],
     },
+  },
+  {
+    path: 'haccp',
+    component: HaccpComponent,
   },
 ];
 

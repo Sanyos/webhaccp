@@ -30,13 +30,20 @@
             Bejelentkezés
           </button>
         </div>
-
-        <p id="sign-in">
-          Nincs még felhasználód?
-          <button matStepperNext mat-button color="primary">
-            Regisztráció
-          </button>
-        </p>
+        <div class="bottom">
+          <p>
+            Nincs még felhasználód?
+            <button matStepperNext mat-button color="primary">
+              Regisztráció
+            </button>
+          </p>
+          <p>
+            Elfelejtetted a jelszavad?
+            <button mat-button color="primary" (click)="forgotPassword()">
+              Új jelszó kiküldése
+            </button>
+          </p>
+        </div>
       </form>
     </div>
   </div>

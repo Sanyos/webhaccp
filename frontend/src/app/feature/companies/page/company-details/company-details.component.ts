@@ -92,7 +92,6 @@ export class CompanyDetailsComponent implements OnInit {
   }
 
   onSave(): void {
-    console.log(this.companyForm.value);
     const data = this.companyForm.value;
     if (this.companyId) {
       this.companyApiService
@@ -100,6 +99,7 @@ export class CompanyDetailsComponent implements OnInit {
         .pipe(takeUntil(this.unsubscribe))
         .subscribe((res: CompanyResponseModel) => {
           console.log('company updated: ', res);
+          this.router.navigate(['/companies']);
         });
     } else {
       this.companyApiService
@@ -107,6 +107,7 @@ export class CompanyDetailsComponent implements OnInit {
         .pipe(takeUntil(this.unsubscribe))
         .subscribe((res: CompanyResponseModel) => {
           console.log('company created: ', res);
+          this.router.navigate(['/companies']);
         });
     }
   }

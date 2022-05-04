@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormGroup,
   FormControl,
@@ -6,17 +14,23 @@ import {
   FormBuilder,
   AbstractControl,
   ValidationErrors,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ControlValueAccessor,
+  Validator,
 } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settings-form',
   templateUrl: './settings-form.component.html',
   styleUrls: ['./settings-form.component.scss'],
 })
-export class SettingsFormComponent implements OnInit {
+export class SettingsFormComponent implements OnInit, OnDestroy {
   profileForm: FormGroup;
-  emailIsAlreadyTaken: boolean;
   hide = true;
+  unsubscribe = new Subject<void>();
   @Output() profileFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -24,6 +38,11 @@ export class SettingsFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileFormEvent.emit(this.profileForm);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   createForm(): void {

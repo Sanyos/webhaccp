@@ -49,15 +49,16 @@ exports.getAllUser = (req, res, next) => {
 };
 
 exports.archivingById = (req, res, next) => {
-  const _id = req.params.id;
-  return userService
+  const id = req.params.id;
+  res.status(200).send(req.body);
+  /*  return userService
     .updateById(_id, req.body)
     .then((user) => {
       res.status(200).json(user);
     })
     .catch((err) => {
       return next(new createError[500](`Could not updated user Error: ${err}`));
-    });
+    }); */
 };
 
 exports.userUpdate = async (req, res, next) => {
@@ -69,35 +70,45 @@ exports.userUpdate = async (req, res, next) => {
     _id: "1",
     role: "admin",
     password: "Test1234",
+    archived: false,
   };
 
   const id = req.params.id;
-  let { role, oldPassword, password, rePassword, email, phone, name } =
-    req.body;
-  let updatedUser = {};
+
+  let {
+    role,
+    oldPassword,
+    password,
+    rePassword,
+    email,
+    phone,
+    name,
+    archived,
+  } = req.body;
+
+  if (email !== user.email /* && TODO CHECK IF EMAIL IS TAKEN */) {
+    return res.send("emailIsAlreadyTaken");
+  }
 
   // const validPass = await bcrypt.compare(oldPassword, user.password);
-  if (oldPassword === user.password) {
-    if (email !== user.email /* && TODO CHECK IF EMAIL IS TAKEN */) {
-      return res.send("emailIsAlreadyTaken");
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(
-      password && password === rePassword ? password : oldPassword,
-      salt
-    );
-    updatedUser = {
-      name: name,
-      role: role,
-      password: hashedPassword,
-      email: email,
-      phone: phone,
-    };
-    res.status(200).send(updatedUser);
-  } else {
+  if (oldPassword && oldPassword !== user.password) {
     return res.send("passwordIsWrong");
   }
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(
+    password && password === rePassword ? password : oldPassword,
+    salt
+  );
+
+  let updatedUser = {
+    name: name,
+    role: role,
+    password: hashedPassword,
+    email: email,
+    phone: phone,
+    archived: archived,
+  };
+  res.status(200).send(updatedUser);
 
   /*  return userService
     .updateById(id, updatedUser)

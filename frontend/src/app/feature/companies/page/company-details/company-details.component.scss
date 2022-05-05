@@ -20,6 +20,7 @@
   .button-holder {
     display: flex;
     margin-top: 1rem;
+    flex-wrap: wrap;
   }
   #save-btn {
     margin-right: 0.5rem;

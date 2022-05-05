@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
 import { CompaniesTableComponent } from '../../component/companies-table/companies-table.component';
@@ -22,16 +24,18 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   actionItems: any[];
   tableData: CompanyResponseModel[] = [];
   unsubscribe = new Subject<void>();
+  userId: string;
   constructor(
     private readonly router: Router,
     private readonly sweetAlertPopupService: SweetAlertPopupService,
-    private readonly companyApiService: CompanyApiService
+    private readonly companyApiService: CompanyApiService,
+    private readonly userApiService: UserApiService
   ) {}
 
   ngOnInit(): void {
-    this.getCompanies();
     this.setActionItems();
     this.setTableData();
+    this.getUserId();
   }
 
   ngOnDestroy(): void {
@@ -39,9 +43,18 @@ export class CompaniesComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
+  getUserId(): void {
+    this.userApiService.personLoggedInObj.subscribe(
+      (res: UserResponseModel) => {
+        this.userId = res._id;
+        this.getCompanies();
+      }
+    );
+  }
+
   getCompanies(): void {
     this.companyApiService
-      .getList()
+      .getList(`all/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyResponseModel[]) => {

@@ -3,13 +3,15 @@
     <h1>Admin felület</h1>
     <div class="table-holder">
       <app-users-table
-        [headerTexts]="headerTexts"
-        [actionItems]="actionItems"
-        [columns]="columns"
-        [displayedColumns]="displayedColumns"
-        [tableData]="tableData"
+        [tableData]="usersTableData"
         (deleteUserEvent)="deleteUser($event)"
       ></app-users-table>
+      <app-all-companies-table
+        [tableData]="companiesTableData"
+      ></app-all-companies-table>
     </div>
+    <app-all-documents-table
+      [tableData]="documentsTableData"
+    ></app-all-documents-table>
   </div>
 </div>

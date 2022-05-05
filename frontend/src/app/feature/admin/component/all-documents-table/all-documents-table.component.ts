@@ -1,35 +1,24 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserResponseModel } from 'src/app/core/model/user.model';
+import { DocumentResponseModel } from 'src/app/core/model/document.model';
 
 @Component({
-  selector: 'app-users-table',
-  templateUrl: './users-table.component.html',
-  styleUrls: ['./users-table.component.scss'],
+  selector: 'app-all-documents-table',
+  templateUrl: './all-documents-table.component.html',
+  styleUrls: ['./all-documents-table.component.scss'],
 })
-export class UsersTableComponent implements OnInit {
+export class AllDocumentsTableComponent implements OnInit {
   @ViewChild(MatMenuTrigger) trigger: MatMenuTrigger;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-
   dataSource: any;
-
-  @Input() displayedColumns: string[];
-  @Input() columns: string[];
-  @Input() headerTexts: string[];
-  @Input() actionItems: any[];
-  @Input() tableData: UserResponseModel[] = [];
-  @Output() deleteUserEvent: EventEmitter<any> = new EventEmitter();
+  displayedColumns: string[];
+  columns: string[];
+  headerTexts: string[];
+  @Input() tableData: DocumentResponseModel[] = [];
 
   constructor() {
     this.dataSource = new MatTableDataSource();
@@ -37,18 +26,12 @@ export class UsersTableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTableData();
-    this.setUsersTableData();
+    this.setTableData();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-  }
-
-  setUsersTableData(): void {
-    this.headerTexts = ['NÉV', 'EMAIL CÍM', 'TELEFONSZÁM', 'ARCHIVÁLVA'];
-    this.columns = ['name', 'email', 'phone', 'archived'];
-    this.displayedColumns = ['name', 'email', 'phone', 'archived', 'actions'];
   }
 
   applyFilter(event: Event): void {
@@ -69,7 +52,16 @@ export class UsersTableComponent implements OnInit {
     this.setDataSource(this.tableData);
   }
 
-  onDeleteUser(user: UserResponseModel): void {
-    this.deleteUserEvent.emit(user);
+  setTableData() {
+    this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
+    this.columns = ['user', 'name', 'date', 'valid'];
+    this.displayedColumns = [
+      'user',
+      'name',
+      'date',
+      'valid',
+      'download',
+      'confirm',
+    ];
   }
 }

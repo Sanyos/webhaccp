@@ -1,3 +1,5 @@
+import { UserResponseModel } from './user.model';
+
 export interface DocumentRequestModel {}
 
 export interface DocumentResponseModel {
@@ -5,4 +7,5 @@ export interface DocumentResponseModel {
   name: string;
   date: string;
   valid: boolean;
+  user: UserResponseModel;
 }

@@ -1,10 +1,16 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
+import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
+import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
+import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
 import { UsersTableComponent } from '../component/users-table/users-table.component';
 
 @Component({
@@ -14,22 +20,28 @@ import { UsersTableComponent } from '../component/users-table/users-table.compon
 })
 export class AdminComponent implements OnInit, OnDestroy {
   @ViewChild(UsersTableComponent) usersTable: UsersTableComponent;
+  @ViewChild(AllCompaniesTableComponent)
+  companiesTable: AllCompaniesTableComponent;
+  @ViewChild(AllDocumentsTableComponent)
+  documentsTable: AllDocumentsTableComponent;
   isAdmin: boolean = true;
   dataSource: any;
-  displayedColumns: string[];
-  columns: string[];
-  headerTexts: string[];
   actionItems: any[];
-  tableData: UserResponseModel[] = [];
+  usersTableData: UserResponseModel[] = [];
+  companiesTableData: CompanyResponseModel[] = [];
+  documentsTableData: DocumentResponseModel[] = [];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly sweetAlertPopupService: SweetAlertPopupService,
-    private readonly userApiService: UserApiService
+    private readonly userApiService: UserApiService,
+    private readonly companyApiService: CompanyApiService,
+    private readonly documentApiService: DocumentApiService
   ) {}
 
   ngOnInit(): void {
+    this.getCompanies();
     this.getUsers();
-    this.setTableData();
+    this.getDocuments();
   }
 
   ngOnDestroy(): void {
@@ -45,16 +57,15 @@ export class AdminComponent implements OnInit, OnDestroy {
         (res: UserResponseModel[]) => {
           res.map((user: UserResponseModel) => {
             user.archived ? (user.archived = 'igen') : (user.archived = 'nem');
-            this.tableData.push(user);
+            this.usersTableData.push(user);
           });
-          this.tableData = res;
+          this.usersTableData = res;
         },
         (err) => {
           console.log(err);
         },
         () => {
-          this.setTableData();
-          this.usersTable.setDataSource(this.tableData);
+          this.usersTable.setDataSource(this.usersTableData);
         }
       );
   }
@@ -90,9 +101,45 @@ export class AdminComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTableData(): void {
-    this.headerTexts = ['NÉV', 'EMAIL CÍM', 'TELEFONSZÁM', 'ARCHIVÁLVA'];
-    this.columns = ['name', 'email', 'phone', 'archived'];
-    this.displayedColumns = ['name', 'email', 'phone', 'archived', 'actions'];
+  getCompanies(): void {
+    this.companyApiService
+      .getList('all/all')
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (res: CompanyResponseModel[]) => {
+          console.log(res);
+          let companyObject: any;
+          res.map((company) => {
+            companyObject = company;
+            companyObject.user = company.user.name;
+            this.companiesTableData.push(companyObject);
+          });
+          this.companiesTableData = res;
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          this.companiesTable.setDataSource(this.companiesTableData);
+        }
+      );
+  }
+
+  getDocuments(): void {
+    this.documentApiService
+      .getList('all')
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (res: DocumentResponseModel[]) => {
+          console.log('documents: ', res);
+          this.documentsTableData = res;
+        },
+        (err) => {
+          console.log(err);
+        },
+        () => {
+          this.documentsTable.setDataSource(this.documentsTableData);
+        }
+      );
   }
 }

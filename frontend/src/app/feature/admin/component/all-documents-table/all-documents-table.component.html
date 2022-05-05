@@ -1,6 +1,6 @@
 <div class="table-holder">
   <div class="flex">
-    <h2>Regisztrált felhasználók</h2>
+    <h2>Dokumentumok</h2>
     <mat-form-field>
       <mat-label> Szűrés <mat-icon>search</mat-icon> </mat-label>
       <input matInput (keyup)="applyFilter($event)" #input />
@@ -28,12 +28,22 @@
           </td>
         </ng-container>
 
-        <!--   Actions -->
-        <ng-container matColumnDef="actions">
-          <th mat-header-cell *matHeaderCellDef>ARCHIVÁLÁS</th>
+        <!--   Download -->
+        <ng-container matColumnDef="download">
+          <th mat-header-cell *matHeaderCellDef>LETÖLTÉS</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button (click)="onDeleteUser(element)">
-              <mat-icon>delete</mat-icon>
+            <button mat-icon-button>
+              <mat-icon>download</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--   Confirm -->
+        <ng-container matColumnDef="confirm">
+          <th mat-header-cell *matHeaderCellDef>JÓVÁHAGYÁS</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button>
+              <mat-icon>task_alt</mat-icon>
             </button>
           </td>
         </ng-container>

@@ -27,6 +27,8 @@ import { AdminComponent } from './feature/admin/page/admin.component';
 import { UsersTableComponent } from './feature/admin/component/users-table/users-table.component';
 import { JwtInterceptorInterceptor } from './core/interceptor/interceptor/jwt-interceptor.service';
 import { HaccpComponent } from './feature/haccp/page/haccp.component';
+import { AllCompaniesTableComponent } from './feature/admin/component/all-companies-table/all-companies-table.component';
+import { AllDocumentsTableComponent } from './feature/admin/component/all-documents-table/all-documents-table.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { HaccpComponent } from './feature/haccp/page/haccp.component';
     AdminComponent,
     UsersTableComponent,
     HaccpComponent,
+    AllCompaniesTableComponent,
+    AllDocumentsTableComponent,
   ],
   imports: [
     BrowserModule,

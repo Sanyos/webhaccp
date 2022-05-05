@@ -73,7 +73,7 @@ export class DocumentListComponent implements OnInit {
   }
 
   setTableData() {
-    this.headerTexts = ['DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES', 'LETÖLTÉS'];
+    this.headerTexts = ['DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
     this.columns = ['name', 'date', 'valid'];
     this.displayedColumns = ['name', 'date', 'valid', 'download'];
   }

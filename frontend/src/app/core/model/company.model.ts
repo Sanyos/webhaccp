@@ -1,4 +1,5 @@
 import { CompanyCategoryTypes } from '../enum/company-category-type.enum';
+import { UserResponseModel } from './user.model';
 
 export interface CompanyRequestModel {
   category: CompanyCategoryTypes;
@@ -25,4 +26,5 @@ export interface CompanyResponseModel {
   registrationNumber: string;
   vatNumber: string;
   archived: boolean;
+  user: UserResponseModel;
 }

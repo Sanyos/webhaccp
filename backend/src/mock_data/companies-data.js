@@ -11,6 +11,15 @@ const companies = [
     billingAddress: "1125 Budapest, Vasút utca 3",
     category: "PUB",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
   {
     companyName: "Stacy's food",
@@ -24,6 +33,15 @@ const companies = [
     billingAddress: "5133 Pécs, Márton utca 6",
     category: "RESTAURANT",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
   {
     companyName: "HambiZoo",
@@ -37,6 +55,15 @@ const companies = [
     billingAddress: "1144 Budapest, Fő út 20",
     category: "BUFFET",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
   {
     companyName: "Cat Café and Bar",
@@ -50,6 +77,15 @@ const companies = [
     billingAddress: "1024 Budapest, Szent János utca 18",
     category: "PUB",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
   {
     companyName: "Los Pollos Hermanos",
@@ -63,6 +99,15 @@ const companies = [
     billingAddress: "1165 Budapest, Holló köz 9",
     category: "RESTAURANT",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
   {
     companyName: "Nagyi büféje",
@@ -76,6 +121,15 @@ const companies = [
     billingAddress: "7455 Esztergom, Lakat utca 88",
     category: "BUFFET",
     archived: false,
+    user: {
+      name: "Admin",
+      phone: "06304446656",
+      email: "admin@test.com",
+      _id: "1",
+      role: "ADMIN",
+      password: "Test1234",
+      archived: false,
+    },
   },
 ];
 

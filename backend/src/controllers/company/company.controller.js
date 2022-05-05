@@ -21,6 +21,7 @@ exports.createNewCompany = (req, res, next) => {
 };
 
 exports.getAllCompanies = (req, res, next) => {
+  const userId = req.params.userId;
   res.status(200).send(companiesData);
   /* return companyService
     .getAll()

@@ -1,8 +1,6 @@
 import {
   Component,
   EventEmitter,
-  forwardRef,
-  Input,
   OnDestroy,
   OnInit,
   Output,
@@ -14,13 +12,8 @@ import {
   FormBuilder,
   AbstractControl,
   ValidationErrors,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-  ControlValueAccessor,
-  Validator,
 } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-settings-form',

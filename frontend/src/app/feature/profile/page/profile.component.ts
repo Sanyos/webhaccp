@@ -33,25 +33,28 @@ export class ProfileComponent implements OnInit {
   }
 
   onSave(): void {
+    this.profileForm.controls['oldPassword'].markAsTouched();
     const userData = this.profileForm.value;
-    this.userApiService
-      .update(userData, `edit/${this.profileData._id}`)
-      .subscribe(
-        (res) => {
-          console.log('user updated: ', res);
-          this.passwordIsWrong = false;
-          this.emailIsAlreadyTaken = false;
-        },
-        (err) => {
-          console.log(err.error.text);
-          if (err.error.text === 'passwordIsWrong') {
-            this.passwordIsWrong = true;
-            this.emailIsAlreadyTaken = false;
-          } else if (err.error.text === 'emailIsAlreadyTaken') {
-            this.emailIsAlreadyTaken = true;
+    if (this.profileForm.valid) {
+      this.userApiService
+        .update(userData, `edit/${this.profileData._id}`)
+        .subscribe(
+          (res) => {
+            console.log('user updated: ', res);
             this.passwordIsWrong = false;
+            this.emailIsAlreadyTaken = false;
+          },
+          (err) => {
+            console.log(err.error.text);
+            if (err.error.text === 'passwordIsWrong') {
+              this.passwordIsWrong = true;
+              this.emailIsAlreadyTaken = false;
+            } else if (err.error.text === 'emailIsAlreadyTaken') {
+              this.emailIsAlreadyTaken = true;
+              this.passwordIsWrong = false;
+            }
           }
-        }
-      );
+        );
+    }
   }
 }

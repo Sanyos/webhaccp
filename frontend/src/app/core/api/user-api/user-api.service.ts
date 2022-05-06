@@ -42,6 +42,8 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
         phone,
         name,
       });
+    } else {
+      this.userSubject$.next(null);
     }
   }
 

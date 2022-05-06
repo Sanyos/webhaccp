@@ -38,7 +38,7 @@ exports.getAllCompanies = (req, res, next) => {
 };
 
 exports.getCompanyById = (req, res, next) => {
-  const id = req.params.id;
+  const id = req.params.companyId;
   const company = companiesData.filter((company) => company._id === id)[0];
   res.status(200).send(company);
   /* return companyService
@@ -56,7 +56,7 @@ exports.getCompanyById = (req, res, next) => {
 };
 
 exports.updateCompanyById = (req, res, next) => {
-  const id = req.params.id;
+  const id = req.params.companyId;
   res.status(200).send(req.body);
 
   /* return companyService

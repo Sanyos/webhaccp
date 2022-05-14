@@ -78,28 +78,30 @@ export class AdminComponent implements OnInit, OnDestroy {
         confirmButtonColor: '#0097a7',
       });
     } else {
-      this.sweetAlertPopupService.openConfirmPopup().then((result) => {
-        if (result.isConfirmed) {
-          const id = user._id;
-          const data = user;
-          data.archived = true;
-          this.userApiService
-            .update(data, `archiving/${id}`)
-            .subscribe((res: UserResponseModel) => {
-              console.log(res);
-              if (res) {
-                user.archived = 'igen';
-                Swal.fire({
-                  title: 'Sikeres törlés',
-                  text: 'Felhasználó törölve!',
-                  icon: 'success',
-                  confirmButtonColor: '#0097a7',
-                  cancelButtonText: 'Mégse',
-                });
-              }
-            });
-        }
-      });
+      this.sweetAlertPopupService
+        .openConfirmPopup('Biztosan törölni szeretnéd a felhasználót?')
+        .then((result) => {
+          if (result.isConfirmed) {
+            const id = user._id;
+            const data = user;
+            data.archived = true;
+            this.userApiService
+              .update(data, `archiving/${id}`)
+              .subscribe((res: UserResponseModel) => {
+                console.log(res);
+                if (res) {
+                  user.archived = 'igen';
+                  Swal.fire({
+                    title: 'Sikeres törlés',
+                    text: 'Felhasználó törölve!',
+                    icon: 'success',
+                    confirmButtonColor: '#0097a7',
+                    cancelButtonText: 'Mégse',
+                  });
+                }
+              });
+          }
+        });
     }
   }
 

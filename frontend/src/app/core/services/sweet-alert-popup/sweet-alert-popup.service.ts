@@ -6,9 +6,10 @@ import Swal from 'sweetalert2';
 export class SweetAlertPopupService {
   constructor() {}
 
-  openConfirmPopup() {
+  openConfirmPopup(title: string, text?: string) {
     return Swal.fire({
-      title: 'Biztos, hogy törölni szeretnéd?',
+      title: title,
+      text: text ? text : '',
       icon: 'question',
       showCancelButton: true,
       cancelButtonColor: '#607D8B',

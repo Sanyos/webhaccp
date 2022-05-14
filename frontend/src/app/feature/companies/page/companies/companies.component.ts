@@ -76,26 +76,28 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   }
 
   deleteCompany(company: CompanyResponseModel): void {
-    this.sweetAlertPopupService.openConfirmPopup().then((result) => {
-      if (result.isConfirmed) {
-        const id = company._id;
-        const data = company;
-        data.archived = true;
-        this.companyApiService
-          .update(data, id)
-          .subscribe((res: CompanyResponseModel) => {
-            console.log(res);
-            if (res) {
-              Swal.fire({
-                title: 'Sikeres törlés',
-                text: 'Üzleted törölve lett!',
-                icon: 'success',
-                confirmButtonColor: '#0097a7',
-              });
-            }
-          });
-      }
-    });
+    this.sweetAlertPopupService
+      .openConfirmPopup('Biztosan törölni szeretnéd az üzletet?')
+      .then((result) => {
+        if (result.isConfirmed) {
+          const id = company._id;
+          const data = company;
+          data.archived = true;
+          this.companyApiService
+            .update(data, id)
+            .subscribe((res: CompanyResponseModel) => {
+              console.log(res);
+              if (res) {
+                Swal.fire({
+                  title: 'Sikeres törlés',
+                  text: 'Üzleted törölve lett!',
+                  icon: 'success',
+                  confirmButtonColor: '#0097a7',
+                });
+              }
+            });
+        }
+      });
   }
 
   setActionItems() {

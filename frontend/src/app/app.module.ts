@@ -29,6 +29,7 @@ import { JwtInterceptorInterceptor } from './core/interceptor/interceptor/jwt-in
 import { HaccpComponent } from './feature/haccp/page/haccp.component';
 import { AllCompaniesTableComponent } from './feature/admin/component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from './feature/admin/component/all-documents-table/all-documents-table.component';
+import { HaccpFormComponent } from './feature/haccp/component/haccp-form/haccp-form.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AllDocumentsTableComponent } from './feature/admin/component/all-docume
     HaccpComponent,
     AllCompaniesTableComponent,
     AllDocumentsTableComponent,
+    HaccpFormComponent,
   ],
   imports: [
     BrowserModule,

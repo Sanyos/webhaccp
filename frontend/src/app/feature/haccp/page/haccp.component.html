@@ -1,3 +1,93 @@
-<div class="haccp-page">
-  <h2>Online HACCP készítő</h2>
+<div class="page">
+  <div class="form mat-elevation-z8">
+    <div class="edit-icon">
+      <mat-icon>article</mat-icon>
+    </div>
+    <h2>Adatbekérő lap kitöltése</h2>
+
+    <mat-horizontal-stepper [linear]="true">
+      <mat-step>
+        <app-haccp-form
+          (haccpFormEvent)="haccpFormEvent($event)"
+        ></app-haccp-form>
+        <button
+          mat-button
+          color="primary"
+          id="primary-btn"
+          matStepperNext
+          mat-raised-button
+        >
+          Tovább
+        </button>
+      </mat-step>
+      <mat-step>
+        <div class="button-holder" mat-dialog-actions>
+          <button
+            mat-button
+            color="primary"
+            id="primary-btn"
+            matStepperNext
+            mat-raised-button
+          >
+            Tovább
+          </button>
+          <button
+            mat-button
+            color="primary"
+            id="secondary-btn"
+            color="accent"
+            matStepperPrevious
+            mat-raised-button
+          >
+            Vissza
+          </button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <div class="button-holder" mat-dialog-actions>
+          <button
+            mat-button
+            color="primary"
+            id="primary-btn"
+            matStepperNext
+            mat-raised-button
+          >
+            Tovább
+          </button>
+          <button
+            mat-button
+            color="primary"
+            id="secondary-btn"
+            color="accent"
+            matStepperPrevious
+            mat-raised-button
+          >
+            Vissza
+          </button>
+        </div>
+      </mat-step>
+      <mat-step>
+        <div class="button-holder" mat-dialog-actions>
+          <button
+            (click)="onSave()"
+            mat-button
+            color="primary"
+            id="primary-btn"
+            mat-raised-button
+          >
+            Mentés
+          </button>
+          <button
+            (click)="onCancel()"
+            mat-button
+            color="accent"
+            id="secondary-btn"
+            mat-raised-button
+          >
+            Mégse
+          </button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
 </div>

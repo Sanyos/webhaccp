@@ -1,0 +1,13 @@
+<form [formGroup]="haccpForm">
+  <mat-form-field>
+    <mat-label>Név</mat-label>
+    <input formControlName="name" matInput />
+    <mat-error
+      *ngIf="
+        haccpForm.controls['name'].dirty || haccpForm.controls['name'].touched
+      "
+    >
+      Mező kitöltése kötelező
+    </mat-error>
+  </mat-form-field>
+</form>

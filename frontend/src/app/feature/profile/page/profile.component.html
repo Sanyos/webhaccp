@@ -1,5 +1,11 @@
 <div class="page">
   <div class="form mat-elevation-z8">
+    <button routerLink="/companies" mat-button id="exit-btn">
+      <mat-icon>close</mat-icon> Kilépés
+    </button>
+    <div class="edit-icon">
+      <mat-icon>description</mat-icon>
+    </div>
     <h2>Profil adatok módosítása</h2>
     <app-settings-form
       (profileFormEvent)="profileFormEvent($event)"

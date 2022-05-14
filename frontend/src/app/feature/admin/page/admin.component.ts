@@ -71,7 +71,8 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: UserResponseModel): void {
-    if ((user.archived = true)) {
+    console.log(user);
+    if (user.archived === 'igen') {
       Swal.fire({
         title: 'Ez a felhasználó már archiválva van.',
         confirmButtonColor: '#0097a7',
@@ -87,6 +88,7 @@ export class AdminComponent implements OnInit, OnDestroy {
             .subscribe((res: UserResponseModel) => {
               console.log(res);
               if (res) {
+                user.archived = 'igen';
                 Swal.fire({
                   title: 'Sikeres törlés',
                   text: 'Felhasználó törölve!',

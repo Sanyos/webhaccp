@@ -6,6 +6,12 @@
     </button>
   </div>
   <div class="form mat-elevation-z8">
+    <button routerLink="/companies" mat-button id="exit-btn">
+      <mat-icon>close</mat-icon> Kilépés
+    </button>
+    <div class="edit-icon">
+      <mat-icon>description</mat-icon>
+    </div>
     <h2>
       {{
         (companyIdParam$ | async) ? "Üzlet szerkesztése" : "Új üzlet felvétele"

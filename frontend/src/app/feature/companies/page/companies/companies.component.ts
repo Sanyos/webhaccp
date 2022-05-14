@@ -108,7 +108,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       {
         label: 'HACCP készítés',
         icon: 'assignment_turned_in',
-        route: '/company/haccp/',
+        route: '/haccp/',
       },
       {
         label: 'Tanúsítvány készítés',

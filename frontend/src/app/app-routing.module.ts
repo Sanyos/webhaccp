@@ -62,6 +62,11 @@ const routes: Routes = [
     path: 'haccp',
     component: HaccpComponent,
   },
+  {
+    path: 'haccp/:id',
+    component: HaccpComponent,
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({

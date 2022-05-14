@@ -10,6 +10,7 @@
   display: flex;
   position: relative;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 16px;
   min-height: 500px;
   height: auto;
   @media only screen and(max-width: 890px) {
@@ -53,6 +54,8 @@
         background: map.get(s.$colors-map, my-light-blue);
         color: white;
         margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
         &:hover {
           background: map.get(s.$colors-map, my-blue);
         }
@@ -60,6 +63,10 @@
       .bottom {
         position: absolute;
         bottom: 0;
+        button,
+        p {
+          font-size: 12px;
+        }
       }
     }
   }

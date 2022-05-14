@@ -1,3 +1,5 @@
+@use "../../../../../styles.scss" as s;
+
 .company-form-page {
   width: 80%;
   margin: 2rem auto;
@@ -8,21 +10,33 @@
   @media only screen and(max-width: 890px) {
     width: 100%;
   }
-}
-.form {
-  padding: 2rem;
-  margin: 1rem;
-  background-color: whitesmoke;
-
-  h2 {
-    text-align: center;
-  }
-  .button-holder {
-    display: flex;
-    margin-top: 1rem;
-    flex-wrap: wrap;
-  }
-  #save-btn {
-    margin-right: 0.5rem;
+  .form {
+    @include s.formCard;
+    h2 {
+      text-align: center;
+    }
+    .button-holder {
+      display: flex;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    #save-btn {
+      margin-right: 0.5rem;
+      border-radius: 12px;
+      width: 140px;
+    }
+    #cancel-btn {
+      border-radius: 12px;
+      width: 140px;
+    }
+    #exit-btn {
+      color: #0c8d8c;
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+    }
+    .edit-icon {
+      @include s.editIcon;
+    }
   }
 }

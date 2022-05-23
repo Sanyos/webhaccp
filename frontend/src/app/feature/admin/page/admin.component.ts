@@ -115,7 +115,7 @@ export class AdminComponent implements OnInit, OnDestroy {
           let companyObject: any;
           res.map((company) => {
             companyObject = company;
-            companyObject.user = company.user.name;
+            companyObject.user = company.user_name;
             this.companiesTableData.push(companyObject);
           });
           this.companiesTableData = res;

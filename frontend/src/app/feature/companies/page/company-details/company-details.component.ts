@@ -63,30 +63,32 @@ export class CompanyDetailsComponent implements OnInit {
       .subscribe((res: CompanyResponseModel) => {
         console.log('company data: ', res);
         this.companyData = res;
-        this.companyForm.controls['category'].setValue(
-          this.companyData.category
+        this.companyForm.controls['company_category'].setValue(
+          this.companyData.company_category
         );
-        this.companyForm.controls['companyName'].setValue(
-          this.companyData.companyName
+        this.companyForm.controls['company_name'].setValue(
+          this.companyData.company_name
         );
-        this.companyForm.controls['address'].setValue(this.companyData.address);
-        this.companyForm.controls['location'].setValue(
-          this.companyData.location
+        this.companyForm.controls['company_address'].setValue(
+          this.companyData.company_address
         );
-        this.companyForm.controls['companyPhoneNumber'].setValue(
-          this.companyData.companyPhoneNumber
+        this.companyForm.controls['company_location'].setValue(
+          this.companyData.company_location
         );
-        this.companyForm.controls['headquarters'].setValue(
-          this.companyData.headquarters
+        this.companyForm.controls['company_phone'].setValue(
+          this.companyData.company_phone
         );
-        this.companyForm.controls['billingAddress'].setValue(
-          this.companyData.billingAddress
+        this.companyForm.controls['company_headquarters'].setValue(
+          this.companyData.company_headquarters
         );
-        this.companyForm.controls['registrationNumber'].setValue(
-          this.companyData.registrationNumber
+        this.companyForm.controls['company_billing_address'].setValue(
+          this.companyData.company_billing_address
         );
-        this.companyForm.controls['vatNumber'].setValue(
-          this.companyData.vatNumber
+        this.companyForm.controls['company_registration_number'].setValue(
+          this.companyData.company_registration_number
+        );
+        this.companyForm.controls['company_vat_number'].setValue(
+          this.companyData.company_vat_number
         );
       });
   }

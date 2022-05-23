@@ -30,7 +30,7 @@ export class DocumentListComponent implements OnInit {
     )
   );
   companyName$: Observable<string> = this.company$.pipe(
-    map((company: CompanyResponseModel) => company?.companyName)
+    map((company: CompanyResponseModel) => company?.company_name)
   );
   dataSource: any;
   displayedColumns: string[];

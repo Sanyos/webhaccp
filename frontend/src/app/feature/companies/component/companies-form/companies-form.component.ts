@@ -21,22 +21,22 @@ export class CompaniesFormComponent implements OnInit {
 
   createForm(): void {
     this.companyForm = new FormGroup({
-      category: new FormControl('', Validators.required),
-      name: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      location: new FormControl('', Validators.required),
-      companyPhoneNumber: new FormControl('', [
+      company_category: new FormControl('', Validators.required),
+      user_name: new FormControl('', Validators.required),
+      company_address: new FormControl('', Validators.required),
+      company_location: new FormControl('', Validators.required),
+      company_phone: new FormControl('', [
         Validators.required,
         Validators.pattern(
           /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
         ),
       ]),
-      companyName: new FormControl('', Validators.required),
-      headquarters: new FormControl('', Validators.required),
-      billingAddress: new FormControl('', Validators.required),
-      registrationNumber: new FormControl('', Validators.required),
-      vatNumber: new FormControl('', Validators.required),
-      archived: new FormControl(false),
+      company_name: new FormControl('', Validators.required),
+      company_headquarters: new FormControl('', Validators.required),
+      company_billing_address: new FormControl('', Validators.required),
+      company_registration_number: new FormControl('', Validators.required),
+      company_vat_number: new FormControl('', Validators.required),
+      company_archived: new FormControl(false),
     });
   }
 

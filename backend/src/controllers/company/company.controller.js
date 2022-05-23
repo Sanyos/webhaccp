@@ -6,35 +6,35 @@ exports.createNewCompany = (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     return next(new createError.BadRequest("Invalid req body"));
   }
-
-  res.status(201).send(req.body);
-  /*  return companyService
+  const newCompany = req.body;
+  return companyService
     .create(newCompany)
     .then((company) => {
+      console.log("new compny created: ", company);
       res.status(201).json(company);
     })
     .catch((err) => {
       return next(
         new createError[500](`Could not saved company Error: ${err}`)
       );
-    }); */
+    });
 };
 
 exports.getAllCompanies = (req, res, next) => {
-  const userId = req.params.userId;
-  res.status(200).send(companiesData);
-  /* return companyService
-    .getAll()
+  const companyUserId = req.params.userId;
+  return companyService
+    .getAll(companyUserId)
     .then((companies) => {
-      if (companies) {
-        res.status(200).json(companies);
+      console.log(companies.rows);
+      if (companies.rows) {
+        res.status(200).json(companies.rows);
       }
     })
     .catch((err) => {
       return next(
         new createError[500](`Could not find companies Error: ${err}`)
       );
-    }); */
+    });
 };
 
 exports.getCompanyById = (req, res, next) => {
@@ -72,3 +72,38 @@ exports.updateCompanyById = (req, res, next) => {
       );
     }); */
 };
+
+/* exports.test = (req, res, next) => {
+
+  const values = ["Mary Ann", ""];
+  let sqlString = `
+    INSERT INTO users
+    (name,email,akdfmkéas)
+    VALUES
+    ($1, $2, $3)`;
+
+  pool.query(sqlString, values, (err, res) => {
+    if (err) {
+      console.log("pool.query():", err);
+    }
+  });
+
+   pool.query("INSERT INTO users(name, email, )VALUES('Mary Ann')", (err, r) => {
+    console.log("err", err);
+    console.log("res", r);
+    res.status(200).send(r);
+  });
+
+  const values = [1, "Update"];
+  const selectQuery = `SELECT * FROM users  JOIN  companies ON users.user_id = companies.company_user_id`;
+  sqlQuery2 = `UPDATE users SET name = $2 WHERE id=$1;`;
+  pool.query(selectQuery, [], (err, res) => {
+    if (err) {
+      console.log("SELECT pool.query():", err);
+    }
+    if (res) {
+      console.log("SELECT pool.query():", res.rows);
+    }
+  });
+
+}; */

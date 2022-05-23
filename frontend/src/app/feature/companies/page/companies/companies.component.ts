@@ -80,9 +80,9 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .openConfirmPopup('Biztosan törölni szeretnéd az üzletet?')
       .then((result) => {
         if (result.isConfirmed) {
-          const id = company._id;
+          const id = company.company_id;
           const data = company;
-          data.archived = true;
+          data.company_archived = true;
           this.companyApiService
             .update(data, id)
             .subscribe((res: CompanyResponseModel) => {
@@ -137,18 +137,18 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       'LEHETŐSÉGEK',
     ];
     this.columns = [
-      'companyName',
-      'category',
-      'location',
-      'registrationNumber',
-      'vatNumber',
+      'company_name',
+      'company_category',
+      'company_location',
+      'company_registration_umber',
+      'company_vat_number',
     ];
     this.displayedColumns = [
-      'companyName',
-      'category',
-      'location',
-      'registrationNumber',
-      'vatNumber',
+      'company_name',
+      'company_category',
+      'company_location',
+      'company_registration_umber',
+      'company_vat_number',
       'actions',
     ];
   }

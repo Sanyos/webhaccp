@@ -21,7 +21,8 @@ exports.create = (company) => {
   ];
   let sqlString = `
   INSERT INTO companies(company_category, company_name, company_address, company_location, company_phone, company_headquarters, company_billing_address, company_registration_number, company_vat_number, company_archived, company_user_id) 
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+  RETURNING *`;
   return pool.query(sqlString, values);
 };
 

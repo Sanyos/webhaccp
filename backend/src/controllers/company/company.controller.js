@@ -10,7 +10,7 @@ exports.createNewCompany = (req, res, next) => {
     .create(newCompany)
     .then((company) => {
       console.log("new compny created: ", company);
-      res.status(201).json(company.rows);
+      res.status(201).json(company.rows[0]);
     })
     .catch((err) => {
       return next(
@@ -26,7 +26,10 @@ exports.getAllCompanies = (req, res, next) => {
     .then((companies) => {
       console.log("all companies: ", companies.rows);
       if (companies.rows) {
-        res.status(200).json(companies.rows);
+        const filteredCompanies = companies.rows.filter(
+          (company) => company.company_archived === false
+        );
+        res.status(200).json(filteredCompanies);
       }
     })
     .catch((err) => {

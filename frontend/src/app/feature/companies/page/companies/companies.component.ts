@@ -81,6 +81,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
             .subscribe((res: CompanyResponseModel) => {
               console.log('company archived: ', res);
               if (res) {
+                this.getCompanies();
                 Swal.fire({
                   title: 'Sikeres törlés',
                   text: 'Üzleted törölve lett!',
@@ -108,7 +109,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       {
         label: 'Tanúsítvány készítés',
         icon: 'verified',
-        route: '/company/certificate',
+        route: '/company/certificate/',
       },
       {
         label: 'Dokumentum lista',

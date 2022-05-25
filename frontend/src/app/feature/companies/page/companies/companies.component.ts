@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
-import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
-import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
 import { CompaniesTableComponent } from '../../component/companies-table/companies-table.component';
@@ -24,12 +22,11 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   actionItems: any[];
   tableData: CompanyResponseModel[] = [];
   unsubscribe = new Subject<void>();
-  userId: string;
+  userId: any;
   constructor(
     private readonly router: Router,
     private readonly sweetAlertPopupService: SweetAlertPopupService,
-    private readonly companyApiService: CompanyApiService,
-    private readonly userApiService: UserApiService
+    private readonly companyApiService: CompanyApiService
   ) {}
 
   ngOnInit(): void {
@@ -44,12 +41,8 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   }
 
   getUserId(): void {
-    this.userApiService.personLoggedInObj.subscribe(
-      (res: UserResponseModel) => {
-        this.userId = res._id;
-        this.getCompanies();
-      }
-    );
+    this.userId = localStorage.getItem('id');
+    this.getCompanies();
   }
 
   getCompanies(): void {
@@ -58,7 +51,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyResponseModel[]) => {
-          console.log(res);
+          console.log('get companies: ', res);
           this.tableData = res;
         },
         (err) => {
@@ -86,7 +79,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           this.companyApiService
             .update(data, id)
             .subscribe((res: CompanyResponseModel) => {
-              console.log(res);
+              console.log('company archived: ', res);
               if (res) {
                 Swal.fire({
                   title: 'Sikeres törlés',
@@ -140,14 +133,14 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       'company_name',
       'company_category',
       'company_location',
-      'company_registration_umber',
+      'company_registration_number',
       'company_vat_number',
     ];
     this.displayedColumns = [
       'company_name',
       'company_category',
       'company_location',
-      'company_registration_umber',
+      'company_registration_number',
       'company_vat_number',
       'actions',
     ];

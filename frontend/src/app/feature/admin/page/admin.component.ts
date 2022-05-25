@@ -4,7 +4,10 @@ import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyResponseModel,
+  CompanyWithUserResponseModel,
+} from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
@@ -110,7 +113,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       .getList('all/all')
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: CompanyResponseModel[]) => {
+        (res: CompanyWithUserResponseModel[]) => {
           console.log(res);
           let companyObject: any;
           res.map((company) => {

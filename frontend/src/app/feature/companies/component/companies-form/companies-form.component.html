@@ -15,10 +15,7 @@
 
   <mat-form-field>
     <mat-label>Név</mat-label>
-    <input formControlName="user_name" matInput />
-    <mat-error *ngIf="companyForm.controls['user_name'].hasError"
-      >Név megadása kötelező</mat-error
-    >
+    <input formControlName="user_name" matInput readonly="true" />
   </mat-form-field>
 
   <mat-form-field>

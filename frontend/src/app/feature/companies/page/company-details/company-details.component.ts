@@ -5,8 +5,12 @@ import { Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyResponseModel,
+  CompanyWithUserResponseModel,
+} from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
 
 @Component({
@@ -19,7 +23,7 @@ export class CompanyDetailsComponent implements OnInit {
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   categoryTypes: CompanyCategoryTypes;
   companyId: string;
-  companyData: CompanyResponseModel;
+  companyData: CompanyWithUserResponseModel;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -60,9 +64,12 @@ export class CompanyDetailsComponent implements OnInit {
     this.companyApiService
       .getSingleItem(id)
       .pipe(takeUntil(this.unsubscribe))
-      .subscribe((res: CompanyResponseModel) => {
+      .subscribe((res: CompanyWithUserResponseModel) => {
         console.log('company data: ', res);
         this.companyData = res;
+        this.companyForm.controls['user_name'].setValue(
+          this.companyData.user_name
+        );
         this.companyForm.controls['company_category'].setValue(
           this.companyData.company_category
         );

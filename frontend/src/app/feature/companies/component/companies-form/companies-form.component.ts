@@ -8,6 +8,8 @@ import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.en
   styleUrls: ['./companies-form.component.scss'],
 })
 export class CompaniesFormComponent implements OnInit {
+  userId = localStorage.getItem('id');
+  userName = localStorage.getItem('name');
   companyForm: FormGroup;
   @Input() categoryTypes: CompanyCategoryTypes;
   @Output() companyFormEvent: EventEmitter<FormGroup> = new EventEmitter();
@@ -22,7 +24,7 @@ export class CompaniesFormComponent implements OnInit {
   createForm(): void {
     this.companyForm = new FormGroup({
       company_category: new FormControl('', Validators.required),
-      user_name: new FormControl('', Validators.required),
+      user_name: new FormControl(this.userName),
       company_address: new FormControl('', Validators.required),
       company_location: new FormControl('', Validators.required),
       company_phone: new FormControl('', [
@@ -37,6 +39,7 @@ export class CompaniesFormComponent implements OnInit {
       company_registration_number: new FormControl('', Validators.required),
       company_vat_number: new FormControl('', Validators.required),
       company_archived: new FormControl(false),
+      company_user_id: new FormControl(this.userId),
     });
   }
 

@@ -48,7 +48,7 @@
               <ng-container *ngFor="let actionItem of actionItems">
                 <button
                   mat-menu-item
-                  routerLink="{{ actionItem.route + element._id }}"
+                  routerLink="{{ actionItem.route + element.company_id }}"
                 >
                   <mat-icon>{{ actionItem.icon }}</mat-icon>
                   <span>{{ actionItem.label }}</span>

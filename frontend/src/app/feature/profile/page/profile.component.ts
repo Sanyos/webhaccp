@@ -21,9 +21,15 @@ export class ProfileComponent implements OnInit {
     this.userApiService.userSubject$.subscribe((res: UserResponseModel) => {
       console.log('user data: ', res);
       this.profileData = res;
-      this.profileForm.controls['name'].setValue(this.profileData.name);
-      this.profileForm.controls['phone'].setValue(this.profileData.phone);
-      this.profileForm.controls['email'].setValue(this.profileData.email);
+      this.profileForm.controls['user_name'].setValue(
+        this.profileData.user_name
+      );
+      this.profileForm.controls['user_phone'].setValue(
+        this.profileData.user_phone
+      );
+      this.profileForm.controls['user_email'].setValue(
+        this.profileData.user_email
+      );
     });
   }
 
@@ -37,7 +43,7 @@ export class ProfileComponent implements OnInit {
     const userData = this.profileForm.value;
     if (this.profileForm.valid) {
       this.userApiService
-        .update(userData, `edit/${this.profileData._id}`)
+        .update(userData, `edit/${this.profileData.user_id}`)
         .subscribe(
           (res) => {
             console.log('user updated: ', res);

@@ -41,38 +41,41 @@ export class SettingsFormComponent implements OnInit, OnDestroy {
   createForm(): void {
     this.profileForm = this.fb.group(
       {
-        name: new FormControl('', [
+        user_name: new FormControl('', [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(20),
         ]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        role: new FormControl('user', Validators.required),
-        phone: new FormControl('', [
+        user_email: new FormControl('', [
+          Validators.required,
+          Validators.email,
+        ]),
+        user_role: new FormControl('user', Validators.required),
+        user_phone: new FormControl('', [
           Validators.required,
           Validators.pattern(
             /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
           ),
         ]),
         oldPassword: new FormControl('', [Validators.required]),
-        password: new FormControl(
+        user_password: new FormControl(
           '',
           Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
         ),
         rePassword: new FormControl(''),
       },
       {
-        validators: this.passwordsNotMatch('password', 'rePassword'),
+        validators: this.passwordsNotMatch('user_password', 'rePassword'),
       }
     );
   }
 
   passwordsNotMatch(
-    password: string,
+    user_password: string,
     confirmPassword: string
   ): ValidationErrors | null {
     return (control: AbstractControl): ValidationErrors | null => {
-      const input = control.get(password);
+      const input = control.get(user_password);
       const matchingInput = control.get(confirmPassword);
       if (input === null || matchingInput === null) {
         return null;

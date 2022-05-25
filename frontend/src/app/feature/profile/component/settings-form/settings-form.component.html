@@ -1,11 +1,11 @@
 <form [formGroup]="profileForm">
   <mat-form-field>
     <mat-label>Név</mat-label>
-    <input formControlName="name" matInput />
+    <input formControlName="user_name" matInput />
     <mat-error
       *ngIf="
-        profileForm.controls['name'].dirty ||
-        profileForm.controls['name'].touched
+        profileForm.controls['user_name'].dirty ||
+        profileForm.controls['user_name'].touched
       "
     >
       Legalább 4, maximum 20 karakter
@@ -14,11 +14,11 @@
 
   <mat-form-field>
     <mat-label>E-mail cím</mat-label>
-    <input formControlName="email" matInput />
+    <input formControlName="user_email" matInput />
     <mat-error
       *ngIf="
-        profileForm.controls['email'].dirty ||
-        profileForm.controls['email'].touched
+        profileForm.controls['user_email'].dirty ||
+        profileForm.controls['user_email'].touched
       "
     >
       Az e-mail cím formátuma nem megfelelő
@@ -26,11 +26,11 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Telefonszám</mat-label>
-    <input formControlName="phone" matInput />
+    <input formControlName="user_phone" matInput />
     <mat-error
       *ngIf="
-        profileForm.controls['phone'].dirty ||
-        profileForm.controls['phone'].touched
+        profileForm.controls['user_phone'].dirty ||
+        profileForm.controls['user_phone'].touched
       "
     >
       A telefonszám formátuma nem megfelelő
@@ -61,7 +61,7 @@
     <mat-label>Új jelszó</mat-label>
     <input
       [type]="hide ? 'password' : 'text'"
-      formControlName="password"
+      formControlName="user_password"
       matInput
     />
     <mat-icon matSuffix (click)="hide = !hide">{{
@@ -69,8 +69,8 @@
     }}</mat-icon>
     <mat-error
       *ngIf="
-        profileForm.controls['password'].dirty ||
-        profileForm.controls['password'].touched
+        profileForm.controls['user_password'].dirty ||
+        profileForm.controls['user_password'].touched
       "
     >
       Jelszó erőssége nem megfelelő

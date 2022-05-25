@@ -59,7 +59,9 @@ export class AdminComponent implements OnInit, OnDestroy {
       .subscribe(
         (res: UserResponseModel[]) => {
           res.map((user: UserResponseModel) => {
-            user.archived ? (user.archived = 'igen') : (user.archived = 'nem');
+            user.user_archived
+              ? (user.user_archived = 'igen')
+              : (user.user_archived = 'nem');
             this.usersTableData.push(user);
           });
           this.usersTableData = res;
@@ -75,7 +77,7 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   deleteUser(user: UserResponseModel): void {
     console.log(user);
-    if (user.archived === 'igen') {
+    if (user.user_archived === 'igen') {
       Swal.fire({
         title: 'Ez a felhasználó már archiválva van.',
         confirmButtonColor: '#0097a7',
@@ -85,15 +87,15 @@ export class AdminComponent implements OnInit, OnDestroy {
         .openConfirmPopup('Biztosan törölni szeretnéd a felhasználót?')
         .then((result) => {
           if (result.isConfirmed) {
-            const id = user._id;
+            const id = user.user_id;
             const data = user;
-            data.archived = true;
+            data.user_archived = true;
             this.userApiService
               .update(data, `archiving/${id}`)
               .subscribe((res: UserResponseModel) => {
                 console.log(res);
                 if (res) {
-                  user.archived = 'igen';
+                  user.user_archived = 'igen';
                   Swal.fire({
                     title: 'Sikeres törlés',
                     text: 'Felhasználó törölve!',

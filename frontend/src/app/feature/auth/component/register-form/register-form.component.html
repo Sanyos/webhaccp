@@ -6,11 +6,11 @@
       <form [formGroup]="registerForm">
         <mat-form-field appearance="fill">
           <mat-label>Név</mat-label>
-          <input formControlName="name" matInput />
+          <input formControlName="user_name" matInput />
           <mat-error
             *ngIf="
-              registerForm.controls['name'].dirty ||
-              registerForm.controls['name'].touched
+              registerForm.controls['user_name'].dirty ||
+              registerForm.controls['user_name'].touched
             "
           >
             Legalább 4, maximum 20 karakter
@@ -19,11 +19,11 @@
 
         <mat-form-field appearance="fill">
           <mat-label>E-mail cím</mat-label>
-          <input formControlName="email" matInput />
+          <input formControlName="user_email" matInput />
           <mat-error
             *ngIf="
-              registerForm.controls['email'].dirty ||
-              registerForm.controls['email'].touched
+              registerForm.controls['user_email'].dirty ||
+              registerForm.controls['user_email'].touched
             "
           >
             Az e-mail cím formátuma nem megfelelő
@@ -35,11 +35,11 @@
 
         <mat-form-field appearance="fill">
           <mat-label>Telefonszám</mat-label>
-          <input formControlName="phone" matInput />
+          <input formControlName="user_phone" matInput />
           <mat-error
             *ngIf="
-              registerForm.controls['phone'].dirty ||
-              registerForm.controls['phone'].touched
+              registerForm.controls['user_phone'].dirty ||
+              registerForm.controls['user_phone'].touched
             "
           >
             A telefonszám formátuma nem megfelelő
@@ -50,7 +50,7 @@
           <mat-label>Jelszó</mat-label>
           <input
             [type]="hide ? 'password' : 'text'"
-            formControlName="password"
+            formControlName="user_password"
             matInput
           />
           <mat-icon matSuffix (click)="hide = !hide">{{
@@ -58,8 +58,8 @@
           }}</mat-icon>
           <mat-error
             *ngIf="
-              registerForm.controls['password'].dirty ||
-              registerForm.controls['password'].touched
+              registerForm.controls['user_password'].dirty ||
+              registerForm.controls['user_password'].touched
             "
           >
             Jelszó erőssége nem megfelelő

@@ -1,35 +1,37 @@
 export interface UserRegistrationModel {
-  name: string;
-  password: string;
+  user_name: string;
+  user_password: string;
   rePassword: string;
-  email: string;
-  phone: string;
-  role: string;
+  user_email: string;
+  user_phone: string;
+  user_role: string;
+  user_archived: string;
 }
 
 export interface UserLoginModel {
-  name: string;
-  password: string;
+  user_name: string;
+  user_password: string;
 }
 
 export interface UserUpdateModel {
-  name: string;
+  user_name: string;
   oldPassword: string;
-  password: string;
+  user_password: string;
   rePassword: string;
-  email: string;
-  phone: string;
-  role: string;
+  user_email: string;
+  user_phone: string;
+  user_role: string;
+  user_archived: string;
 }
 
 export interface UserResponseModel {
-  _id: string;
-  name: string;
-  email: string;
-  phone: string;
-  role: string;
-  accessToken: string;
-  archived: boolean | string;
+  user_id: string;
+  user_name: string;
+  user_email: string;
+  user_phone: string;
+  user_role: string;
+  user_accessToken: string;
+  user_archived: boolean | string;
 }
 
 export interface DecodedUserToken {

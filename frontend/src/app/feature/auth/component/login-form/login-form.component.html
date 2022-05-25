@@ -7,14 +7,14 @@
       <form [formGroup]="loginForm">
         <mat-form-field appearance="fill">
           <mat-label>Email</mat-label>
-          <input formControlName="email" matInput />
+          <input formControlName="user_email" matInput />
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <mat-label>Jelszó</mat-label>
           <input
             [type]="hide ? 'password' : 'text'"
-            formControlName="password"
+            formControlName="user_password"
             matInput
           />
           <mat-icon matSuffix (click)="hide = !hide">{{

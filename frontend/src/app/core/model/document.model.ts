@@ -1,11 +1,9 @@
-import { UserResponseModel } from './user.model';
-
 export interface DocumentRequestModel {}
 
 export interface DocumentResponseModel {
-  _id?: string;
-  name: string;
-  date: string;
-  valid: boolean;
-  user: UserResponseModel;
+  document_id?: string;
+  document_name: string;
+  document_date: string;
+  document_valid: boolean;
+  document_user_name: string;
 }

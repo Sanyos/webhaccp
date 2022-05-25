@@ -1,5 +1,5 @@
 import { CdkStepper } from '@angular/cdk/stepper';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormBuilder,
@@ -8,8 +8,10 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserRegistrationModel } from 'src/app/core/model/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register-form',
@@ -24,8 +26,8 @@ export class RegisterFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private readonly stepper: CdkStepper,
-    private readonly userApiService: UserApiService
+    private readonly userApiService: UserApiService,
+    private readonly stepper: CdkStepper
   ) {
     this.createForm();
   }
@@ -35,27 +37,31 @@ export class RegisterFormComponent implements OnInit {
   createForm(): void {
     this.registerForm = this.fb.group(
       {
-        name: new FormControl('', [
+        user_name: new FormControl('', [
           Validators.required,
           Validators.minLength(4),
           Validators.maxLength(20),
         ]),
-        email: new FormControl('', [Validators.required, Validators.email]),
-        role: new FormControl('user', Validators.required),
-        phone: new FormControl('', [
+        user_email: new FormControl('', [
+          Validators.required,
+          Validators.email,
+        ]),
+        user_role: new FormControl('USER', Validators.required),
+        user_phone: new FormControl('', [
           Validators.required,
           Validators.pattern(
             /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
           ),
         ]),
-        password: new FormControl('', [
+        user_password: new FormControl('', [
           Validators.required,
           Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
         ]),
         rePassword: new FormControl('', [Validators.required]),
+        user_archived: new FormControl(false),
       },
       {
-        validators: this.passwordsNotMatch('password', 'rePassword'),
+        validators: this.passwordsNotMatch('user_password', 'rePassword'),
       }
     );
   }
@@ -87,8 +93,12 @@ export class RegisterFormComponent implements OnInit {
     this.userObject = this.registerForm.value;
     this.userApiService.register(this.userObject).subscribe(
       (user) => {
-        console.log(user);
-        this.stepper.next();
+        Swal.fire({
+          title: 'Sikeres regisztráció',
+          icon: 'success',
+          confirmButtonColor: '#0097a7',
+        });
+        this.stepper.previous();
       },
       (err) => {
         console.log(err);

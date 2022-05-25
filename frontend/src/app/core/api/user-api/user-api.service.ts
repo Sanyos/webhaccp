@@ -27,20 +27,20 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
   constructor(public http: HttpClient, private router: Router) {
     super(http);
     this.entity = apiConfig.user.default;
-    let accessToken = localStorage.getItem('accessToken');
-    let _id = localStorage.getItem('id');
-    let phone = localStorage.getItem('phone');
-    let email = localStorage.getItem('email');
-    let name = localStorage.getItem('name');
-    if (accessToken) {
-      this.role = this.jwtDecoder(accessToken).role;
+    let user_accessToken = localStorage.getItem('accessToken');
+    let user_id = localStorage.getItem('id');
+    let user_phone = localStorage.getItem('phone');
+    let user_email = localStorage.getItem('email');
+    let user_name = localStorage.getItem('name');
+    if (user_accessToken) {
+      this.role = this.jwtDecoder(user_accessToken).role;
       this.userSubject$.next({
-        accessToken,
-        _id,
-        role: this.jwtDecoder(accessToken).role,
-        email,
-        phone,
-        name,
+        user_accessToken,
+        user_id,
+        user_role: this.jwtDecoder(user_accessToken).role,
+        user_email,
+        user_phone,
+        user_name,
       });
     } else {
       this.userSubject$.next(null);
@@ -58,20 +58,20 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
       tap(
         (loginData: UserResponseModel) => {
           if (loginData) {
-            this.role = loginData.role;
-            this.accessToken = loginData.accessToken;
-            localStorage.setItem('accessToken', loginData.accessToken);
-            localStorage.setItem('id', loginData._id);
-            localStorage.setItem('phone', loginData.phone);
-            localStorage.setItem('email', loginData.email);
-            localStorage.setItem('name', loginData.name);
+            this.role = loginData.user_role;
+            this.accessToken = loginData.user_accessToken;
+            localStorage.setItem('accessToken', loginData.user_accessToken);
+            localStorage.setItem('id', loginData.user_id);
+            localStorage.setItem('phone', loginData.user_phone);
+            localStorage.setItem('email', loginData.user_email);
+            localStorage.setItem('name', loginData.user_name);
             this.userSubject$.next({
-              accessToken: loginData.accessToken,
-              id: loginData._id,
-              role: loginData.role,
-              phone: loginData.phone,
-              email: loginData.email,
-              name: loginData.name,
+              accessToken: loginData.user_accessToken,
+              id: loginData.user_id,
+              role: loginData.user_role,
+              phone: loginData.user_phone,
+              email: loginData.user_email,
+              name: loginData.user_name,
             });
           }
         },

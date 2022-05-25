@@ -102,7 +102,10 @@ export class NavMenuComponent implements OnInit, AfterViewInit {
   isLoggedIn(): void {
     this.userApiService.personLoggedInObj.subscribe(
       (res: UserResponseModel) => {
-        if (res.accessToken !== null && this.userApiService.isAuthenticated()) {
+        if (
+          res.user_accessToken !== null &&
+          this.userApiService.isAuthenticated()
+        ) {
           this.loggedIn = true;
         } else {
           this.loggedIn = false;

@@ -13,7 +13,7 @@ export class AdminAuthGuardService implements CanActivate {
   getUserRole(): void {
     this.userApiService.personLoggedInObj.subscribe((res) => {
       if (res) {
-        this.role = res.role;
+        this.role = res.user_role;
       }
     });
   }

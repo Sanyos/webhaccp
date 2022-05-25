@@ -3,23 +3,40 @@ const userService = require("./user.service");
 const bcrypt = require("bcrypt");
 const users = require("../../mock_data/users-data");
 
-exports.createNewUser = (req, res, next) => {
+exports.createNewUser = async (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     return next(new createError.BadRequest("Invalid request body"));
   }
 
-  const { username, email, phone, password, rePassword, role } = req.body;
-  if (password === rePassword) {
-    const newUser = { username, email, phone, password, role };
-    res.status(201).send(newUser);
-    /*  return userService
+  const {
+    user_name,
+    user_email,
+    user_phone,
+    user_password,
+    rePassword,
+    user_role,
+    user_archived,
+  } = req.body;
+  if (user_password === rePassword) {
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(user_password, salt);
+    const newUser = {
+      user_name,
+      user_email,
+      user_phone,
+      hashedPassword,
+      user_role,
+      user_archived,
+    };
+    return userService
       .create(newUser)
       .then((user) => {
-        res.status(201).json(user);
+        console.log("user created: ", user);
+        res.status(201).json(user.rows[0]);
       })
       .catch((err) => {
         return next(new createError[500](`Could not saved user Error: ${err}`));
-      });*/
+      });
   }
 };
 

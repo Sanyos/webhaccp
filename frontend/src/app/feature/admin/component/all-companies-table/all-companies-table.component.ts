@@ -70,12 +70,12 @@ export class AllCompaniesTableComponent implements OnInit {
       'FELHASZNÁLÓ',
     ];
     this.displayedColumns = [
-      'companyName',
-      'category',
-      'location',
-      'registrationNumber',
-      'vatNumber',
-      'user',
+      'company_name',
+      'company_category',
+      'company_location',
+      'company_registration_number',
+      'company_vat_number',
+      'user_name',
     ];
   }
 }

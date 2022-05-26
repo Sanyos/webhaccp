@@ -1,13 +1,12 @@
 const createError = require("http-errors");
 const userService = require("./user.service");
 const bcrypt = require("bcrypt");
-const users = require("../../mock_data/users-data");
+const pool = require("../../db");
 
 exports.createNewUser = async (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
     return next(new createError.BadRequest("Invalid request body"));
   }
-
   const {
     user_name,
     user_email,
@@ -30,31 +29,38 @@ exports.createNewUser = async (req, res, next) => {
     };
     return userService
       .create(newUser)
-      .then((user) => {
-        console.log("user created: ", user);
-        res.status(201).json(user.rows[0]);
+      .then((resUser) => {
+        const user = resUser.rows[0];
+        let responseUser = {
+          user_name: user.user_name,
+          user_role: user.user_role,
+          user_archived: user.user_archived,
+          user_email: user.user_email,
+          user_phone: user.user_phone,
+          user_id: user.user_id,
+        };
+        res.status(200).json(responseUser);
       })
       .catch((err) => {
-        return next(new createError[500](`Could not saved user Error: ${err}`));
+        return next(new createError[500](`Could not save user Error: ${err}`));
       });
   }
 };
 
 exports.getAllUser = (req, res, next) => {
-  let responseUsers = users;
-  res.json(responseUsers);
-  /*  return userService
+  return userService
     .getAll()
     .then((users) => {
+      console.log("users: ", users.rows);
       let responseUsers = [];
-      users.forEach((user) => {
+      users.rows.forEach((user) => {
         let responseUser = {
-          username: user.username,
-          role: user.role,
-          archived: user.archived,
-          email: user.email,
-          phone: user.phoneNumber,
-          _id: user._id,
+          user_name: user.user_name,
+          user_role: user.user_role,
+          user_archived: user.user_archived,
+          user_email: user.user_email,
+          user_phone: user.user_phone,
+          user_id: user.user_id,
         };
         responseUsers.push(responseUser);
       });
@@ -62,77 +68,112 @@ exports.getAllUser = (req, res, next) => {
     })
     .catch((err) => {
       return next(new createError[500](`Could not find users Error: ${err}`));
-    }); */
+    });
+};
+
+exports.getUserById = (req, res, next) => {
+  const id = req.params.id;
+  return userService
+    .getById(id)
+    .then((resUser) => {
+      console.log("user by id: ", resUser.rows[0]);
+      const user = resUser.rows[0];
+      let responseUser = {
+        user_name: user.user_name,
+        user_role: user.user_role,
+        user_archived: user.user_archived,
+        user_email: user.user_email,
+        user_phone: user.user_phone,
+        user_id: user.user_id,
+      };
+      res.status(200).json(responseUser);
+    })
+    .catch((err) => {
+      return next(
+        new createError[500](
+          `Could not find user whith this id: ${id} Error: ${err}`
+        )
+      );
+    });
 };
 
 exports.archivingById = (req, res, next) => {
   const id = req.params.id;
-  res.status(200).send(req.body);
-  /*  return userService
-    .updateById(_id, req.body)
+  return userService
+    .updateById(id, req.body)
     .then((user) => {
-      res.status(200).json(user);
+      console.log(user.rows[0]);
+      res.status(200).json(user.rows[0]);
     })
     .catch((err) => {
-      return next(new createError[500](`Could not updated user Error: ${err}`));
-    }); */
+      return next(new createError[500](`Could not update user Error: ${err}`));
+    });
 };
 
 exports.userUpdate = async (req, res, next) => {
-  // TODO USER LEKÉRDEZÉS
-  const user = {
-    name: "Admin",
-    phone: "06304446656",
-    email: "admin@test.com",
-    _id: "1",
-    role: "admin",
-    password: "Test1234",
-    archived: false,
-  };
-
-  const id = req.params.id;
-
   let {
-    role,
     oldPassword,
-    password,
+    user_password,
     rePassword,
-    email,
-    phone,
-    name,
-    archived,
+    user_email,
+    user_phone,
+    user_name,
+    user_archived,
   } = req.body;
 
-  if (email !== user.email /* && TODO CHECK IF EMAIL IS TAKEN */) {
-    return res.send("emailIsAlreadyTaken");
-  }
+  console.log("req.body", req.body);
+  const id = req.params.id;
 
-  // const validPass = await bcrypt.compare(oldPassword, user.password);
-  if (oldPassword && oldPassword !== user.password) {
-    return res.send("passwordIsWrong");
-  }
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(
-    password && password === rePassword ? password : oldPassword,
-    salt
-  );
+  userService.getById(id).then(async (userById) => {
+    console.log("get user by id", userById.rows[0]);
+    const user = userById.rows[0];
 
-  let updatedUser = {
-    name: name,
-    role: role,
-    password: hashedPassword,
-    email: email,
-    phone: phone,
-    archived: archived,
-  };
-  res.status(200).send(updatedUser);
+    if (!user) {
+      return new createError.BadRequest("Something went wrong");
+    }
 
-  /*  return userService
-    .updateById(id, updatedUser)
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      return next(new createError[500](`Could not updated user Error: ${err}`));
-    }); */
+    if (user.user_email !== user_email) {
+      userService.getAll().then((otherUsers) => {
+        const users = otherUsers.rows;
+        users.forEach((otherUser) => {
+          if (otherUser.user_email === user_email) {
+            return res.send("emailIsAlreadyTaken");
+          }
+        });
+      });
+    }
+
+    const validPass = await bcrypt.compare(oldPassword, user.user_password);
+    if (!validPass) {
+      return res.send("passwordIsWrong");
+    } else {
+      console.log(user_password);
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(
+        user_password !== "" && user_password === rePassword
+          ? user_password
+          : oldPassword,
+        salt
+      );
+      let updatedUser = {
+        user_name: user_name,
+        user_password: hashedPassword,
+        user_email: user_email,
+        user_phone: user_phone,
+        user_archived: user_archived,
+      };
+
+      return userService
+        .updateById(id, updatedUser)
+        .then((user) => {
+          console.log("user updated: ", user.rows[0]);
+          res.status(200).json(user.rows[0]);
+        })
+        .catch((err) => {
+          return next(
+            new createError[500](`Could not update user Error: ${err}`)
+          );
+        });
+    }
+  });
 };

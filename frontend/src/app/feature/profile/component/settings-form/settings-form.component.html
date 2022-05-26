@@ -27,12 +27,7 @@
   <mat-form-field>
     <mat-label>Telefonszám</mat-label>
     <input formControlName="user_phone" matInput />
-    <mat-error
-      *ngIf="
-        profileForm.controls['user_phone'].dirty ||
-        profileForm.controls['user_phone'].touched
-      "
-    >
+    <mat-error *ngIf="profileForm.controls['user_phone'].dirty">
       A telefonszám formátuma nem megfelelő
     </mat-error>
   </mat-form-field>

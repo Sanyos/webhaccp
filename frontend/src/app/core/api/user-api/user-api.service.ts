@@ -27,17 +27,17 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
   constructor(public http: HttpClient, private router: Router) {
     super(http);
     this.entity = apiConfig.user.default;
-    let user_accessToken = localStorage.getItem('accessToken');
+    let accessToken = localStorage.getItem('accessToken');
     let user_id = localStorage.getItem('id');
     let user_phone = localStorage.getItem('phone');
     let user_email = localStorage.getItem('email');
     let user_name = localStorage.getItem('name');
-    if (user_accessToken) {
-      this.role = this.jwtDecoder(user_accessToken).role;
+    if (accessToken) {
+      this.role = this.jwtDecoder(accessToken).role;
       this.userSubject$.next({
-        user_accessToken,
+        accessToken,
         user_id,
-        user_role: this.jwtDecoder(user_accessToken).role,
+        user_role: this.jwtDecoder(accessToken).role,
         user_email,
         user_phone,
         user_name,
@@ -59,19 +59,19 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
         (loginData: UserResponseModel) => {
           if (loginData) {
             this.role = loginData.user_role;
-            this.accessToken = loginData.user_accessToken;
-            localStorage.setItem('accessToken', loginData.user_accessToken);
+            this.accessToken = loginData.accessToken;
+            localStorage.setItem('accessToken', loginData.accessToken);
             localStorage.setItem('id', loginData.user_id);
             localStorage.setItem('phone', loginData.user_phone);
             localStorage.setItem('email', loginData.user_email);
             localStorage.setItem('name', loginData.user_name);
             this.userSubject$.next({
-              accessToken: loginData.user_accessToken,
-              id: loginData.user_id,
-              role: loginData.user_role,
-              phone: loginData.user_phone,
-              email: loginData.user_email,
-              name: loginData.user_name,
+              accessToken: loginData.accessToken,
+              user_id: loginData.user_id,
+              user_role: loginData.user_role,
+              user_phone: loginData.user_phone,
+              user_email: loginData.user_email,
+              user_name: loginData.user_name,
             });
           }
         },

@@ -30,7 +30,7 @@ export interface UserResponseModel {
   user_email: string;
   user_phone: string;
   user_role: string;
-  user_accessToken: string;
+  accessToken: string;
   user_archived: boolean | string;
 }
 

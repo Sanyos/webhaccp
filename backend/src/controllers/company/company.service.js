@@ -26,12 +26,21 @@ exports.create = (company) => {
   return pool.query(sqlString, values);
 };
 
-exports.getAll = (companyUserId) => {
+exports.getAllByUserId = (companyUserId) => {
   const selectQuery = `
   SELECT * 
   FROM companies 
   WHERE company_user_id = $1`;
   return pool.query(selectQuery, [companyUserId]);
+};
+
+exports.getAll = () => {
+  const selectQuery = `
+  SELECT * 
+  FROM users 
+  JOIN companies 
+  ON users.user_id = companies.company_user_id `;
+  return pool.query(selectQuery, []);
 };
 
 exports.getById = (id) => {

@@ -47,8 +47,14 @@ export class UsersTableComponent implements OnInit {
 
   setUsersTableData(): void {
     this.headerTexts = ['NÉV', 'EMAIL CÍM', 'TELEFONSZÁM', 'ARCHIVÁLVA'];
-    this.columns = ['name', 'email', 'phone', 'archived'];
-    this.displayedColumns = ['name', 'email', 'phone', 'archived', 'actions'];
+    this.columns = ['user_name', 'user_email', 'user_phone', 'user_archived'];
+    this.displayedColumns = [
+      'user_name',
+      'user_email',
+      'user_phone',
+      'user_archived',
+      'actions',
+    ];
   }
 
   applyFilter(event: Event): void {

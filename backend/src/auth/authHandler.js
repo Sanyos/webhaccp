@@ -23,7 +23,7 @@ module.exports.login = async (req, res) => {
         process.env.ACCESS_TOKEN_SECRET
       );
       res.json({
-        user_accessToken: accessToken,
+        accessToken: accessToken,
         user_id: loggedInUser.user_id,
         user_phone: loggedInUser.user_phone,
         user_role: loggedInUser.user_role,

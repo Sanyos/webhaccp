@@ -63,6 +63,7 @@ export class SettingsFormComponent implements OnInit, OnDestroy {
           Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/)
         ),
         rePassword: new FormControl(''),
+        user_archived: new FormControl(false),
       },
       {
         validators: this.passwordsNotMatch('user_password', 'rePassword'),

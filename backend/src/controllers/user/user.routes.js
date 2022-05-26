@@ -11,6 +11,10 @@ routes.get("/", adminOnly, (req, res, next) => {
   return userController.getAllUser(req, res, next);
 });
 
+routes.get("/id/:id", (req, res, next) => {
+  return userController.getUserById(req, res, next);
+});
+
 routes.put("/archiving/:id", adminOnly, (req, res, next) => {
   return userController.archivingById(req, res, next);
 });

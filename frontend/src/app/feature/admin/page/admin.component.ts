@@ -116,13 +116,7 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          console.log(res);
-          let companyObject: any;
-          res.map((company) => {
-            companyObject = company;
-            companyObject.user = company.user_name;
-            this.companiesTableData.push(companyObject);
-          });
+          console.log('companies: ', res);
           this.companiesTableData = res;
         },
         (err) => {

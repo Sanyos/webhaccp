@@ -19,9 +19,4 @@ routes.put("/:companyId", (req, res, next) => {
   return companyController.updateCompanyById(req, res, next);
 });
 
-routes.get("/test/1", (req, res, next) => {
-  console.log("asdasdasdasd");
-  return companyController.test(req, res, next);
-});
-
 module.exports = routes;

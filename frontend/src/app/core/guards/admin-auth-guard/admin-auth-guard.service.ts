@@ -23,7 +23,7 @@ export class AdminAuthGuardService implements CanActivate {
     const roles = route.data.expected;
     const isAdmin = role && roles.includes(role);
     if (!isAdmin) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/home']);
       return false;
     } else {
       return true;

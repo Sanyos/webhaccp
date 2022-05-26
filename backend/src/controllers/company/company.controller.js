@@ -21,22 +21,41 @@ exports.createNewCompany = (req, res, next) => {
 
 exports.getAllCompanies = (req, res, next) => {
   const companyUserId = req.params.userId;
-  return companyService
-    .getAll(companyUserId)
-    .then((companies) => {
-      console.log("all companies: ", companies.rows);
-      if (companies.rows) {
-        const filteredCompanies = companies.rows.filter(
-          (company) => company.company_archived === false
+  if (companyUserId !== "all") {
+    return companyService
+      .getAllByUserId(companyUserId)
+      .then((companies) => {
+        console.log("all companies: ", companies.rows);
+        if (companies.rows) {
+          const filteredCompanies = companies.rows.filter(
+            (company) => company.company_archived === false
+          );
+          res.status(200).json(filteredCompanies);
+        }
+      })
+      .catch((err) => {
+        return next(
+          new createError[500](`Could not find companies Error: ${err}`)
         );
-        res.status(200).json(filteredCompanies);
-      }
-    })
-    .catch((err) => {
-      return next(
-        new createError[500](`Could not find companies Error: ${err}`)
-      );
-    });
+      });
+  } else {
+    return companyService
+      .getAll()
+      .then((companies) => {
+        console.log("all companies: ", companies.rows);
+        if (companies.rows) {
+          const filteredCompanies = companies.rows.filter(
+            (company) => company.company_archived === false
+          );
+          res.status(200).json(filteredCompanies);
+        }
+      })
+      .catch((err) => {
+        return next(
+          new createError[500](`Could not find companies Error: ${err}`)
+        );
+      });
+  }
 };
 
 exports.getCompanyById = (req, res, next) => {

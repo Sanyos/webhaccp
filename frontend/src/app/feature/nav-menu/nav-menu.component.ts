@@ -48,8 +48,8 @@ import { UserResponseModel } from 'src/app/core/model/user.model';
     ]),
   ],
 })
-export class NavMenuComponent implements OnInit, AfterViewInit {
-  loggedIn: boolean = true;
+export class NavMenuComponent implements OnInit {
+  loggedIn: boolean;
   adminLoggedIn: boolean;
   navItems: any[];
   isHamburguer: boolean = true;
@@ -61,6 +61,7 @@ export class NavMenuComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoggedIn();
     this.setNavItems();
 
     this.smallScreen().subscribe((state: BreakpointState) => {
@@ -70,10 +71,6 @@ export class NavMenuComponent implements OnInit, AfterViewInit {
         this.isSmallScreen = false;
       }
     });
-  }
-
-  ngAfterViewInit(): void {
-    this.isLoggedIn();
   }
 
   onClick() {
@@ -103,7 +100,7 @@ export class NavMenuComponent implements OnInit, AfterViewInit {
     this.userApiService.personLoggedInObj.subscribe(
       (res: UserResponseModel) => {
         if (
-          res.user_accessToken !== null &&
+          res?.accessToken !== null &&
           this.userApiService.isAuthenticated()
         ) {
           this.loggedIn = true;

@@ -26,7 +26,7 @@ exports.getAll = () => {
 };
 
 exports.getById = (id) => {
-  const selectQuery = `
+  const selectQuery = ` 
   SELECT * 
   FROM users 
   WHERE user_id = $1`;

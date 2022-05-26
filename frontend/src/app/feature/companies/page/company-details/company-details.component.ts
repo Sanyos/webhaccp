@@ -5,13 +5,13 @@ import { Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
-import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-company-details',
@@ -106,15 +106,21 @@ export class CompanyDetailsComponent implements OnInit {
       this.companyApiService
         .update(data, this.companyId)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyResponseModel) => {
-          console.log('company updated: ', res);
-          this.router.navigate(['/companies']);
+        .subscribe((res: CompanyWithUserResponseModel) => {
+          if (res) {
+            console.log('company updated: ', res);
+            Swal.fire({
+              title: 'Üzlet sikeresen módosítva!',
+              icon: 'success',
+              confirmButtonColor: '#0097a7',
+            }).then(() => this.router.navigate(['/companies']));
+          }
         });
     } else {
       this.companyApiService
         .create(data)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyResponseModel) => {
+        .subscribe((res: CompanyWithUserResponseModel) => {
           console.log('company created: ', res);
           this.router.navigate(['/companies']);
         });

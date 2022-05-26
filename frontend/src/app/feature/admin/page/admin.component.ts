@@ -8,7 +8,10 @@ import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
-import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import {
+  DocumentResponseModel,
+  DocumentWithUserResponseModel,
+} from 'src/app/core/model/document.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import Swal from 'sweetalert2';
@@ -32,7 +35,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   actionItems: any[];
   usersTableData: UserResponseModel[] = [];
   companiesTableData: CompanyResponseModel[] = [];
-  documentsTableData: DocumentResponseModel[] = [];
+  documentsTableData: any = [];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly sweetAlertPopupService: SweetAlertPopupService,
@@ -101,7 +104,6 @@ export class AdminComponent implements OnInit, OnDestroy {
                     text: 'Felhasználó törölve!',
                     icon: 'success',
                     confirmButtonColor: '#0097a7',
-                    cancelButtonText: 'Mégse',
                   });
                 }
               });
@@ -133,9 +135,16 @@ export class AdminComponent implements OnInit, OnDestroy {
       .getList('all')
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: DocumentResponseModel[]) => {
+        (res: DocumentWithUserResponseModel[]) => {
           console.log('documents: ', res);
-          this.documentsTableData = res;
+          res.forEach((document) => {
+            let doc = {
+              registered_user: document.user_name ? 'igen' : 'nem',
+              document_name: document.document_name,
+              document_date: document.document_date,
+            };
+            this.documentsTableData.push(doc);
+          });
         },
         (err) => {
           console.log(err);

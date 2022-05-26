@@ -54,14 +54,12 @@ export class AllDocumentsTableComponent implements OnInit {
 
   setTableData() {
     this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
-    this.columns = ['user', 'name', 'date', 'valid'];
+    this.columns = ['registered_user', 'document_name', 'document_date'];
     this.displayedColumns = [
-      'user',
-      'name',
-      'date',
-      'valid',
+      'registered_user',
+      'document_name',
+      'document_date',
       'download',
-      'confirm',
     ];
   }
 }

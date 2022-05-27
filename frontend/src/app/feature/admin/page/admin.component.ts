@@ -81,10 +81,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   deleteUser(user: UserResponseModel): void {
     console.log(user);
     if (user.user_archived === 'igen') {
-      Swal.fire({
-        title: 'Ez a felhasználó már archiválva van.',
-        confirmButtonColor: '#0097a7',
-      });
+      this.sweetAlertPopupService.openSuccessPopup(
+        'Ez a felhasználó már archiválva van.'
+      );
     } else {
       this.sweetAlertPopupService
         .openConfirmPopup('Biztosan törölni szeretnéd a felhasználót?')
@@ -99,12 +98,10 @@ export class AdminComponent implements OnInit, OnDestroy {
                 console.log(res);
                 if (res) {
                   user.user_archived = 'igen';
-                  Swal.fire({
-                    title: 'Sikeres törlés',
-                    text: 'Felhasználó törölve!',
-                    icon: 'success',
-                    confirmButtonColor: '#0097a7',
-                  });
+                  this.sweetAlertPopupService.openSuccessPopup(
+                    'Sikeres törlés',
+                    'Felhasználó törölve lett!'
+                  );
                 }
               });
           }
@@ -139,7 +136,8 @@ export class AdminComponent implements OnInit, OnDestroy {
           console.log('documents: ', res);
           res.forEach((document) => {
             let doc = {
-              registered_user: document.user_name ? 'igen' : 'nem',
+              registered_user:
+                document.document_user_id !== null ? 'igen' : 'nem',
               document_name: document.document_name,
               document_date: document.document_date,
             };

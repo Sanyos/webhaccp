@@ -16,17 +16,20 @@
   }
   .button-holder {
     display: flex;
-    margin: 1rem 0;
+    flex-wrap: wrap;
   }
   #save-btn {
     margin-right: 0.5rem;
     border-radius: 12px;
     width: 140px;
+    margin-top: 1rem;
   }
   #cancel-btn {
     border-radius: 12px;
     width: 140px;
+    margin-top: 1rem;
   }
+
   .error {
     color: #c62828;
   }

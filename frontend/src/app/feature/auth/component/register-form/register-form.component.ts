@@ -8,10 +8,9 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserRegistrationModel } from 'src/app/core/model/user.model';
-import Swal from 'sweetalert2';
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 
 @Component({
   selector: 'app-register-form',
@@ -27,7 +26,8 @@ export class RegisterFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private readonly userApiService: UserApiService,
-    private readonly stepper: CdkStepper
+    private readonly stepper: CdkStepper,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
   ) {
     this.createForm();
   }
@@ -93,12 +93,10 @@ export class RegisterFormComponent implements OnInit {
     this.userObject = this.registerForm.value;
     this.userApiService.register(this.userObject).subscribe(
       (user) => {
-        Swal.fire({
-          title: 'Sikeres regisztráció',
-          icon: 'success',
-          confirmButtonColor: '#0097a7',
-        });
-        this.stepper.previous();
+        if (user) {
+          this.sweetAlertPopupService.openSuccessPopup('Sikeres regisztráció');
+          this.stepper.previous();
+        }
       },
       (err) => {
         console.log(err);

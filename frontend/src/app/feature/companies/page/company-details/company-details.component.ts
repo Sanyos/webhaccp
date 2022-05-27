@@ -6,12 +6,9 @@ import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
-import {
-  CompanyResponseModel,
-  CompanyWithUserResponseModel,
-} from 'src/app/core/model/company.model';
+import { CompanyWithUserResponseModel } from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
-import Swal from 'sweetalert2';
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 
 @Component({
   selector: 'app-company-details',
@@ -29,7 +26,8 @@ export class CompanyDetailsComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
     private readonly enumsApiService: EnumsApiService,
-    private readonly companyApiService: CompanyApiService
+    private readonly companyApiService: CompanyApiService,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
   ) {}
 
   ngOnInit(): void {
@@ -109,11 +107,9 @@ export class CompanyDetailsComponent implements OnInit {
         .subscribe((res: CompanyWithUserResponseModel) => {
           if (res) {
             console.log('company updated: ', res);
-            Swal.fire({
-              title: 'Üzlet sikeresen módosítva!',
-              icon: 'success',
-              confirmButtonColor: '#0097a7',
-            }).then(() => this.router.navigate(['/companies']));
+            this.sweetAlertPopupService
+              .openSuccessPopup('Üzlet sikeresen módosítva!')
+              .then(() => this.router.navigate(['/companies']));
           }
         });
     } else {

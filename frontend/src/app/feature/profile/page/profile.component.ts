@@ -4,8 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserResponseModel } from 'src/app/core/model/user.model';
-import Swal from 'sweetalert2';
-
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -18,7 +17,10 @@ export class ProfileComponent implements OnInit {
   emailIsAlreadyTaken: boolean = false;
   userId: any = localStorage.getItem('id');
   unsubscribe = new Subject<void>();
-  constructor(private readonly userApiService: UserApiService) {}
+  constructor(
+    private readonly userApiService: UserApiService,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -66,12 +68,9 @@ export class ProfileComponent implements OnInit {
             this.passwordIsWrong = false;
             this.emailIsAlreadyTaken = false;
             this.getUserData();
-
-            Swal.fire({
-              title: 'Felhasználói adatok sikeresen módosítva!',
-              icon: 'success',
-              confirmButtonColor: '#0097a7',
-            });
+            this.sweetAlertPopupService.openSuccessPopup(
+              'Felhasználói adatok sikeresen módosítva!'
+            );
           },
           (err) => {
             console.log(err.error.text);

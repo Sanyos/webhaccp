@@ -42,10 +42,10 @@ exports.getAllDocuments = (req, res, next) => {
         if (documents) {
           console.log("all documents: ", documents.rows);
           let docs = documents.rows;
-          docs.map(({ document_name, document_date, user_name }) => ({
+          docs.map(({ document_name, document_date, document_user_id }) => ({
             document_name,
             document_date,
-            user_name,
+            document_user_id,
           }));
           res.status(200).json(docs);
         }

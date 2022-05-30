@@ -65,6 +65,7 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
             localStorage.setItem('phone', loginData.user_phone);
             localStorage.setItem('email', loginData.user_email);
             localStorage.setItem('name', loginData.user_name);
+            this.role = loginData.user_role;
             this.userSubject$.next({
               accessToken: loginData.accessToken,
               user_id: loginData.user_id,

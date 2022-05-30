@@ -4,7 +4,7 @@
     <input formControlName="user_name" matInput />
     <mat-error
       *ngIf="
-        profileForm.controls['user_name'].dirty ||
+        profileForm.controls['user_name'].dirty &&
         profileForm.controls['user_name'].touched
       "
     >
@@ -17,7 +17,7 @@
     <input formControlName="user_email" matInput />
     <mat-error
       *ngIf="
-        profileForm.controls['user_email'].dirty ||
+        profileForm.controls['user_email'].dirty &&
         profileForm.controls['user_email'].touched
       "
     >
@@ -27,7 +27,7 @@
   <mat-form-field>
     <mat-label>Telefonszám</mat-label>
     <input formControlName="user_phone" matInput />
-    <mat-error *ngIf="profileForm.controls['user_phone'].dirty">
+    <mat-error *ngIf="profileForm.controls['user_phone'].hasError">
       A telefonszám formátuma nem megfelelő
     </mat-error>
   </mat-form-field>

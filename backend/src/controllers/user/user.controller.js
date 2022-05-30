@@ -27,6 +27,7 @@ exports.createNewUser = async (req, res, next) => {
       user_role,
       user_archived,
     };
+
     return userService
       .create(newUser)
       .then((resUser) => {
@@ -132,17 +133,6 @@ exports.userUpdate = async (req, res, next) => {
       return new createError.BadRequest("Something went wrong");
     }
 
-    if (user.user_email !== user_email) {
-      userService.getAll().then((otherUsers) => {
-        const users = otherUsers.rows;
-        users.forEach((otherUser) => {
-          if (otherUser.user_email === user_email) {
-            return res.send("emailIsAlreadyTaken");
-          }
-        });
-      });
-    }
-
     const validPass = await bcrypt.compare(oldPassword, user.user_password);
     if (!validPass) {
       return res.send("passwordIsWrong");
@@ -155,13 +145,18 @@ exports.userUpdate = async (req, res, next) => {
           : oldPassword,
         salt
       );
+
       let updatedUser = {
         user_name: user_name,
         user_password: hashedPassword,
-        user_email: user_email,
         user_phone: user_phone,
         user_archived: user_archived,
+        user_email: user_email,
       };
+
+      /*   if (user.user_email !== user_email) {
+        updatedUser.user_email = user_email;
+      } */
 
       return userService
         .updateById(id, updatedUser)

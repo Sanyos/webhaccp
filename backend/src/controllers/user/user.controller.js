@@ -151,12 +151,7 @@ exports.userUpdate = async (req, res, next) => {
         user_password: hashedPassword,
         user_phone: user_phone,
         user_archived: user_archived,
-        user_email: user_email,
       };
-
-      /*   if (user.user_email !== user_email) {
-        updatedUser.user_email = user_email;
-      } */
 
       return userService
         .updateById(id, updatedUser)

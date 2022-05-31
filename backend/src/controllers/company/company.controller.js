@@ -27,9 +27,41 @@ exports.getAllCompanies = (req, res, next) => {
       .then((companies) => {
         console.log("all companies: ", companies.rows);
         if (companies.rows) {
-          const filteredCompanies = companies.rows.filter(
-            (company) => company.company_archived === false
-          );
+          const filteredCompanies = companies.rows
+            .filter((company) => company.company_archived === false)
+            .map(
+              ({
+                company_id,
+                company_category,
+                company_name,
+                company_address,
+                company_location,
+                company_phone,
+                company_headquarters,
+                company_billing_address,
+                company_registration_number,
+                company_vat_number,
+                company_archived,
+                user_name,
+                user_phone,
+                user_email,
+              }) => ({
+                company_id,
+                company_category,
+                company_name,
+                company_address,
+                company_location,
+                company_phone,
+                company_headquarters,
+                company_billing_address,
+                company_registration_number,
+                company_vat_number,
+                company_archived,
+                user_name,
+                user_phone,
+                user_email,
+              })
+            );
           res.status(200).json(filteredCompanies);
         }
       })
@@ -44,9 +76,37 @@ exports.getAllCompanies = (req, res, next) => {
       .then((companies) => {
         console.log("all companies: ", companies.rows);
         if (companies.rows) {
-          const filteredCompanies = companies.rows.filter(
-            (company) => company.company_archived === false
-          );
+          const filteredCompanies = companies.rows
+            .filter((company) => company.company_archived === false)
+            .map(
+              ({
+                company_id,
+                company_category,
+                company_name,
+                company_address,
+                company_location,
+                company_phone,
+                company_headquarters,
+                company_billing_address,
+                company_registration_number,
+                company_vat_number,
+                company_archived,
+                user_name,
+              }) => ({
+                company_id,
+                company_category,
+                company_name,
+                company_address,
+                company_location,
+                company_phone,
+                company_headquarters,
+                company_billing_address,
+                company_registration_number,
+                company_vat_number,
+                company_archived,
+                user_name,
+              })
+            );
           res.status(200).json(filteredCompanies);
         }
       })

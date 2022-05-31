@@ -30,6 +30,8 @@ exports.getAllByUserId = (companyUserId) => {
   const selectQuery = `
   SELECT * 
   FROM companies 
+  JOIN users 
+  ON users.user_id = companies.company_user_id
   WHERE company_user_id = $1`;
   return pool.query(selectQuery, [companyUserId]);
 };

@@ -19,7 +19,7 @@ routes.put("/archiving/:id", adminOnly, (req, res, next) => {
   return userController.archivingById(req, res, next);
 });
 
-routes.put("/edit/:id", adminOnly, (req, res, next) => {
+routes.put("/edit/:id", (req, res, next) => {
   return userController.userUpdate(req, res, next);
 });
 

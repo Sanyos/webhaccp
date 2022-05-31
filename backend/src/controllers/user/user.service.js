@@ -26,7 +26,7 @@ exports.getAll = () => {
 };
 
 exports.getById = (id) => {
-  const selectQuery = `
+  const selectQuery = ` 
   SELECT * 
   FROM users 
   WHERE user_id = $1`;
@@ -42,13 +42,12 @@ exports.updateById = (id, user) => {
     id,
     user.user_name,
     user.user_password,
-    user.user_email,
     user.user_phone,
     user.user_archived,
   ];
   const sqlQuery = `
   UPDATE users
-  SET user_name = $2, user_password = $3, user_email = $4, user_phone = $5, user_archived = $6
+  SET user_name = $2, user_password = $3, user_phone = $4, user_archived = $5
   WHERE user_id = $1
   RETURNING *;`;
   return pool.query(sqlQuery, values);

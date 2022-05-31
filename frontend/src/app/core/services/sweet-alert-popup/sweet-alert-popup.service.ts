@@ -23,4 +23,13 @@ export class SweetAlertPopupService {
       },
     });
   }
+
+  openSuccessPopup(title: string, text?: string) {
+    return Swal.fire({
+      title: title,
+      text: text,
+      icon: 'success',
+      confirmButtonColor: '#0097a7',
+    });
+  }
 }

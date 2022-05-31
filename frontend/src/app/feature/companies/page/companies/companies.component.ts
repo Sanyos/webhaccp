@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
-import { CompanyResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyResponseModel,
+  CompanyWithUserResponseModel,
+} from 'src/app/core/model/company.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
-import Swal from 'sweetalert2';
 import { CompaniesTableComponent } from '../../component/companies-table/companies-table.component';
 
 @Component({
@@ -50,7 +52,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .getList(`all/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: CompanyResponseModel[]) => {
+        (res: CompanyWithUserResponseModel[]) => {
           console.log('get companies: ', res);
           this.tableData = res;
         },
@@ -82,12 +84,10 @@ export class CompaniesComponent implements OnInit, OnDestroy {
               console.log('company archived: ', res);
               if (res) {
                 this.getCompanies();
-                Swal.fire({
-                  title: 'Sikeres törlés',
-                  text: 'Üzleted törölve lett!',
-                  icon: 'success',
-                  confirmButtonColor: '#0097a7',
-                });
+                this.sweetAlertPopupService.openSuccessPopup(
+                  'Sikeres törlés',
+                  'Üzleted törölve lett!'
+                );
               }
             });
         }

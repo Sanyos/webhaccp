@@ -36,10 +36,12 @@ export class LoginFormComponent implements OnInit {
     console.log(userObject);
     this.userApiService.login(userObject).subscribe(
       (res) => {
-        console.log(res);
-        res.user_role === 'ADMIN'
-          ? this.router.navigate(['/admin'])
-          : this.router.navigate(['/companies']);
+        if (res) {
+          console.log(res);
+          res.user_role === 'ADMIN'
+            ? this.router.navigate(['/admin'])
+            : this.router.navigate(['/companies']);
+        }
       },
       (err) => {
         console.log(err);

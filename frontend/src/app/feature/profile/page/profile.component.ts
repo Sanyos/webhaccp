@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserResponseModel } from 'src/app/core/model/user.model';
-import Swal from 'sweetalert2';
-
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -18,7 +18,11 @@ export class ProfileComponent implements OnInit {
   emailIsAlreadyTaken: boolean = false;
   userId: any = localStorage.getItem('id');
   unsubscribe = new Subject<void>();
-  constructor(private readonly userApiService: UserApiService) {}
+  constructor(
+    private readonly userApiService: UserApiService,
+    private readonly sweetAlertPopupService: SweetAlertPopupService,
+    private readonly router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -65,20 +69,17 @@ export class ProfileComponent implements OnInit {
             this.userApiService.userSubject$.next(res);
             this.passwordIsWrong = false;
             this.emailIsAlreadyTaken = false;
-            this.getUserData();
 
-            Swal.fire({
-              title: 'Felhasználói adatok sikeresen módosítva!',
-              icon: 'success',
-              confirmButtonColor: '#0097a7',
-            });
+            this.sweetAlertPopupService
+              .openSuccessPopup('Felhasználói adatok sikeresen módosítva!')
+              .then(() => this.router.navigate(['/companies']));
           },
           (err) => {
             console.log(err.error.text);
             if (err.error.text === 'passwordIsWrong') {
               this.passwordIsWrong = true;
               this.emailIsAlreadyTaken = false;
-            } else if (err.error.text === 'emailIsAlreadyTaken') {
+            } else if (err) {
               this.emailIsAlreadyTaken = true;
               this.passwordIsWrong = false;
             }

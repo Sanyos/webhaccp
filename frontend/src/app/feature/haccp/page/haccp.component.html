@@ -9,6 +9,7 @@
       <mat-step>
         <app-haccp-form
           [coldStorageProductOptions]="coldStorageProductOptions"
+          [productPreparatoryOptions]="productPreparatoryOptions"
           (haccpFormEvent)="haccpFormEvent($event)"
         ></app-haccp-form>
         <button

@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ColdStorageProductEnum } from '../../../../core/model/haccp.model';
+import {
+  ColdStorageProductEnum,
+  ProductPreparatoryEnum,
+} from '../../../../core/model/haccp.model';
 
 @Component({
   selector: 'app-haccp-form',
@@ -9,6 +12,7 @@ import { ColdStorageProductEnum } from '../../../../core/model/haccp.model';
 })
 export class HaccpFormComponent implements OnInit {
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
+  @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
   constructor() {

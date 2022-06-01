@@ -57,5 +57,39 @@
         Mező kitöltése kötelező
       </mat-error>
     </mat-form-field>
+
+    <label class="radio-button-label"
+      >Történik melegen tartás ételkészítés után?</label
+    >
+    <mat-radio-group
+      formControlName="haccp_require_keeping_warm"
+      class="radio-group"
+    >
+      <mat-radio-button class="radio-button" value="true"
+        >Igen, +63Co</mat-radio-button
+      >
+      <mat-radio-button class="radio-button" value="false"
+        >Nem</mat-radio-button
+      >
+    </mat-radio-group>
+
+    <mat-form-field>
+      <mat-label>Milyen előkészítők vannak?</mat-label>
+      <mat-select formControlName="haccp_preparatory" multiple>
+        <mat-option
+          *ngFor="let option of productPreparatoryOptions | keyvalue"
+          [value]="option.key"
+          >{{ option.value }}</mat-option
+        >
+      </mat-select>
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_preparatory'].dirty ||
+          haccpForm.controls['haccp_preparatory'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
   </form>
 </div>

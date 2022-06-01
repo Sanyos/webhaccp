@@ -1,4 +1,4 @@
-const productEnums = {
+const enums = {
   CompanyCategoryTypes: {
     RESTAURANT: "Étterem",
     BUFFET: "Büfé",
@@ -12,4 +12,4 @@ const productEnums = {
   },
 };
 
-module.exports = Object.freeze(productEnums);
+module.exports = Object.freeze(enums);

@@ -67,10 +67,14 @@
     </mat-radio-group>
 
     <mat-form-field
-      *ngIf="haccpForm.controls['haccp_existing_haccp_date'].value === 'true'"
+      *ngIf="haccpForm.controls['haccp_have_haccp'].value === 'true'"
     >
       <mat-label>Mikori?</mat-label>
-      <input matInput [matDatepicker]="picker" />
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_existing_haccp_date"
+      />
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>

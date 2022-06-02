@@ -27,7 +27,9 @@
         </button>
       </mat-step>
       <mat-step>
-        <app-haccp-form-second></app-haccp-form-second>
+        <app-haccp-form-second
+          (haccpFormEvent)="secondHaccpFormEvent($event)"
+        ></app-haccp-form-second>
         <div class="button-holder" mat-dialog-actions>
           <button
             mat-button
@@ -59,6 +61,7 @@
           [pestControlOptions]="pestControlOptions"
           [dishToWashOptions]="dishToWashOptions"
           [dishwasherOptions]="dishwasherOptions"
+          (haccpFormEvent)="thirdHaccpFormEvent($event)"
         >
         </app-haccp-form-third>
         <div class="button-holder" mat-dialog-actions>

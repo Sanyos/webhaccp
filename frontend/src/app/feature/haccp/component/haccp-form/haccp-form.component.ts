@@ -3,17 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ColdStorageProductEnum,
   DeliveryMethodEnum,
-  DishToWashEnum,
-  DishwasherEnum,
   EggEnum,
-  EntranceEnum,
-  FoodWasteTransportEnum,
-  PestControlEnum,
   ProductPreparatoryEnum,
   RefigratorEnum,
-  SewageDrainEnum,
   StorageEnum,
-  WaterSupplyEnum,
 } from '../../../../core/model/haccp.model';
 
 @Component({
@@ -28,14 +21,16 @@ export class HaccpFormComponent implements OnInit {
   @Input() deliveryMethodOptions: DeliveryMethodEnum;
   @Input() storageOptions: StorageEnum;
   @Input() refigratorOptions: RefigratorEnum;
-
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
+
   constructor() {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.haccpFormEvent.emit(this.haccpForm);
+  }
 
   createForm(): void {
     this.haccpForm = new FormGroup({

@@ -29,7 +29,9 @@ export class HaccpFormThirdComponent implements OnInit {
     this.createForm();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.haccpFormEvent.emit(this.haccpForm);
+  }
 
   createForm(): void {
     this.haccpForm = new FormGroup({

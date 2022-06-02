@@ -30,6 +30,8 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 export class HaccpComponent implements OnInit, OnDestroy {
   unsubscribe = new Subject<void>();
   haccpForm: FormGroup;
+  secondHaccpForm: FormGroup;
+  thirdHaccpForm: FormGroup;
   coldStorageProductOptions: ColdStorageProductEnum;
   productPreparatoryOptions: ProductPreparatoryEnum;
   sewageDrainOptions: SewageDrainEnum;
@@ -83,7 +85,20 @@ export class HaccpComponent implements OnInit, OnDestroy {
     this.haccpForm = form;
   }
 
-  onSave() {
+  secondHaccpFormEvent(form: FormGroup): void {
+    this.secondHaccpForm = form;
+  }
+
+  thirdHaccpFormEvent(form: FormGroup): void {
+    this.thirdHaccpForm = form;
+  }
+
+  onSave(): void {
+    console.log(
+      this.haccpForm.value,
+      this.secondHaccpForm.value,
+      this.thirdHaccpForm.value
+    );
     // TODO FIZETÉS
   }
 

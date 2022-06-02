@@ -10,6 +10,10 @@
         <app-haccp-form
           [coldStorageProductOptions]="coldStorageProductOptions"
           [productPreparatoryOptions]="productPreparatoryOptions"
+          [eggOptions]="eggOptions"
+          [deliveryMethodOptions]="deliveryMethodOptions"
+          [refigratorOptions]="refigratorOptions"
+          [storageOptions]="storageOptions"
           (haccpFormEvent)="haccpFormEvent($event)"
         ></app-haccp-form>
         <button
@@ -23,6 +27,7 @@
         </button>
       </mat-step>
       <mat-step>
+        <app-haccp-form-second></app-haccp-form-second>
         <div class="button-holder" mat-dialog-actions>
           <button
             mat-button
@@ -46,6 +51,16 @@
         </div>
       </mat-step>
       <mat-step>
+        <app-haccp-form-third
+          [sewageDrainOptions]="sewageDrainOptions"
+          [waterSupplyOptions]="waterSupplyOptions"
+          [entranceOptions]="entranceOptions"
+          [foodWasteTransportOptions]="foodWasteTransportOptions"
+          [pestControlOptions]="pestControlOptions"
+          [dishToWashOptions]="dishToWashOptions"
+          [dishwasherOptions]="dishwasherOptions"
+        >
+        </app-haccp-form-third>
         <div class="button-holder" mat-dialog-actions>
           <button
             mat-button

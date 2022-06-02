@@ -31,6 +31,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
   unsubscribe = new Subject<void>();
   haccpForm: FormGroup;
   coldStorageProductOptions: ColdStorageProductEnum;
+  productPreparatoryOptions: ProductPreparatoryEnum;
   sewageDrainOptions: SewageDrainEnum;
   waterSupplyOptions: WaterSupplyEnum;
   entranceOptions: EntranceEnum;
@@ -41,7 +42,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
   eggOptions: EggEnum;
   deliveryMethodOptions: DeliveryMethodEnum;
   refigratorOptions: RefigratorEnum;
-  productPreparatoryOptions: ProductPreparatoryEnum;
   storageOptions: StorageEnum;
   constructor(
     private readonly sweetAlertPopupService: SweetAlertPopupService,

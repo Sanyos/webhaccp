@@ -8,7 +8,8 @@ export interface HaccpModel {
   haccp_preparatory: ProductPreparatoryEnum | string;
   haccp_storages: StorageEnum;
   haccp_refrigerator: RefigratorEnum;
-  haccp_delivery: DeliveryMethodEnum;
+  haccp_delivery: boolean;
+  haccp_delivery_method: DeliveryMethodEnum;
   haccp_dressing_room: boolean;
   haccp_cold_products: boolean;
   haccp_egg: EggEnum;
@@ -34,6 +35,7 @@ export interface HaccpModel {
   haccp_place_of_receipt: boolean;
   haccp_water_supply: WaterSupplyEnum;
   haccp_sewage_drain: SewageDrainEnum;
+  haccp_date: string;
 }
 
 export enum SewageDrainEnum {

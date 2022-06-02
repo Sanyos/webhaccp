@@ -30,6 +30,8 @@ import { HaccpComponent } from './feature/haccp/page/haccp.component';
 import { AllCompaniesTableComponent } from './feature/admin/component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from './feature/admin/component/all-documents-table/all-documents-table.component';
 import { HaccpFormComponent } from './feature/haccp/component/haccp-form/haccp-form.component';
+import { HaccpFormSecondComponent } from './feature/haccp/component/haccp-form-second/haccp-form-second.component';
+import { HaccpFormThirdComponent } from './feature/haccp/component/haccp-form-third/haccp-form-third.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { HaccpFormComponent } from './feature/haccp/component/haccp-form/haccp-f
     AllCompaniesTableComponent,
     AllDocumentsTableComponent,
     HaccpFormComponent,
+    HaccpFormSecondComponent,
+    HaccpFormThirdComponent,
   ],
   imports: [
     BrowserModule,

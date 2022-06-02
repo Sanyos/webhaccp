@@ -1,0 +1,108 @@
+<div>
+  <form [formGroup]="haccpForm">
+    <h3>Vegyszerek listája utasításhoz</h3>
+    <mat-form-field>
+      <mat-label>Üveg tisztító</mat-label>
+      <input formControlName="haccp_glass_cleaner" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_glass_cleaner'].dirty ||
+          haccpForm.controls['haccp_glass_cleaner'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Felületi fertőtlenítő</mat-label>
+      <input formControlName="haccp_surface_disinfectant" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_surface_disinfectant'].dirty ||
+          haccpForm.controls['haccp_surface_disinfectant'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Egyéb</mat-label>
+      <input formControlName="haccp_other_chemical" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_other_chemical'].dirty ||
+          haccpForm.controls['haccp_other_chemical'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Kézfertőtlenítő</mat-label>
+      <input formControlName="haccp_hand_disinfectant" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_hand_disinfectant'].dirty ||
+          haccpForm.controls['haccp_hand_disinfectant'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>2 fázisú mosogatószer</mat-label>
+      <input formControlName="haccp_2phase_dishwashing_detergent" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_2phase_dishwashing_detergent'].dirty ||
+          haccpForm.controls['haccp_2phase_dishwashing_detergent'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Általános fertőtlenítő (padozat)</mat-label>
+      <input formControlName="haccp_general_disinfectant" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_general_disinfectant'].dirty ||
+          haccpForm.controls['haccp_general_disinfectant'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Vízkőoldó</mat-label>
+      <input formControlName="haccp_scale_remover" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_scale_remover'].dirty ||
+          haccpForm.controls['haccp_scale_remover'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Zsíroldó</mat-label>
+      <input formControlName="haccp_degreaser" matInput />
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_degreaser'].dirty ||
+          haccpForm.controls['haccp_degreaser'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+  </form>
+</div>

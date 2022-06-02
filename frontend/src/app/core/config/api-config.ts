@@ -1,8 +1,6 @@
 export const apiConfig = {
   user: {
     default: 'user',
-    edit: 'user/edit',
-    archive: 'user/archive',
     register: '/user/register',
     login: '/login',
   },
@@ -11,6 +9,7 @@ export const apiConfig = {
   },
   document: {
     default: 'document',
+    download: 'document/download',
   },
   enums: {
     default: 'enums',

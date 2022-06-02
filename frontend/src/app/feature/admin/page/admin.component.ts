@@ -8,13 +8,9 @@ import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
-import {
-  DocumentResponseModel,
-  DocumentWithUserResponseModel,
-} from 'src/app/core/model/document.model';
+import { DocumentWithUserResponseModel } from 'src/app/core/model/document.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
-import Swal from 'sweetalert2';
 import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
 import { UsersTableComponent } from '../component/users-table/users-table.component';

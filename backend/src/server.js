@@ -5,6 +5,7 @@ const path = require("path");
 const staticUrl = path.join(__dirname, "..", "public", "angular");
 const enums = require("./enums/enums");
 const authHandler = require("./auth/authHandler");
+global.__basedir = __dirname;
 
 app.use(express.json());
 

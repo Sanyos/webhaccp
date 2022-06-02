@@ -42,11 +42,19 @@ exports.getAllDocuments = (req, res, next) => {
         if (documents) {
           console.log("all documents: ", documents.rows);
           let docs = documents.rows;
-          docs.map(({ document_name, document_date, document_user_id }) => ({
-            document_name,
-            document_date,
-            document_user_id,
-          }));
+          docs.map(
+            ({
+              document_name,
+              document_date,
+              document_user_id,
+              document_id,
+            }) => ({
+              document_name,
+              document_date,
+              document_user_id,
+              document_id,
+            })
+          );
           res.status(200).json(docs);
         }
       })
@@ -59,7 +67,6 @@ exports.getAllDocuments = (req, res, next) => {
 };
 
 exports.getDocumentById = (req, res, next) => {
-  const companyId = req.params.companyId;
   const documentId = req.params.documentId;
   return documentService
     .getById(documentId)
@@ -74,4 +81,16 @@ exports.getDocumentById = (req, res, next) => {
         )
       );
     });
+};
+
+exports.download = (req, res, next) => {
+  const fileName = req.params.name;
+  const directoryPath = __basedir + "/files/";
+  res.download(directoryPath + fileName, fileName, (err) => {
+    if (err) {
+      res.status(500).send({
+        message: "Could not download the file. " + err,
+      });
+    }
+  });
 };

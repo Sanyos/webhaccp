@@ -3,6 +3,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 
 @Component({
@@ -20,7 +21,7 @@ export class DocumentsTableComponent implements OnInit {
   @Input() headerTexts: string[];
   @Input() tableData: DocumentResponseModel[] = [];
 
-  constructor() {
+  constructor(private readonly documentApiService: DocumentApiService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -31,6 +32,23 @@ export class DocumentsTableComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  downloadFile(name: string) {
+    const fullName = name + '.pdf';
+    this.documentApiService.downloadFile(fullName).subscribe(
+      (res: any) => {
+        let blob: any = new Blob([res], { type: 'application/pdf' });
+        let pdfUrl = window.URL.createObjectURL(blob);
+        var PDF_link = document.createElement('a');
+        PDF_link.href = pdfUrl;
+        PDF_link.download = fullName;
+        PDF_link.click();
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   applyFilter(event: Event): void {

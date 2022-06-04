@@ -25,13 +25,26 @@
           </td>
         </ng-container>
 
-        <!--   Download -->
-        <ng-container matColumnDef="download">
-          <th mat-header-cell *matHeaderCellDef>LETÖLTÉS</th>
+        <!-- HACCP Download -->
+        <ng-container matColumnDef="haccp-download">
+          <th mat-header-cell *matHeaderCellDef>HACCP LETÖLTÉS</th>
           <td mat-cell *matCellDef="let element">
             <button
               mat-icon-button
-              (click)="downloadFile(element.document_name)"
+              (click)="downloadHaccp(element.document_name)"
+            >
+              <mat-icon>download</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--  Tanusítvány letöltés  -->
+        <ng-container matColumnDef="certificate-download">
+          <th mat-header-cell *matHeaderCellDef>TANUSÍTVÁNY LETÖLTÉS</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-icon-button
+              (click)="downloadCertificate(element.document_name)"
             >
               <mat-icon>download</mat-icon>
             </button>

@@ -32,6 +32,9 @@ import { AllDocumentsTableComponent } from './feature/admin/component/all-docume
 import { HaccpFormComponent } from './feature/haccp/component/haccp-form/haccp-form.component';
 import { HaccpFormSecondComponent } from './feature/haccp/component/haccp-form-second/haccp-form-second.component';
 import { HaccpFormThirdComponent } from './feature/haccp/component/haccp-form-third/haccp-form-third.component';
+import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
+import { DocumentCardsComponent } from './feature/companies/component/document-cards/document-cards.component';
+import { HaccpCategoryFormComponent } from './feature/haccp/component/haccp-category-form/haccp-category-form.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +64,9 @@ import { HaccpFormThirdComponent } from './feature/haccp/component/haccp-form-th
     HaccpFormComponent,
     HaccpFormSecondComponent,
     HaccpFormThirdComponent,
+    HaccpCertificateComponent,
+    DocumentCardsComponent,
+    HaccpCategoryFormComponent,
   ],
   imports: [
     BrowserModule,

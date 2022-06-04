@@ -1,32 +1,6 @@
 <div>
   <form [formGroup]="haccpForm">
     <mat-form-field>
-      <mat-label>Egység elnevezése</mat-label>
-      <input formControlName="haccp_unit_name" matInput />
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_unit_name'].dirty ||
-          haccpForm.controls['haccp_unit_name'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Telephely címe</mat-label>
-      <input formControlName="haccp_company_location" matInput />
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_company_location'].dirty ||
-          haccpForm.controls['haccp_company_location'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
       <mat-label>Milyen kínálattal rendelkezik?</mat-label>
       <input formControlName="haccp_supply" matInput />
       <mat-error

@@ -107,17 +107,15 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         route: '/haccp/',
       },
       {
-        label: 'Tanúsítvány készítés',
+        label: 'Tanusítvány készítés',
         icon: 'verified',
         route: '/company/certificate/',
       },
       {
-        label: 'Dokumentum lista',
+        label: 'Letölthető dokumentumok',
         icon: 'source',
         route: '/company/documents/',
       },
-      { label: 'Ellenőrző lapjaim', icon: 'fact_check', route: '' },
-      { label: 'Oktatási segédlet', icon: 'info', route: '' },
     ];
   }
 

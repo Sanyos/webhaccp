@@ -34,8 +34,6 @@ export class HaccpFormComponent implements OnInit {
 
   createForm(): void {
     this.haccpForm = new FormGroup({
-      haccp_unit_name: new FormControl('', Validators.required),
-      haccp_company_location: new FormControl('', Validators.required),
       haccp_supply: new FormControl('', Validators.required),
       haccp_products_require_cold_storage: new FormControl(
         '',

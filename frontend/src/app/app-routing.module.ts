@@ -7,6 +7,7 @@ import { LoginComponent } from './feature/auth/login/login.component';
 import { CompaniesComponent } from './feature/companies/page/companies/companies.component';
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
+import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
 import { HaccpComponent } from './feature/haccp/page/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
@@ -43,6 +44,11 @@ const routes: Routes = [
   {
     path: 'company/documents/:id',
     component: DocumentListComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'company/certificate/:id',
+    component: HaccpCertificateComponent,
     canActivate: [AuthGuardService],
   },
   {

@@ -1,9 +1,15 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 
 @Component({
@@ -20,8 +26,9 @@ export class DocumentsTableComponent implements OnInit {
   @Input() columns: string[];
   @Input() headerTexts: string[];
   @Input() tableData: DocumentResponseModel[] = [];
+  @Output() downloadEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly documentApiService: DocumentApiService) {
+  constructor() {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -34,21 +41,10 @@ export class DocumentsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  downloadFile(name: string) {
-    const fullName = name + '.pdf';
-    this.documentApiService.downloadFile(fullName).subscribe(
-      (res: any) => {
-        let blob: any = new Blob([res], { type: 'application/pdf' });
-        let pdfUrl = window.URL.createObjectURL(blob);
-        var PDF_link = document.createElement('a');
-        PDF_link.href = pdfUrl;
-        PDF_link.download = fullName;
-        PDF_link.click();
-      },
-      (err: any) => {
-        console.log(err);
-      }
-    );
+  downloadCertificate(name: string) {}
+
+  downloadHaccp(name: string) {
+    this.downloadEvent.emit(name);
   }
 
   applyFilter(event: Event): void {

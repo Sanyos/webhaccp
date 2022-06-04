@@ -1,0 +1,12 @@
+<div class="cards-container">
+  <div class="flex">
+    <div
+      class="card"
+      *ngFor="let document of documents"
+      (click)="downloadDocument(document.document_name)"
+    >
+      <mat-icon>source</mat-icon>
+      <h3>{{ document.document_name }}</h3>
+    </div>
+  </div>
+</div>

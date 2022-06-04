@@ -1,9 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Form, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { pluck, takeUntil } from 'rxjs/operators';
+import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
+import {
+  CompanyResponseModel,
+  CompanyWithUserResponseModel,
+} from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
 import {
   ColdStorageProductEnum,
@@ -28,10 +34,16 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
   styleUrls: ['./haccp.component.scss'],
 })
 export class HaccpComponent implements OnInit, OnDestroy {
+  companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
+  companyData: CompanyResponseModel;
+
   unsubscribe = new Subject<void>();
+
+  haccpCategoryForm: FormGroup;
   haccpForm: FormGroup;
   secondHaccpForm: FormGroup;
   thirdHaccpForm: FormGroup;
+
   coldStorageProductOptions: ColdStorageProductEnum;
   productPreparatoryOptions: ProductPreparatoryEnum;
   sewageDrainOptions: SewageDrainEnum;
@@ -45,19 +57,49 @@ export class HaccpComponent implements OnInit, OnDestroy {
   deliveryMethodOptions: DeliveryMethodEnum;
   refigratorOptions: RefigratorEnum;
   storageOptions: StorageEnum;
+  companyCategoryOptions: CompanyCategoryTypes;
   constructor(
     private readonly sweetAlertPopupService: SweetAlertPopupService,
     private readonly router: Router,
-    private readonly enumsApiService: EnumsApiService
+    private readonly enumsApiService: EnumsApiService,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly companyApiService: CompanyApiService
   ) {}
 
   ngOnInit(): void {
     this.getEnums();
+    this.getCompanyData();
   }
 
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  getCompanyData() {
+    this.companyIdParam$.pipe(takeUntil(this.unsubscribe)).subscribe((id) => {
+      if (id) {
+        this.companyApiService
+          .getSingleItem(id)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((res: CompanyWithUserResponseModel) => {
+            console.log('company data: ', res);
+            this.companyData = res;
+            this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
+              this.companyData.company_name
+            );
+            this.haccpCategoryForm.controls['haccp_unit_name'].disable();
+            this.haccpCategoryForm.controls['haccp_company_location'].setValue(
+              this.companyData.company_location
+            );
+            this.haccpCategoryForm.controls['haccp_company_location'].disable();
+            this.haccpCategoryForm.controls['haccp_company_category'].setValue(
+              this.companyData.company_category
+            );
+            this.haccpCategoryForm.controls['haccp_company_category'].disable();
+          });
+      }
+    });
   }
 
   getEnums(): void {
@@ -78,7 +120,12 @@ export class HaccpComponent implements OnInit, OnDestroy {
         this.refigratorOptions = res.RefigratorEnum;
         this.productPreparatoryOptions = res.ProductPreparatoryEnum;
         this.storageOptions = res.StorageEnum;
+        this.companyCategoryOptions = res.CompanyCategoryTypes;
       });
+  }
+
+  haccpCategoryFormEvent(form: FormGroup) {
+    this.haccpCategoryForm = form;
   }
 
   haccpFormEvent(form: FormGroup): void {

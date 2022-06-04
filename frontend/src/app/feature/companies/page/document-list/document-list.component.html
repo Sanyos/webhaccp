@@ -4,14 +4,12 @@
     Vissza az üzleteimhez
   </button>
 
-  <h1>{{ companyName$ | async }} dokumentumok</h1>
+  <h1>{{ companyName$ | async }} letölthető dokumentumok</h1>
 
-  <div class="table-holder">
-    <app-documents-table
-      [headerTexts]="headerTexts"
-      [columns]="columns"
-      [displayedColumns]="displayedColumns"
-      [tableData]="tableData"
-    ></app-documents-table>
+  <div class="cards-holder">
+    <app-document-cards
+      [documents]="documents"
+      (downloadEvent)="downloadDocument($event)"
+    ></app-document-cards>
   </div>
 </div>

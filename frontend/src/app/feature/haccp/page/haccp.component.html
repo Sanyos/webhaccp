@@ -6,6 +6,21 @@
     <h2>Adatbekérő lap kitöltése</h2>
 
     <mat-horizontal-stepper [linear]="true">
+      <mat-step [stepControl]="haccpCategoryForm">
+        <app-haccp-category-form
+          [companyCategoryOptions]="companyCategoryOptions"
+          (haccpCategoryFormEvent)="haccpCategoryFormEvent($event)"
+        ></app-haccp-category-form>
+        <button
+          mat-button
+          color="primary"
+          id="primary-btn"
+          matStepperNext
+          mat-raised-button
+        >
+          Tovább
+        </button>
+      </mat-step>
       <mat-step>
         <app-haccp-form
           [coldStorageProductOptions]="coldStorageProductOptions"
@@ -16,15 +31,27 @@
           [storageOptions]="storageOptions"
           (haccpFormEvent)="haccpFormEvent($event)"
         ></app-haccp-form>
-        <button
-          mat-button
-          color="primary"
-          id="primary-btn"
-          matStepperNext
-          mat-raised-button
-        >
-          Tovább
-        </button>
+        <div class="button-holder" mat-dialog-actions>
+          <button
+            mat-button
+            color="primary"
+            id="primary-btn"
+            matStepperNext
+            mat-raised-button
+          >
+            Tovább
+          </button>
+          <button
+            mat-button
+            color="primary"
+            id="secondary-btn"
+            color="accent"
+            matStepperPrevious
+            mat-raised-button
+          >
+            Vissza
+          </button>
+        </div>
       </mat-step>
       <mat-step>
         <app-haccp-form-second

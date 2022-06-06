@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   passwordIsWrong: boolean = false;
   emailIsAlreadyTaken: boolean = false;
-  userId: any = localStorage.getItem('id');
+  userId: any = this.userApiService.userId;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly userApiService: UserApiService,

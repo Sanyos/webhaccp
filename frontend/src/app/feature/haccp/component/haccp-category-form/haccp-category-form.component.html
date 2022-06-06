@@ -2,7 +2,7 @@
   <form [formGroup]="haccpForm">
     <mat-form-field>
       <mat-label>Egység elnevezése</mat-label>
-      <input formControlName="haccp_unit_name" matInput />
+      <input formControlName="haccp_unit_name" matInput [readonly]="readonly" />
       <mat-error
         *ngIf="
           haccpForm.controls['haccp_unit_name'].dirty ||
@@ -15,7 +15,11 @@
 
     <mat-form-field>
       <mat-label>Telephely címe</mat-label>
-      <input formControlName="haccp_company_location" matInput />
+      <input
+        formControlName="haccp_company_location"
+        matInput
+        [readonly]="readonly"
+      />
       <mat-error
         *ngIf="
           haccpForm.controls['haccp_company_location'].dirty ||

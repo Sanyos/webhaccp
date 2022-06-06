@@ -11,6 +11,9 @@ export const apiConfig = {
     default: 'document',
     download: 'document/download',
   },
+  haccp: {
+    default: 'haccp',
+  },
   enums: {
     default: 'enums',
   },

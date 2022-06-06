@@ -9,7 +9,7 @@ export interface HaccpModel {
   haccp_storages: StorageEnum;
   haccp_refrigerator: RefigratorEnum;
   haccp_delivery: boolean;
-  haccp_delivery_method: DeliveryMethodEnum;
+  haccp_delivery_method?: DeliveryMethodEnum;
   haccp_dressing_room: boolean;
   haccp_cold_products: boolean;
   haccp_egg: EggEnum;
@@ -35,6 +35,9 @@ export interface HaccpModel {
   haccp_place_of_receipt: boolean;
   haccp_water_supply: WaterSupplyEnum;
   haccp_sewage_drain: SewageDrainEnum;
+  haccp_date: string;
+  haccp_user_id: number;
+  haccp_company_id: number;
 }
 
 const enum SewageDrainEnum {

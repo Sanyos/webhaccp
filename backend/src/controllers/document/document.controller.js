@@ -2,20 +2,9 @@ const documentService = require("./document.service");
 const createError = require("http-errors");
 
 exports.createNewDocument = (req, res, next) => {
-  if (Object.keys(req.body).length === 0) {
-    return next(new createError.BadRequest("Invalid req body"));
-  }
+  console.log("company for new doc: ", req.body);
   const newDocument = {};
-  return documentService
-    .create(newDocument)
-    .then((document) => {
-      res.status(201).json(document.rows);
-    })
-    .catch((err) => {
-      return next(
-        new createError[500](`Could not saved document Error: ${err}`)
-      );
-    });
+  // doksi generálás - letöltés - file törlése
 };
 
 exports.getAllDocuments = (req, res, next) => {

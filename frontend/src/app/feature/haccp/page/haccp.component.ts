@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Form, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
@@ -19,6 +19,7 @@ import {
   EggEnum,
   EntranceEnum,
   FoodWasteTransportEnum,
+  HaccpModel,
   PestControlEnum,
   ProductPreparatoryEnum,
   RefigratorEnum,
@@ -27,7 +28,9 @@ import {
   WaterSupplyEnum,
 } from 'src/app/core/model/haccp.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
-
+import { ChangeDetectorRef } from '@angular/core';
+import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -35,8 +38,8 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 })
 export class HaccpComponent implements OnInit, OnDestroy {
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
-  companyData: CompanyResponseModel;
-
+  companyData: CompanyWithUserResponseModel;
+  readonly: boolean = false;
   unsubscribe = new Subject<void>();
 
   haccpCategoryForm: FormGroup;
@@ -63,12 +66,16 @@ export class HaccpComponent implements OnInit, OnDestroy {
     private readonly router: Router,
     private readonly enumsApiService: EnumsApiService,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly companyApiService: CompanyApiService
-  ) {}
+    private readonly companyApiService: CompanyApiService,
+    private cdref: ChangeDetectorRef,
+    private readonly HaccpApiService: HaccpApiService,
+    private readonly userApiService: UserApiService
+  ) {
+    this.getCompanyData();
+  }
 
   ngOnInit(): void {
     this.getEnums();
-    this.getCompanyData();
   }
 
   ngOnDestroy() {
@@ -85,18 +92,23 @@ export class HaccpComponent implements OnInit, OnDestroy {
           .subscribe((res: CompanyWithUserResponseModel) => {
             console.log('company data: ', res);
             this.companyData = res;
+            this.readonly = true;
             this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
               this.companyData.company_name
             );
-            this.haccpCategoryForm.controls['haccp_unit_name'].disable();
             this.haccpCategoryForm.controls['haccp_company_location'].setValue(
               this.companyData.company_location
             );
-            this.haccpCategoryForm.controls['haccp_company_location'].disable();
+            this.haccpCategoryForm.controls['haccp_company_category'].disable();
             this.haccpCategoryForm.controls['haccp_company_category'].setValue(
               this.companyData.company_category
             );
-            this.haccpCategoryForm.controls['haccp_company_category'].disable();
+            this.haccpCategoryForm.controls['haccp_company_id'].setValue(
+              this.companyData.company_id
+            );
+            this.haccpCategoryForm.controls['haccp_user_id'].setValue(
+              this.userApiService.userId ? +this.userApiService.userId : null
+            );
           });
       }
     });
@@ -126,6 +138,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   haccpCategoryFormEvent(form: FormGroup) {
     this.haccpCategoryForm = form;
+    this.cdref.detectChanges();
   }
 
   haccpFormEvent(form: FormGroup): void {
@@ -141,12 +154,23 @@ export class HaccpComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
-    console.log(
+    const arr = [
+      this.haccpCategoryForm.value,
       this.haccpForm.value,
       this.secondHaccpForm.value,
-      this.thirdHaccpForm.value
-    );
+      this.thirdHaccpForm.value,
+    ];
     // TODO FIZETÉS
+    const haccp: HaccpModel = Object.assign({}, ...arr);
+    console.log(haccp);
+    this.HaccpApiService.create(haccp).subscribe((res: HaccpModel) => {
+      console.log(res);
+      const title = 'HACCP adatbekérő sikeresen kitöltve';
+      const text = 'Tovább a fizetéshez';
+      this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
+        this.router.navigate(['/home']);
+      });
+    });
   }
 
   onCancel() {

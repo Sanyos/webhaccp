@@ -26,6 +26,7 @@ app.post("/login", authHandler.login);
 app.use("/user", require("./controllers/user/user.routes"));
 app.use("/company", require("./controllers/company/company.routes"));
 app.use("/document", require("./controllers/document/document.routes"));
+app.use("/haccp", require("./controllers/haccp/haccp.routes"));
 app.get("/enums", (req, res) => {
   res.send(enums);
 });

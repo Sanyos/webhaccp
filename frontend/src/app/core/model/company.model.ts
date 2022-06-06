@@ -40,4 +40,5 @@ export interface CompanyWithUserResponseModel {
   company_vat_number: string;
   company_archived: boolean;
   user_name: string;
+  company_user_id: number;
 }

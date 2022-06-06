@@ -176,5 +176,17 @@
         {{ option.value }}
       </mat-radio-button>
     </mat-radio-group>
+
+    <mat-form-field>
+      <mat-label>HACCP kiállítás dátuma</mat-label>
+      <input
+        readonly
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker disabled="true" #picker></mat-datepicker>
+    </mat-form-field>
   </form>
 </div>

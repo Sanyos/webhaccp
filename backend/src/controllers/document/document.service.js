@@ -1,7 +1,7 @@
 const createError = require("http-errors");
 const pool = require("../../db");
 
-exports.create = (document) => {
+/* exports.create = (document) => {
   if (!document) {
     return new createError.BadRequest("Something went wrong");
   }
@@ -18,7 +18,7 @@ exports.create = (document) => {
   VALUES ($1, $2, $3, $4)
   RETURNING *`;
   return pool.query(sqlString, values);
-};
+}; 
 
 exports.getAllByCompanyId = (companyId) => {
   const selectQuery = `
@@ -40,4 +40,4 @@ exports.getById = (id) => {
   FROM documents
   WHERE document_id = $1`;
   return pool.query(selectQuery, [id]);
-};
+}; */

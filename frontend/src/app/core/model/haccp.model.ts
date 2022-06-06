@@ -36,6 +36,8 @@ export interface HaccpModel {
   haccp_water_supply: WaterSupplyEnum;
   haccp_sewage_drain: SewageDrainEnum;
   haccp_date: string;
+  haccp_user_id: number;
+  haccp_company_id: number;
 }
 
 export enum SewageDrainEnum {
@@ -67,6 +69,7 @@ export enum DishToWashEnum {
   facotry = 'Üzemi',
   consumer = 'Fogyasztói',
   disposable = 'Eldobható',
+  no = 'Nincs kiszállítás',
 }
 
 export enum DishwasherEnum {

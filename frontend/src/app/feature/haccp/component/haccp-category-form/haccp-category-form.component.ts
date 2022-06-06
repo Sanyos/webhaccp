@@ -9,6 +9,7 @@ import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.en
 })
 export class HaccpCategoryFormComponent implements OnInit {
   @Input() companyCategoryOptions: CompanyCategoryTypes;
+  @Input() readonly: boolean = false;
   @Output() haccpCategoryFormEvent: EventEmitter<FormGroup> =
     new EventEmitter();
   haccpForm: FormGroup;
@@ -27,6 +28,8 @@ export class HaccpCategoryFormComponent implements OnInit {
       haccp_unit_name: new FormControl('', Validators.required),
       haccp_company_location: new FormControl('', Validators.required),
       haccp_company_category: new FormControl('', Validators.required),
+      haccp_company_id: new FormControl(null),
+      haccp_user_id: new FormControl(null),
     });
   }
 }

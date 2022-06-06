@@ -6,7 +6,7 @@
 
   <h1>{{ companyName$ | async }} letölthető dokumentumok</h1>
 
-  <div class="cards-holder">
+  <div class="cards-holder" *ngIf="company$ | async as company">
     <app-document-cards
       [documents]="documents"
       (downloadEvent)="downloadDocument($event)"

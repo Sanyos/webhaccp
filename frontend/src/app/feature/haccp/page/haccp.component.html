@@ -8,6 +8,7 @@
     <mat-horizontal-stepper [linear]="true">
       <mat-step [stepControl]="haccpCategoryForm">
         <app-haccp-category-form
+          [readonly]="readonly"
           [companyCategoryOptions]="companyCategoryOptions"
           (haccpCategoryFormEvent)="haccpCategoryFormEvent($event)"
         ></app-haccp-category-form>
@@ -21,7 +22,7 @@
           Tovább
         </button>
       </mat-step>
-      <mat-step>
+      <mat-step [stepControl]="haccpForm">
         <app-haccp-form
           [coldStorageProductOptions]="coldStorageProductOptions"
           [productPreparatoryOptions]="productPreparatoryOptions"
@@ -53,7 +54,7 @@
           </button>
         </div>
       </mat-step>
-      <mat-step>
+      <mat-step [stepControl]="secondHaccpForm">
         <app-haccp-form-second
           (haccpFormEvent)="secondHaccpFormEvent($event)"
         ></app-haccp-form-second>
@@ -79,7 +80,7 @@
           </button>
         </div>
       </mat-step>
-      <mat-step>
+      <mat-step [stepControl]="thirdHaccpForm">
         <app-haccp-form-third
           [sewageDrainOptions]="sewageDrainOptions"
           [waterSupplyOptions]="waterSupplyOptions"

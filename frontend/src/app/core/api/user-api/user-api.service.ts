@@ -108,6 +108,12 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     return jwt_decode(token);
   }
 
+  public get userId(): string | null {
+    if (localStorage.getItem('id')) {
+      return localStorage.getItem('id');
+    } else return null;
+  }
+
   resetLocalStorage(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');

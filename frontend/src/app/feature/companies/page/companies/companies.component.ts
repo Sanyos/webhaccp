@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
@@ -28,7 +29,8 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   constructor(
     private readonly router: Router,
     private readonly sweetAlertPopupService: SweetAlertPopupService,
-    private readonly companyApiService: CompanyApiService
+    private readonly companyApiService: CompanyApiService,
+    private readonly userApiService: UserApiService
   ) {}
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   }
 
   getUserId(): void {
-    this.userId = localStorage.getItem('id');
+    this.userId = this.userApiService.userId;
     this.getCompanies();
   }
 

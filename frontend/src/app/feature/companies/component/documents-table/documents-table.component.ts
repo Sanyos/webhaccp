@@ -10,7 +10,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 
 @Component({
   selector: 'app-documents-table',
@@ -25,7 +25,7 @@ export class DocumentsTableComponent implements OnInit {
   @Input() displayedColumns: string[];
   @Input() columns: string[];
   @Input() headerTexts: string[];
-  @Input() tableData: DocumentResponseModel[] = [];
+  @Input() tableData: HaccpModel[] = [];
   @Output() downloadEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {

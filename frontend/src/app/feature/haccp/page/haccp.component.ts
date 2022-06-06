@@ -162,11 +162,10 @@ export class HaccpComponent implements OnInit, OnDestroy {
     ];
     // TODO FIZETÉS
     const haccp: HaccpModel = Object.assign({}, ...arr);
-    console.log(haccp);
     this.HaccpApiService.create(haccp).subscribe((res: HaccpModel) => {
       console.log(res);
-      const title = 'HACCP adatbekérő sikeresen kitöltve';
-      const text = 'Tovább a fizetéshez';
+      const title = 'Tovább a fizetéshez';
+      const text = 'HACCP adatbekérő sikeresen kitöltve';
       this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
         this.router.navigate(['/home']);
       });

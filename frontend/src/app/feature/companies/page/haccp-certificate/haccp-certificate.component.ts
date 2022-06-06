@@ -11,8 +11,10 @@ import {
 } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
+import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { DocumentsTableComponent } from '../../component/documents-table/documents-table.component';
 
@@ -37,12 +39,12 @@ export class HaccpCertificateComponent implements OnInit {
   displayedColumns: string[];
   columns: string[];
   headerTexts: string[];
-  tableData: DocumentResponseModel[] = [];
+  tableData: HaccpModel[] = [];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly companyApiService: CompanyApiService,
-    private readonly documentApiService: DocumentApiService,
+    private readonly haccpApiService: HaccpApiService,
     private readonly downloadService: DownloadService
   ) {}
 
@@ -60,11 +62,11 @@ export class HaccpCertificateComponent implements OnInit {
   }
 
   getDocuments(companyId: any): void {
-    this.documentApiService
-      .getList(companyId)
+    this.haccpApiService
+      .getList('all/' + companyId)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: DocumentResponseModel[]) => {
+        (res: HaccpModel[]) => {
           console.log('documents: ', res);
           this.tableData = res;
         },
@@ -79,11 +81,10 @@ export class HaccpCertificateComponent implements OnInit {
   }
 
   setTableData() {
-    this.headerTexts = ['DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
-    this.columns = ['document_name', 'document_date'];
+    this.headerTexts = ['DÁTUM'];
+    this.columns = ['haccp_date'];
     this.displayedColumns = [
-      'document_name',
-      'document_date',
+      'haccp_date',
       'haccp-download',
       'certificate-download',
     ];

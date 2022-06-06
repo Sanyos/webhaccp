@@ -21,7 +21,7 @@ exports.createNewHaccp = (req, res, next) => {
 exports.getAllHaccp = (req, res, next) => {
   const companyId = req.params.companyId;
   return haccpService
-    .getAll(companyId)
+    .getAllByCompanyId(companyId)
     .then((haccp) => {
       console.log("all haccp: ", haccp.rows);
       if (haccp.rows) {

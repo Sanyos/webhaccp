@@ -53,56 +53,27 @@ exports.create = (haccp) => {
   return pool.query(sqlString, values);
 };
 
-exports.getAllByUserId = (companyUserId) => {
+exports.getAllByCompanyId = (haccpCompanyId) => {
   const selectQuery = `
   SELECT * 
-  FROM companies 
-  JOIN users 
-  ON users.user_id = companies.company_user_id
-  WHERE company_user_id = $1`;
-  return pool.query(selectQuery, [companyUserId]);
+  FROM haccp 
+  WHERE haccp_company_id = $1`;
+  return pool.query(selectQuery, [haccpCompanyId]);
 };
 
 exports.getAll = () => {
   const selectQuery = `
   SELECT * 
   FROM users 
-  JOIN companies 
-  ON users.user_id = companies.company_user_id `;
+  JOIN haccp 
+  ON users.user_id = haccp.haccp_user_id `;
   return pool.query(selectQuery, []);
 };
 
 exports.getById = (id) => {
   const selectQuery = `
   SELECT * 
-  FROM users 
-  JOIN companies 
-  ON users.user_id = companies.company_user_id 
-  WHERE company_id = $1`;
+  FROM haccp
+  WHERE haccp_id = $1`;
   return pool.query(selectQuery, [id]);
-};
-
-exports.updateById = (id, company) => {
-  if (!company || !id) {
-    return new createError.BadRequest("Something went wrong");
-  }
-  const values = [
-    id,
-    company.company_category,
-    company.company_name,
-    company.company_address,
-    company.company_location,
-    company.company_phone,
-    company.company_headquarters,
-    company.company_billing_address,
-    company.company_registration_number,
-    company.company_vat_number,
-    company.company_archived,
-  ];
-  const sqlQuery = `
-  UPDATE companies 
-  SET company_category = $2, company_name = $3, company_address = $4, company_location = $5, company_phone = $6, company_headquarters = $7, company_billing_address = $8, company_registration_number = $9, company_vat_number = $10, company_archived = $11
-  WHERE company_id = $1
-  RETURNING *;`;
-  return pool.query(sqlQuery, values);
 };

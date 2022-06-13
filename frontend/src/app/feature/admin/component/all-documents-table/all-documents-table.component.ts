@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import { DownloadService } from 'src/app/core/services/download/download.service';
 @Component({
   selector: 'app-all-documents-table',
   templateUrl: './all-documents-table.component.html',
@@ -20,7 +21,10 @@ export class AllDocumentsTableComponent implements OnInit {
   headerTexts: string[];
   @Input() tableData: DocumentResponseModel[] = [];
 
-  constructor(private readonly documentApiService: DocumentApiService) {
+  constructor(
+    private readonly documentApiService: DocumentApiService,
+    private readonly downloadService: DownloadService
+  ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -35,20 +39,8 @@ export class AllDocumentsTableComponent implements OnInit {
   }
 
   downloadFile(name: string) {
-    const fullName = name + '.pdf';
-    this.documentApiService.downloadFile(fullName).subscribe(
-      (res: any) => {
-        let blob: any = new Blob([res], { type: 'application/pdf' });
-        let pdfUrl = window.URL.createObjectURL(blob);
-        var PDF_link = document.createElement('a');
-        PDF_link.href = pdfUrl;
-        PDF_link.download = fullName;
-        PDF_link.click();
-      },
-      (err: any) => {
-        console.log(err);
-      }
-    );
+    console.log(name);
+    this.downloadService.download(name);
   }
 
   applyFilter(event: Event): void {
@@ -70,12 +62,12 @@ export class AllDocumentsTableComponent implements OnInit {
   }
 
   setTableData() {
-    this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
-    this.columns = ['registered_user', 'document_name', 'document_date'];
+    this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM'];
+    this.columns = ['registered_user', 'haccp_unit_name', 'haccp_date'];
     this.displayedColumns = [
       'registered_user',
-      'document_name',
-      'document_date',
+      'haccp_unit_name',
+      'haccp_date',
       'download',
     ];
   }

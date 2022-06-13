@@ -18,7 +18,7 @@ const pool = require("../../db");
   VALUES ($1, $2, $3, $4)
   RETURNING *`;
   return pool.query(sqlString, values);
-}; 
+}; */
 
 exports.getAllByCompanyId = (companyId) => {
   const selectQuery = `
@@ -40,4 +40,4 @@ exports.getById = (id) => {
   FROM documents
   WHERE document_id = $1`;
   return pool.query(selectQuery, [id]);
-}; */
+};

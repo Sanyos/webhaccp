@@ -20,19 +20,28 @@ exports.createNewHaccp = (req, res, next) => {
 
 exports.getAllHaccp = (req, res, next) => {
   const companyId = req.params.companyId;
-  return haccpService
-    .getAllByCompanyId(companyId)
-    .then((haccp) => {
+  if (companyId !== "all") {
+    return haccpService
+      .getAllByCompanyId(companyId)
+      .then((haccp) => {
+        console.log("all haccp: ", haccp.rows);
+        if (haccp.rows) {
+          res.status(200).json(haccp.rows);
+        }
+      })
+      .catch((err) => {
+        return next(
+          new createError[500](`Could not find haccp documents Error: ${err}`)
+        );
+      });
+  } else {
+    return haccpService.getAll().then((haccp) => {
       console.log("all haccp: ", haccp.rows);
       if (haccp.rows) {
         res.status(200).json(haccp.rows);
       }
-    })
-    .catch((err) => {
-      return next(
-        new createError[500](`Could not find haccp documents Error: ${err}`)
-      );
     });
+  }
 };
 
 exports.getHaccpById = (req, res, next) => {

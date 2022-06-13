@@ -3,13 +3,15 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
+import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
-import { DocumentWithUserResponseModel } from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
+import { DownloadService } from 'src/app/core/services/download/download.service';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
@@ -37,7 +39,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private readonly sweetAlertPopupService: SweetAlertPopupService,
     private readonly userApiService: UserApiService,
     private readonly companyApiService: CompanyApiService,
-    private readonly documentApiService: DocumentApiService
+    private readonly documentApiService: DocumentApiService,
+    private readonly haccpApiService: HaccpApiService
   ) {}
 
   ngOnInit(): void {
@@ -124,18 +127,19 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   getDocuments(): void {
-    this.documentApiService
-      .getList('all')
+    this.haccpApiService
+      .getList('all/all')
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: DocumentWithUserResponseModel[]) => {
-          console.log('documents: ', res);
-          res.forEach((document) => {
+        (res: HaccpModel[]) => {
+          console.log('haccp documents: ', res);
+          res.forEach((haccp) => {
             let doc = {
-              registered_user:
-                document.document_user_id !== null ? 'igen' : 'nem',
-              document_name: document.document_name,
-              document_date: document.document_date,
+              registered_user: haccp.haccp_user_id !== null ? 'igen' : 'nem',
+              // TODO HACCP NAME?
+              haccp_name: haccp.haccp_unit_name,
+              haccp_unit_name: haccp.haccp_unit_name,
+              haccp_date: haccp.haccp_date,
             };
             this.documentsTableData.push(doc);
           });

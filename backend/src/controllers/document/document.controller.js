@@ -1,12 +1,6 @@
 const documentService = require("./document.service");
 const createError = require("http-errors");
 
-exports.createNewDocument = (req, res, next) => {
-  console.log("company for new doc: ", req.body);
-  const newDocument = {};
-  // doksi generálás - letöltés - file törlése
-};
-
 exports.getAllDocuments = (req, res, next) => {
   console.log(req.params);
   const companyId = req.params.companyId;
@@ -73,6 +67,7 @@ exports.getDocumentById = (req, res, next) => {
 };
 
 exports.download = (req, res, next) => {
+  // doksi generálás - letöltés - file törlése
   const fileName = req.params.name;
   const directoryPath = __basedir + "/files/";
   res.download(directoryPath + fileName, fileName, (err) => {

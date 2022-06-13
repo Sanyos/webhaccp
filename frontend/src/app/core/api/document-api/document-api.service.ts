@@ -2,13 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { apiConfig } from '../../config/api-config';
-import { DocumentWithUserResponseModel } from '../../model/document.model';
+import { DocumentResponseModel } from '../../model/document.model';
 import { BaseHttpService } from '../base-http/base-http.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DocumentApiService extends BaseHttpService<DocumentWithUserResponseModel> {
+export class DocumentApiService extends BaseHttpService<DocumentResponseModel> {
   BASE_URL: string = environment.apiUrl;
   constructor(public http: HttpClient) {
     super(http);

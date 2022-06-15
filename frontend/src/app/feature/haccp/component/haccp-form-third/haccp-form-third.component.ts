@@ -52,7 +52,19 @@ export class HaccpFormThirdComponent implements OnInit {
       haccp_place_of_receipt: new FormControl('', Validators.required),
       haccp_water_supply: new FormControl('', Validators.required),
       haccp_sewage_drain: new FormControl('', Validators.required),
-      haccp_date: new FormControl(new Date()),
+      haccp_date: new FormControl(this.formatDate(new Date())),
     });
+  }
+
+  formatDate(date: Date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 }

@@ -9,7 +9,7 @@ exports.createNewCompany = (req, res, next) => {
   return companyService
     .create(newCompany)
     .then((company) => {
-      console.log("new compny created: ", company.row[0]);
+      console.log("new compny created: ", company.rows[0]);
       res.status(201).json(company.rows[0]);
     })
     .catch((err) => {

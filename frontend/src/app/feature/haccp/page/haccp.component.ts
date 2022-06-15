@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
@@ -31,12 +31,16 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { HaccpCategoryService } from '../service/haccp-category.service';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
   styleUrls: ['./haccp.component.scss'],
 })
 export class HaccpComponent implements OnInit, OnDestroy {
+  haccpCategory$: Observable<CompanyCategoryTypes | null> =
+    this.haccpCategoryService.haccpCategory$;
+
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   companyData: CompanyWithUserResponseModel;
   readonly: boolean = false;
@@ -68,8 +72,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
     private readonly activatedRoute: ActivatedRoute,
     private readonly companyApiService: CompanyApiService,
     private cdref: ChangeDetectorRef,
-    private readonly HaccpApiService: HaccpApiService,
-    private readonly userApiService: UserApiService
+    private readonly haccpApiService: HaccpApiService,
+    private readonly userApiService: UserApiService,
+    private readonly haccpCategoryService: HaccpCategoryService
   ) {
     this.getCompanyData();
   }
@@ -162,7 +167,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
     ];
     // TODO FIZETÉS
     const haccp: HaccpModel = Object.assign({}, ...arr);
-    this.HaccpApiService.create(haccp).subscribe((res: HaccpModel) => {
+    this.haccpApiService.create(haccp).subscribe((res: HaccpModel) => {
       console.log(res);
       const title = 'Tovább a fizetéshez';
       const text = 'HACCP adatbekérő sikeresen kitöltve';

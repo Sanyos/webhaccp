@@ -29,10 +29,7 @@
         <ng-container matColumnDef="haccp-download">
           <th mat-header-cell *matHeaderCellDef>HACCP LETÖLTÉS</th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-icon-button
-              (click)="downloadHaccp(element.document_name)"
-            >
+            <button mat-icon-button (click)="downloadHaccp(element.haccp_id)">
               <mat-icon>download</mat-icon>
             </button>
           </td>
@@ -44,7 +41,7 @@
           <td mat-cell *matCellDef="let element">
             <button
               mat-icon-button
-              (click)="downloadCertificate(element.document_name)"
+              (click)="downloadCertificate(element.haccp_id)"
             >
               <mat-icon>download</mat-icon>
             </button>

@@ -41,7 +41,9 @@ export class DocumentsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  downloadCertificate(name: string) {}
+  downloadCertificate(name: string) {
+    this.downloadEvent.emit(name);
+  }
 
   downloadHaccp(name: string) {
     this.downloadEvent.emit(name);

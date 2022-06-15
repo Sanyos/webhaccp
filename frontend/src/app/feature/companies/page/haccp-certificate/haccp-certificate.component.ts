@@ -58,6 +58,7 @@ export class HaccpCertificateComponent implements OnInit {
   }
 
   downloadDocument(name: string) {
+    // TODO POST DATA
     this.downloadService.download(name);
   }
 
@@ -67,7 +68,7 @@ export class HaccpCertificateComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: HaccpModel[]) => {
-          console.log('documents: ', res);
+          console.log('haccp documents: ', res);
           this.tableData = res;
         },
         (err) => {

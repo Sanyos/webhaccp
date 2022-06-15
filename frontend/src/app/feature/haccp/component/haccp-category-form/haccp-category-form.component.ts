@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
+import { HaccpCategoryService } from '../../service/haccp-category.service';
 
 @Component({
   selector: 'app-haccp-category-form',
@@ -15,7 +16,7 @@ export class HaccpCategoryFormComponent implements OnInit {
   haccpForm: FormGroup;
   companyCategory: CompanyCategoryTypes;
 
-  constructor() {
+  constructor(private readonly haccpCategoryService: HaccpCategoryService) {
     this.createForm();
   }
 
@@ -31,5 +32,14 @@ export class HaccpCategoryFormComponent implements OnInit {
       haccp_company_id: new FormControl(null),
       haccp_user_id: new FormControl(null),
     });
+  }
+
+  setHaccpCategory(): void {
+    const category = this.haccpForm.controls['haccp_company_category'].value;
+    this.haccpCategoryService.setHaccpCategory(category);
+  }
+
+  onClick(): void {
+    this.setHaccpCategory();
   }
 }

@@ -1,18 +1,14 @@
 const express = require("express");
 const routes = express.Router();
+const takaritasi_utasitas = require("../../html/takaritasi_utasitas_html");
 
 routes.post("/:name", (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
-  // TODO GENERATE PDF
   const fileName = req.params.name;
-  const directoryPath = __basedir + "/files/";
-  res.download(directoryPath + fileName, fileName, (err) => {
-    if (err) {
-      res.status(500).send({
-        message: "Could not download the file. " + err,
-      });
-    }
+  res.pdfFromHTML({
+    fileName: fileName,
+    htmlContent: takaritasi_utasitas.html,
   });
 });
 

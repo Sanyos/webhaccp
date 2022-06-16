@@ -12,4 +12,4 @@ routes.post("/:name", (req, res, next) => {
   });
 });
 
-module.exports = routes;
+module.exports = Object.freeze(routes);

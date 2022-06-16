@@ -19,4 +19,4 @@ routes.put("/:companyId", (req, res, next) => {
   return companyController.updateCompanyById(req, res, next);
 });
 
-module.exports = routes;
+module.exports = Object.freeze(routes);

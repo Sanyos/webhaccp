@@ -10,4 +10,4 @@ routes.get("id/:documentId", (req, res, next) => {
   return documentController.getDocumentById(req, res, next);
 });
 
-module.exports = routes;
+module.exports = Object.freeze(routes);

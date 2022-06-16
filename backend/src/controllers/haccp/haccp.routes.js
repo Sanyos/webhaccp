@@ -14,4 +14,4 @@ routes.get("/:haccpId", (req, res, next) => {
   return haccpController.getHaccpById(req, res, next);
 });
 
-module.exports = routes;
+module.exports = Object.freeze(routes);

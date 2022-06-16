@@ -32,6 +32,7 @@ export class DocumentListComponent implements OnInit {
     map((company: CompanyResponseModel) => company?.company_name)
   );
   documents: DocumentResponseModel[] = [];
+  companyData: CompanyResponseModel;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -40,11 +41,19 @@ export class DocumentListComponent implements OnInit {
     private readonly documentApiService: DocumentApiService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getCompanyData();
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  getCompanyData() {
+    this.company$.subscribe((company) => {
+      this.companyData = company;
+    });
   }
 
   getDocuments(companyId: any): void {
@@ -58,6 +67,6 @@ export class DocumentListComponent implements OnInit {
   }
 
   downloadDocument(documentName: string) {
-    this.downloadService.download(documentName);
+    this.downloadService.download(this.companyData, documentName);
   }
 }

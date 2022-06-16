@@ -10,8 +10,4 @@ routes.get("id/:documentId", (req, res, next) => {
   return documentController.getDocumentById(req, res, next);
 });
 
-routes.post("/download/:name", (req, res, next) => {
-  return documentController.download(req, res, next);
-});
-
 module.exports = routes;

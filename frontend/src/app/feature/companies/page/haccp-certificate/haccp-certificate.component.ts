@@ -57,9 +57,8 @@ export class HaccpCertificateComponent implements OnInit {
     this.unsubscribe.complete();
   }
 
-  downloadDocument(name: string) {
-    // TODO POST DATA
-    this.downloadService.download(name);
+  downloadDocument(haccp: HaccpModel) {
+    this.downloadService.download(haccp, haccp.haccp_id);
   }
 
   getDocuments(companyId: any): void {

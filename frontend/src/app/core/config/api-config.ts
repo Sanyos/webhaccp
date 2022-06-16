@@ -9,12 +9,14 @@ export const apiConfig = {
   },
   document: {
     default: 'document',
-    download: 'document/download',
   },
   haccp: {
     default: 'haccp',
   },
   enums: {
     default: 'enums',
+  },
+  download: {
+    default: 'download',
   },
 };

@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 @Component({
   selector: 'app-all-documents-table',
@@ -38,9 +39,8 @@ export class AllDocumentsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  downloadFile(name: string) {
-    console.log(name);
-    this.downloadService.download(name);
+  downloadFile(haccp: HaccpModel) {
+    this.downloadService.download(haccp, haccp.haccp_id);
   }
 
   applyFilter(event: Event): void {

@@ -4,49 +4,19 @@ const createError = require("http-errors");
 exports.getAllDocuments = (req, res, next) => {
   console.log(req.params);
   const companyId = req.params.companyId;
-  if (companyId !== "all") {
-    return documentService
-      .getAllByCompanyId(companyId)
-      .then((documents) => {
-        if (documents) {
-          console.log("all documents: ", documents.rows);
-          res.status(200).json(documents.rows);
-        }
-      })
-      .catch((err) => {
-        return next(
-          new createError[500](`Could not find documents Error: ${err}`)
-        );
-      });
-  } else {
-    return documentService
-      .getAll()
-      .then((documents) => {
-        if (documents) {
-          console.log("all documents: ", documents.rows);
-          let docs = documents.rows;
-          docs.map(
-            ({
-              document_name,
-              document_date,
-              document_user_id,
-              document_id,
-            }) => ({
-              document_name,
-              document_date,
-              document_user_id,
-              document_id,
-            })
-          );
-          res.status(200).json(docs);
-        }
-      })
-      .catch((err) => {
-        return next(
-          new createError[500](`Could not find documents Error: ${err}`)
-        );
-      });
-  }
+  return documentService
+    .getAllByCompanyId(companyId)
+    .then((documents) => {
+      if (documents) {
+        console.log("all documents: ", documents.rows);
+        res.status(200).json(documents.rows);
+      }
+    })
+    .catch((err) => {
+      return next(
+        new createError[500](`Could not find documents Error: ${err}`)
+      );
+    });
 };
 
 exports.getDocumentById = (req, res, next) => {
@@ -64,17 +34,4 @@ exports.getDocumentById = (req, res, next) => {
         )
       );
     });
-};
-
-exports.download = (req, res, next) => {
-  // doksi generálás - letöltés - file törlése
-  const fileName = req.params.name;
-  const directoryPath = __basedir + "/files/";
-  res.download(directoryPath + fileName, fileName, (err) => {
-    if (err) {
-      res.status(500).send({
-        message: "Could not download the file. " + err,
-      });
-    }
-  });
 };

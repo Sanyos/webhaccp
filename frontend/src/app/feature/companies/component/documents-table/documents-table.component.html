@@ -29,7 +29,7 @@
         <ng-container matColumnDef="haccp-download">
           <th mat-header-cell *matHeaderCellDef>HACCP LETÖLTÉS</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button (click)="downloadHaccp(element.haccp_id)">
+            <button mat-icon-button (click)="downloadHaccp(element)">
               <mat-icon>download</mat-icon>
             </button>
           </td>
@@ -39,10 +39,7 @@
         <ng-container matColumnDef="certificate-download">
           <th mat-header-cell *matHeaderCellDef>TANUSÍTVÁNY LETÖLTÉS</th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-icon-button
-              (click)="downloadCertificate(element.haccp_id)"
-            >
+            <button mat-icon-button (click)="downloadCertificate(element)">
               <mat-icon>download</mat-icon>
             </button>
           </td>

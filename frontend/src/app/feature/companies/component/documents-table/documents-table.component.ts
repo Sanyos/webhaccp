@@ -41,12 +41,12 @@ export class DocumentsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  downloadCertificate(name: string) {
-    this.downloadEvent.emit(name);
+  downloadCertificate(haccp: HaccpModel) {
+    this.downloadEvent.emit(haccp);
   }
 
-  downloadHaccp(name: string) {
-    this.downloadEvent.emit(name);
+  downloadHaccp(haccp: HaccpModel) {
+    this.downloadEvent.emit(haccp);
   }
 
   applyFilter(event: Event): void {

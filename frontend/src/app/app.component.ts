@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DownloadService } from './core/services/download/download.service';
+import { LoaderService } from './core/services/loader/loader.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { DownloadService } from './core/services/download/download.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  isLoading$: Observable<boolean> = this.downloadService.isLoading$;
+  isLoading$: Observable<boolean> = this.loaderService.isLoading$;
   title = 'haccp';
-  constructor(private readonly downloadService: DownloadService) {}
+  constructor(private readonly loaderService: LoaderService) {}
 }

@@ -14,6 +14,7 @@ import { DocumentApiService } from 'src/app/core/api/document-api/document-api.s
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
+import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
 @Component({
   selector: 'app-document-list',
@@ -38,7 +39,8 @@ export class DocumentListComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly companyApiService: CompanyApiService,
     private readonly downloadService: DownloadService,
-    private readonly documentApiService: DocumentApiService
+    private readonly documentApiService: DocumentApiService,
+    private readonly loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {

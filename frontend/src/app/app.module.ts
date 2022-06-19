@@ -35,6 +35,7 @@ import { HaccpFormThirdComponent } from './feature/haccp/component/haccp-form-th
 import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
 import { DocumentCardsComponent } from './feature/companies/component/document-cards/document-cards.component';
 import { HaccpCategoryFormComponent } from './feature/haccp/component/haccp-category-form/haccp-category-form.component';
+import { LoaderComponent } from './shared/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { HaccpCategoryFormComponent } from './feature/haccp/component/haccp-cate
     HaccpCertificateComponent,
     DocumentCardsComponent,
     HaccpCategoryFormComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,

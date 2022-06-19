@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
   ColdStorageProductEnum,
   DeliveryMethodEnum,
@@ -15,6 +16,7 @@ import {
   styleUrls: ['./haccp-form.component.scss'],
 })
 export class HaccpFormComponent implements OnInit {
+  @Input() haccpCategory: CompanyCategoryTypes | null;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;

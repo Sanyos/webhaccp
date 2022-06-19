@@ -13,6 +13,7 @@ import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
+import { HaccpComponent } from '../../haccp/page/haccp.component';
 import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
 import { UsersTableComponent } from '../component/users-table/users-table.component';
@@ -136,10 +137,10 @@ export class AdminComponent implements OnInit, OnDestroy {
           res.forEach((haccp) => {
             let doc = {
               registered_user: haccp.haccp_user_id !== null ? 'igen' : 'nem',
-              // TODO HACCP NAME?
               haccp_name: haccp.haccp_unit_name,
               haccp_unit_name: haccp.haccp_unit_name,
               haccp_date: haccp.haccp_date,
+              haccp_id: haccp.haccp_id,
             };
             this.documentsTableData.push(doc);
           });

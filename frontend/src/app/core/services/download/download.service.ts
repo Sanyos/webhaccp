@@ -8,6 +8,7 @@ export class DownloadService {
   constructor(private readonly downloadApiService: DownloadApiService) {}
 
   download(data: any, name: any) {
+    console.log(name);
     let dataObject: any = data;
     this.downloadApiService
       .downloadFile(dataObject, name)

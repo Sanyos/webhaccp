@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
   DishToWashEnum,
   DishwasherEnum,
@@ -16,7 +17,7 @@ import {
   styleUrls: ['./haccp-form-third.component.scss'],
 })
 export class HaccpFormThirdComponent implements OnInit {
-  @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
+  @Input() haccpCategory: CompanyCategoryTypes | null;
   @Input() sewageDrainOptions: SewageDrainEnum;
   @Input() waterSupplyOptions: WaterSupplyEnum;
   @Input() entranceOptions: EntranceEnum;
@@ -24,6 +25,7 @@ export class HaccpFormThirdComponent implements OnInit {
   @Input() pestControlOptions: PestControlEnum;
   @Input() dishToWashOptions: DishToWashEnum;
   @Input() dishwasherOptions: DishwasherEnum;
+  @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
   constructor() {
     this.createForm();

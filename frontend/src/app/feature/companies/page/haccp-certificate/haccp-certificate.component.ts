@@ -58,7 +58,10 @@ export class HaccpCertificateComponent implements OnInit {
   }
 
   downloadDocument(haccp: HaccpModel) {
-    this.downloadService.download(haccp, haccp.haccp_id);
+    this.downloadService.download(
+      haccp,
+      `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
+    );
   }
 
   getDocuments(companyId: any): void {

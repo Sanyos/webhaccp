@@ -22,10 +22,7 @@ export class AllDocumentsTableComponent implements OnInit {
   headerTexts: string[];
   @Input() tableData: DocumentResponseModel[] = [];
 
-  constructor(
-    private readonly documentApiService: DocumentApiService,
-    private readonly downloadService: DownloadService
-  ) {
+  constructor(private readonly downloadService: DownloadService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -40,7 +37,10 @@ export class AllDocumentsTableComponent implements OnInit {
   }
 
   downloadFile(haccp: HaccpModel) {
-    this.downloadService.download(haccp, haccp.haccp_id);
+    this.downloadService.download(
+      haccp,
+      `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
+    );
   }
 
   applyFilter(event: Event): void {

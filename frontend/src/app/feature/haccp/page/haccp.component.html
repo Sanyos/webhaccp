@@ -15,6 +15,7 @@
       </mat-step>
       <mat-step [stepControl]="haccpForm">
         <app-haccp-form
+          [haccpCategory]="haccpCategory$ | async"
           [coldStorageProductOptions]="coldStorageProductOptions"
           [productPreparatoryOptions]="productPreparatoryOptions"
           [eggOptions]="eggOptions"
@@ -47,6 +48,7 @@
       </mat-step>
       <mat-step [stepControl]="secondHaccpForm">
         <app-haccp-form-second
+          [haccpCategory]="haccpCategory$ | async"
           (haccpFormEvent)="secondHaccpFormEvent($event)"
         ></app-haccp-form-second>
         <div class="button-holder" mat-dialog-actions>
@@ -73,6 +75,7 @@
       </mat-step>
       <mat-step [stepControl]="thirdHaccpForm">
         <app-haccp-form-third
+          [haccpCategory]="haccpCategory$ | async"
           [sewageDrainOptions]="sewageDrainOptions"
           [waterSupplyOptions]="waterSupplyOptions"
           [entranceOptions]="entranceOptions"

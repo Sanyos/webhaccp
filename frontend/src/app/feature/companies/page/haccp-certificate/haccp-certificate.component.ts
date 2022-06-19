@@ -57,8 +57,17 @@ export class HaccpCertificateComponent implements OnInit {
     this.unsubscribe.complete();
   }
 
-  downloadDocument(haccp: HaccpModel) {
+  downloadHaccp(haccp: HaccpModel) {
     this.downloadService.download(
+      'haccp',
+      haccp,
+      `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
+    );
+  }
+
+  downloadCertificate(haccp: HaccpModel) {
+    this.downloadService.download(
+      'haccp-certificate',
       haccp,
       `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
     );

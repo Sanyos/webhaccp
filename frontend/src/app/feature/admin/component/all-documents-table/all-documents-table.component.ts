@@ -38,6 +38,7 @@ export class AllDocumentsTableComponent implements OnInit {
 
   downloadFile(haccp: HaccpModel) {
     this.downloadService.download(
+      'haccp',
       haccp,
       `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
     );

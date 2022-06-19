@@ -67,6 +67,6 @@ export class DocumentListComponent implements OnInit {
   }
 
   downloadDocument(documentName: string) {
-    this.downloadService.download(this.companyData, documentName);
+    this.downloadService.download('document', this.companyData, documentName);
   }
 }

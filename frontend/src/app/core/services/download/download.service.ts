@@ -7,11 +7,11 @@ import { DownloadApiService } from '../../api/download-api/download-api.service'
 export class DownloadService {
   constructor(private readonly downloadApiService: DownloadApiService) {}
 
-  download(data: any, name: any) {
+  download(route: string, data: any, name: any) {
     console.log(name);
     let dataObject: any = data;
     this.downloadApiService
-      .downloadFile(dataObject, name)
+      .downloadFile(route, dataObject, name)
       .subscribe((res: any) => {
         if (res) {
           let blob: any = new Blob([res], { type: 'application/pdf' });

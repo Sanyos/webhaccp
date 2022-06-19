@@ -26,7 +26,8 @@ export class DocumentsTableComponent implements OnInit {
   @Input() columns: string[];
   @Input() headerTexts: string[];
   @Input() tableData: HaccpModel[] = [];
-  @Output() downloadEvent: EventEmitter<any> = new EventEmitter();
+  @Output() downloadHaccpEvent: EventEmitter<any> = new EventEmitter();
+  @Output() downloadCertificateEvent: EventEmitter<any> = new EventEmitter();
 
   constructor() {
     this.dataSource = new MatTableDataSource();
@@ -42,11 +43,11 @@ export class DocumentsTableComponent implements OnInit {
   }
 
   downloadCertificate(haccp: HaccpModel) {
-    this.downloadEvent.emit(haccp);
+    this.downloadCertificateEvent.emit(haccp);
   }
 
   downloadHaccp(haccp: HaccpModel) {
-    this.downloadEvent.emit(haccp);
+    this.downloadHaccpEvent.emit(haccp);
   }
 
   applyFilter(event: Event): void {

@@ -11,9 +11,9 @@ export class DownloadApiService {
   BASE_URL: string = environment.apiUrl;
   constructor(public http: HttpClient) {}
 
-  downloadFile(data: any, query: string): Observable<any> {
-    const url = `${this.BASE_URL}/${apiConfig.download.default}`;
-    return this.http.post(`${url}/${query}.pdf`, data, {
+  downloadFile(route: string, data: any, query: string): Observable<any> {
+    const url = `${this.BASE_URL}/${apiConfig.download.default}/${route}`;
+    return this.http.post(`${url}/${query}`, data, {
       responseType: 'blob',
     });
   }

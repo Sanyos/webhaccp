@@ -1,15 +1,35 @@
-const express = require("express");
-const routes = express.Router();
 const takaritasi_utasitas = require("../../html/takaritasi_utasitas_html");
 
-routes.post("/:name", (req, res, next) => {
+exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
   const fileName = req.params.name;
   res.pdfFromHTML({
-    fileName: fileName,
-    htmlContent: takaritasi_utasitas.html,
+    fileName: fileName + ".pdf",
+    htmlContent: takaritasi_utasitas.html(data),
   });
-});
+};
 
-module.exports = Object.freeze(routes);
+exports.downloadHaccpCertificate = (req, res, next) => {
+  const data = req.body;
+  console.log("body: ", data);
+  const fileName = req.params.name;
+  res.pdfFromHTML({
+    fileName: fileName + ".pdf",
+    htmlContent: takaritasi_utasitas.html(data),
+  });
+};
+
+exports.downloadDocument = (req, res, next) => {
+  const data = req.body;
+  console.log("body: ", data);
+  let fileName = req.params.name;
+  console.log(fileName);
+  res.pdfFromHTML({
+    fileName: fileName + ".pdf",
+    htmlContent: takaritasi_utasitas.html(data),
+    options: {
+      orientation: "landscape",
+    },
+  });
+};

@@ -6,10 +6,7 @@ import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
-import {
-  CompanyResponseModel,
-  CompanyWithUserResponseModel,
-} from 'src/app/core/model/company.model';
+import { CompanyWithUserResponseModel } from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
 import {
   ColdStorageProductEnum,
@@ -40,16 +37,14 @@ import { HaccpCategoryService } from '../service/haccp-category.service';
 export class HaccpComponent implements OnInit, OnDestroy {
   haccpCategory$: Observable<CompanyCategoryTypes | null> =
     this.haccpCategoryService.haccpCategory$;
-
+  haccpCategory: CompanyCategoryTypes | null;
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   companyData: CompanyWithUserResponseModel;
   readonly: boolean = false;
   unsubscribe = new Subject<void>();
 
   haccpCategoryForm: FormGroup;
-  haccpForm: FormGroup;
-  secondHaccpForm: FormGroup;
-  thirdHaccpForm: FormGroup;
+  haccp: HaccpModel;
 
   coldStorageProductOptions: ColdStorageProductEnum;
   productPreparatoryOptions: ProductPreparatoryEnum;
@@ -81,11 +76,19 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getEnums();
+    this.getHaccpCategory();
   }
 
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  getHaccpCategory() {
+    this.haccpCategory$.subscribe((category: CompanyCategoryTypes | null) => {
+      console.log(category);
+      this.haccpCategory = category;
+    });
   }
 
   getCompanyData() {
@@ -146,27 +149,15 @@ export class HaccpComponent implements OnInit, OnDestroy {
     this.cdref.detectChanges();
   }
 
-  haccpFormEvent(form: FormGroup): void {
-    this.haccpForm = form;
-  }
-
-  secondHaccpFormEvent(form: FormGroup): void {
-    this.secondHaccpForm = form;
-  }
-
-  thirdHaccpFormEvent(form: FormGroup): void {
-    this.thirdHaccpForm = form;
+  haccpEvent(form: HaccpModel): void {
+    this.haccp = form;
   }
 
   onSave(): void {
-    const arr = [
-      this.haccpCategoryForm.value,
-      this.haccpForm.value,
-      this.secondHaccpForm.value,
-      this.thirdHaccpForm.value,
-    ];
-    // TODO FIZETÉS
+    const arr = [this.haccpCategoryForm.value, this.haccp];
     const haccp: HaccpModel = Object.assign({}, ...arr);
+    // TODO FIZETÉS
+
     this.haccpApiService.create(haccp).subscribe((res: HaccpModel) => {
       console.log(res);
       const title = 'Tovább a fizetéshez';

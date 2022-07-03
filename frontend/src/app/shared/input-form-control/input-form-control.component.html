@@ -1,0 +1,13 @@
+<mat-form-field *ngIf="!optional">
+  <mat-label>{{ label }}</mat-label>
+  <input
+    #input
+    matInput
+    (blur)="onChange($event, input.value)"
+    [formControl]="formControl"
+    [readonly]="readonly"
+  />
+  <mat-error *ngIf="formControl.dirty || formControl.touched">
+    Mező kitöltése kötelező
+  </mat-error>
+</mat-form-field>

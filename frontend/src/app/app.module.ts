@@ -36,6 +36,10 @@ import { HaccpCertificateComponent } from './feature/companies/page/haccp-certif
 import { DocumentCardsComponent } from './feature/companies/component/document-cards/document-cards.component';
 import { HaccpCategoryFormComponent } from './feature/haccp/component/haccp-category-form/haccp-category-form.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { SelectFormControlComponent } from './shared/select-form-control/select-form-control.component';
+import { InputFormControlComponent } from './shared/input-form-control/input-form-control.component';
+import { RadioFormControlComponent } from './shared/radio-form-control/radio-form-control.component';
+import { HaccpRestaurantComponent } from './feature/haccp/page/haccp-restaurant/haccp-restaurant.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +73,10 @@ import { LoaderComponent } from './shared/loader/loader.component';
     DocumentCardsComponent,
     HaccpCategoryFormComponent,
     LoaderComponent,
+    SelectFormControlComponent,
+    InputFormControlComponent,
+    RadioFormControlComponent,
+    HaccpRestaurantComponent,
   ],
   imports: [
     BrowserModule,

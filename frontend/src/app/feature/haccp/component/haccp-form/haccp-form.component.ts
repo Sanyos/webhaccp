@@ -52,4 +52,14 @@ export class HaccpFormComponent implements OnInit {
       haccp_egg: new FormControl('', Validators.required),
     });
   }
+
+  requireKeepingWarmOptions = [
+    { key: true, value: 'Igen, +63Co' },
+    { key: false, value: 'Nem' },
+  ];
+
+  radioOptions = [
+    { key: true, value: 'Igen' },
+    { key: false, value: 'Nem' },
+  ];
 }

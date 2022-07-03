@@ -5,77 +5,26 @@
     </div>
     <h2>Adatbekérő lap kitöltése</h2>
 
-    <mat-horizontal-stepper [linear]="true">
-      <mat-step [stepControl]="haccpCategoryForm">
+    <mat-horizontal-stepper orientation="horizontal" #stepper>
+      <mat-step>
         <app-haccp-category-form
           [readonly]="readonly"
           [companyCategoryOptions]="companyCategoryOptions"
           (haccpCategoryFormEvent)="haccpCategoryFormEvent($event)"
         ></app-haccp-category-form>
       </mat-step>
-      <mat-step [stepControl]="haccpForm">
-        <app-haccp-form
-          [haccpCategory]="haccpCategory$ | async"
+
+      <mat-step>
+        <app-haccp-restaurant
+          *ngIf="
+            haccpCategoryForm.controls.haccp_company_category.value === 'BUFFET'
+          "
           [coldStorageProductOptions]="coldStorageProductOptions"
           [productPreparatoryOptions]="productPreparatoryOptions"
           [eggOptions]="eggOptions"
           [deliveryMethodOptions]="deliveryMethodOptions"
           [refigratorOptions]="refigratorOptions"
           [storageOptions]="storageOptions"
-          (haccpFormEvent)="haccpFormEvent($event)"
-        ></app-haccp-form>
-        <div class="button-holder" mat-dialog-actions>
-          <button
-            mat-button
-            color="primary"
-            id="primary-btn"
-            matStepperNext
-            mat-raised-button
-          >
-            Tovább
-          </button>
-          <button
-            mat-button
-            color="primary"
-            id="secondary-btn"
-            color="accent"
-            matStepperPrevious
-            mat-raised-button
-          >
-            Vissza
-          </button>
-        </div>
-      </mat-step>
-      <mat-step [stepControl]="secondHaccpForm">
-        <app-haccp-form-second
-          [haccpCategory]="haccpCategory$ | async"
-          (haccpFormEvent)="secondHaccpFormEvent($event)"
-        ></app-haccp-form-second>
-        <div class="button-holder" mat-dialog-actions>
-          <button
-            mat-button
-            color="primary"
-            id="primary-btn"
-            matStepperNext
-            mat-raised-button
-          >
-            Tovább
-          </button>
-          <button
-            mat-button
-            color="primary"
-            id="secondary-btn"
-            color="accent"
-            matStepperPrevious
-            mat-raised-button
-          >
-            Vissza
-          </button>
-        </div>
-      </mat-step>
-      <mat-step [stepControl]="thirdHaccpForm">
-        <app-haccp-form-third
-          [haccpCategory]="haccpCategory$ | async"
           [sewageDrainOptions]="sewageDrainOptions"
           [waterSupplyOptions]="waterSupplyOptions"
           [entranceOptions]="entranceOptions"
@@ -83,30 +32,10 @@
           [pestControlOptions]="pestControlOptions"
           [dishToWashOptions]="dishToWashOptions"
           [dishwasherOptions]="dishwasherOptions"
-          (haccpFormEvent)="thirdHaccpFormEvent($event)"
-        >
-        </app-haccp-form-third>
-
-        <div class="button-holder" mat-dialog-actions>
-          <button
-            (click)="onSave()"
-            mat-button
-            color="primary"
-            id="primary-btn"
-            mat-raised-button
-          >
-            Mentés
-          </button>
-          <button
-            (click)="onCancel()"
-            mat-button
-            color="accent"
-            id="secondary-btn"
-            mat-raised-button
-          >
-            Mégse
-          </button>
-        </div>
+          (haccpEvent)="haccpEvent($event)"
+          (saveEvent)="onSave()"
+          (cancelEvent)="onCancel()"
+        ></app-haccp-restaurant>
       </mat-step>
     </mat-horizontal-stepper>
   </div>

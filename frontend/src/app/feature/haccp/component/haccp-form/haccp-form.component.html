@@ -1,184 +1,83 @@
-<div>
+<div class="container">
   <form [formGroup]="haccpForm">
-    <mat-form-field>
-      <mat-label>Milyen kínálattal rendelkezik?</mat-label>
-      <input formControlName="haccp_supply" matInput />
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_supply'].dirty ||
-          haccpForm.controls['haccp_supply'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-input-form-control
+      [label]="'Milyen kínálattal rendelkezik?'"
+      formControlName="haccp_supply"
+      [formControl]="haccpForm.controls.haccp_supply"
+    ></app-input-form-control>
 
-    <mat-form-field>
-      <mat-label>Hűtést igénylő termékek</mat-label>
-      <mat-select
-        formControlName="haccp_products_require_cold_storage"
-        multiple
-      >
-        <mat-option
-          *ngFor="let option of coldStorageProductOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_products_require_cold_storage'].dirty ||
-          haccpForm.controls['haccp_products_require_cold_storage'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-select-form-control
+      [label]="'Hűtést igénylő termékek'"
+      formControlName="haccp_products_require_cold_storage"
+      [formControl]="haccpForm.controls.haccp_products_require_cold_storage"
+      [options]="coldStorageProductOptions"
+    ></app-select-form-control>
 
-    <label class="radio-button-label"
-      >Történik melegen tartás ételkészítés után?</label
-    >
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Történik melegen tartás ételkészítés után?'"
       formControlName="haccp_require_keeping_warm"
-      class="radio-group"
+      [formControl]="haccpForm.controls.haccp_require_keeping_warm"
+      [options]="requireKeepingWarmOptions"
+    ></app-radio-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen előkészítők vannak?'"
+      formControlName="haccp_preparatory"
+      [formControl]="haccpForm.controls.haccp_preparatory"
+      [options]="productPreparatoryOptions"
+    ></app-select-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen raktárak vannak?'"
+      formControlName="haccp_storages"
+      [formControl]="haccpForm.controls.haccp_storages"
+      [options]="storageOptions"
     >
-      <mat-radio-button class="radio-button" value="true"
-        >Igen, +63Co</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nem</mat-radio-button
-      >
-    </mat-radio-group>
+    </app-select-form-control>
 
-    <mat-form-field>
-      <mat-label>Milyen előkészítők vannak?</mat-label>
-      <mat-select formControlName="haccp_preparatory" multiple>
-        <mat-option
-          *ngFor="let option of productPreparatoryOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_preparatory'].dirty ||
-          haccpForm.controls['haccp_preparatory'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-select-form-control
+      [label]="'Milyen hűtők vagy mélyhűtők vannak?'"
+      formControlName="haccp_refrigerator"
+      [formControl]="haccpForm.controls.haccp_refrigerator"
+      [options]="refigratorOptions"
+    ></app-select-form-control>
 
-    <mat-form-field>
-      <mat-label>Milyen raktárak vannak?</mat-label>
-      <mat-select formControlName="haccp_storages" multiple>
-        <mat-option
-          *ngFor="let option of storageOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_storages'].dirty ||
-          haccpForm.controls['haccp_storages'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-radio-form-control
+      [label]="'Van kiszállítás?'"
+      formControlName="haccp_delivery"
+      [formControl]="haccpForm.controls.haccp_delivery"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <mat-form-field>
-      <mat-label>Milyen hűtők vagy mélyhűtők vannak?</mat-label>
-      <mat-select formControlName="haccp_refrigerator" multiple>
-        <mat-option
-          *ngFor="let option of refigratorOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_refrigerator'].dirty ||
-          haccpForm.controls['haccp_refrigerator'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
-
-    <label class="radio-button-label">Van kiszállítás?</label>
-    <mat-radio-group formControlName="haccp_delivery" class="radio-group">
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nem</mat-radio-button
-      >
-    </mat-radio-group>
-
-    <mat-form-field
+    <app-select-form-control
       *ngIf="haccpForm.controls['haccp_delivery'].value === 'true'"
-    >
-      <mat-label>Kiszállítás módja, jármű?</mat-label>
-      <mat-select formControlName="haccp_delivery_methods" multiple>
-        <mat-option
-          *ngFor="let option of deliveryMethodOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_delivery_methods'].dirty ||
-          haccpForm.controls['haccp_delivery_methods'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+      [label]="'Kiszállítás módja, jármű?'"
+      formControlName="haccp_delivery_methods"
+      [formControl]="haccpForm.controls.haccp_delivery_methods"
+      [options]="deliveryMethodOptions"
+    ></app-select-form-control>
 
-    <label class="radio-button-label"
-      >Rendelkezik-e öltözővel? Ha FoodTruck befogadó nyilatkozat van-e?</label
-    >
-    <mat-radio-group formControlName="haccp_dressing_room" class="radio-group">
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nem</mat-radio-button
-      >
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="
+        'Rendelkezik-e öltözővel? Ha FoodTruck befogadó nyilatkozat van-e?'
+      "
+      formControlName="haccp_dressing_room"
+      [formControl]="haccpForm.controls.haccp_dressing_room"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label"
-      >Használ-e Cukrászati vagy hidegkonyhai készítményt?</label
-    >
-    <mat-radio-group formControlName="haccp_cold_products" class="radio-group">
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nem</mat-radio-button
-      >
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Használ-e Cukrászati vagy hidegkonyhai készítményt?'"
+      formControlName="haccp_cold_products"
+      [formControl]="haccpForm.controls.haccp_cold_products"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <mat-form-field>
-      <mat-label>Milyen típusú Tojást használ?</mat-label>
-      <mat-select formControlName="haccp_egg" multiple>
-        <mat-option
-          *ngFor="let option of eggOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_egg'].dirty ||
-          haccpForm.controls['haccp_egg'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-select-form-control
+      [label]="'Milyen típusú Tojást használ?'"
+      formControlName="haccp_egg"
+      [formControl]="haccpForm.controls.haccp_egg"
+      [options]="eggOptions"
+    ></app-select-form-control>
   </form>
 </div>

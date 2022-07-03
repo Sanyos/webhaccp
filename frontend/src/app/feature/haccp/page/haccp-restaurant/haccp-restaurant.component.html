@@ -1,0 +1,84 @@
+<mat-horizontal-stepper [linear]="true">
+  <mat-step [stepControl]="haccpForm">
+    <app-haccp-form
+      [coldStorageProductOptions]="coldStorageProductOptions"
+      [productPreparatoryOptions]="productPreparatoryOptions"
+      [eggOptions]="eggOptions"
+      [deliveryMethodOptions]="deliveryMethodOptions"
+      [refigratorOptions]="refigratorOptions"
+      [storageOptions]="storageOptions"
+      (haccpFormEvent)="firstHaccpFormEvent($event)"
+    ></app-haccp-form>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        mat-button
+        color="primary"
+        id="primary-btn"
+        matStepperNext
+        mat-raised-button
+      >
+        Tovább
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondHaccpForm">
+    <app-haccp-form-second
+      (haccpFormEvent)="secondHaccpFormEvent($event)"
+    ></app-haccp-form-second>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        mat-button
+        color="primary"
+        id="primary-btn"
+        matStepperNext
+        mat-raised-button
+      >
+        Tovább
+      </button>
+      <button
+        mat-button
+        color="primary"
+        id="secondary-btn"
+        color="accent"
+        matStepperPrevious
+        mat-raised-button
+      >
+        Vissza
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="thirdHaccpForm">
+    <app-haccp-form-third
+      [sewageDrainOptions]="sewageDrainOptions"
+      [waterSupplyOptions]="waterSupplyOptions"
+      [entranceOptions]="entranceOptions"
+      [foodWasteTransportOptions]="foodWasteTransportOptions"
+      [pestControlOptions]="pestControlOptions"
+      [dishToWashOptions]="dishToWashOptions"
+      [dishwasherOptions]="dishwasherOptions"
+      (haccpFormEvent)="thirdHaccpFormEvent($event)"
+    >
+    </app-haccp-form-third>
+
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        (click)="onSave()"
+        mat-button
+        color="primary"
+        id="primary-btn"
+        mat-raised-button
+      >
+        Mentés
+      </button>
+      <button
+        (click)="onCancel()"
+        mat-button
+        color="accent"
+        id="secondary-btn"
+        mat-raised-button
+      >
+        Mégse
+      </button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

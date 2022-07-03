@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
@@ -138,8 +138,11 @@ export class HaccpComponent implements OnInit, OnDestroy {
     this.cdref.detectChanges();
   }
 
-  onSave(form: HaccpModel): void {
+  haccpEvent(form: HaccpModel): void {
     this.haccp = form;
+  }
+
+  onSave(): void {
     const arr = [this.haccpCategoryForm.value, this.haccp];
     const haccp: HaccpModel = Object.assign({}, ...arr);
     // TODO FIZETÉS
@@ -154,7 +157,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCancel(): void {
+  onCancel() {
     const title = 'Biztosan ki szeretnél lépni?';
     const text = 'A kitöltött adatok elvesznek.';
     this.sweetAlertPopupService.openConfirmPopup(title, text).then((result) => {

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
@@ -38,6 +38,7 @@ export class HaccpRestaurantComponent {
   @Input() pestControlOptions: PestControlEnum;
   @Input() dishToWashOptions: DishToWashEnum;
   @Input() dishwasherOptions: DishwasherEnum;
+  @Output() haccpEvent: EventEmitter<HaccpModel> = new EventEmitter();
   @Output() saveEvent: EventEmitter<HaccpModel> = new EventEmitter();
   @Output() cancelEvent: EventEmitter<HaccpModel> = new EventEmitter();
 
@@ -66,7 +67,8 @@ export class HaccpRestaurantComponent {
       this.thirdHaccpForm.value,
     ];
     const haccp: HaccpModel = Object.assign({}, ...arr);
-    this.saveEvent.emit(haccp);
+    this.haccpEvent.emit(haccp);
+    this.saveEvent.emit();
   }
 
   onCancel() {

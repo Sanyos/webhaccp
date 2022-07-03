@@ -149,11 +149,8 @@ export class HaccpComponent implements OnInit, OnDestroy {
     this.cdref.detectChanges();
   }
 
-  haccpEvent(form: HaccpModel): void {
+  onSave(form: HaccpModel): void {
     this.haccp = form;
-  }
-
-  onSave(): void {
     const arr = [this.haccpCategoryForm.value, this.haccp];
     const haccp: HaccpModel = Object.assign({}, ...arr);
     // TODO FIZETÉS
@@ -168,7 +165,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
     });
   }
 
-  onCancel() {
+  onCancel(): void {
     const title = 'Biztosan ki szeretnél lépni?';
     const text = 'A kitöltött adatok elvesznek.';
     this.sweetAlertPopupService.openConfirmPopup(title, text).then((result) => {

@@ -69,4 +69,14 @@ export class HaccpFormThirdComponent implements OnInit {
 
     return [year, month, day].join('-');
   }
+
+  radioOptions = [
+    { key: true, value: 'Van' },
+    { key: false, value: 'Nincs' },
+  ];
+
+  routeIntersectsOptions = [
+    { key: true, value: 'Igen, időben elkülönül' },
+    { key: false, value: 'Nincs' },
+  ];
 }

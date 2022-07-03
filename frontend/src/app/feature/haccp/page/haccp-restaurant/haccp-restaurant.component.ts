@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
@@ -23,7 +23,7 @@ import {
   templateUrl: './haccp-restaurant.component.html',
   styleUrls: ['./haccp-restaurant.component.scss'],
 })
-export class HaccpRestaurantComponent implements OnInit {
+export class HaccpRestaurantComponent {
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;
@@ -38,7 +38,6 @@ export class HaccpRestaurantComponent implements OnInit {
   @Input() pestControlOptions: PestControlEnum;
   @Input() dishToWashOptions: DishToWashEnum;
   @Input() dishwasherOptions: DishwasherEnum;
-  @Output() haccpEvent: EventEmitter<HaccpModel> = new EventEmitter();
   @Output() saveEvent: EventEmitter<HaccpModel> = new EventEmitter();
   @Output() cancelEvent: EventEmitter<HaccpModel> = new EventEmitter();
 
@@ -47,8 +46,6 @@ export class HaccpRestaurantComponent implements OnInit {
   thirdHaccpForm: FormGroup;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
   firstHaccpFormEvent(form: FormGroup): void {
     this.haccpForm = form;
@@ -60,18 +57,16 @@ export class HaccpRestaurantComponent implements OnInit {
 
   thirdHaccpFormEvent(form: FormGroup): void {
     this.thirdHaccpForm = form;
+  }
+
+  onSave() {
     const arr = [
       this.haccpForm.value,
       this.secondHaccpForm.value,
       this.thirdHaccpForm.value,
     ];
     const haccp: HaccpModel = Object.assign({}, ...arr);
-    console.log(haccp);
-    this.haccpEvent.emit(haccp);
-  }
-
-  onSave() {
-    this.saveEvent.emit();
+    this.saveEvent.emit(haccp);
   }
 
   onCancel() {

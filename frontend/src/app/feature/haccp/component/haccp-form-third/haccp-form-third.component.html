@@ -1,70 +1,39 @@
 <div>
   <form [formGroup]="haccpForm">
-    <label class="radio-button-label">Üzemi (fekete) edénymosó?</label>
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Üzemi (fekete) edénymosó?'"
       formControlName="haccp_factory_dishwasher"
-      class="radio-group"
-    >
-      <mat-radio-button class="radio-button" value="true">Van</mat-radio-button>
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_factory_dishwasher"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label"
-      >Fogyasztói (fehér) edénymosó + mosogatógép?</label
-    >
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Fogyasztói (fehér) edénymosó + mosogatógép?'"
       formControlName="haccp_consumer_dishwasher"
-      class="radio-group"
-    >
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of dishwasherOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_consumer_dishwasher"
+      [options]="dishwasherOptions | keyvalue"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label"
-      >Egyszer használatos a fogyasztói edény?</label
-    >
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Egyszer használatos a fogyasztói edény?'"
       formControlName="haccp_disposable_consumer_container"
-      class="radio-group"
-    >
-      <mat-radio-button class="radio-button" value="true">Van</mat-radio-button>
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_disposable_consumer_container"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label"
-      >Ha van kiszállítás, hol mosogatja a szállítóedényt?</label
-    >
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Ha van kiszállítás, hol mosogatja a szállítóedényt?'"
       formControlName="haccp_dish_washing_up"
-      class="radio-group"
-    >
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of dishToWashOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_dish_washing_up"
+      [options]="dishToWashOptions | keyvalue"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Rendelkezik-e HACCP-vel?</label>
-    <mat-radio-group formControlName="haccp_have_haccp" class="radio-group">
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Rendelkezik-e HACCP-vel?'"
+      formControlName="haccp_have_haccp"
+      [formControl]="haccpForm.controls.haccp_have_haccp"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
     <mat-form-field
       *ngIf="haccpForm.controls['haccp_have_haccp'].value === 'true'"
@@ -79,103 +48,60 @@
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
-    <label class="radio-button-label">Rovar rágcsáló irtás?</label>
-    <mat-radio-group formControlName="haccp_pest_control" class="radio-group">
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Rovar rágcsáló irtás?'"
+      formControlName="haccp_pest_control"
+      [formControl]="haccpForm.controls.haccp_pest_control"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Élelmiszer hulladék elszállítása</label>
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Élelmiszer hulladék elszállítása'"
       formControlName="haccp_food_waste_transport"
-      class="radio-group"
-    >
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of foodWasteTransportOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_food_waste_transport"
+      [options]="foodWasteTransportOptions | keyvalue"
+    ></app-radio-form-control>
 
-    <mat-form-field>
-      <mat-label
-        >Kommunális hulladék elszállítása, szerződött partner neve</mat-label
-      >
-      <input formControlName="haccp_municipal_waste_dispose" matInput />
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_municipal_waste_dispose'].dirty ||
-          haccpForm.controls['haccp_municipal_waste_dispose'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-input-form-control
+      [label]="'Kommunális hulladék elszállítása, szerződött partner neve'"
+      formControlName="haccp_municipal_waste_dispose"
+      [formControl]="haccpForm.controls.haccp_municipal_waste_dispose"
+    ></app-input-form-control>
 
-    <label class="radio-button-label">Bejáratok</label>
-    <mat-radio-group formControlName="haccp_entrances" class="radio-group">
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of entranceOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Bejáratok'"
+      formControlName="haccp_entrances"
+      [formControl]="haccpForm.controls.haccp_entrances"
+      [options]="entranceOptions | keyvalue"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Áru útvonalak keresztezik egymást</label>
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Áru útvonalak keresztezik egymást'"
       formControlName="haccp_route_intersects"
-      class="radio-group"
-    >
-      <mat-radio-button class="radio-button" value="true"
-        >Igen, időben elkülönül</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_route_intersects"
+      [options]="routeIntersectsOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Áru átvételi hellyel rendelkezik</label>
-    <mat-radio-group
+    <app-radio-form-control
+      [label]="'Áru átvételi hellyel rendelkezik'"
       formControlName="haccp_place_of_receipt"
-      class="radio-group"
-    >
-      <mat-radio-button class="radio-button" value="true"
-        >Igen</mat-radio-button
-      >
-      <mat-radio-button class="radio-button" value="false"
-        >Nincs</mat-radio-button
-      >
-    </mat-radio-group>
+      [formControl]="haccpForm.controls.haccp_place_of_receipt"
+      [options]="radioOptions"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Vízellátása</label>
-    <mat-radio-group formControlName="haccp_water_supply" class="radio-group">
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of waterSupplyOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Vízellátása'"
+      formControlName="haccp_water_supply"
+      [formControl]="haccpForm.controls.haccp_water_supply"
+      [options]="waterSupplyOptions | keyvalue"
+    ></app-radio-form-control>
 
-    <label class="radio-button-label">Szennyvíz elvezetés módja</label>
-    <mat-radio-group formControlName="haccp_sewage_drain" class="radio-group">
-      <mat-radio-button
-        class="radio-button"
-        *ngFor="let option of sewageDrainOptions | keyvalue"
-        [value]="option.key"
-      >
-        {{ option.value }}
-      </mat-radio-button>
-    </mat-radio-group>
+    <app-radio-form-control
+      [label]="'Szennyvíz elvezetés módja'"
+      formControlName="haccp_sewage_drain"
+      [formControl]="haccpForm.controls.haccp_sewage_drain"
+      [options]="sewageDrainOptions | keyvalue"
+    ></app-radio-form-control>
 
     <mat-form-field>
       <mat-label>HACCP kiállítás dátuma</mat-label>

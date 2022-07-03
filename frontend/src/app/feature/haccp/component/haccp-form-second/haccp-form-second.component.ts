@@ -8,7 +8,6 @@ import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.en
   styleUrls: ['./haccp-form-second.component.scss'],
 })
 export class HaccpFormSecondComponent implements OnInit {
-  @Input() haccpCategory: CompanyCategoryTypes | null;
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
   constructor() {

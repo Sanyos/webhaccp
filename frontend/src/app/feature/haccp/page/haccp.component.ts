@@ -35,9 +35,6 @@ import { HaccpCategoryService } from '../service/haccp-category.service';
   styleUrls: ['./haccp.component.scss'],
 })
 export class HaccpComponent implements OnInit, OnDestroy {
-  haccpCategory$: Observable<CompanyCategoryTypes | null> =
-    this.haccpCategoryService.haccpCategory$;
-  haccpCategory: CompanyCategoryTypes | null;
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   companyData: CompanyWithUserResponseModel;
   readonly: boolean = false;
@@ -76,19 +73,11 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getEnums();
-    this.getHaccpCategory();
   }
 
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
-  }
-
-  getHaccpCategory() {
-    this.haccpCategory$.subscribe((category: CompanyCategoryTypes | null) => {
-      console.log(category);
-      this.haccpCategory = category;
-    });
   }
 
   getCompanyData() {

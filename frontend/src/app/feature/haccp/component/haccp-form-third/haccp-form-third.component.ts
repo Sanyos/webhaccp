@@ -17,7 +17,6 @@ import {
   styleUrls: ['./haccp-form-third.component.scss'],
 })
 export class HaccpFormThirdComponent implements OnInit {
-  @Input() haccpCategory: CompanyCategoryTypes | null;
   @Input() sewageDrainOptions: SewageDrainEnum;
   @Input() waterSupplyOptions: WaterSupplyEnum;
   @Input() entranceOptions: EntranceEnum;

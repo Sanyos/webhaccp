@@ -16,7 +16,6 @@ import {
   styleUrls: ['./haccp-form.component.scss'],
 })
 export class HaccpFormComponent implements OnInit {
-  @Input() haccpCategory: CompanyCategoryTypes | null;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;

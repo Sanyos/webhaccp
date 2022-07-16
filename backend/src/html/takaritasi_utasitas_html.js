@@ -70,7 +70,8 @@ exports.html = (data) => {
   </head>
   <body>
     <table
-      style="border-collapse: collapse; margin-left: 6.71pt"
+      width="95%"
+      style="border-collapse: collapse; margin: 1rem auto;"
       cellspacing="0"
     >
       <tr style="height: 43pt">
@@ -151,7 +152,7 @@ exports.html = (data) => {
               text-align: left;
             "
           >
-            Kiadás időpontja: ${new Date()}
+            Kiadás időpontja: ${new Date().toISOString().split("T")[0]}
           </p>
         </td>
       </tr>

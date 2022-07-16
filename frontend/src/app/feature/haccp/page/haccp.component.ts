@@ -28,7 +28,6 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
-import { HaccpCategoryService } from '../service/haccp-category.service';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -65,8 +64,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
     private readonly companyApiService: CompanyApiService,
     private cdref: ChangeDetectorRef,
     private readonly haccpApiService: HaccpApiService,
-    private readonly userApiService: UserApiService,
-    private readonly haccpCategoryService: HaccpCategoryService
+    private readonly userApiService: UserApiService
   ) {
     this.getCompanyData();
   }

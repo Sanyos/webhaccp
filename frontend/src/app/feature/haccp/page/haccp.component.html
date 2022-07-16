@@ -5,18 +5,28 @@
     </div>
     <h2>Adatbekérő lap kitöltése</h2>
 
-    <mat-horizontal-stepper orientation="horizontal" #stepper>
-      <mat-step>
+    <mat-horizontal-stepper #stepper [linear]="true">
+      <mat-step [stepControl]="haccpCategoryForm">
         <app-haccp-category-form
           [readonly]="readonly"
           [companyCategoryOptions]="companyCategoryOptions"
           (haccpCategoryFormEvent)="haccpCategoryFormEvent($event)"
         ></app-haccp-category-form>
+        <button
+          mat-button
+          color="primary"
+          id="primary-btn"
+          matStepperNext
+          mat-raised-button
+        >
+          Tovább
+        </button>
       </mat-step>
 
       <mat-step>
         <app-haccp-restaurant
           *ngIf="
+            haccpCategoryForm.valid &&
             haccpCategoryForm.controls.haccp_company_category.value === 'BUFFET'
           "
           [coldStorageProductOptions]="coldStorageProductOptions"

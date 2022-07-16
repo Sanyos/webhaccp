@@ -45,8 +45,9 @@ exports.downloadDocument = (req, res, next) => {
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
     htmlContent: docs[fileName].html(data),
-    /*  options: {
-      orientation: "landscape",
-    }, */
+    options: {
+      format: "A4",
+      orientation: "portrait",
+    },
   });
 };

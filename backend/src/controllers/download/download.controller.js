@@ -33,7 +33,7 @@ let documents = [
     name: "jo_vendeglato_gyakorlat",
     orientation: "portrait",
   },
-  { html: talalasi_naplo, name: " talalasi_naplo", orientation: "portrait" },
+  { html: talalasi_naplo, name: "talalasi_naplo", orientation: "portrait" },
   {
     html: veszelyek_valodisaganak_becslese,
     name: "veszelyek_valodisaganak_becslese",
@@ -65,15 +65,17 @@ exports.downloadDocument = (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
   const fileName = req.params.name;
-  res.pdfFromHTML({
-    fileName: fileName + ".pdf",
-    htmlContent: documents
-      .filter((doc) => doc.name == fileName)[0]
-      .html.html(data),
-    options: {
-      format: "A4",
-      orientation: documents.filter((doc) => doc.name === fileName)[0]
-        .orientation,
-    },
-  });
+  const file = documents.filter((doc) => doc.name == fileName)[0];
+  if (file) {
+    res.pdfFromHTML({
+      fileName: fileName + ".pdf",
+      htmlContent: file.html.html(data),
+      options: {
+        format: "A4",
+        orientation: file.orientation,
+      },
+    });
+  } else {
+    return new createError[500](`Could not download document: ${err}`);
+  }
 };

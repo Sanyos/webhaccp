@@ -126,7 +126,7 @@ exports.html = (data) => {
               text-align: left;
             "
           >
-            Telephely: 2040 Budaörs, Budapark Keleti út 3.
+            Telephely: ${data.company_address}
           </p>
         </td>
         <td

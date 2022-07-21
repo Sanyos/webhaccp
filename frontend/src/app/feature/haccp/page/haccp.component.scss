@@ -1,7 +1,11 @@
 @use "../../../../styles.scss" as s;
+
 .page {
   width: 80%;
   margin: 2rem auto;
+  margin-bottom: -80px;
+  min-height: 90%;
+  height: auto !important;
   @media only screen and(max-width: 1200px) {
     width: 90%;
   }

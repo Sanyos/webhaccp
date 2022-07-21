@@ -63,6 +63,9 @@
       .bottom {
         position: absolute;
         bottom: 0;
+        @media only screen and(max-width: 890px) {
+          position: static;
+        }
         button,
         p {
           font-size: 12px;

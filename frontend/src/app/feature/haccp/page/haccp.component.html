@@ -25,10 +25,7 @@
 
       <mat-step>
         <app-haccp-restaurant
-          *ngIf="
-            haccpCategoryForm.valid &&
-            haccpCategoryForm.controls.haccp_company_category.value === 'BUFFET'
-          "
+          *ngIf="haccpCategoryForm.valid"
           [coldStorageProductOptions]="coldStorageProductOptions"
           [productPreparatoryOptions]="productPreparatoryOptions"
           [eggOptions]="eggOptions"

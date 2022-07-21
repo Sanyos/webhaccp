@@ -2,3 +2,9 @@ h1 {
   text-align: center;
   padding-top: 2rem;
 }
+
+.container {
+  min-height: 90%;
+  height: auto !important;
+  margin-bottom: -80px;
+}

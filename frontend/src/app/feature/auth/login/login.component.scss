@@ -1,3 +1,9 @@
 ::ng-deep .mat-horizontal-stepper-header-container {
   display: none !important;
 }
+
+.container {
+  margin-bottom: -80px;
+  min-height: 90%;
+  height: auto !important;
+}

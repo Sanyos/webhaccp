@@ -5,6 +5,7 @@ const higieniai_es_takaritasi_utasitas = require("../../html/higieniai_es_takari
 const jo_vendeglato_gyakorlat = require("../../html/jo_vendeglato_gyakorlat_html");
 const talalasi_naplo = require("../../html/talalasi_naplo_html");
 const veszelyek_valodisaganak_becslese = require("../../html/veszelyek_valodisaganak_becslese_html");
+const dontesi_fa = require("../../html/dontesi_fa_html");
 const haccp_1 = require("../../html/haccp_1_html");
 
 let documents = [
@@ -38,6 +39,11 @@ let documents = [
     html: veszelyek_valodisaganak_becslese,
     name: "veszelyek_valodisaganak_becslese",
     orientation: "portrait",
+  },
+  {
+    html: dontesi_fa,
+    name: "dontesi_fa",
+    orientation: "landscape",
   },
 ];
 

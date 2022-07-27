@@ -3,9 +3,7 @@
 .page {
   width: 80%;
   margin: 2rem auto;
-  margin-bottom: -80px;
-  min-height: 90%;
-  height: auto !important;
+  min-height: 85%;
   @media only screen and(max-width: 1200px) {
     width: 90%;
   }
@@ -21,6 +19,11 @@
   .edit-icon {
     @include s.editIcon;
   }
+}
+
+#back-button {
+  position: absolute;
+  top: 2rem;
 }
 
 mat-horizontal-stepper {

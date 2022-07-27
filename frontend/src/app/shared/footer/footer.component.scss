@@ -5,6 +5,8 @@ footer {
   color: rgb(229, 229, 229);
   background: map.get(s.$colors-map, my-grey);
   width: 100%;
+  position: relative;
+  clear: both;
 }
 
 .footer-text-holder {

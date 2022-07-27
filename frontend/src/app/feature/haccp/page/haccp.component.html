@@ -24,6 +24,12 @@
       </mat-step>
 
       <mat-step>
+        <div id="back-button">
+          <button matStepperPrevious mat-button>
+            <mat-icon>keyboard_backspace</mat-icon>
+            Vissza
+          </button>
+        </div>
         <app-haccp-restaurant
           *ngIf="haccpCategoryForm.valid"
           [coldStorageProductOptions]="coldStorageProductOptions"

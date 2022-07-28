@@ -7,3 +7,15 @@ h2 {
 button {
   margin-top: 1rem;
 }
+
+.container {
+  min-height: 100%;
+  min-height: -webkit-calc(100% - 170px);
+  min-height: -moz-calc(100% - 170px);
+  min-height: calc(100% - 170px);
+  @media only screen and(max-width: 988px) {
+    min-height: -webkit-calc(100% - 147px);
+    min-height: -moz-calc(100% - 147px);
+    min-height: calc(100% - 147px);
+  }
+}

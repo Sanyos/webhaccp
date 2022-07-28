@@ -3,11 +3,9 @@
 .cards-container {
   width: 100%;
   margin: 0 auto;
-  min-height: 600px;
   .flex {
     flex-wrap: wrap;
     display: flex;
-    justify-content: space-between;
     width: 90%;
     margin: 0 auto;
     @media only screen and(max-width: 600px) {
@@ -19,8 +17,7 @@
       width: 30%;
       text-align: center;
       padding: 1rem;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      margin: 1rem;
       cursor: pointer;
       @media only screen and(max-width: 600px) {
         width: 100%;

@@ -4,5 +4,13 @@ h1 {
 }
 
 .container {
-  min-height: 85%;
+  height: 100%;
+  height: -webkit-calc(100% - 170px);
+  height: -moz-calc(100% - 170px);
+  height: calc(100% - 170px);
+  @media only screen and(max-width: 988px) {
+    height: -webkit-calc(100% - 147px);
+    height: -moz-calc(100% - 147px);
+    height: calc(100% - 147px);
+  }
 }

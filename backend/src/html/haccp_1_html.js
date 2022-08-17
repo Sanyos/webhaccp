@@ -1,3 +1,47 @@
+/* <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="
+        width: 14.3in;
+        height: 10.2in;
+        margin: 0 auto;
+        border: 1px solid grey;
+      "
+    >
+      <div style="text-align: center; margin-top: 20rem">
+        <h1 style="color: #31849b" ; font-size: 50px;>WEB HACCP TERV</h1>
+        <h2>${data.haccp_unit_name}</h2>
+        <h2>${data.haccp_company_location}</h2>
+
+        <h2>
+          Felülvizsgálat: ${new Date( new Date(data.haccp_date).setFullYear( new
+          Date(data.haccp_date).getFullYear() + 1 ) ) .toISOString()
+          .split("T")[0] .replace(/-/g, ".")}
+        </h2>
+        <h4 style="margin-top: 3rem">Üzemelteti:</h4>
+      </div>
+    </div>
+    <div
+      style="
+        width: 14.3in;
+        height: 10.2in;
+        margin: 0 auto;
+        border: 1px solid black;
+      "
+    >
+      <h1>HACCP</h1>
+    </div>
+  </body>
+</html>
+ */
+
 exports.html = (data) => {
   return `
   <!DOCTYPE html>

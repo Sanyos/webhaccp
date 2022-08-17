@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards-section',
@@ -8,25 +9,71 @@ import { Component, OnInit } from '@angular/core';
 export class CardsSectionComponent implements OnInit {
   cards: any[] = [
     {
-      title: 'Egyszerű használat',
-      icon: 'search',
-      description:
-        'Nam in justo vulputate, suscipit metus vestibulum, tempus ligula. Aenean porttitor, elit non pharetra commodo, metus odio tristique odio, nec facilisis lorem ex ut risus.  ',
+      color: '#009688',
+      title: 'ÉTTERMEK ÉS VENDÉGLÁTÁS',
+      icon: 'restaurant',
+      price: '34.990Ft helyett bevezető áron most csak 29.990Ft',
+      list: [
+        'Étterm - melegkonyhás',
+        'Pizzéria',
+        'Szállodák',
+        'Alkalmi kitelepülés - fesztiválra, rendezvényre',
+        'Hamburgeres',
+        'Gyrosos',
+        'Reggelizők',
+        'Vegán, Vega éttermek',
+        'Munkahelyi étkeztetés',
+        'Kifőzde',
+      ],
     },
     {
-      title: 'Spóroljon időt',
-      icon: 'file_open',
-      description:
-        'Aenean porttitor, elit non pharetra commodo, metus odio tristique odio, nec facilisis lorem ex ut risus. Nam venenatis justo eget fringilla ornare.',
+      color: '#0097a7',
+      title: 'MOZGÓBOLTOK',
+      icon: 'lunch_dining',
+      price: '29.990Ft helyett bevezető áron most csak 24.990Ft',
+      list: [
+        'Pizzás',
+        'Hamburgeres',
+        'Gyrosos',
+        'Grill csirkés',
+        'Szendvicsező',
+        'BBQ - Smoker',
+        'Melegkonyhás étkeztetés',
+        'Forralt borozó',
+        'Levesező',
+        'Kenyeres autó',
+        'Hot-dog utánfutó -autó',
+        'Kávézó',
+      ],
     },
     {
-      title: 'Teljesen online',
-      icon: 'star',
-      description:
-        'Etiam facilisis iaculis turpis ut consectetur. Duis efficitur justo in suscipit bibendum. Proin orci nulla, molestie id lectus quis, consectetur sodales sem.',
+      color: '#0a81c0',
+      title: 'BÁROK ÉS PUBOK',
+      icon: 'sports_bar',
+      price: '24.990Ft helyett bevezető áron most csak 19.990Ft',
+      list: [
+        'Bár',
+        'Pub',
+        'Kocsma',
+        'Benzinkút',
+        'Dohánybolt',
+        'Szendvicsező',
+        'Kávézó',
+      ],
+    },
+    {
+      color: '#00695C',
+      title: 'BÜFÉK',
+      icon: 'bakery_dining',
+      price: '29.990Ft helyett bevezető áron most csak 24.990Ft',
+      list: ['Iskolai büfé', 'Színházi büfé', 'Munkahelyi büfé', 'Fornettis'],
     },
   ];
-  constructor() {}
+  constructor(private readonly router: Router) {}
 
   ngOnInit(): void {}
+
+  navigateToHaccp() {
+    this.router.navigate(['/haccp']);
+  }
 }

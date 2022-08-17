@@ -1,12 +1,25 @@
 <div class="cards-container">
-  <h2>Aenean porttitor, elit non pharetra commodo?</h2>
+  <h2>Kiknek Ajánljuk?</h2>
   <div class="flex">
     <div class="card" *ngFor="let card of cards">
-      <mat-icon>{{ card.icon }}</mat-icon>
-      <h3>{{ card.title }}</h3>
-      <p>
-        {{ card.description }}
-      </p>
+      <div class="card-header" [ngStyle]="{ background: card.color }">
+        <h3>{{ card.title }}</h3>
+        <h2>{{ card.price }}</h2>
+      </div>
+      <div class="card-content">
+        <mat-icon [ngStyle]="{ color: card.color }">{{ card.icon }}</mat-icon>
+        <div class="list-holder">
+          <p *ngFor="let item of card.list" class="list-item">{{ item }}</p>
+        </div>
+        <button
+          mat-raised-button
+          [ngStyle]="{ background: card.color }"
+          color="primary"
+          (click)="navigateToHaccp()"
+        >
+          Tovább
+        </button>
+      </div>
     </div>
   </div>
 </div>

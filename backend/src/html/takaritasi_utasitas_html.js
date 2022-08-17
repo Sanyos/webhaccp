@@ -152,7 +152,10 @@ exports.html = (data) => {
               text-align: left;
             "
           >
-            Kiadás időpontja: ${new Date().toISOString().split("T")[0]}
+            Kiadás időpontja: ${new Date()
+              .toISOString()
+              .split("T")[0]
+              .replace(/-/g, ".")}
           </p>
         </td>
       </tr>

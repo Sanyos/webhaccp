@@ -7,6 +7,7 @@ const talalasi_naplo = require("../../html/talalasi_naplo_html");
 const veszelyek_valodisaganak_becslese = require("../../html/veszelyek_valodisaganak_becslese_html");
 const dontesi_fa = require("../../html/dontesi_fa_html");
 const haccp_1 = require("../../html/haccp_1_html");
+const haccp_kezikonyv = require("../../html/haccp_kezikonyv_html");
 
 let documents = [
   {
@@ -45,6 +46,11 @@ let documents = [
     name: "dontesi_fa",
     orientation: "landscape",
   },
+  {
+    html: haccp_kezikonyv,
+    name: "haccp_kezikonyv",
+    orientation: "portrait",
+  },
 ];
 
 exports.downloadHaccp = (req, res, next) => {
@@ -54,6 +60,11 @@ exports.downloadHaccp = (req, res, next) => {
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
     htmlContent: haccp_1.html(data),
+    options: {
+      format: "A/4",
+      height: "9in",
+      width: "12.5in",
+    },
   });
 };
 
@@ -77,7 +88,8 @@ exports.downloadDocument = (req, res, next) => {
       fileName: fileName + ".pdf",
       htmlContent: file.html.html(data),
       options: {
-        format: "A4",
+        height: file.orientation === "portrait" ? "13in" : "8.5in",
+        width: file.orientation === "portrait" ? "8.7in" : "11.7in",
         orientation: file.orientation,
       },
     });

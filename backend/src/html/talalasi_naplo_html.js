@@ -15,22 +15,23 @@ exports.html = (data) => {
                   style="
                     margin-bottom: 40px;
                     margin-top: 40px;
-                    font-size: 32px;
+                    font-size: 24px;
                     font-family: 'Times New Roman', serif;
                     margin-left: 200pt;
                     text-align: center;
                   "
                 >
                   <strong
-                    ><span style="font-size: 30px"
+                    ><span style="font-size: 24px"
                       >T&aacute;lal&aacute;si napl&oacute; &nbsp; &nbsp; &nbsp; &nbsp;
-                      &nbsp; &nbsp; &nbsp; &nbsp; D&aacute;tum: ${
-                        new Date().toISOString().split("T")[0]
-                      }</span
+                      &nbsp; &nbsp; &nbsp; &nbsp; D&aacute;tum: ${new Date()
+                        .toISOString()
+                        .split("T")[0]
+                        .replace(/-/g, ".")}</span
                     ></strong
                   >
                 </p>
-                <img width="100%" src="data:image/png;base64,iV
+                <img width="100%" height="100%" src="data:image/png;base64,iV
                 BORw0KGgoAAAANSUhEUgAABA
                 cAAAVoCAIAAABQcyEuAAAAAX
                 NSR0IArs4c6QAAAARnQU1BAA

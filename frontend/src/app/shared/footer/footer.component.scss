@@ -5,7 +5,6 @@ footer {
   color: rgb(229, 229, 229);
   background: map.get(s.$colors-map, my-grey);
   width: 100%;
-
 }
 
 .footer-text-holder {
@@ -13,5 +12,4 @@ footer {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  font-size: 1rem;
 }

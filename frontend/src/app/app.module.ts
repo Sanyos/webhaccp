@@ -40,6 +40,8 @@ import { SelectFormControlComponent } from './shared/select-form-control/select-
 import { InputFormControlComponent } from './shared/input-form-control/input-form-control.component';
 import { RadioFormControlComponent } from './shared/radio-form-control/radio-form-control.component';
 import { HaccpRestaurantComponent } from './feature/haccp/page/haccp-restaurant/haccp-restaurant.component';
+import { DescriptionComponent } from './feature/home/component/description/description.component';
+import { ImageSectionComponent } from './feature/home/component/image-section/image-section.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,8 @@ import { HaccpRestaurantComponent } from './feature/haccp/page/haccp-restaurant/
     InputFormControlComponent,
     RadioFormControlComponent,
     HaccpRestaurantComponent,
+    DescriptionComponent,
+    ImageSectionComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,32 @@
+@use "../../../../../styles.scss" as s;
+@use "sass:map";
+
+.page {
+  background: #00968734;
+  .content {
+    width: 90%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    .flex {
+      display: flex;
+    }
+    mat-icon {
+      margin-right: 1rem;
+      color: rgb(0, 151, 167);
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      text-align: justify;
+      font-family: map.get(s.$fonts-map, text);
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+      color: rgb(0, 151, 167);
+      text-transform: uppercase;
+    }
+  }
+}

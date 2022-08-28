@@ -100,26 +100,32 @@ export class CompanyDetailsComponent implements OnInit {
 
   onSave(): void {
     const data = this.companyForm.value;
-    if (this.companyId) {
-      this.companyApiService
-        .update(data, this.companyId)
-        .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyWithUserResponseModel) => {
-          if (res) {
-            console.log('company updated: ', res);
-            this.sweetAlertPopupService
-              .openSuccessPopup('Üzlet sikeresen módosítva!')
-              .then(() => this.router.navigate(['/companies']));
-          }
-        });
+    if (this.companyForm.valid) {
+      if (this.companyId) {
+        this.companyApiService
+          .update(data, this.companyId)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((res: CompanyWithUserResponseModel) => {
+            if (res) {
+              console.log('company updated: ', res);
+              this.sweetAlertPopupService
+                .openSuccessPopup('Üzlet sikeresen módosítva!')
+                .then(() => this.router.navigate(['/companies']));
+            }
+          });
+      } else {
+        this.companyApiService
+          .create(data)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((res: CompanyWithUserResponseModel) => {
+            console.log('company created: ', res);
+            this.router.navigate(['/companies']);
+          });
+      }
     } else {
-      this.companyApiService
-        .create(data)
-        .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyWithUserResponseModel) => {
-          console.log('company created: ', res);
-          this.router.navigate(['/companies']);
-        });
+      this.sweetAlertPopupService.openErrorPopup(
+        'A cég kitöltött adatai hiányosak vagy nem megfelelő!'
+      );
     }
   }
 

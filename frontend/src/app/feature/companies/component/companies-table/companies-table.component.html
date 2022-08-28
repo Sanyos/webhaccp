@@ -28,7 +28,7 @@
             {{ headerTexts[i] }}
           </th>
           <td mat-cell *matCellDef="let element">
-            {{ element[column] }}
+            {{ element[column] ? element[column] : "hiányzó adat" }}
           </td>
         </ng-container>
 

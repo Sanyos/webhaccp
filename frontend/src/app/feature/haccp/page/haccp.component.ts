@@ -6,7 +6,10 @@ import { pluck, takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
-import { CompanyWithUserResponseModel } from 'src/app/core/model/company.model';
+import {
+  CompanyResponseModel,
+  CompanyWithUserResponseModel,
+} from 'src/app/core/model/company.model';
 import { EnumsModel } from 'src/app/core/model/enums.model';
 import {
   ColdStorageProductEnum,
@@ -34,6 +37,7 @@ import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
   styleUrls: ['./haccp.component.scss'],
 })
 export class HaccpComponent implements OnInit, OnDestroy {
+  userId: string = this.userApiService.userId ? this.userApiService.userId : '';
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   companyData: CompanyWithUserResponseModel;
   readonly: boolean = false;
@@ -41,6 +45,8 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   haccpCategoryForm: FormGroup;
   haccp: HaccpModel;
+
+  companies: CompanyResponseModel[];
 
   coldStorageProductOptions: ColdStorageProductEnum;
   productPreparatoryOptions: ProductPreparatoryEnum;
@@ -71,11 +77,18 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getEnums();
+    this.getAllCompaniesByUser();
   }
 
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  getAllCompaniesByUser() {
+    this.companyApiService.getList(`all/${this.userId}`).subscribe((res) => {
+      this.companies = res;
+    });
   }
 
   getCompanyData() {
@@ -143,6 +156,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
   onSave(): void {
     const arr = [this.haccpCategoryForm.value, this.haccp];
     const haccp: HaccpModel = Object.assign({}, ...arr);
+
+    this.saveCompanyIfNotExistAlready(haccp);
+
     // TODO FIZETÉS
 
     this.haccpApiService.create(haccp).subscribe((res: HaccpModel) => {
@@ -153,6 +169,24 @@ export class HaccpComponent implements OnInit, OnDestroy {
         this.router.navigate(['/home']);
       });
     });
+  }
+
+  saveCompanyIfNotExistAlready(haccp: HaccpModel) {
+    let company = this.companies.find(
+      (company) => company.company_name === haccp.haccp_unit_name
+    );
+
+    if (!company) {
+      let company = {
+        company_name: haccp.haccp_unit_name,
+        company_location: haccp.haccp_company_location,
+        company_user_id: this.userId,
+        company_archived: false,
+      };
+      this.companyApiService.create(company).subscribe((res) => {
+        console.log('company created', res);
+      });
+    }
   }
 
   onCancel() {

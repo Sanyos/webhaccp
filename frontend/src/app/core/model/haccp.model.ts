@@ -41,18 +41,18 @@ export interface HaccpModel {
 }
 
 export enum SewageDrainEnum {
-  channel = 'Csatorna',
-  tank = 'Tartályos',
+  channel = 'Csatorna bekötéses',
+  tank = 'Ballonos - Tartályos',
 }
 
 export enum WaterSupplyEnum {
-  mains = 'Hálózati',
-  tank = 'Tartályos',
+  mains = 'Hálózati vizet használok',
+  tank = 'Ballonos - Tartályos',
 }
 
 export enum EntranceEnum {
-  single = 'Egybejáratos',
-  service = 'Gazd. Bejárattal rendelkezik',
+  single = 'Egy bejárat van',
+  service = 'Gazdasági bejárattal is rendelkezem',
 }
 
 export enum FoodWasteTransportEnum {
@@ -61,21 +61,22 @@ export enum FoodWasteTransportEnum {
 }
 
 export enum PestControlEnum {
-  expert = 'Szakértő céget bízok meg',
-  selfSolve = 'Házilag',
+  expert = 'Külső szakértő céget bízok meg',
+  selfSolve = 'Magamnak végzem',
 }
 
 export enum DishToWashEnum {
-  facotry = 'Üzemi',
-  consumer = 'Fogyasztói',
-  disposable = 'Eldobható',
+  facotry = 'Üzemi edény mosogatóba',
+  consumer = 'Fogyasztói edény mosogatóba',
+  disposable = 'Eldobható edényzetet használok',
+  supplier = 'Szállító edény mosogatóba',
   no = 'Nincs kiszállítás',
 }
 
 export enum DishwasherEnum {
   yes = 'Van',
   no = 'Nincs',
-  dishwasher = 'Mosogatógép',
+  dishwasher = 'Mosogatógép is van',
 }
 export enum EggEnum {
   freshEgg = 'Friss tojás /előkészítőm van',
@@ -101,6 +102,7 @@ export enum RefigratorEnum {
   egg = 'Tojásos',
   iceCream = 'Jégkrémes',
   drink = 'Üdítős',
+  noRefigrator = 'Nincs hűtőm',
 }
 
 export enum ColdStorageProductEnum {

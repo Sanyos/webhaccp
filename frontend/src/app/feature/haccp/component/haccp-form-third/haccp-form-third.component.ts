@@ -75,7 +75,7 @@ export class HaccpFormThirdComponent implements OnInit {
   ];
 
   routeIntersectsOptions = [
-    { key: true, value: 'Igen, időben elkülönül' },
-    { key: false, value: 'Nincs' },
+    { key: true, value: 'Igen, ezért időben elkülönítve mozognak a termékek' },
+    { key: false, value: 'Nem keresztezik egymást' },
   ];
 }

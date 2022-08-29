@@ -1,12 +1,24 @@
 <div class="container">
   <form [formGroup]="haccpForm">
     <app-input-form-control
-      [label]="'Milyen kínálattal rendelkezik?'"
+      [label]="
+        'Kérem, sorolja fel, milyen kínálattal rendelkezik (pl, panninik, krémlevesek, hideg-meleg előételek, hot dog, lángos, hamburger, stb.)'
+      "
       formControlName="haccp_supply"
       [formControl]="haccpForm.controls.haccp_supply"
     ></app-input-form-control>
 
+    <app-radio-form-control
+      [label]="
+        'A gyártás/forgalmazás folyamán használ-e hűtést igénylő terméket?'
+      "
+      formControlName="haccp_require_keeping_cold"
+      [formControl]="haccpForm.controls.haccp_require_keeping_cold"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
     <app-select-form-control
+      [optional]="!haccpForm.controls['haccp_require_keeping_cold'].value"
       [label]="'Hűtést igénylő termékek'"
       formControlName="haccp_products_require_cold_storage"
       [formControl]="haccpForm.controls.haccp_products_require_cold_storage"
@@ -14,21 +26,23 @@
     ></app-select-form-control>
 
     <app-radio-form-control
-      [label]="'Történik melegen tartás ételkészítés után?'"
+      [label]="
+        'Az elkészült ételeit felszolgálás/kiszolgálásnál melegen tartja +63 oC-felett?'
+      "
       formControlName="haccp_require_keeping_warm"
       [formControl]="haccpForm.controls.haccp_require_keeping_warm"
-      [options]="requireKeepingWarmOptions"
+      [options]="radioOptions"
     ></app-radio-form-control>
 
     <app-select-form-control
-      [label]="'Milyen előkészítők vannak?'"
+      [label]="'Milyen előkészítő helyiségei vannak?'"
       formControlName="haccp_preparatory"
       [formControl]="haccpForm.controls.haccp_preparatory"
       [options]="productPreparatoryOptions"
     ></app-select-form-control>
 
     <app-select-form-control
-      [label]="'Milyen raktárak vannak?'"
+      [label]="'Milyen raktárokkal rendelkezik?'"
       formControlName="haccp_storages"
       [formControl]="haccpForm.controls.haccp_storages"
       [options]="storageOptions"
@@ -36,21 +50,21 @@
     </app-select-form-control>
 
     <app-select-form-control
-      [label]="'Milyen hűtők vagy mélyhűtők vannak?'"
+      [label]="'Milyen hűtőket vagy mélyhűtőket használ?'"
       formControlName="haccp_refrigerator"
       [formControl]="haccpForm.controls.haccp_refrigerator"
       [options]="refigratorOptions"
     ></app-select-form-control>
 
     <app-radio-form-control
-      [label]="'Van kiszállítás?'"
+      [label]="'Az Ön üzletéből történik kiszállítás?'"
       formControlName="haccp_delivery"
       [formControl]="haccpForm.controls.haccp_delivery"
       [options]="radioOptions"
     ></app-radio-form-control>
 
     <app-select-form-control
-      *ngIf="haccpForm.controls['haccp_delivery'].value === 'true'"
+      [optional]="!haccpForm.controls['haccp_delivery'].value"
       [label]="'Kiszállítás módja, jármű?'"
       formControlName="haccp_delivery_methods"
       [formControl]="haccpForm.controls.haccp_delivery_methods"
@@ -59,22 +73,29 @@
 
     <app-radio-form-control
       [label]="
-        'Rendelkezik-e öltözővel? Ha FoodTruck befogadó nyilatkozat van-e?'
+        'Rendelkezik-e öltözővel? Ha FOODTruck-ot üzemeltet befogadó nyilatkozattal rendelkezik?'
       "
       formControlName="haccp_dressing_room"
       [formControl]="haccpForm.controls.haccp_dressing_room"
       [options]="radioOptions"
+      matTooltipPosition="above"
+      matTooltip="A befogadó nyilatkozat, egy olyan írásban tett kijelentés, amely tartalmazza, hogy az ingatlan tulajdonosa az Vállalkozót befogadja az adott dolgozót/dolgozókat, hogy bizonyos helyiségeket pl. öltöző, személyzeti wc, raktárt, használjanak.  Tartalmaznia kell az adott vendéglátóipari egység adatait, a felek adatait, és magát a tényt, hogy a befogadott részére átadja a nem életvitel szerűen lakás céljára használt ingatlant/ingatlan részt"
     ></app-radio-form-control>
 
     <app-radio-form-control
-      [label]="'Használ-e Cukrászati vagy hidegkonyhai készítményt?'"
+      [label]="'Használ-e cukrászati vagy hidegkonyhai készítményt?'"
       formControlName="haccp_cold_products"
       [formControl]="haccpForm.controls.haccp_cold_products"
       [options]="radioOptions"
+      matTooltipPosition="above"
+      matTooltip="Cukrászati készítmény: Nagyon sokféle cukrászkészítmény készül, melyek rendszerezése a sütemények jellegének megfelelően csoportokra osztható. Így megkülönböztetünk:
+      - uzsonnasüteményeket, melyeket az étkezési szokások megváltozásával már nem elsősorban az uzsonna időszakban fogyasztják az emberek, hanem inkább a reggeli étkezést szolgálják. Ide tartoznak a kalácsok, kuglófok, bukták, batyuk, piték.
+      - kikészített süteményeket, torták, szeletek, tekercsek, minyonok, desszertek, csemegék, krémes és tejszínhabos sütemények, teasütemények.
+      Hidegkonyhai készítmény: A hidegkonyhai készítmények különböző konyhatechnológiai műveletekkel (sütés, főzés, párolás, hűtés stb…) ízlésesen, igényesen elkészített termékek. A készítésük nagy szakértelmet igényel, a hidegkonyhai szakácsok magas színvonalon folytatják mesterségüket. Ezek a termékek hidegen fogyaszthatóak. Jellemzőjük: gyorsan romlanak, ezért különös odafigyelést igényelnek a bolti árukezelés során."
     ></app-radio-form-control>
 
     <app-select-form-control
-      [label]="'Milyen típusú Tojást használ?'"
+      [label]="'Milyen típusú tojást használ?'"
       formControlName="haccp_egg"
       [formControl]="haccpForm.controls.haccp_egg"
       [options]="eggOptions"

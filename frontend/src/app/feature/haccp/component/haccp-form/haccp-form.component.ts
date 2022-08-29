@@ -36,10 +36,8 @@ export class HaccpFormComponent implements OnInit {
   createForm(): void {
     this.haccpForm = new FormGroup({
       haccp_supply: new FormControl('', Validators.required),
-      haccp_products_require_cold_storage: new FormControl(
-        '',
-        Validators.required
-      ),
+      haccp_require_keeping_cold: new FormControl('', Validators.required),
+      haccp_products_require_cold_storage: new FormControl(''),
       haccp_require_keeping_warm: new FormControl('', Validators.required),
       haccp_preparatory: new FormControl('', Validators.required),
       haccp_storages: new FormControl('', Validators.required),
@@ -51,11 +49,6 @@ export class HaccpFormComponent implements OnInit {
       haccp_egg: new FormControl('', Validators.required),
     });
   }
-
-  requireKeepingWarmOptions = [
-    { key: true, value: 'Igen, +63Co' },
-    { key: false, value: 'Nem' },
-  ];
 
   radioOptions = [
     { key: true, value: 'Igen' },

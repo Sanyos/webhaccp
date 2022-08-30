@@ -73,6 +73,7 @@ exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
   const fileName = req.params.name;
+  console.log("dokumentum letöltés: ", req.params.name);
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
     htmlContent: haccp_1.html(data),
@@ -83,6 +84,7 @@ exports.downloadDocument = (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
   const fileName = req.params.name;
+  console.log("dokumentum letöltés: ", req.params.name);
   const file = documents.filter((doc) => doc.name == fileName)[0];
   if (file) {
     res.pdfFromHTML({

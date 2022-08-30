@@ -32,6 +32,7 @@ export class HaccpFormThirdComponent implements OnInit {
 
   ngOnInit(): void {
     this.haccpFormEvent.emit(this.haccpForm);
+    console.log(this.pestControlOptions);
   }
 
   createForm(): void {
@@ -70,8 +71,8 @@ export class HaccpFormThirdComponent implements OnInit {
   }
 
   radioOptions = [
-    { key: true, value: 'Van' },
-    { key: false, value: 'Nincs' },
+    { key: true, value: 'Igen' },
+    { key: false, value: 'Nem' },
   ];
 
   routeIntersectsOptions = [

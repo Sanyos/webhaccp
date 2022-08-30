@@ -10,7 +10,7 @@ exports.createNewHaccp = (req, res, next) => {
   return haccpService
     .create(newHaccp)
     .then((haccp) => {
-      console.log("new compny created: ", haccp.rows[0]);
+      console.log("new haccp created: ", haccp.rows[0]);
       res.status(201).json(haccp.rows[0]);
     })
     .catch((err) => {
@@ -55,7 +55,23 @@ exports.getHaccpById = (req, res, next) => {
     .catch((err) => {
       return next(
         new createError[500](
-          `Could not find company whith this id: ${id} Error: ${err}`
+          `Could not find haccp whith this id: ${id} Error: ${err}`
+        )
+      );
+    });
+};
+
+exports.updateHaccpById = (req, res, next) => {
+  const id = req.params.haccpId;
+  return haccpService
+    .updateById(id, req.body)
+    .then((updatedHaccp) => {
+      res.status(200).json(updatedHaccp.rows[0]);
+    })
+    .catch((err) => {
+      return next(
+        new createError.BadRequest(
+          `Could not update haccp with id: ${id} Error:${err}`
         )
       );
     });

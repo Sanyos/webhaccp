@@ -66,8 +66,8 @@
     <app-select-form-control
       [optional]="!haccpForm.controls['haccp_delivery'].value"
       [label]="'Kiszállítás módja, jármű?'"
-      formControlName="haccp_delivery_methods"
-      [formControl]="haccpForm.controls.haccp_delivery_methods"
+      formControlName="haccp_delivery_method"
+      [formControl]="haccpForm.controls.haccp_delivery_method"
       [options]="deliveryMethodOptions"
     ></app-select-form-control>
 
@@ -78,8 +78,8 @@
       formControlName="haccp_dressing_room"
       [formControl]="haccpForm.controls.haccp_dressing_room"
       [options]="radioOptions"
-      matTooltipPosition="above"
-      matTooltip="A befogadó nyilatkozat, egy olyan írásban tett kijelentés, amely tartalmazza, hogy az ingatlan tulajdonosa az Vállalkozót befogadja az adott dolgozót/dolgozókat, hogy bizonyos helyiségeket pl. öltöző, személyzeti wc, raktárt, használjanak.  Tartalmaznia kell az adott vendéglátóipari egység adatait, a felek adatait, és magát a tényt, hogy a befogadott részére átadja a nem életvitel szerűen lakás céljára használt ingatlant/ingatlan részt"
+      [infoIcon]="true"
+      [infoText]="dressingRoomInfoText"
     ></app-radio-form-control>
 
     <app-radio-form-control
@@ -87,11 +87,8 @@
       formControlName="haccp_cold_products"
       [formControl]="haccpForm.controls.haccp_cold_products"
       [options]="radioOptions"
-      matTooltipPosition="above"
-      matTooltip="Cukrászati készítmény: Nagyon sokféle cukrászkészítmény készül, melyek rendszerezése a sütemények jellegének megfelelően csoportokra osztható. Így megkülönböztetünk:
-      - uzsonnasüteményeket, melyeket az étkezési szokások megváltozásával már nem elsősorban az uzsonna időszakban fogyasztják az emberek, hanem inkább a reggeli étkezést szolgálják. Ide tartoznak a kalácsok, kuglófok, bukták, batyuk, piték.
-      - kikészített süteményeket, torták, szeletek, tekercsek, minyonok, desszertek, csemegék, krémes és tejszínhabos sütemények, teasütemények.
-      Hidegkonyhai készítmény: A hidegkonyhai készítmények különböző konyhatechnológiai műveletekkel (sütés, főzés, párolás, hűtés stb…) ízlésesen, igényesen elkészített termékek. A készítésük nagy szakértelmet igényel, a hidegkonyhai szakácsok magas színvonalon folytatják mesterségüket. Ezek a termékek hidegen fogyaszthatóak. Jellemzőjük: gyorsan romlanak, ezért különös odafigyelést igényelnek a bolti árukezelés során."
+      [infoIcon]="true"
+      [infoText]="coldProductInfoText"
     ></app-radio-form-control>
 
     <app-select-form-control

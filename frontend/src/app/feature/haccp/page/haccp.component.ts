@@ -2,11 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { pluck, takeUntil } from 'rxjs/operators';
+import { map, pluck, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { EnumsApiService } from 'src/app/core/api/enums-api/enums-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
+  CompanyRequestModel,
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
@@ -37,6 +38,7 @@ import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
   styleUrls: ['./haccp.component.scss'],
 })
 export class HaccpComponent implements OnInit, OnDestroy {
+  haccpId: number;
   userId: string = this.userApiService.userId ? this.userApiService.userId : '';
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   companyData: CompanyWithUserResponseModel;
@@ -85,13 +87,13 @@ export class HaccpComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
-  getAllCompaniesByUser() {
+  getAllCompaniesByUser(): void {
     this.companyApiService.getList(`all/${this.userId}`).subscribe((res) => {
       this.companies = res;
     });
   }
 
-  getCompanyData() {
+  getCompanyData(): void {
     this.companyIdParam$.pipe(takeUntil(this.unsubscribe)).subscribe((id) => {
       if (id) {
         this.companyApiService
@@ -114,9 +116,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
             this.haccpCategoryForm.controls['haccp_company_id'].setValue(
               this.companyData.company_id
             );
-            this.haccpCategoryForm.controls['haccp_user_id'].setValue(
-              this.userApiService.userId ? +this.userApiService.userId : null
-            );
           });
       }
     });
@@ -127,6 +126,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
       .getSingleItem()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: EnumsModel) => {
+        console.log(res);
         this.coldStorageProductOptions = res.ColdStorageProductEnum;
         this.sewageDrainOptions = res.SewageDrainEnum;
         this.waterSupplyOptions = res.WaterSupplyEnum;
@@ -155,41 +155,65 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   onSave(): void {
     const arr = [this.haccpCategoryForm.value, this.haccp];
-    const haccp: HaccpModel = Object.assign({}, ...arr);
-
-    this.saveCompanyIfNotExistAlready(haccp);
+    this.haccp = Object.assign({}, ...arr);
 
     // TODO FIZETÉS
 
-    this.haccpApiService.create(haccp).subscribe((res: HaccpModel) => {
-      console.log(res);
-      const title = 'Tovább a fizetéshez';
-      const text = 'HACCP adatbekérő sikeresen kitöltve';
-      this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
-        this.router.navigate(['/home']);
+    this.haccpApiService
+      .create(this.haccp)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((res: HaccpModel) => {
+        console.log(res);
+        if (res) {
+          this.haccpId = res.haccp_id;
+          const title = 'Tovább a fizetéshez';
+          const text = 'HACCP adatbekérő sikeresen kitöltve';
+          this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
+            this.router.navigate(['/home']);
+          });
+          this.saveCompanyIfNotExistAlready();
+        }
       });
-    });
   }
 
-  saveCompanyIfNotExistAlready(haccp: HaccpModel) {
+  saveCompanyIfNotExistAlready(): void {
     let company = this.companies.find(
-      (company) => company.company_name === haccp.haccp_unit_name
+      (company) => company.company_name === this.haccp.haccp_unit_name
     );
 
     if (!company) {
-      let company = {
-        company_name: haccp.haccp_unit_name,
-        company_location: haccp.haccp_company_location,
-        company_user_id: this.userId,
+      let company: CompanyRequestModel = {
+        company_name: this.haccp.haccp_unit_name,
+        company_location: this.haccp.haccp_company_location,
+        company_user_id: +this.userId,
         company_archived: false,
       };
-      this.companyApiService.create(company).subscribe((res) => {
-        console.log('company created', res);
-      });
+
+      this.companyApiService
+        .create(company)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((res) => {
+          console.log('company created', res);
+          if (res.company_id) {
+            this.haccp.haccp_company_id = res.company_id;
+            this.updateHaccpWithCompanyId();
+          }
+        });
     }
   }
 
-  onCancel() {
+  async updateHaccpWithCompanyId(): Promise<void> {
+    if (this.haccpId) {
+      this.haccpApiService
+        .update(this.haccp, this.haccpId)
+        .pipe(takeUntil(this.unsubscribe))
+        .subscribe((res) => {
+          console.log('haccp updated with companyId', res);
+        });
+    }
+  }
+
+  onCancel(): void {
     const title = 'Biztosan ki szeretnél lépni?';
     const text = 'A kitöltött adatok elvesznek.';
     this.sweetAlertPopupService.openConfirmPopup(title, text).then((result) => {

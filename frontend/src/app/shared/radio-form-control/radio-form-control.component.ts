@@ -13,6 +13,7 @@ import {
   FormControlName,
   NG_VALUE_ACCESSOR,
 } from '@angular/forms';
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 
 @Component({
   selector: 'app-radio-form-control',
@@ -34,9 +35,13 @@ export class RadioFormControlComponent
   @Input() formControl: FormControl = new FormControl();
   @Input() options: any;
   @Input() optional: boolean = false;
+  @Input() infoIcon: boolean = false;
+  @Input() infoText: string = '';
   private innerValue: any = '';
 
-  constructor() {}
+  constructor(
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {}
 
   ngAfterViewInit(): void {
     this.formControl.valueChanges.subscribe(() => {
@@ -50,6 +55,10 @@ export class RadioFormControlComponent
         this.inputRef.nativeElement.value = '';
       }
     });
+  }
+
+  onOpenInfo() {
+    this.sweetAlertPopupService.openInfoPopup('Súgó', this.infoText);
   }
 
   onChange(e: Event, value: any) {

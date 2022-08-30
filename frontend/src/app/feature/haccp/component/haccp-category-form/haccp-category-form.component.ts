@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 
 @Component({
@@ -15,7 +16,7 @@ export class HaccpCategoryFormComponent implements OnInit {
   haccpForm: FormGroup;
   companyCategory: CompanyCategoryTypes;
 
-  constructor() {
+  constructor(private readonly userApiService: UserApiService) {
     this.createForm();
   }
 
@@ -29,7 +30,9 @@ export class HaccpCategoryFormComponent implements OnInit {
       haccp_company_location: new FormControl('', Validators.required),
       haccp_company_category: new FormControl('', Validators.required),
       haccp_company_id: new FormControl(null),
-      haccp_user_id: new FormControl(null),
+      haccp_user_id: new FormControl(
+        this.userApiService.userId ? +this.userApiService.userId : null
+      ),
     });
   }
 }

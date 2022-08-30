@@ -37,30 +37,10 @@
     ></app-radio-form-control>
 
     <app-radio-form-control
-      [label]="'Rendelkezett-e már korábban HACCP dokumentummal?'"
-      formControlName="haccp_have_haccp"
-      [formControl]="haccpForm.controls.haccp_have_haccp"
-      [options]="radioOptions"
-    ></app-radio-form-control>
-
-    <mat-form-field *ngIf="haccpForm.controls['haccp_have_haccp'].value">
-      <mat-label>Mikori?</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker"
-        formControlName="haccp_existing_haccp_date"
-      />
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <br />
-
-    <app-radio-form-control
       [label]="'Ki végzi a rágcsáló -és rovarírtást?'"
       formControlName="haccp_pest_control"
       [formControl]="haccpForm.controls.haccp_pest_control"
-      [options]="pestControlOptions"
+      [options]="pestControlOptions | keyvalue"
     ></app-radio-form-control>
 
     <app-radio-form-control
@@ -112,6 +92,26 @@
       [formControl]="haccpForm.controls.haccp_sewage_drain"
       [options]="sewageDrainOptions | keyvalue"
     ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Rendelkezett-e már korábban HACCP dokumentummal?'"
+      formControlName="haccp_have_haccp"
+      [formControl]="haccpForm.controls.haccp_have_haccp"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <mat-form-field *ngIf="haccpForm.controls['haccp_have_haccp'].value">
+      <mat-label>Mikori?</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_existing_haccp_date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <br />
 
     <mat-form-field>
       <mat-label>HACCP kiállítás dátuma</mat-label>

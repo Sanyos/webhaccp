@@ -38,6 +38,7 @@ export interface HaccpModel {
   haccp_date: string;
   haccp_user_id: number;
   haccp_company_id: number;
+  haccp_require_keepig_cold: boolean;
 }
 
 export enum SewageDrainEnum {
@@ -74,8 +75,8 @@ export enum DishToWashEnum {
 }
 
 export enum DishwasherEnum {
-  yes = 'Van',
-  no = 'Nincs',
+  yes = 'Igen',
+  no = 'Nem',
   dishwasher = 'Mosogatógép is van',
 }
 export enum EggEnum {

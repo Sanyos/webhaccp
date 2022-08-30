@@ -1,5 +1,5 @@
 exports.html = (data) => {
-  return `
+  let html = `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -136,16 +136,41 @@ exports.html = (data) => {
             <td>Megnevezés</td>
             <td>Verziószám</td>
             <td>Kiadás</td>
-          </tr>
-          <tr>
-            <td>1.</td>
-            <td>Napi ellenőrzési lap</td>
+          </tr>`;
+
+  var counter = 1;
+
+  if (data.haccp_products_require_cold_storage) {
+    html +=
+      `<tr>
+            <td>` +
+      counter +
+      `.</td>
+            <td>Hűtőterek hőmérséklet ellenőrző lapja</td>
             <td>1.</td>
             <td>
               ${new Date().toISOString().split("T")[0].replace(/-/g, ".")}
             </td>
-          </tr>
-        </table>
+          </tr>`;
+    counter++;
+  }
+
+  if (data.haccp_products_require_cold_storage) {
+    html +=
+      `<tr>
+            <td>` +
+      counter +
+      `.</td>
+            <td>Hűtőterek hőmérséklet ellenőrző lapja</td>
+            <td>1.</td>
+            <td>
+              ${new Date().toISOString().split("T")[0].replace(/-/g, ".")}
+            </td>
+          </tr>`;
+    counter++;
+  }
+
+  html += `</table>
   
         <h2 style="margin-top: 5rem">1. ALKALMAZÁSI TERÜLETT</h2>
         <p>
@@ -184,10 +209,13 @@ exports.html = (data) => {
             <td>Alapanyagok</td>
             <td>Készételek</td>
           </tr>
-          <tr>
-            <td>${data.haccp_preparatory}</td>
-            <td>${data.haccp_supply}</td>
-          </tr>
+          <tr><td>`;
+
+  data.haccp_preparatory.split("###").forEach((prep) => {
+    html += "<li>" + prep + "</li>";
+  });
+
+  html += `<td></tr>
         </table>
       </div>
       <div class="page">
@@ -437,4 +465,6 @@ exports.html = (data) => {
   
   
 `;
+
+  return html;
 };

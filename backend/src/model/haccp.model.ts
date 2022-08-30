@@ -38,6 +38,7 @@ export interface HaccpModel {
   haccp_date: string;
   haccp_user_id: number;
   haccp_company_id: number;
+  haccp_require_keepig_cold: boolean;
 }
 
 const enum SewageDrainEnum {
@@ -72,9 +73,9 @@ const enum DishToWashEnum {
 }
 
 const enum DishwasherEnum {
-  yes = "Van",
-  no = "Nincs",
-  dishwasher = "Mosogatógép",
+  yes = "Igen",
+  no = "Nem",
+  dishwasher = "Mosogatógép is van",
 }
 const enum EggEnum {
   freshEgg = "Friss tojás /előkészítőm van",
@@ -100,6 +101,7 @@ const enum RefigratorEnum {
   egg = "Tojásos",
   iceCream = "Jégkrémes",
   drink = "Üdítős",
+  noRefrigator = "Nincs hűtőm",
 }
 
 const enum ColdStorageProductEnum {
@@ -110,8 +112,14 @@ const enum ColdStorageProductEnum {
   cleanedFruitAndVegetable = "Tisztított Zöldség-gyümölcs",
   meatProduct = "Húskészítmény",
   mirelit = "Mirelit",
-  noColdStorage = "Nincs hűtést igénylő termék",
 }
+
+export const ProductPreparatoryReadableNames = {
+  meat: "Hús",
+  vegetable: "Zöldség",
+  egg: "tojás",
+  noPreparatory: "Nincs előkészit",
+};
 
 const enum ProductPreparatoryEnum {
   meat = "Hús ek.",

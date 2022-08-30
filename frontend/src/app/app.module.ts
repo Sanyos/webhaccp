@@ -42,6 +42,7 @@ import { RadioFormControlComponent } from './shared/radio-form-control/radio-for
 import { HaccpRestaurantComponent } from './feature/haccp/page/haccp-restaurant/haccp-restaurant.component';
 import { DescriptionComponent } from './feature/home/component/description/description.component';
 import { ImageSectionComponent } from './feature/home/component/image-section/image-section.component';
+import { DownloadHaccpComponent } from './feature/haccp/page/download-haccp/download-haccp.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { ImageSectionComponent } from './feature/home/component/image-section/im
     HaccpRestaurantComponent,
     DescriptionComponent,
     ImageSectionComponent,
+    DownloadHaccpComponent,
   ],
   imports: [
     BrowserModule,

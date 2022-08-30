@@ -169,7 +169,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
           const title = 'Tovább a fizetéshez';
           const text = 'HACCP adatbekérő sikeresen kitöltve';
           this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
-            this.router.navigate(['/home']);
+            this.router.navigate(['/download-haccp/' + this.haccpId]);
           });
           this.saveCompanyIfNotExistAlready();
         }

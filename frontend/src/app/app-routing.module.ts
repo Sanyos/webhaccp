@@ -8,6 +8,7 @@ import { CompaniesComponent } from './feature/companies/page/companies/companies
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
+import { DownloadHaccpComponent } from './feature/haccp/page/download-haccp/download-haccp.component';
 import { HaccpComponent } from './feature/haccp/page/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
@@ -71,6 +72,11 @@ const routes: Routes = [
   {
     path: 'haccp/:id',
     component: HaccpComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'download-haccp/:id',
+    component: DownloadHaccpComponent,
     canActivate: [AuthGuardService],
   },
 ];

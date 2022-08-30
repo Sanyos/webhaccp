@@ -57,6 +57,7 @@ exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   console.log("body: ", data);
   const fileName = req.params.name;
+  console.log("dokumentum letöltés: ", req.params.name);
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
     htmlContent: haccp_1.html(data),

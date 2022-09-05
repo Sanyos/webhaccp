@@ -2,15 +2,15 @@
 
 .page {
   width: 80%;
-  margin: 2rem auto;
-  min-height: -webkit-calc(100% - 234px);
+  margin: 3rem auto;
+  min-height: -webkit-calc(100% - 256px);
   min-height: 100%;
-  min-height: -moz-calc(100% - 234px);
-  min-height: calc(100% - 234px);
+  min-height: -moz-calc(100% - 256px);
+  min-height: calc(100% - 256px);
   @media only screen and(max-width: 988px) {
-    min-height: -webkit-calc(100% - 211px);
-    min-height: -moz-calc(100% - 211px);
-    min-height: calc(100% - 211px);
+    min-height: -webkit-calc(100% - 230px);
+    min-height: -moz-calc(100% - 230px);
+    min-height: calc(100% - 230px);
   }
   @media only screen and(max-width: 1200px) {
     width: 90%;

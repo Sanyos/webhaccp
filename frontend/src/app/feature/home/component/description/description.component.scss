@@ -4,9 +4,12 @@
 .page {
   background: #00968734;
   .content {
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     padding: 3rem 0;
+    @media only screen and(max-width: 890px) {
+      width: 90%;
+    }
     .flex {
       display: flex;
     }

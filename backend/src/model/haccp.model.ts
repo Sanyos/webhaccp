@@ -114,13 +114,6 @@ const enum ColdStorageProductEnum {
   mirelit = "Mirelit",
 }
 
-export const ProductPreparatoryReadableNames = {
-  meat: "Hús",
-  vegetable: "Zöldség",
-  egg: "tojás",
-  noPreparatory: "Nincs előkészit",
-};
-
 const enum ProductPreparatoryEnum {
   meat = "Hús ek.",
   vegetable = "Zöldség ek.",

@@ -8,12 +8,18 @@ button {
   margin-top: 1rem;
 }
 
-.container {
+.page {
+  width: 70%;
+  margin: 0 auto;
   min-height: auto;
   min-height: -webkit-calc(100% - 170px);
   min-height: -moz-calc(100% - 170px);
   min-height: calc(100% - 170px);
+  @media only screen and(max-width: 600px) {
+    width: 90%;
+  }
   @media only screen and(max-width: 988px) {
+    width: 90%;
     min-height: -webkit-calc(100% - 147px);
     min-height: -moz-calc(100% - 147px);
     min-height: calc(100% - 147px);

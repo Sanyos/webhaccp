@@ -1,5 +1,5 @@
 <label class="radio-button-label">{{ label }}</label>
-<mat-icon *ngIf="infoIcon" (click)="onOpenInfo()">info</mat-icon>
+<mat-icon id="info-icon" *ngIf="infoIcon" (click)="onOpenInfo()">info</mat-icon>
 <mat-radio-group #input [formControl]="formControl" class="radio-group">
   <mat-radio-button
     (change)="onChange($event, input.value)"

@@ -1,0 +1,28 @@
+.button-holder {
+  display: flex;
+  margin: 1rem 0;
+}
+#primary-btn {
+  margin-top: 1rem;
+  margin-right: 0.5rem;
+  border-radius: 12px;
+  width: 140px;
+}
+#secondary-btn {
+  margin-top: 1rem;
+  border-radius: 12px;
+  width: 140px;
+}
+.error {
+  color: #c62828;
+}
+
+mat-horizontal-stepper {
+  background: whitesmoke !important;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+  white-space: nowrap;
+  display: flex !important;
+  align-items: center;
+}

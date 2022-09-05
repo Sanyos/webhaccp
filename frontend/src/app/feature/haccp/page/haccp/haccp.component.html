@@ -1,0 +1,130 @@
+<div class="page">
+  <div class="form mat-elevation-z8">
+    <div class="edit-icon">
+      <mat-icon>article</mat-icon>
+    </div>
+    <h2>Adatbekérő lap kitöltése</h2>
+
+    <mat-horizontal-stepper #stepper [linear]="true">
+      <mat-step [stepControl]="haccpCategoryForm">
+        <app-haccp-category-form
+          [readonly]="readonly"
+          [companyCategoryOptions]="companyCategoryOptions"
+          (haccpCategoryFormEvent)="haccpCategoryFormEvent($event)"
+        ></app-haccp-category-form>
+        <button
+          mat-button
+          color="primary"
+          id="primary-btn"
+          matStepperNext
+          mat-raised-button
+        >
+          Tovább
+        </button>
+      </mat-step>
+
+      <mat-step>
+        <div id="back-button">
+          <button matStepperPrevious mat-button>
+            <mat-icon>keyboard_backspace</mat-icon>
+            Vissza
+          </button>
+        </div>
+        <app-haccp-restaurant
+          *ngIf="
+            haccpCategoryForm.valid &&
+            haccpCategoryForm.controls['haccp_company_category'].value ===
+              'RESTAURANT'
+          "
+          [coldStorageProductOptions]="coldStorageProductOptions"
+          [productPreparatoryOptions]="productPreparatoryOptions"
+          [eggOptions]="eggOptions"
+          [deliveryMethodOptions]="deliveryMethodOptions"
+          [refigratorOptions]="refigratorOptions"
+          [storageOptions]="storageOptions"
+          [sewageDrainOptions]="sewageDrainOptions"
+          [waterSupplyOptions]="waterSupplyOptions"
+          [entranceOptions]="entranceOptions"
+          [foodWasteTransportOptions]="foodWasteTransportOptions"
+          [pestControlOptions]="pestControlOptions"
+          [dishToWashOptions]="dishToWashOptions"
+          [dishwasherOptions]="dishwasherOptions"
+          (haccpEvent)="haccpEvent($event)"
+          (saveEvent)="onSave()"
+          (cancelEvent)="onCancel()"
+        ></app-haccp-restaurant>
+
+        <app-haccp-buffet
+          *ngIf="
+            haccpCategoryForm.valid &&
+            haccpCategoryForm.controls['haccp_company_category'].value ===
+              'BUFFET'
+          "
+          [coldStorageProductOptions]="coldStorageProductOptions"
+          [productPreparatoryOptions]="productPreparatoryOptions"
+          [eggOptions]="eggOptions"
+          [deliveryMethodOptions]="deliveryMethodOptions"
+          [refigratorOptions]="refigratorOptions"
+          [storageOptions]="storageOptions"
+          [sewageDrainOptions]="sewageDrainOptions"
+          [waterSupplyOptions]="waterSupplyOptions"
+          [entranceOptions]="entranceOptions"
+          [foodWasteTransportOptions]="foodWasteTransportOptions"
+          [pestControlOptions]="pestControlOptions"
+          [dishToWashOptions]="dishToWashOptions"
+          [dishwasherOptions]="dishwasherOptions"
+          (haccpEvent)="haccpEvent($event)"
+          (saveEvent)="onSave()"
+          (cancelEvent)="onCancel()"
+        ></app-haccp-buffet>
+
+        <app-haccp-mobile
+          *ngIf="
+            haccpCategoryForm.valid &&
+            haccpCategoryForm.controls['haccp_company_category'].value ===
+              'CASUALRESTAURANT'
+          "
+          [coldStorageProductOptions]="coldStorageProductOptions"
+          [productPreparatoryOptions]="productPreparatoryOptions"
+          [eggOptions]="eggOptions"
+          [deliveryMethodOptions]="deliveryMethodOptions"
+          [refigratorOptions]="refigratorOptions"
+          [storageOptions]="storageOptions"
+          [sewageDrainOptions]="sewageDrainOptions"
+          [waterSupplyOptions]="waterSupplyOptions"
+          [entranceOptions]="entranceOptions"
+          [foodWasteTransportOptions]="foodWasteTransportOptions"
+          [pestControlOptions]="pestControlOptions"
+          [dishToWashOptions]="dishToWashOptions"
+          [dishwasherOptions]="dishwasherOptions"
+          (haccpEvent)="haccpEvent($event)"
+          (saveEvent)="onSave()"
+          (cancelEvent)="onCancel()"
+        ></app-haccp-mobile>
+
+        <app-haccp-pub
+          *ngIf="
+            haccpCategoryForm.valid &&
+            haccpCategoryForm.controls['haccp_company_category'].value === 'PUB'
+          "
+          [coldStorageProductOptions]="coldStorageProductOptions"
+          [productPreparatoryOptions]="productPreparatoryOptions"
+          [eggOptions]="eggOptions"
+          [deliveryMethodOptions]="deliveryMethodOptions"
+          [refigratorOptions]="refigratorOptions"
+          [storageOptions]="storageOptions"
+          [sewageDrainOptions]="sewageDrainOptions"
+          [waterSupplyOptions]="waterSupplyOptions"
+          [entranceOptions]="entranceOptions"
+          [foodWasteTransportOptions]="foodWasteTransportOptions"
+          [pestControlOptions]="pestControlOptions"
+          [dishToWashOptions]="dishToWashOptions"
+          [dishwasherOptions]="dishwasherOptions"
+          (haccpEvent)="haccpEvent($event)"
+          (saveEvent)="onSave()"
+          (cancelEvent)="onCancel()"
+        ></app-haccp-pub>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+</div>

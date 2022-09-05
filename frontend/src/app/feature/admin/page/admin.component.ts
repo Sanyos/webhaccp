@@ -11,9 +11,7 @@ import {
 } from 'src/app/core/model/company.model';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
-import { DownloadService } from 'src/app/core/services/download/download.service';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
-import { HaccpComponent } from '../../haccp/page/haccp.component';
 import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
 import { UsersTableComponent } from '../component/users-table/users-table.component';

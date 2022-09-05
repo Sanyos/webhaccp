@@ -8,7 +8,7 @@ import {
   ProductPreparatoryEnum,
   RefigratorEnum,
   StorageEnum,
-} from '../../../../core/model/haccp.model';
+} from '../../../../../core/model/haccp.model';
 
 @Component({
   selector: 'app-haccp-form',

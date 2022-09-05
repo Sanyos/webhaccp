@@ -9,7 +9,7 @@ import { CompanyDetailsComponent } from './feature/companies/page/company-detail
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
 import { DownloadHaccpComponent } from './feature/haccp/page/download-haccp/download-haccp.component';
-import { HaccpComponent } from './feature/haccp/page/haccp.component';
+import { HaccpComponent } from './feature/haccp/page/haccp/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
 

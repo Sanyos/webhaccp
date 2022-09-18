@@ -41,6 +41,17 @@ export interface HaccpModel {
   haccp_require_keepig_cold: boolean;
 }
 
+export const enum IngredientEnum {
+  meat = "Hús- és húskészítmények",
+  milk = "Tejtermékek",
+  can = "Konzervek",
+  dryGoods = "Szárazáruk",
+  fruitOrVegetable = "Zöldség-gyümölcs",
+  egg = "Tojás (fertőtlenített)",
+  mirelit = "Mirelit termékek (zöldségek, félkész- és késztermékek)",
+  drink = "Italáru",
+}
+
 const enum SewageDrainEnum {
   channel = "Csatorna",
   tank = "Tartályos",

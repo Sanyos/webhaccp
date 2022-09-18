@@ -16,6 +16,7 @@ import {
   PestControlEnum,
   SewageDrainEnum,
   WaterSupplyEnum,
+  IngredientEnum,
 } from 'src/app/core/model/haccp.model';
 
 @Component({
@@ -24,6 +25,7 @@ import {
   styleUrls: ['./haccp-mobile.component.scss'],
 })
 export class HaccpMobileComponent {
+  @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;

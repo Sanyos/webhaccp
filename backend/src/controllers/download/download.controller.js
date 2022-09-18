@@ -63,8 +63,7 @@ exports.downloadHaccp = (req, res, next) => {
     htmlContent: haccp_1.html(data),
     options: {
       format: "A/4",
-      height: "9in",
-      width: "12.5in",
+      orientation: "landscape",
     },
   });
 };

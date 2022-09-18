@@ -87,6 +87,16 @@ const enums = {
     package: "Göngyöleg",
     manual: "Kézi",
   },
+  IngredientsEnum: {
+    meat: "Hús- és húskészítmények",
+    milk: "Tejtermékek",
+    can: "Konzervek",
+    dryGoods: "Szárazáruk",
+    fruitOrVegetable: "Zöldség-gyümölcs",
+    egg: "Tojás (fertőtlenített)",
+    mirelit: "Mirelit termékek (zöldségek, félkész- és késztermékek)",
+    drink: "Italáru",
+  },
 };
 
 module.exports = Object.freeze(enums);

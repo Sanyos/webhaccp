@@ -3,6 +3,7 @@ export interface HaccpModel {
   haccp_unit_name: string;
   haccp_company_location: string;
   haccp_supply: string;
+  haccp_ingredient: IngredientEnum;
   haccp_products_require_cold_storage: ColdStorageProductEnum;
   haccp_require_keeping_warm: boolean;
   haccp_preparatory: ProductPreparatoryEnum | string;
@@ -39,6 +40,17 @@ export interface HaccpModel {
   haccp_user_id: number;
   haccp_company_id: number;
   haccp_require_keepig_cold: boolean;
+}
+
+export const enum IngredientEnum {
+  meat = 'Hús- és húskészítmények',
+  milk = 'Tejtermékek',
+  can = 'Konzervek',
+  dryGoods = 'Szárazáruk',
+  fruitOrVegetable = 'Zöldség-gyümölcs',
+  egg = 'Tojás (fertőtlenített)',
+  mirelit = 'Mirelit termékek (zöldségek, félkész- és késztermékek)',
+  drink = 'Italáru',
 }
 
 export enum SewageDrainEnum {

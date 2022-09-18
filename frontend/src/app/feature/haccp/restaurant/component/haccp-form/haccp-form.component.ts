@@ -5,6 +5,7 @@ import {
   ColdStorageProductEnum,
   DeliveryMethodEnum,
   EggEnum,
+  IngredientEnum,
   ProductPreparatoryEnum,
   RefigratorEnum,
   StorageEnum,
@@ -16,6 +17,7 @@ import {
   styleUrls: ['./haccp-form.component.scss'],
 })
 export class HaccpFormComponent implements OnInit {
+  @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;
@@ -39,6 +41,7 @@ export class HaccpFormComponent implements OnInit {
 
   createForm(): void {
     this.haccpForm = new FormGroup({
+      haccp_ingredients: new FormControl([]),
       haccp_supply: new FormControl('', Validators.required),
       haccp_require_keeping_cold: new FormControl('', Validators.required),
       haccp_products_require_cold_storage: new FormControl([]),

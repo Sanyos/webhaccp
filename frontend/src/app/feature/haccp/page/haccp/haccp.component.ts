@@ -21,6 +21,7 @@ import {
   EntranceEnum,
   FoodWasteTransportEnum,
   HaccpModel,
+  IngredientEnum,
   PestControlEnum,
   ProductPreparatoryEnum,
   RefigratorEnum,
@@ -50,6 +51,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   companies: CompanyResponseModel[];
 
+  ingredientsOptions: IngredientEnum;
   coldStorageProductOptions: ColdStorageProductEnum;
   productPreparatoryOptions: ProductPreparatoryEnum;
   sewageDrainOptions: SewageDrainEnum;
@@ -127,6 +129,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: EnumsModel) => {
         console.log(res);
+        this.ingredientsOptions = res.IngredientsEnum;
         this.coldStorageProductOptions = res.ColdStorageProductEnum;
         this.sewageDrainOptions = res.SewageDrainEnum;
         this.waterSupplyOptions = res.WaterSupplyEnum;

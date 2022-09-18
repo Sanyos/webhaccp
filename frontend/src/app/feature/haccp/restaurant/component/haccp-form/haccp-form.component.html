@@ -8,6 +8,13 @@
       [formControl]="haccpForm.controls.haccp_supply"
     ></app-input-form-control>
 
+    <app-select-form-control
+      [label]="'Milyen alapanyagokat használ?'"
+      formControlName="haccp_ingredients"
+      [formControl]="haccpForm.controls.haccp_ingredients"
+      [options]="ingredientsOptions"
+    ></app-select-form-control>
+
     <app-radio-form-control
       [label]="
         'A gyártás/forgalmazás folyamán használ-e hűtést igénylő terméket?'

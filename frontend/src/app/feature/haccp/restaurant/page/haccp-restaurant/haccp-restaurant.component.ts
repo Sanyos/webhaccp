@@ -16,6 +16,7 @@ import {
   PestControlEnum,
   SewageDrainEnum,
   WaterSupplyEnum,
+  IngredientEnum,
 } from 'src/app/core/model/haccp.model';
 
 @Component({
@@ -24,6 +25,7 @@ import {
   styleUrls: ['./haccp-restaurant.component.scss'],
 })
 export class HaccpRestaurantComponent {
+  @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
   @Input() eggOptions: EggEnum;
@@ -60,7 +62,7 @@ export class HaccpRestaurantComponent {
     this.thirdHaccpForm = form;
   }
 
-  onSave() {
+  onSave(): void {
     const arr = [
       this.haccpForm.value,
       this.secondHaccpForm.value,
@@ -71,7 +73,7 @@ export class HaccpRestaurantComponent {
     this.saveEvent.emit();
   }
 
-  onCancel() {
+  onCancel(): void {
     this.cancelEvent.emit();
   }
 }

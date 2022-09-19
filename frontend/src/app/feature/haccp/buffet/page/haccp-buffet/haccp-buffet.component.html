@@ -1,6 +1,7 @@
 <mat-horizontal-stepper [linear]="true">
   <mat-step [stepControl]="haccpForm">
     <app-buffet-haccp-form
+      [ingredientsOptions]="ingredientsOptions"
       [coldStorageProductOptions]="coldStorageProductOptions"
       [productPreparatoryOptions]="productPreparatoryOptions"
       [eggOptions]="eggOptions"

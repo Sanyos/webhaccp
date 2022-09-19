@@ -2,7 +2,11 @@ const { CompanyCategoryTypes } = require("../enums/enums");
 const enums = require("../enums/enums");
 
 exports.html = (data) => {
-  let category = data.haccp_company_category;
+  let hasEgg = data.haccp_egg.split("###").filter((egg) => {
+    enums.ProductPreparatoryEnum[egg] === enums.EggEnum.freshEgg ||
+      enums.EggEnum.disinfectedEgg;
+  });
+  let category = CompanyCategoryTypes[data.haccp_company_category];
   let html = `
   <!DOCTYPE html>
   <html lang="en">
@@ -68,7 +72,7 @@ exports.html = (data) => {
   
   <body>
     <div class="page">
-      <div style="text-align: center; margin-top: 20rem">
+      <div style="text-align: center; margin-top: 10rem">
         <h1 style="color: #31849b" ; font-size: 60px;>WEB HACCP TERV</h1>
         <h2 style="font-size: 30px">${data.haccp_unit_name}</h2>`;
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
@@ -98,14 +102,13 @@ exports.html = (data) => {
         <h3 style="margin-top: 7rem">
           Üzemelteti:.....................................................
         </h3>
-        <p>${data.haccp_company_name}</p>
+        <p>${data.haccp_unit_name}</p>
         <p>${data.haccp_company_location}</p>
-        <p>${data.haccp_company_vat_number}</p>
       </div>
     </div>
     <div class="page">
       <h1 style="text-align: center">Tartalomjegyzék</h1>
-      <h3 style="margin-top: 5rem">
+      <h3 style="margin-top: 1rem">
         1. ALKALMAZÁSI
         TERÜLET...................................................................................................................................................................................
         3
@@ -240,7 +243,7 @@ exports.html = (data) => {
   html += `
       </table>
   
-      <h2 style="margin-top: 5rem">1. ALKALMAZÁSI TERÜLETT</h2>
+      <h2 style="margin-top: 2rem">1. ALKALMAZÁSI TERÜLETT</h2>
       <p>
         A Kézikönyv szerint megalakított HACCP munkacsoport a következő
         vendéglátó-ipari folyamatokat vizsgálta élelmiszerbiztonság
@@ -446,20 +449,21 @@ exports.html = (data) => {
         36/2014. (XII. 17.) FM rendelet az élelmiszerekkel kapcsolatos
         tájékoztatásról
       </p>
-      <p>
+    
+    </div>
+  
+    <div class="page">
+    <p>
         47/2011. (V. 31.) VM rendelet az élelmiszer-vállalkozás működéséhez
         szükséges szakképesítés
       </p>
-      <p style="margin-top: 1rem;">
+      <p>
         49/2014. (IV. 29.) VM rendelet az élelmiszerekben előforduló egyes
         szennyezőanyagokra és természetes eredetű ártalmas anyagokra vonatkozó
         határértékekről, valamint az élelmiszerekkel rendeltetésszerűen
         érintkezésbe kerülő egyes anyagokkal, tárgyakkal kapcsolatos
         követelményekről
       </p>
-    </div>
-  
-    <div class="page">
       <p>
         57/2010. (V. 7.) FVM rendelet az élelmiszerek forgalomba hozatalának,
         valamint előállításának engedélyezéséről, illetve bejelentéséről
@@ -695,10 +699,6 @@ exports.html = (data) => {
     if (data.haccp_require_keeping_cold) {
       html += "<br><small> 6.3 Fagyasztott termékek felengedtetése </small>";
     }
-    let hasEgg = data.haccp_egg.split("###").filter((egg) => {
-      enums.ProductPreparatoryEnum[egg] === enums.EggEnum.freshEgg ||
-        enums.EggEnum.disinfectedEgg;
-    });
     if (hasEgg.length !== 0) {
       html += " <br><small> 6.4 Tojás fertőtlenítése, törése </small>";
     }

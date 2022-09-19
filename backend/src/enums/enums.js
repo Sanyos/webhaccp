@@ -96,6 +96,9 @@ const enums = {
     egg: "Tojás (fertőtlenített)",
     mirelit: "Mirelit termékek (zöldségek, félkész- és késztermékek)",
     drink: "Italáru",
+    mirelitBakedGoods: "Fagyasztott pékáru",
+    bakedGoods: "Pékáru",
+    sauce: "Öntetek-szószok",
   },
 };
 

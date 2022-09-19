@@ -111,7 +111,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
             this.haccpCategoryForm.controls['haccp_company_location'].setValue(
               this.companyData.company_location
             );
-            this.haccpCategoryForm.controls['haccp_company_category'].disable();
             this.haccpCategoryForm.controls['haccp_company_category'].setValue(
               this.companyData.company_category
             );
@@ -157,6 +156,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
+    console.log(this.haccpCategoryForm);
     const arr = [this.haccpCategoryForm.value, this.haccp];
     this.haccp = Object.assign({}, ...arr);
 

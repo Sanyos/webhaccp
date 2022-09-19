@@ -11,11 +11,11 @@ import {
 } from '../../../../../core/model/haccp.model';
 
 @Component({
-  selector: 'app-haccp-form',
-  templateUrl: './haccp-form.component.html',
-  styleUrls: ['./haccp-form.component.scss'],
+  selector: 'app-pub-haccp-form',
+  templateUrl: './pub-haccp-form.component.html',
+  styleUrls: ['./pub-haccp-form.component.scss'],
 })
-export class HaccpFormComponent implements OnInit {
+export class PubHaccpFormComponent implements OnInit {
   @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;

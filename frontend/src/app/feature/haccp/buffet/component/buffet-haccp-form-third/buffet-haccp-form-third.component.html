@@ -1,0 +1,128 @@
+<div>
+  <form [formGroup]="haccpForm">
+    <app-radio-form-control
+      [label]="
+        'Rendelkezik üzemi edény (fekete) mosogatóval és/vagy mosogató géppel?'
+      "
+      formControlName="haccp_factory_dishwasher"
+      [formControl]="haccpForm.controls.haccp_factory_dishwasher"
+      [options]="dishwasherOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Rendelkezik fogyasztói edény (fehér) mosogatóval és/vagy mosogató géppel?'
+      "
+      formControlName="haccp_consumer_dishwasher"
+      [formControl]="haccpForm.controls.haccp_consumer_dishwasher"
+      [options]="dishwasherOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Az elkészült ételeket egyszer használatos- eldobható edényben szolgálja fel?'
+      "
+      formControlName="haccp_disposable_consumer_container"
+      [formControl]="haccpForm.controls.haccp_disposable_consumer_container"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Ha van kiszállítás, melyik mosogatóban takarítja a szállítóedényeket?'
+      "
+      formControlName="haccp_dish_washing_up"
+      [formControl]="haccpForm.controls.haccp_dish_washing_up"
+      [options]="dishToWashOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Ki végzi a rágcsáló -és rovarírtást?'"
+      formControlName="haccp_pest_control"
+      [formControl]="haccpForm.controls.haccp_pest_control"
+      [options]="pestControlOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Hogyan kezeli a feldolgozásból/értékesítésből visszamaradt állati eredetű hulladékot?'
+      "
+      formControlName="haccp_food_waste_transport"
+      [formControl]="haccpForm.controls.haccp_food_waste_transport"
+      [options]="foodWasteTransportOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-input-form-control
+      [label]="'Kommunális hulladék elszállítása, szerződött partner neve'"
+      formControlName="haccp_municipal_waste_dispose"
+      [formControl]="haccpForm.controls.haccp_municipal_waste_dispose"
+    ></app-input-form-control>
+
+    <app-radio-form-control
+      [label]="'Mennyi bejárattal rendelkezik?'"
+      formControlName="haccp_entrances"
+      [formControl]="haccpForm.controls.haccp_entrances"
+      [options]="entranceOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Áru útvonalak keresztezik egymást?'"
+      formControlName="haccp_route_intersects"
+      [formControl]="haccpForm.controls.haccp_route_intersects"
+      [options]="routeIntersectsOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Áru átvételi hellyel rendelkezik'"
+      formControlName="haccp_place_of_receipt"
+      [formControl]="haccpForm.controls.haccp_place_of_receipt"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Milyen az egység vízellátása?'"
+      formControlName="haccp_water_supply"
+      [formControl]="haccpForm.controls.haccp_water_supply"
+      [options]="waterSupplyOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Hogyan kezeli a szennyvizet?'"
+      formControlName="haccp_sewage_drain"
+      [formControl]="haccpForm.controls.haccp_sewage_drain"
+      [options]="sewageDrainOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Rendelkezett-e már korábban HACCP dokumentummal?'"
+      formControlName="haccp_have_haccp"
+      [formControl]="haccpForm.controls.haccp_have_haccp"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <mat-form-field *ngIf="haccpForm.controls['haccp_have_haccp'].value">
+      <mat-label>Mikori?</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_existing_haccp_date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>HACCP kiállítás dátuma</mat-label>
+      <input
+        readonly
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker disabled="true" #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</div>

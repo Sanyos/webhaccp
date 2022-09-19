@@ -2,11 +2,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-haccp-form-second',
-  templateUrl: './haccp-form-second.component.html',
-  styleUrls: ['./haccp-form-second.component.scss'],
+  selector: 'app-pub-haccp-form-second',
+  templateUrl: './pub-haccp-form-second.component.html',
+  styleUrls: ['./pub-haccp-form-second.component.scss'],
 })
-export class HaccpFormSecondComponent implements OnInit {
+export class PubHaccpFormSecondComponent implements OnInit {
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
   constructor() {

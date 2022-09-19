@@ -46,6 +46,15 @@ import { DownloadHaccpComponent } from './feature/haccp/page/download-haccp/down
 import { HaccpBuffetComponent } from './feature/haccp/buffet/page/haccp-buffet/haccp-buffet.component';
 import { HaccpMobileComponent } from './feature/haccp/mobile/page/haccp-mobile/haccp-mobile.component';
 import { HaccpPubComponent } from './feature/haccp/pub/page/haccp-pub/haccp-pub.component';
+import { MobileHaccpFormComponent } from './feature/haccp/mobile/component/mobile-haccp-form/mobile-haccp-form.component';
+import { MobileHaccpFormSecondComponent } from './feature/haccp/mobile/component/mobile-haccp-form-second/mobile-haccp-form-second.component';
+import { MobileHaccpFormThirdComponent } from './feature/haccp/mobile/component/mobile-haccp-form-third/mobile-haccp-form-third.component';
+import { PubHaccpFormComponent } from './feature/haccp/pub/component/pub-haccp-form/pub-haccp-form.component';
+import { PubHaccpFormSecondComponent } from './feature/haccp/pub/component/pub-haccp-form-second/pub-haccp-form-second.component';
+import { PubHaccpFormThirdComponent } from './feature/haccp/pub/component/pub-haccp-form-third/pub-haccp-form-third.component';
+import { BuffetHaccpFormComponent } from './feature/haccp/buffet/component/buffet-haccp-form/buffet-haccp-form.component';
+import { BuffetHaccpFormSecondComponent } from './feature/haccp/buffet/component/buffet-haccp-form-second/buffet-haccp-form-second.component';
+import { BuffetHaccpFormThirdComponent } from './feature/haccp/buffet/component/buffet-haccp-form-third/buffet-haccp-form-third.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +98,15 @@ import { HaccpPubComponent } from './feature/haccp/pub/page/haccp-pub/haccp-pub.
     HaccpBuffetComponent,
     HaccpMobileComponent,
     HaccpPubComponent,
+    MobileHaccpFormComponent,
+    MobileHaccpFormSecondComponent,
+    MobileHaccpFormThirdComponent,
+    PubHaccpFormComponent,
+    PubHaccpFormSecondComponent,
+    PubHaccpFormThirdComponent,
+    BuffetHaccpFormComponent,
+    BuffetHaccpFormSecondComponent,
+    BuffetHaccpFormThirdComponent,
   ],
   imports: [
     BrowserModule,

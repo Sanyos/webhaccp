@@ -1,6 +1,6 @@
 <mat-horizontal-stepper [linear]="true">
   <mat-step [stepControl]="haccpForm">
-    <app-haccp-form
+    <app-mobile-haccp-form
       [coldStorageProductOptions]="coldStorageProductOptions"
       [productPreparatoryOptions]="productPreparatoryOptions"
       [eggOptions]="eggOptions"
@@ -8,7 +8,7 @@
       [refigratorOptions]="refigratorOptions"
       [storageOptions]="storageOptions"
       (haccpFormEvent)="firstHaccpFormEvent($event)"
-    ></app-haccp-form>
+    ></app-mobile-haccp-form>
     <div class="button-holder" mat-dialog-actions>
       <button
         mat-button
@@ -22,9 +22,9 @@
     </div>
   </mat-step>
   <mat-step [stepControl]="secondHaccpForm">
-    <app-haccp-form-second
+    <app-mobile-haccp-form-second
       (haccpFormEvent)="secondHaccpFormEvent($event)"
-    ></app-haccp-form-second>
+    ></app-mobile-haccp-form-second>
     <div class="button-holder" mat-dialog-actions>
       <button
         mat-button
@@ -48,7 +48,7 @@
     </div>
   </mat-step>
   <mat-step [stepControl]="thirdHaccpForm">
-    <app-haccp-form-third
+    <app-mobile-haccp-form-third
       [sewageDrainOptions]="sewageDrainOptions"
       [waterSupplyOptions]="waterSupplyOptions"
       [entranceOptions]="entranceOptions"
@@ -58,7 +58,7 @@
       [dishwasherOptions]="dishwasherOptions"
       (haccpFormEvent)="thirdHaccpFormEvent($event)"
     >
-    </app-haccp-form-third>
+    </app-mobile-haccp-form-third>
 
     <div class="button-holder" mat-dialog-actions>
       <button

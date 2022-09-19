@@ -11,11 +11,11 @@ import {
 } from 'src/app/core/model/haccp.model';
 
 @Component({
-  selector: 'app-haccp-form-third',
-  templateUrl: './haccp-form-third.component.html',
-  styleUrls: ['./haccp-form-third.component.scss'],
+  selector: 'app-mobile-haccp-form-third',
+  templateUrl: './mobile-haccp-form-third.component.html',
+  styleUrls: ['./mobile-haccp-form-third.component.scss'],
 })
-export class HaccpFormThirdComponent implements OnInit {
+export class MobileHaccpFormThirdComponent implements OnInit {
   @Input() sewageDrainOptions: SewageDrainEnum;
   @Input() waterSupplyOptions: WaterSupplyEnum;
   @Input() entranceOptions: EntranceEnum;

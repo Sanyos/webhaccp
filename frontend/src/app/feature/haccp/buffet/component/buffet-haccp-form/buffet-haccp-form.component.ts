@@ -9,13 +9,12 @@ import {
   RefigratorEnum,
   StorageEnum,
 } from '../../../../../core/model/haccp.model';
-
 @Component({
-  selector: 'app-haccp-form',
-  templateUrl: './haccp-form.component.html',
-  styleUrls: ['./haccp-form.component.scss'],
+  selector: 'app-buffet-haccp-form',
+  templateUrl: './buffet-haccp-form.component.html',
+  styleUrls: ['./buffet-haccp-form.component.scss'],
 })
-export class HaccpFormComponent implements OnInit {
+export class BuffetHaccpFormComponent implements OnInit {
   @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;

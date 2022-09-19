@@ -2,20 +2,20 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ColdStorageProductEnum,
-  DeliveryMethodEnum,
-  EggEnum,
-  IngredientEnum,
   ProductPreparatoryEnum,
-  RefigratorEnum,
+  EggEnum,
+  DeliveryMethodEnum,
   StorageEnum,
-} from '../../../../../core/model/haccp.model';
+  RefigratorEnum,
+  IngredientEnum,
+} from 'src/app/core/model/haccp.model';
 
 @Component({
-  selector: 'app-haccp-form',
-  templateUrl: './haccp-form.component.html',
-  styleUrls: ['./haccp-form.component.scss'],
+  selector: 'app-mobile-haccp-form',
+  templateUrl: './mobile-haccp-form.component.html',
+  styleUrls: ['./mobile-haccp-form.component.scss'],
 })
-export class HaccpFormComponent implements OnInit {
+export class MobileHaccpFormComponent implements OnInit {
   @Input() ingredientsOptions: IngredientEnum;
   @Input() coldStorageProductOptions: ColdStorageProductEnum;
   @Input() productPreparatoryOptions: ProductPreparatoryEnum;
@@ -53,6 +53,8 @@ export class HaccpFormComponent implements OnInit {
       haccp_dressing_room: new FormControl('', Validators.required),
       haccp_cold_products: new FormControl('', Validators.required),
       haccp_egg: new FormControl('', Validators.required),
+      haccp_kitchen_location: new FormControl(''),
+      haccp_authority_signal: new FormControl(''),
     });
   }
 

@@ -1,3 +1,5 @@
+import { CompanyCategoryTypes } from '../enum/company-category-type.enum';
+
 export interface HaccpModel {
   haccp_id: number;
   haccp_unit_name: string;
@@ -40,6 +42,9 @@ export interface HaccpModel {
   haccp_user_id: number;
   haccp_company_id: number;
   haccp_require_keepig_cold: boolean;
+  haccp_company_category: CompanyCategoryTypes;
+  haccp_authority_signal: string;
+  haccp_kitchen_location: string;
 }
 
 export const enum IngredientEnum {
@@ -51,6 +56,9 @@ export const enum IngredientEnum {
   egg = 'Tojás (fertőtlenített)',
   mirelit = 'Mirelit termékek (zöldségek, félkész- és késztermékek)',
   drink = 'Italáru',
+  mirelitBakedGoods = 'Fagyasztott pékáru',
+  bakedGoods = 'Pékáru',
+  sauce = 'Öntetek-szószok',
 }
 
 export enum SewageDrainEnum {

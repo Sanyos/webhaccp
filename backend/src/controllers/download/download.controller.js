@@ -6,7 +6,7 @@ const jo_vendeglato_gyakorlat = require("../../html/jo_vendeglato_gyakorlat_html
 const talalasi_naplo = require("../../html/talalasi_naplo_html");
 const veszelyek_valodisaganak_becslese = require("../../html/veszelyek_valodisaganak_becslese_html");
 const dontesi_fa = require("../../html/dontesi_fa_html");
-const haccp_1 = require("../../html/haccp_1_html");
+const haccp = require("../../html/haccp_html");
 const haccp_kezikonyv = require("../../html/haccp_kezikonyv_html");
 
 let documents = [
@@ -60,7 +60,7 @@ exports.downloadHaccp = (req, res, next) => {
   console.log("dokumentum letöltés: ", req.params.name);
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
-    htmlContent: haccp_1.html(data),
+    htmlContent: haccp.html(data),
     options: {
       format: "A/4",
       orientation: "landscape",
@@ -75,7 +75,7 @@ exports.downloadHaccpCertificate = (req, res, next) => {
   console.log("dokumentum letöltés: ", req.params.name);
   res.pdfFromHTML({
     fileName: fileName + ".pdf",
-    htmlContent: haccp_1.html(data),
+    htmlContent: haccp.html(data),
   });
 };
 

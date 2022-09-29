@@ -31,7 +31,6 @@ export class MobileHaccpFormThirdComponent implements OnInit {
 
   ngOnInit(): void {
     this.haccpFormEvent.emit(this.haccpForm);
-    console.log(this.pestControlOptions);
   }
 
   createForm(): void {

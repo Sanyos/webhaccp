@@ -25,7 +25,6 @@ exports.getAllCompanies = (req, res, next) => {
     return companyService
       .getAllByUserId(companyUserId)
       .then((companies) => {
-        console.log("all companies: ", companies.rows);
         if (companies.rows) {
           const filteredCompanies = companies.rows
             .filter((company) => company.company_archived === false)
@@ -74,7 +73,6 @@ exports.getAllCompanies = (req, res, next) => {
     return companyService
       .getAll()
       .then((companies) => {
-        console.log("all companies: ", companies.rows);
         if (companies.rows) {
           const filteredCompanies = companies.rows
             .filter((company) => company.company_archived === false)

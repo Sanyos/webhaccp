@@ -19,11 +19,6 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
-  },
-  {
     path: 'login',
     component: LoginComponent,
   },
@@ -79,6 +74,12 @@ const routes: Routes = [
     component: DownloadHaccpComponent,
     canActivate: [AuthGuardService],
   },
+  {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full',
+  },
+  { path: '**', redirectTo: '/home' },
 ];
 
 @NgModule({

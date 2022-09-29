@@ -1,0 +1,55 @@
+const SimpleConnectionClient = require("simplepay-core").SimpleConnectionClient;
+const moment = require("moment");
+const open = require("open");
+const haccpService = require("../haccp/haccp.service");
+
+exports.startTransaction = (req, res, next) => {
+  const TRANSACTIONID = req.body.transactionId;
+  const amount = req.body.amount;
+  const haccpId = req.body.haccpId;
+  const client = new SimpleConnectionClient({
+    merchant: "S629601",
+    secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
+    baseUrl: "https://sandbox.simplepay.hu/payment/v2/",
+  });
+
+  return client
+    .request("start", {
+      salt: client.secret,
+      merchant: client.merchant,
+      currency: "HUF",
+      customerEmail: "jsmith@example.com",
+      url: `http://localhost:4200/download-haccp/${haccpId}/`,
+      language: "HU",
+      total: amount,
+      methods: ["CARD"],
+      orderRef: TRANSACTIONID,
+      sdkVersion:
+        "SimplePayV2.1_Payment_PHP_SDK_2.0.7_190701:dd236896400d7463677a82a47f53e36e",
+      timeout: new Date(moment().add(15, "minutes").toISOString()),
+    })
+    .then(async (r) => {
+      console.log(r);
+      res.send(r);
+      open(r.paymentUrl);
+    })
+    .catch((err) => {
+      console.log(err);
+      return err;
+    });
+};
+
+exports.finishTransaction = (req, res, next) => {
+  let r = req.body.params.r;
+  let haccp = req.body.haccp;
+  let response = ({ e, m, o, r, t } = JSON.parse(
+    Buffer.from(r, "base64").toString()
+  ));
+  if (response.e === "SUCCESS") {
+    haccp.payment_success = true;
+    haccp.haccp_transaction_id = response.t;
+    haccpService.updateById(haccp.haccp_id, haccp);
+  }
+  res.send(response);
+  return response;
+};

@@ -55,7 +55,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          console.log('get companies: ', res);
           this.tableData = res;
         },
         (err) => {

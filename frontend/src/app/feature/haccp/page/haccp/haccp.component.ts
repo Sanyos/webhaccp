@@ -33,6 +33,7 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { PaymentApiService } from 'src/app/core/api/payment-api.service';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -74,7 +75,8 @@ export class HaccpComponent implements OnInit, OnDestroy {
     private readonly companyApiService: CompanyApiService,
     private cdref: ChangeDetectorRef,
     private readonly haccpApiService: HaccpApiService,
-    private readonly userApiService: UserApiService
+    private readonly userApiService: UserApiService,
+    private readonly paymentApiService: PaymentApiService
   ) {
     this.getCompanyData();
   }
@@ -90,9 +92,12 @@ export class HaccpComponent implements OnInit, OnDestroy {
   }
 
   getAllCompaniesByUser(): void {
-    this.companyApiService.getList(`all/${this.userId}`).subscribe((res) => {
-      this.companies = res;
-    });
+    this.companyApiService
+      .getList(`all/${this.userId}`)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((res) => {
+        this.companies = res;
+      });
   }
 
   getCompanyData(): void {
@@ -102,7 +107,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
           .getSingleItem(id)
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((res: CompanyWithUserResponseModel) => {
-            console.log('company data: ', res);
             this.companyData = res;
             this.readonly = true;
             this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
@@ -127,7 +131,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
       .getSingleItem()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: EnumsModel) => {
-        console.log(res);
         this.ingredientsOptions = res.IngredientsEnum;
         this.coldStorageProductOptions = res.ColdStorageProductEnum;
         this.sewageDrainOptions = res.SewageDrainEnum;
@@ -146,7 +149,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
       });
   }
 
-  haccpCategoryFormEvent(form: FormGroup) {
+  haccpCategoryFormEvent(form: FormGroup): void {
     this.haccpCategoryForm = form;
     this.cdref.detectChanges();
   }
@@ -156,12 +159,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
   }
 
   onSave(): void {
-    console.log(this.haccpCategoryForm);
     const arr = [this.haccpCategoryForm.value, this.haccp];
     this.haccp = Object.assign({}, ...arr);
-
-    // TODO FIZETÉS
-
+    console.log(this.haccp);
     this.haccpApiService
       .create(this.haccp)
       .pipe(takeUntil(this.unsubscribe))
@@ -172,11 +172,42 @@ export class HaccpComponent implements OnInit, OnDestroy {
           const title = 'Tovább a fizetéshez';
           const text = 'HACCP adatbekérő sikeresen kitöltve';
           this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
-            this.router.navigate(['/download-haccp/' + this.haccpId]);
+            this.startPayment();
           });
           this.saveCompanyIfNotExistAlready();
         }
       });
+  }
+
+  getPrice(): number | undefined {
+    const categoryTypes = {
+      RESTAURANT: 'RESTAURANT',
+      BUFFET: 'BUFFET',
+      PUB: 'PUB',
+      CASUALRESTAURANT: 'CASUALRESTAURANT',
+    };
+
+    let category: any = this.haccp.haccp_company_category;
+    if (category == categoryTypes.BUFFET) {
+      return 24990;
+    } else if (category === categoryTypes.RESTAURANT) {
+      return 29990;
+    } else if (category === categoryTypes.CASUALRESTAURANT) {
+      return 24990;
+    } else if (category === categoryTypes.PUB) {
+      return 19990;
+    } else return;
+  }
+
+  startPayment(): void {
+    const body: any = {
+      amount: this.getPrice(),
+      transactionId: this.haccp.haccp_transaction_id,
+      haccpId: this.haccpId,
+    };
+    this.paymentApiService.startTransaction(body).subscribe((res) => {
+      console.log('start payment res: ', res);
+    });
   }
 
   saveCompanyIfNotExistAlready(): void {
@@ -190,6 +221,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
         company_location: this.haccp.haccp_company_location,
         company_user_id: +this.userId,
         company_archived: false,
+        company_category: this.haccp.haccp_company_category,
       };
 
       this.companyApiService
@@ -218,7 +250,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   onCancel(): void {
     const title = 'Biztosan ki szeretnél lépni?';
-    const text = 'A kitöltött adatok elvesznek.';
+    const text = 'Minden kitöltött adat elveszik.';
     this.sweetAlertPopupService.openConfirmPopup(title, text).then((result) => {
       if (result.isConfirmed) {
         this.router.navigate(['/home']);

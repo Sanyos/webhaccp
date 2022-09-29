@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
-
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-haccp-category-form',
   templateUrl: './haccp-category-form.component.html',
@@ -33,6 +33,8 @@ export class HaccpCategoryFormComponent implements OnInit {
       haccp_user_id: new FormControl(
         this.userApiService.userId ? +this.userApiService.userId : null
       ),
+      haccp_transaction_id: new FormControl(uuidv4()),
+      payment_success: new FormControl(false),
     });
   }
 }

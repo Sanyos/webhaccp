@@ -113,7 +113,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          console.log('companies: ', res);
           this.companiesTableData = res;
         },
         (err) => {

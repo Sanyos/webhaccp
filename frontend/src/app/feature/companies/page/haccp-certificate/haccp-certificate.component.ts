@@ -99,6 +99,7 @@ export class HaccpCertificateComponent implements OnInit {
       'haccp_date',
       'haccp-download',
       'certificate-download',
+      'payment',
     ];
   }
 }

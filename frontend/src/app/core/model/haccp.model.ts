@@ -45,6 +45,8 @@ export interface HaccpModel {
   haccp_company_category: CompanyCategoryTypes;
   haccp_authority_signal: string;
   haccp_kitchen_location: string;
+  haccp_transaction_id: string;
+  payment_success: boolean;
 }
 
 export const enum IngredientEnum {

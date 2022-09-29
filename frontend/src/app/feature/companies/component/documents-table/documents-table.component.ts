@@ -10,6 +10,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { PaymentApiService } from 'src/app/core/api/payment-api.service';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 
 @Component({
@@ -29,7 +30,7 @@ export class DocumentsTableComponent implements OnInit {
   @Output() downloadHaccpEvent: EventEmitter<any> = new EventEmitter();
   @Output() downloadCertificateEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor() {
+  constructor(private readonly paymentApiService: PaymentApiService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -66,5 +67,36 @@ export class DocumentsTableComponent implements OnInit {
 
   getTableData(): void {
     this.setDataSource(this.tableData);
+  }
+
+  getPrice(haccp: HaccpModel): number | undefined {
+    const categoryTypes = {
+      RESTAURANT: 'RESTAURANT',
+      BUFFET: 'BUFFET',
+      PUB: 'PUB',
+      CASUALRESTAURANT: 'CASUALRESTAURANT',
+    };
+
+    let category: any = haccp.haccp_company_category;
+    if (category == categoryTypes.BUFFET) {
+      return 24990;
+    } else if (category === categoryTypes.RESTAURANT) {
+      return 29990;
+    } else if (category === categoryTypes.CASUALRESTAURANT) {
+      return 24990;
+    } else if (category === categoryTypes.PUB) {
+      return 19990;
+    } else return;
+  }
+
+  startPayment(element: HaccpModel) {
+    const body: any = {
+      amount: this.getPrice(element),
+      transactionId: element.haccp_transaction_id,
+      haccpId: element.haccp_id,
+    };
+    this.paymentApiService.startTransaction(body).subscribe((res) => {
+      console.log('start payment res: ', res);
+    });
   }
 }

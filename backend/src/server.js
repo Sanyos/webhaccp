@@ -27,6 +27,7 @@ app.use("/company", require("./controllers/company/company.routes"));
 app.use("/document", require("./controllers/document/document.routes"));
 app.use("/haccp", require("./controllers/haccp/haccp.routes"));
 app.use("/download", require("./controllers/download/download.routes"));
+app.use("/payment", require("./controllers/otp/otp.routes"));
 app.get("/enums", (req, res) => {
   res.send(enums);
 });

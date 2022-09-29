@@ -19,4 +19,8 @@ export const apiConfig = {
   download: {
     default: 'download',
   },
+  payment: {
+    start: 'payment/start',
+    finish: 'payment/finish',
+  },
 };

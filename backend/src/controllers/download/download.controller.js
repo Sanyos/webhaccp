@@ -1,13 +1,13 @@
-const takaritasi_utasitas = require("../../html/takaritasi_utasitas_html");
-const allergen_tajekoztato = require("../../html/allergen_tajekoztato_html");
-const etelek_homersekletenek_ellenorzo_lapja = require("../../html/etelek_homersekletenek_ellenorzo_lapja_html");
-const higieniai_es_takaritasi_utasitas = require("../../html/higieniai_es_takaritasi_utasitas_html");
-const jo_vendeglato_gyakorlat = require("../../html/jo_vendeglato_gyakorlat_html");
-const talalasi_naplo = require("../../html/talalasi_naplo_html");
-const veszelyek_valodisaganak_becslese = require("../../html/veszelyek_valodisaganak_becslese_html");
-const dontesi_fa = require("../../html/dontesi_fa_html");
-const haccp = require("../../html/haccp_html");
-const haccp_kezikonyv = require("../../html/haccp_kezikonyv_html");
+const takaritasi_utasitas = require("../../html/documents/takaritasi_utasitas_html");
+const allergen_tajekoztato = require("../../html/documents/allergen_tajekoztato_html");
+const etelek_homersekletenek_ellenorzo_lapja = require("../../html/documents/etelek_homersekletenek_ellenorzo_lapja_html");
+const higieniai_es_takaritasi_utasitas = require("../../html/documents/higieniai_es_takaritasi_utasitas_html");
+const jo_vendeglato_gyakorlat = require("../../html/documents/jo_vendeglato_gyakorlat_html");
+const talalasi_naplo = require("../../html/documents/talalasi_naplo_html");
+const veszelyek_valodisaganak_becslese = require("../../html/documents/veszelyek_valodisaganak_becslese_html");
+const dontesi_fa = require("../../html/documents/dontesi_fa_html");
+const haccp = require("../../html/haccp/haccp_html");
+const haccp_kezikonyv = require("../../html/documents/haccp_kezikonyv_html");
 
 let documents = [
   {

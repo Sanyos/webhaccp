@@ -1,5 +1,5 @@
-const { CompanyCategoryTypes } = require("../enums/enums");
-const enums = require("../enums/enums");
+const { CompanyCategoryTypes } = require("../../enums/enums");
+const enums = require("../../enums/enums");
 exports.html = (data) => {
   let hasEgg = data.haccp_egg.split("###").filter((egg) => {
     return egg === "freshEgg" || egg === "disinfectedEgg";

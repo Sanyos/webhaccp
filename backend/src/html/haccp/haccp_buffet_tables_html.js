@@ -737,6 +737,81 @@ Megégett, túlsütött termék nem kerül kiszállításra. A tálalást minden
 </tr>
   </table>
   </div>
+
+  <div class="page">
+  <div style="height: 5rem;"></div>
+<table class="table-style">
+  <tr>
+    <td rowspan="2">Sorszám</td>
+    <td rowspan="2">Művelet</td>
+    <td rowspan="2">Sorszám</td>
+    <td rowspan="2">Veszélycsoport: veszély és eredete</td>
+    <td colspan="5">Döntési fa</td>
+  </tr>
+  <tr>
+    <td>Q1/Szabályozó intézkedés</td>
+    <td>Q2</td>
+    <td>Q3</td>
+    <td>Q4</td>
+    <td>CCP</td>
+  </tr>
+  <tr>
+  <td colspan="9">
+    <b> 7. Kiszolgálás </b>
+  </td>
+</tr>
+<tr>
+<td>7.1</td>
+<td>Edények előkészítése</td>
+<td>1.</td>
+<td>
+B, K, F: mikrobiológiai, kémiai, fizikai anyagokkal való szennyeződés
+- a tálaló eszközök szennyezettek, alkalmatlanok a tálalásra
+
+</td>
+`;
+
+  if (
+    data.haccp_consumer_dishwasher === "dishwasher" ||
+    data.haccp_consumer_dishwasher === "yes"
+  ) {
+    html += `<td>
+  A	zsíroldó-fertőtlenítőszerrel elmosogatott,	lecsöpögtetett edényeket használatba vételükig védjük a szennyeződésektől.
+  </td>`;
+  } else {
+    html += `
+  <td>Fogyasztói edény mosogató hiányában kizárólag eldobható, egyszer használatos eszközöket használunk.</td>`;
+  }
+
+  html += `
+
+
+<td>N</td>
+<td>N</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7.2</td>
+<td>Kiadagolás</td>
+<td>1.</td>
+<td>
+B, K, F: mikrobiológiai, kémiai, fizikai anyagokkal való szennyeződés, mikroba szaporodás
+- a tevékenység elhúzódik, az élelmiszer személytől, illetve eszköztől szennyeződik
+
+</td>
+<td>
+A lejelentett létszámoknak megfelelően történik a készételek összekészítése, kiadagolása. A tevékenység során fokozottan ügyelünk	a	munka
+folyamatosságára, a higiéniai szabályok betartására.
+</td>
+<td>N</td>
+<td>N</td>
+<td></td>
+<td></td>
+</tr>
+
+  </table>
+  </div>
     `;
 
   return html;

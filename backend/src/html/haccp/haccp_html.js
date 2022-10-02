@@ -1,14 +1,13 @@
-// TODO - folyamatábrák, mozgóboltnál gyártószám, báziskonyha elmentése db-be és átírása itt, büfénél utolsó táblázat
-const { CompanyCategoryTypes } = require("../enums/enums");
-const enums = require("../enums/enums");
+const { CompanyCategoryTypes } = require("../../enums/enums");
+const enums = require("../../enums/enums");
 const restaurantTables = require("./haccp_restaurant_tables_html");
 const pubTables = require("./haccp_pub_tables_html");
 const buffetTables = require("./haccp_buffet_tables_html");
+const restaurantflow = require("./haccp_restaurant_flow_html");
+const buffetFlow = require("./haccp_buffet_flow_html");
+const pubFlow = require("./haccp_pub_flow_html");
 
 exports.html = (data) => {
-  let hasEgg = data.haccp_egg.split("###").filter((egg) => {
-    return egg === "freshEgg" || egg === "disinfectedEgg";
-  });
   let category = CompanyCategoryTypes[data.haccp_company_category];
   let html = `
   <!DOCTYPE html>
@@ -81,7 +80,7 @@ exports.html = (data) => {
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
     html += `
     <h2>MOZGÓBOLT</h2>
-    <h2>(GYÁRTÓ SZÁM)</h2>`;
+   `;
   }
   html += `
 
@@ -175,11 +174,6 @@ exports.html = (data) => {
         4.
         VESZÉLYELEMZÉS.................................................................................................................................................................................................
         9
-      </h3>
-      <h3>
-        5.
-        SZABÁLYOZÁS..........................................................................................................................................................................................................
-        24
       </h3>
     </div>
     <div class="page">
@@ -299,7 +293,8 @@ exports.html = (data) => {
       <h3 style="margin-left: 1rem">2.2. Általános leírás</h3>`;
   if (
     category === CompanyCategoryTypes.CASUALRESTAURANT ||
-    category === CompanyCategoryTypes.RESTAURANT
+    category === CompanyCategoryTypes.RESTAURANT ||
+    category === CompanyCategoryTypes.BUFFET
   ) {
     html += `
         <div>
@@ -651,231 +646,25 @@ exports.html = (data) => {
   }
   html += `
      
-    </div>`;
+    </div>
+
+    <div class="page">`;
 
   if (
     category === CompanyCategoryTypes.RESTAURANT ||
-    CompanyCategoryTypes.CASUALRESTAURANT
+    category === CompanyCategoryTypes.CASUALRESTAURANT
   ) {
-    html += `
-    <div class="page">
-      <h2 style="padding-top: 1rem">3. FOLYAMATÁBRA</h2>
-  
-      <table cellspacing="0" cellpadding="0" class="flow-chart-table">
-        <tr>
-          <td>
-            <div class="border">
-  
-              <small>1. Étlaptervezés</small>
-            </div>
-            <span style="font-size: 20px; margin-left: 80px;">&#8595;</span>
-          </td>
-          <td>
-  
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <div class="border">
-              <small>2. Igényfelmérés</small>
-            </div>
-  
-            <span style="font-size: 20px; margin-left: 80px;">&#8595;</span>
-          </td>
-          <td></td>
-        </tr>
-  
-        <tr>
-          <td>
-            <div class="border">
-              <small>3. Beszerzés</small>
-            </div>
-            <span style="font-size: 20px; margin-left: 80px;">&#8595;</span>
-          </td>
-          <td></td>
-        </tr>
-  
-        <tr>
-          <td>
-            <small>
-              <span class="border">4. Áruátvétel </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
-            </small>
-            <br>
-            <br>
-            <span style="font-size: 20px; margin-left: 50px;">&#8595;</span>
-          </td>
-          <td>
-            <div class="border">
-              <small>
-                4.1 Minőségi követelmények rögzítése
-              </small>
-              <br> <small> 4.2 Nyomonkövetés </small>
-              <br> <small> 4.3 Minőségi átvétel </small>
-              <br> <small> 4.4 Mennyiségi átvétel </small>
-              <br> <small>4.5 Szakosított átvétel </small>
-              <br> <small>4.6 Csomagoló anyag </small>
-              <br> <small> 4.7 Tisztítószerek, takarítóeszközök </small>
-            </div>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <small>
-              <span class="border">5. TÁROLÁSs </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
-            </small>
-            <br>
-            <br>
-            <span style="font-size: 20px; margin-left: 50px;">&#8595;</span>
-          </td>
-          <td>
-            <div class="border">
-           <small> 5.1 Szakosított tárolás</small>
-              <br><small> 5.2 Hűtést igénylő termékek tárolása</small>`;
-    if (data.haccp_require_keeping_cold) {
-      html += "<br><small> 5.3 Fagyasztást igénylő termékek tárolása </small>";
-    }
-    html += `
-              <br><small> 5.4 Szárazáru tárolás</small>
-              <br><small> 5.5 Minőség-megőrzési idők dokumentálása, nyomonkövetés</small>
-              <br><small> 5.6 Csomagoló anyag</small>
-              <br><small> 5.7 Tisztítószerek, takarítóeszközök</small>
-  
-            </div>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <small><span class="border">
-                6. ELŐKÉSZÍTÉS
-              </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span></small>
-            <br>
-            <br>
-            <span style="font-size: 20px; margin-left: 50px;">&#8595;</span>
-          </td>
-          <td>
-            <div class="border">
-  
-              <small> 6.1 Csomagoló anyagok bontása</small>
-              <br><small> 6.2 Kimérés</small>`;
-    if (data.haccp_require_keeping_cold) {
-      html += "<br><small> 6.3 Fagyasztott termékek felengedtetése </small>";
-    }
-    if (hasEgg.length !== 0) {
-      html += " <br><small> 6.4 Tojás fertőtlenítése, törése </small>";
-    }
-    data.haccp_preparatory.split("###").forEach((prep) => {
-      if (
-        enums.ProductPreparatoryEnum[prep] ===
-        enums.ProductPreparatoryEnum.vegetable
-      ) {
-        html += "<br><small> 6.5 Zöldségek, gyümölcsök előkészítése </small>";
-      }
-      if (
-        enums.ProductPreparatoryEnum[prep] === enums.ProductPreparatoryEnum.meat
-      ) {
-        html +=
-          " <br><small> 6.6 Húselőkészítés </small><br><small> 6.7 Fagyasztás </small>";
-      }
-    });
-    html += `     
-              <br><small> 6.8 Tisztítás, mosogatás</small>
-            </div>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <small>
-              <span class="border">
-                7. ÉTELKÉSZÍTÉS
-              </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span></small>
-            <br>
-            <br>
-            <span style="font-size: 20px; margin-left: 50px;">&#8595;</span>
-          </td>
-          <td>
-            <div class="border">
-              <small>
-                7.1 Meleg ételkészítés
-              </small> <br>`;
-
-    if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
-      html += `
-              <small>
-                7.2 Tálalás -> 7.2.1. Csomagolás (elvitel) -> Újra melegítés 
-              </small>
-              `;
-    } else if (category === CompanyCategoryTypes.RESTAURANT) {
-      html += `
-              <small>
-              7.2 Hideg konyhai termékek
-            </small>
-              `;
-    }
-    html += `
-
-            </div>
-          </td>
-        </tr>
-  
-        <tr>
-          <td>
-            <small>
-              <span class="border">
-                8. KISZOLGÁLÁS
-              </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>  </small>`;
-    if (data.haccp_delivery) {
-      html += `   <br>
-    <br>
-    <span style="font-size: 20px; margin-left: 50px;">&#8595;</span>`;
-    }
-    html += `   
-          </td>
-          <td>
-            <div class="border">
-              <small>
-                8.1 Tányérok előkészítése, eldobható edényzet
-              </small><br>
-              <small>
-                8.2 Kiadagolás
-              </small>
-            </div>
-          </td>
-        </tr>`;
-    if (data.haccp_delivery) {
-      html += ` <tr>
-            <td>
-              <small>
-                <span class="border">
-                  9. Kiszállítás
-                </span>
-                <span style="font-size: 20px; margin-left: 20px;">&#x2192;</span> </small>
-            </td>
-            <td>
-              <div class="border">
-                <small>
-                  9.1 Szállítóedények előkészítése
-                </small><br><small>
-                  9.2 Kimérés
-                </small>
-              </div>
-            </td>
-          </tr>`;
-    }
-    html += `
-      </table>
-    </div>
-    
-    `;
+    html += restaurantflow.html(data);
+  } else if (category === CompanyCategoryTypes.BUFFET) {
+    html += buffetFlow.html(data);
+  } else if (category === CompanyCategoryTypes.PUB) {
+    html += pubFlow.html(data);
   }
 
   html += `
-  
     
-  
+    </div>
+    
     <div class="page">
       <h2 style="padding-top: 5rem">4. VESZÉLYELEMZÉS</h2>
       <div style="height: 5rem;"></div>

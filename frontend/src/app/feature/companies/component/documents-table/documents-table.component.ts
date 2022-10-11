@@ -94,6 +94,7 @@ export class DocumentsTableComponent implements OnInit {
       amount: this.getPrice(element),
       transactionId: element.haccp_transaction_id,
       haccpId: element.haccp_id,
+      userEmail: element.haccp_user_email,
     };
     this.paymentApiService.startTransaction(body).subscribe({
       next: () => {},

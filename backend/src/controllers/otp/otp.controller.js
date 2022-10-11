@@ -1,12 +1,15 @@
 const SimpleConnectionClient = require("simplepay-core").SimpleConnectionClient;
 const moment = require("moment");
-const open = require("open");
 const haccpService = require("../haccp/haccp.service");
 
 exports.startTransaction = (req, res, next) => {
+  const protocol = req.protocol;
+  const host = req.get("Host");
   const TRANSACTIONID = req.body.transactionId;
   const amount = req.body.amount;
   const haccpId = req.body.haccpId;
+  const userEmail = req.body.userEmail;
+  const url = `${protocol}://${host}/download-haccp/${haccpId}/`;
   const client = new SimpleConnectionClient({
     merchant: "S629601",
     secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
@@ -18,8 +21,8 @@ exports.startTransaction = (req, res, next) => {
       salt: client.secret,
       merchant: client.merchant,
       currency: "HUF",
-      customerEmail: "jsmith@example.com",
-      url: `http://localhost:4200/download-haccp/${haccpId}/`,
+      customerEmail: userEmail,
+      url: url,
       language: "HU",
       total: amount,
       methods: ["CARD"],
@@ -29,9 +32,7 @@ exports.startTransaction = (req, res, next) => {
       timeout: new Date(moment().add(15, "minutes").toISOString()),
     })
     .then(async (r) => {
-      console.log(r);
       res.send(r);
-      open(r.paymentUrl);
     })
     .catch((err) => {
       console.log(err);

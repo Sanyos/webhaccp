@@ -83,7 +83,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getEnums();
-    this.getAllCompaniesByUser();
+    if (this.userId) {
+      this.getAllCompaniesByUser();
+    }
   }
 
   ngOnDestroy() {
@@ -161,12 +163,10 @@ export class HaccpComponent implements OnInit, OnDestroy {
   onSave(): void {
     const arr = [this.haccpCategoryForm.value, this.haccp];
     this.haccp = Object.assign({}, ...arr);
-    console.log(this.haccp);
     this.haccpApiService
       .create(this.haccp)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: HaccpModel) => {
-        console.log(res);
         if (res) {
           this.haccpId = res.haccp_id;
           const title = 'Tovább a fizetéshez';
@@ -174,7 +174,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
           this.sweetAlertPopupService.openSuccessPopup(title, text).then(() => {
             this.startPayment();
           });
-          this.saveCompanyIfNotExistAlready();
+          if (this.userId) {
+            this.saveCompanyIfNotExistAlready();
+          }
         }
       });
   }
@@ -204,9 +206,10 @@ export class HaccpComponent implements OnInit, OnDestroy {
       amount: this.getPrice(),
       transactionId: this.haccp.haccp_transaction_id,
       haccpId: this.haccpId,
+      userEmail: this.haccp.haccp_user_email,
     };
     this.paymentApiService.startTransaction(body).subscribe((res) => {
-      console.log('start payment res: ', res);
+      window.open(res.paymentUrl);
     });
   }
 
@@ -228,7 +231,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
         .create(company)
         .pipe(takeUntil(this.unsubscribe))
         .subscribe((res) => {
-          console.log('company created', res);
           if (res.company_id) {
             this.haccp.haccp_company_id = res.company_id;
             this.updateHaccpWithCompanyId();
@@ -242,9 +244,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
       this.haccpApiService
         .update(this.haccp, this.haccpId)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res) => {
-          console.log('haccp updated with companyId', res);
-        });
+        .subscribe((res) => {});
     }
   }
 

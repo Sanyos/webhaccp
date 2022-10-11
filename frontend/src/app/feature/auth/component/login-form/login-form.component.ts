@@ -33,11 +33,9 @@ export class LoginFormComponent implements OnInit {
 
   login(): void {
     const userObject = this.loginForm.value;
-    console.log(userObject);
     this.userApiService.login(userObject).subscribe(
       (res) => {
         if (res) {
-          console.log(res);
           res.user_role === 'ADMIN'
             ? this.router.navigate(['/admin'])
             : this.router.navigate(['/companies']);

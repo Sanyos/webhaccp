@@ -79,7 +79,6 @@ export class HaccpCertificateComponent implements OnInit {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: HaccpModel[]) => {
-          console.log('haccp documents: ', res);
           this.tableData = res;
         },
         (err) => {

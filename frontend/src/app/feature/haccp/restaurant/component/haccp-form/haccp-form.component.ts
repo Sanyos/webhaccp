@@ -40,19 +40,52 @@ export class HaccpFormComponent implements OnInit {
 
   createForm(): void {
     this.haccpForm = new FormGroup({
-      haccp_ingredients: new FormControl([]),
-      haccp_supply: new FormControl('', Validators.required),
-      haccp_require_keeping_cold: new FormControl('', Validators.required),
-      haccp_products_require_cold_storage: new FormControl([]),
-      haccp_require_keeping_warm: new FormControl('', Validators.required),
-      haccp_preparatory: new FormControl('', Validators.required),
-      haccp_storages: new FormControl('', Validators.required),
-      haccp_refrigerator: new FormControl('', Validators.required),
-      haccp_delivery: new FormControl('', Validators.required),
-      haccp_delivery_method: new FormControl([]),
-      haccp_dressing_room: new FormControl('', Validators.required),
-      haccp_cold_products: new FormControl('', Validators.required),
-      haccp_egg: new FormControl('', Validators.required),
+      haccp_ingredients: new FormControl([], Validators.minLength(255)),
+      haccp_supply: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_require_keeping_cold: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_products_require_cold_storage: new FormControl(
+        [],
+        Validators.maxLength(255)
+      ),
+      haccp_require_keeping_warm: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_preparatory: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_storages: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_refrigerator: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_delivery: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_delivery_method: new FormControl([], Validators.maxLength(255)),
+      haccp_dressing_room: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_cold_products: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_egg: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
     });
   }
 

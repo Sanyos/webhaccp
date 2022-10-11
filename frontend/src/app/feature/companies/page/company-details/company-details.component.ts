@@ -63,7 +63,6 @@ export class CompanyDetailsComponent implements OnInit {
       .getSingleItem(id)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: CompanyWithUserResponseModel) => {
-        console.log('company data: ', res);
         this.companyData = res;
         this.companyForm.controls['user_name'].setValue(
           this.companyData.user_name
@@ -107,7 +106,6 @@ export class CompanyDetailsComponent implements OnInit {
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((res: CompanyWithUserResponseModel) => {
             if (res) {
-              console.log('company updated: ', res);
               this.sweetAlertPopupService
                 .openSuccessPopup('Üzlet sikeresen módosítva!')
                 .then(() => this.router.navigate(['/companies']));
@@ -118,7 +116,6 @@ export class CompanyDetailsComponent implements OnInit {
           .create(data)
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((res: CompanyWithUserResponseModel) => {
-            console.log('company created: ', res);
             this.router.navigate(['/companies']);
           });
       }

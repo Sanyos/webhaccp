@@ -1,6 +1,12 @@
 <div class="form">
   <form [formGroup]="haccpForm">
     <app-input-form-control
+      [label]="'Felhasználó email címe'"
+      formControlName="haccp_user_email"
+      [formControl]="haccpForm.controls.haccp_user_email"
+    ></app-input-form-control>
+
+    <app-input-form-control
       [label]="'Egység elnevezése'"
       [readonly]="readonly"
       formControlName="haccp_unit_name"

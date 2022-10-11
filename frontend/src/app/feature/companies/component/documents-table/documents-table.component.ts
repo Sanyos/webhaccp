@@ -95,8 +95,9 @@ export class DocumentsTableComponent implements OnInit {
       transactionId: element.haccp_transaction_id,
       haccpId: element.haccp_id,
     };
-    this.paymentApiService.startTransaction(body).subscribe((res) => {
-      console.log('start payment res: ', res);
+    this.paymentApiService.startTransaction(body).subscribe({
+      next: () => {},
+      error: (err) => console.log(err),
     });
   }
 }

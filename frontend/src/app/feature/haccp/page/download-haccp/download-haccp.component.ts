@@ -40,8 +40,6 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
     this.activatedRoute.queryParams.subscribe((params) => {
       const body = { params: params, haccp: this.haccp };
       return this.paymentApiService.finishTransaction(body).subscribe((res) => {
-        console.log('finish payment');
-        console.log(res);
         this.paymentStatus = res.e;
         if (res.e === PaymentStatus.FAIL) {
           this.message = `

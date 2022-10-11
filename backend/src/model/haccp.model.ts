@@ -44,6 +44,7 @@ export interface HaccpModel {
   haccp_kitchen_location: string;
   haccp_transaction_id: string;
   payment_success: boolean;
+  haccp_user_email: string;
 }
 
 export enum CompanyCategoryTypes {

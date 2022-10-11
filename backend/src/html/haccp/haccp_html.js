@@ -80,13 +80,14 @@ exports.html = (data) => {
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
     html += `
     <h2>MOZGÓBOLT</h2>
+    <h2>(${data.haccp_authority_signal})</h2>
    `;
   }
   html += `
 
         <h2 style="font-size: 30px">Székhely: ${data.haccp_company_location}</h2>`;
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
-    html += ` <h2 style="font-size: 30px">Báziskonyha: ${data.haccp_company_location}</h2>`;
+    html += ` <h2 style="font-size: 30px">Báziskonyha: ${data.haccp_kitchen_location}</h2>`;
   }
 
   html += `

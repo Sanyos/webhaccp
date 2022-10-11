@@ -114,6 +114,12 @@ export class UserApiService extends BaseHttpService<UserResponseModel> {
     } else return null;
   }
 
+  public get userEmail(): string | null {
+    if (localStorage.getItem('email')) {
+      return localStorage.getItem('email');
+    } else return null;
+  }
+
   resetLocalStorage(): void {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('id');

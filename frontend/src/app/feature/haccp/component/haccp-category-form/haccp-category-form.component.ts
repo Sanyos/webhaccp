@@ -26,15 +26,28 @@ export class HaccpCategoryFormComponent implements OnInit {
 
   createForm(): void {
     this.haccpForm = new FormGroup({
-      haccp_unit_name: new FormControl('', Validators.required),
-      haccp_company_location: new FormControl('', Validators.required),
-      haccp_company_category: new FormControl('', Validators.required),
+      haccp_unit_name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_company_location: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      haccp_company_category: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
       haccp_company_id: new FormControl(null),
       haccp_user_id: new FormControl(
         this.userApiService.userId ? +this.userApiService.userId : null
       ),
       haccp_transaction_id: new FormControl(uuidv4()),
       payment_success: new FormControl(false),
+      haccp_user_email: new FormControl(
+        this.userApiService.userEmail ? this.userApiService.userEmail : null,
+        [Validators.required, Validators.maxLength(255), Validators.email]
+      ),
     });
   }
 }

@@ -72,7 +72,6 @@ const routes: Routes = [
   {
     path: 'download-haccp/:id',
     component: DownloadHaccpComponent,
-    canActivate: [AuthGuardService],
   },
   {
     path: '',

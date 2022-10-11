@@ -77,7 +77,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: UserResponseModel): void {
-    console.log(user);
     if (user.user_archived === 'igen') {
       this.sweetAlertPopupService.openSuccessPopup(
         'Ez a felhasználó már archiválva van.'
@@ -93,7 +92,6 @@ export class AdminComponent implements OnInit, OnDestroy {
             this.userApiService
               .update(data, `archiving/${id}`)
               .subscribe((res: UserResponseModel) => {
-                console.log(res);
                 if (res) {
                   user.user_archived = 'igen';
                   this.sweetAlertPopupService.openSuccessPopup(
@@ -130,7 +128,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: HaccpModel[]) => {
-          console.log('haccp documents: ', res);
           res.forEach((haccp) => {
             let doc = {
               registered_user: haccp.haccp_user_id !== null ? 'igen' : 'nem',

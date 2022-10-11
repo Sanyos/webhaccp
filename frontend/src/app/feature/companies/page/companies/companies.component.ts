@@ -82,7 +82,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           this.companyApiService
             .update(data, id)
             .subscribe((res: CompanyResponseModel) => {
-              console.log('company archived: ', res);
               if (res) {
                 this.getCompanies();
                 this.sweetAlertPopupService.openSuccessPopup(

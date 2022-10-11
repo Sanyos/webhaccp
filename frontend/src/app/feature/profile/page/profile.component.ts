@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
       .getSingleItem(`id/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: UserResponseModel) => {
-        console.log('user data: ', res);
         if (res) {
           this.profileData = res;
           this.profileForm.controls['user_name'].setValue(
@@ -65,7 +64,6 @@ export class ProfileComponent implements OnInit {
         .update(userData, `edit/${this.profileData.user_id}`)
         .subscribe(
           (res) => {
-            console.log('user updated: ', res);
             this.userApiService.userSubject$.next(res);
             this.passwordIsWrong = false;
             this.emailIsAlreadyTaken = false;

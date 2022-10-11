@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-haccp-form-second',
@@ -19,14 +19,23 @@ export class HaccpFormSecondComponent implements OnInit {
 
   createForm(): void {
     this.haccpForm = new FormGroup({
-      haccp_glass_cleaner: new FormControl(''),
-      haccp_surface_disinfectant: new FormControl(''),
-      haccp_other_chemical: new FormControl(''),
-      haccp_hand_disinfectant: new FormControl(''),
-      haccp_2phase_dishwashing_detergent: new FormControl(''),
-      haccp_general_disinfectant: new FormControl(''),
-      haccp_scale_remover: new FormControl(''),
-      haccp_degreaser: new FormControl(''),
+      haccp_glass_cleaner: new FormControl('', Validators.maxLength(255)),
+      haccp_surface_disinfectant: new FormControl(
+        '',
+        Validators.maxLength(255)
+      ),
+      haccp_other_chemical: new FormControl('', Validators.maxLength(255)),
+      haccp_hand_disinfectant: new FormControl('', Validators.maxLength(255)),
+      haccp_2phase_dishwashing_detergent: new FormControl(
+        '',
+        Validators.maxLength(255)
+      ),
+      haccp_general_disinfectant: new FormControl(
+        '',
+        Validators.maxLength(255)
+      ),
+      haccp_scale_remover: new FormControl('', Validators.maxLength(255)),
+      haccp_degreaser: new FormControl('', Validators.maxLength(255)),
     });
   }
 }

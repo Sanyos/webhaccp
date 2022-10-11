@@ -7,7 +7,7 @@ exports.html = (data) => {
   });
   let html = `
 
-  <h2 style="padding-top: 1rem">3. FOLYAMATÁBRA</h2>
+  <h2>3. FOLYAMATÁBRA</h2>
   
   <table cellspacing="0" cellpadding="0" class="flow-chart-table">
     <tr>
@@ -15,7 +15,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
 
           <small>1. Étlaptervezés</small>
         </div>
@@ -31,7 +31,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
           <small>2. Igényfelmérés</small>
         </div>
 
@@ -45,7 +45,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
           <small>3. Beszerzés</small>
         </div>
         <span style="font-size: 20px; margin-left: 80px;">&#8595;</span>
@@ -59,7 +59,7 @@ exports.html = (data) => {
           <span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">4. Áruátvétel </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
+        width: 230px;">4. Áruátvétel </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
         </small>
         <br>
         <br>
@@ -69,7 +69,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
           <small>
             4.1 Minőségi követelmények rögzítése
           </small>
@@ -89,7 +89,7 @@ exports.html = (data) => {
           <span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">5. TÁROLÁSs </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
+        width: 230px;">5. TÁROLÁSs </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>
         </small>
         <br>
         <br>
@@ -99,7 +99,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
        <small> 5.1 Szakosított tárolás</small>
           <br><small> 5.2 Hűtést igénylő termékek tárolása</small>`;
   if (data.haccp_require_keeping_cold) {
@@ -120,7 +120,7 @@ exports.html = (data) => {
         <small><span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
             6. ELŐKÉSZÍTÉS
           </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span></small>
         <br>
@@ -131,7 +131,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
 
           <small> 6.1 Csomagoló anyagok bontása</small>
           <br><small> 6.2 Kimérés</small>`;
@@ -167,7 +167,7 @@ exports.html = (data) => {
           <span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
             7. ÉTELKÉSZÍTÉS
           </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span></small>
         <br>
@@ -178,7 +178,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
           <small>
             7.1 Meleg ételkészítés
           </small> <br>`;
@@ -208,7 +208,7 @@ exports.html = (data) => {
           <span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
             8. KISZOLGÁLÁS
           </span><span style="font-size: 20px; margin-left: 20px;">&#x2192;</span>  </small>`;
   if (data.haccp_delivery) {
@@ -222,7 +222,7 @@ exports.html = (data) => {
         <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
           <small>
             8.1 Tányérok előkészítése, eldobható edényzet
           </small><br>
@@ -239,7 +239,7 @@ exports.html = (data) => {
             <span style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
               9. Kiszállítás
             </span>
             <span style="font-size: 20px; margin-left: 20px;">&#x2192;</span> </small>
@@ -248,7 +248,7 @@ exports.html = (data) => {
           <div style=" margin: 0;
         padding: 0.5rem;
         border: 1px solid black;
-        width: 220px;">
+        width: 230px;">
             <small>
               9.1 Szállítóedények előkészítése
             </small><br><small>

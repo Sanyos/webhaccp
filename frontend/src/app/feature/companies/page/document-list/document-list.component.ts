@@ -63,7 +63,6 @@ export class DocumentListComponent implements OnInit {
       .getList(companyId)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: DocumentResponseModel[]) => {
-        console.log('documents: ', res);
         this.documents = res;
       });
   }

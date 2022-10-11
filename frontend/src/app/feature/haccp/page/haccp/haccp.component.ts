@@ -208,8 +208,11 @@ export class HaccpComponent implements OnInit, OnDestroy {
       haccpId: this.haccpId,
       userEmail: this.haccp.haccp_user_email,
     };
-    this.paymentApiService.startTransaction(body).subscribe((res) => {
-      window.open(res.paymentUrl);
+    this.paymentApiService.startTransaction(body).subscribe({
+      next: (res) => {
+        window.open(res.paymentUrl);
+      },
+      error: (err) => console.log(err),
     });
   }
 

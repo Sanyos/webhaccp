@@ -97,7 +97,9 @@ export class DocumentsTableComponent implements OnInit {
       userEmail: element.haccp_user_email,
     };
     this.paymentApiService.startTransaction(body).subscribe({
-      next: () => {},
+      next: (res) => {
+        window.open(res.paymentUrl);
+      },
       error: (err) => console.log(err),
     });
   }

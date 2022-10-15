@@ -21,7 +21,6 @@ export class PubHaccpFormThirdComponent implements OnInit {
   @Input() entranceOptions: EntranceEnum;
   @Input() foodWasteTransportOptions: FoodWasteTransportEnum;
   @Input() pestControlOptions: PestControlEnum;
-  @Input() dishToWashOptions: DishToWashEnum;
   @Input() dishwasherOptions: DishwasherEnum;
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
@@ -41,7 +40,6 @@ export class PubHaccpFormThirdComponent implements OnInit {
         '',
         Validators.required
       ),
-      haccp_dish_washing_up: new FormControl('', Validators.maxLength(255)),
       haccp_have_haccp: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),

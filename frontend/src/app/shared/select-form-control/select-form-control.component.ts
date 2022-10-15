@@ -33,18 +33,27 @@ export class SelectFormControlComponent
   @Input() options: any;
   @Input() optional: boolean = false;
   private innerValue: any = '';
-
+  disabled: boolean = false;
   constructor() {}
   ngAfterViewInit(): void {
-    this.formControl.valueChanges.subscribe(() => {
+    this.formControl.valueChanges.subscribe((controls) => {
+      this.disabled = false;
+      console.log(controls);
+      controls.forEach((control: string) => {
+        if (control.includes('no')) {
+          this.disabled = true;
+        } else {
+          this.disabled = false;
+        }
+      });
       // check condition if the form control is RESET
       if (
-        this.formControl.value == '' ||
-        this.formControl.value == null ||
-        this.formControl.value == undefined
+        this.formControl?.value == '' ||
+        this.formControl?.value == null ||
+        this.formControl?.value == undefined
       ) {
         this.innerValue = '';
-        this.inputRef.nativeElement.value = '';
+        //  this.inputRef.nativeElement.value = '';
       }
     });
   }

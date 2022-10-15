@@ -127,6 +127,11 @@ export enum RefigratorEnum {
   iceCream = 'Jégkrémes',
   drink = 'Üdítős',
   noRefigrator = 'Nincs hűtőm',
+  milk = 'Tejtermékes hűtő',
+  beer = 'Sörös hűtő',
+  wine = 'Bor hűtő',
+  freezer = 'Fagyasztó kamra',
+  meatProduct = 'Húskészítményes',
 }
 
 export enum ColdStorageProductEnum {
@@ -141,9 +146,9 @@ export enum ColdStorageProductEnum {
 }
 
 export enum ProductPreparatoryEnum {
-  meat = 'Hús ek.',
-  vegetable = 'Zöldség ek.',
-  egg = 'Tojás ek.',
+  meat = 'Hús előkészítő',
+  vegetable = 'Zöldség előkészítő',
+  egg = 'Tojás előkészítő',
   noPreparatory = 'Nincs előkészítő',
 }
 

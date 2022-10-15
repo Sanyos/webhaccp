@@ -12,6 +12,7 @@ import {
   ControlValueAccessor,
   FormControl,
 } from '@angular/forms';
+import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
 
 @Component({
   selector: 'app-input-form-control',
@@ -33,9 +34,14 @@ export class InputFormControlComponent
   @Input() label: string;
   @Input() optional: boolean = false;
   @Input() readonly: boolean = false;
+  @Input() validationText: string = 'Mező kitöltése kötelező';
+  @Input() infoIcon: boolean = false;
+  @Input() infoText: string = '';
   private innerValue: any = '';
 
-  constructor() {}
+  constructor(
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {}
   ngAfterViewInit(): void {
     this.formControl.valueChanges.subscribe(() => {
       // check condition if the form control is RESET
@@ -48,6 +54,10 @@ export class InputFormControlComponent
         this.inputRef.nativeElement.value = '';
       }
     });
+  }
+
+  onOpenInfo() {
+    this.sweetAlertPopupService.openInfoPopup('Súgó', this.infoText);
   }
 
   onChange(e: Event, value: any) {

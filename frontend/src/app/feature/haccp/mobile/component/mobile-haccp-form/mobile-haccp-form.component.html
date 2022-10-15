@@ -17,6 +17,8 @@
       "
       formControlName="haccp_supply"
       [formControl]="haccpForm.controls.haccp_supply"
+      [infoIcon]="true"
+      [infoText]="supplyInfoText"
     ></app-input-form-control>
 
     <app-select-form-control
@@ -60,7 +62,7 @@
     ></app-select-form-control>
 
     <app-select-form-control
-      [label]="'Milyen raktárokkal rendelkezik?'"
+      [label]="'Milyen raktárakkal rendelkezik?'"
       formControlName="haccp_storages"
       [formControl]="haccpForm.controls.haccp_storages"
       [options]="storageOptions"
@@ -88,6 +90,14 @@
       [formControl]="haccpForm.controls.haccp_delivery_method"
       [options]="deliveryMethodOptions"
     ></app-select-form-control>
+
+    <app-radio-form-control
+      [optional]="!haccpForm.controls['haccp_delivery'].value"
+      [label]="'Melyik mosogatóban takarítja a szállítóedényeket?'"
+      formControlName="haccp_dish_washing_up"
+      [formControl]="haccpForm.controls.haccp_dish_washing_up"
+      [options]="dishToWashOptions | keyvalue"
+    ></app-radio-form-control>
 
     <app-radio-form-control
       [label]="

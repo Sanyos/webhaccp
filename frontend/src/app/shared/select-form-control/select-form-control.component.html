@@ -8,6 +8,7 @@
   >
     <mat-option
       *ngFor="let option of options | keyvalue"
+      [disabled]="disabled && !option.key.includes('no')"
       [value]="option.key"
       >{{ option.value }}</mat-option
     >

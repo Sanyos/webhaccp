@@ -28,15 +28,6 @@
     ></app-radio-form-control>
 
     <app-radio-form-control
-      [label]="
-        'Ha van kiszállítás, melyik mosogatóban takarítja a szállítóedényeket?'
-      "
-      formControlName="haccp_dish_washing_up"
-      [formControl]="haccpForm.controls.haccp_dish_washing_up"
-      [options]="dishToWashOptions | keyvalue"
-    ></app-radio-form-control>
-
-    <app-radio-form-control
       [label]="'Ki végzi a rágcsáló -és rovarírtást?'"
       formControlName="haccp_pest_control"
       [formControl]="haccpForm.controls.haccp_pest_control"

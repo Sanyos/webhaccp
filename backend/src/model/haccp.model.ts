@@ -129,6 +129,11 @@ const enum RefigratorEnum {
   iceCream = "Jégkrémes",
   drink = "Üdítős",
   noRefrigator = "Nincs hűtőm",
+  milk = "Tejtermékes hűtő",
+  beer = "Sörös hűtő",
+  wine = "Bor hűtő",
+  freezer = "Fagyasztó kamra",
+  meatProduct = "Húskészítményes",
 }
 
 const enum ColdStorageProductEnum {
@@ -142,9 +147,9 @@ const enum ColdStorageProductEnum {
 }
 
 const enum ProductPreparatoryEnum {
-  meat = "Hús ek.",
-  vegetable = "Zöldség ek.",
-  egg = "Tojás ek.",
+  meat = "Hús előkészítő",
+  vegetable = "Zöldség előkészítő",
+  egg = "Tojás előkészítő",
   noPreparatory = "Nincs előkészítő",
 }
 

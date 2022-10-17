@@ -38,7 +38,6 @@ export class SelectFormControlComponent
   ngAfterViewInit(): void {
     this.formControl.valueChanges.subscribe((controls) => {
       this.disabled = false;
-      console.log(controls);
       controls.forEach((control: string) => {
         if (control.includes('no')) {
           this.disabled = true;

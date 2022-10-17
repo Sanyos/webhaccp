@@ -9,7 +9,6 @@ exports.create = (company) => {
   const values = [
     company.company_category,
     company.company_name,
-    company.company_address,
     company.company_location,
     company.company_phone,
     company.company_headquarters,
@@ -18,9 +17,10 @@ exports.create = (company) => {
     company.company_vat_number,
     company.company_archived,
     company.company_user_id,
+    company.company_billing_name,
   ];
   let sqlString = `
-  INSERT INTO companies(company_category, company_name, company_address, company_location, company_phone, company_headquarters, company_billing_address, company_registration_number, company_vat_number, company_archived, company_user_id) 
+  INSERT INTO companies(company_category, company_name, company_location, company_phone, company_headquarters, company_billing_address, company_registration_number, company_vat_number, company_archived, company_user_id, company_billing_name) 
   VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
   RETURNING *`;
   return pool.query(sqlString, values);
@@ -63,7 +63,6 @@ exports.updateById = (id, company) => {
     id,
     company.company_category,
     company.company_name,
-    company.company_address,
     company.company_location,
     company.company_phone,
     company.company_headquarters,
@@ -71,10 +70,11 @@ exports.updateById = (id, company) => {
     company.company_registration_number,
     company.company_vat_number,
     company.company_archived,
+    company.company_billing_name,
   ];
   const sqlQuery = `
   UPDATE companies 
-  SET company_category = $2, company_name = $3, company_address = $4, company_location = $5, company_phone = $6, company_headquarters = $7, company_billing_address = $8, company_registration_number = $9, company_vat_number = $10, company_archived = $11
+  SET company_category = $2, company_name = $3, company_location = $4, company_phone = $5, company_headquarters = $6, company_billing_address = $7, company_registration_number = $8, company_vat_number = $9, company_archived = $10, company_billing_name = $11
   WHERE company_id = $1
   RETURNING *;`;
   return pool.query(sqlQuery, values);

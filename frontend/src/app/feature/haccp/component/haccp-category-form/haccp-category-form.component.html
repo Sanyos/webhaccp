@@ -17,8 +17,22 @@
     <app-input-form-control
       [label]="'Telephely címe'"
       [readonly]="readonly"
-      formControlName="haccp_company_location"
-      [formControl]="haccpForm.controls.haccp_company_location"
+      formControlName="haccp_company_headquarters"
+      [formControl]="haccpForm.controls.haccp_company_headquarters"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Számlázási név'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_name"
+      [formControl]="haccpForm.controls.haccp_billing_name"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Számlázási cím'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_address"
+      [formControl]="haccpForm.controls.haccp_billing_address"
     ></app-input-form-control>
 
     <mat-form-field>

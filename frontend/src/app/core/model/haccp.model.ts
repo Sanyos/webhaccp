@@ -3,7 +3,7 @@ import { CompanyCategoryTypes } from '../enum/company-category-type.enum';
 export interface HaccpModel {
   haccp_id: number;
   haccp_unit_name: string;
-  haccp_company_location: string;
+  haccp_company_headquarters: string;
   haccp_supply: string;
   haccp_ingredient: IngredientEnum;
   haccp_products_require_cold_storage: ColdStorageProductEnum;
@@ -48,6 +48,8 @@ export interface HaccpModel {
   haccp_transaction_id: string;
   payment_success: boolean;
   haccp_user_email: string;
+  haccp_billing_name: string;
+  haccp_billing_address: string;
 }
 
 export const enum IngredientEnum {

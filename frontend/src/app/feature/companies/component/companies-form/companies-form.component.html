@@ -27,10 +27,10 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Cím</mat-label>
-    <input formControlName="company_address" matInput />
-    <mat-error *ngIf="companyForm.controls['company_address'].hasError"
-      >Cím megadása kötelező</mat-error
+    <mat-label>Számlázási név</mat-label>
+    <input formControlName="company_billing_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_name'].hasError"
+      >Számlázási név megadása kötelező</mat-error
     >
   </mat-form-field>
 

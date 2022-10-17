@@ -85,7 +85,7 @@ exports.html = (data) => {
   }
   html += `
 
-        <h2 style="font-size: 30px">Székhely: ${data.haccp_company_location}</h2>`;
+        <h2 style="font-size: 30px">Székhely: ${data.haccp_company_headquarters}</h2>`;
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
     html += ` <h2 style="font-size: 30px">Báziskonyha: ${data.haccp_kitchen_location}</h2>`;
   }
@@ -106,7 +106,7 @@ exports.html = (data) => {
           Üzemelteti:.....................................................
         </h3>
         <p>${data.haccp_unit_name}</p>
-        <p>${data.haccp_company_location}</p>
+        <p>${data.haccp_company_headquarters}</p>
       </div>
     </div>
     <div class="page">

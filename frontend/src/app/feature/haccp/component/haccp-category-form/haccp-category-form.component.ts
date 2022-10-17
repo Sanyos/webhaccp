@@ -30,7 +30,7 @@ export class HaccpCategoryFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(255),
       ]),
-      haccp_company_location: new FormControl('', [
+      haccp_company_headquarters: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),
       ]),
@@ -48,6 +48,8 @@ export class HaccpCategoryFormComponent implements OnInit {
         this.userApiService.userEmail ? this.userApiService.userEmail : null,
         [Validators.required, Validators.maxLength(255), Validators.email]
       ),
+      haccp_billing_name: new FormControl('', [Validators.maxLength(255)]),
+      haccp_billing_address: new FormControl('', [Validators.maxLength(255)]),
     });
   }
 }

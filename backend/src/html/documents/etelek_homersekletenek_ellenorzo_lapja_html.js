@@ -123,7 +123,7 @@ exports.html = (data) => {
                     <strong
                       ><span style="font-size: 15px"
                         >Telephely (neve, c&iacute;me): ${data.company_name}, ${
-    data.company_address
+    data.company_headquarters
   }</span
                       ></strong
                     >

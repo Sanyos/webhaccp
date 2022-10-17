@@ -114,11 +114,17 @@ export class HaccpComponent implements OnInit, OnDestroy {
             this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
               this.companyData.company_name
             );
-            this.haccpCategoryForm.controls['haccp_company_location'].setValue(
-              this.companyData.company_location
-            );
+            this.haccpCategoryForm.controls[
+              'haccp_company_headquarters'
+            ].setValue(this.companyData.company_headquarters);
             this.haccpCategoryForm.controls['haccp_company_category'].setValue(
               this.companyData.company_category
+            );
+            this.haccpCategoryForm.controls['haccp_billing_address'].setValue(
+              this.companyData.company_billing_address
+            );
+            this.haccpCategoryForm.controls['haccp_billing_name'].setValue(
+              this.companyData.company_billing_name
             );
             this.haccpCategoryForm.controls['haccp_company_id'].setValue(
               this.companyData.company_id
@@ -224,10 +230,12 @@ export class HaccpComponent implements OnInit, OnDestroy {
     if (!company) {
       let company: CompanyRequestModel = {
         company_name: this.haccp.haccp_unit_name,
-        company_location: this.haccp.haccp_company_location,
+        company_headquarters: this.haccp.haccp_company_headquarters,
         company_user_id: +this.userId,
         company_archived: false,
         company_category: this.haccp.haccp_company_category,
+        company_billing_name: this.haccp.haccp_billing_name,
+        company_billing_address: this.haccp.haccp_billing_address,
       };
 
       this.companyApiService

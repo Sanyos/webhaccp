@@ -1,7 +1,7 @@
 export interface HaccpModel {
   haccp_id: number;
   haccp_unit_name: string;
-  haccp_company_location: string;
+  haccp_company_headquarters: string;
   haccp_supply: string;
   haccp_products_require_cold_storage: ColdStorageProductEnum;
   haccp_require_keeping_warm: boolean;

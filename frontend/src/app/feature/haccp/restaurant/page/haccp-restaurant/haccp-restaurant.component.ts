@@ -48,6 +48,9 @@ export class HaccpRestaurantComponent {
   secondHaccpForm: FormGroup;
   thirdHaccpForm: FormGroup;
 
+  aszfError: boolean = false;
+  checked: boolean = false;
+
   constructor() {}
 
   firstHaccpFormEvent(form: FormGroup): void {
@@ -63,17 +66,29 @@ export class HaccpRestaurantComponent {
   }
 
   onSave(): void {
-    const arr = [
-      this.haccpForm.value,
-      this.secondHaccpForm.value,
-      this.thirdHaccpForm.value,
-    ];
-    const haccp: HaccpModel = Object.assign({}, ...arr);
-    this.haccpEvent.emit(haccp);
-    this.saveEvent.emit();
+    if (this.checked === true) {
+      this.aszfError = false;
+      const arr = [
+        this.haccpForm.value,
+        this.secondHaccpForm.value,
+        this.thirdHaccpForm.value,
+      ];
+      const haccp: HaccpModel = Object.assign({}, ...arr);
+      this.haccpEvent.emit(haccp);
+      this.saveEvent.emit();
+    } else {
+      this.aszfError = true;
+    }
   }
 
   onCancel(): void {
     this.cancelEvent.emit();
+  }
+
+  openASZF(e: Event) {
+    e.preventDefault();
+    e.stopPropagation();
+    const path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';
+    window.open(path, '_blank');
   }
 }

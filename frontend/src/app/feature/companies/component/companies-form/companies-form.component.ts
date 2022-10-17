@@ -23,21 +23,46 @@ export class CompaniesFormComponent implements OnInit {
 
   createForm(): void {
     this.companyForm = new FormGroup({
-      company_category: new FormControl('', Validators.required),
+      company_category: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
       user_name: new FormControl(this.userName),
-      company_address: new FormControl('', Validators.required),
-      company_location: new FormControl('', Validators.required),
+      company_billing_name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      company_location: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
       company_phone: new FormControl('', [
         Validators.required,
         Validators.pattern(
           /((?:\+?3|0)6)(?:-|\()?(\d{1,2})(?:-|\))?(\d{3})-?(\d{3,4})/g
         ),
+        Validators.maxLength(255),
       ]),
-      company_name: new FormControl('', Validators.required),
-      company_headquarters: new FormControl('', Validators.required),
-      company_billing_address: new FormControl('', Validators.required),
-      company_registration_number: new FormControl('', Validators.required),
-      company_vat_number: new FormControl('', Validators.required),
+      company_name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      company_headquarters: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      company_billing_address: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      company_registration_number: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
+      company_vat_number: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
       company_archived: new FormControl(false),
       company_user_id: new FormControl(this.userId),
     });

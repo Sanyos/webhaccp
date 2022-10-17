@@ -61,6 +61,19 @@
     >
     </app-haccp-form-third>
 
+    <mat-checkbox [(ngModel)]="checked">
+      <span (mousedown)="$event.stopPropagation()">
+        Elfogadom az
+        <button mat-button (click)="openASZF($event)">
+          Adatvédelmi tájékoztatót
+        </button>
+        és az Általános Szerződési Feltételeket
+      </span>
+    </mat-checkbox>
+    <mat-error *ngIf="aszfError"
+      >Adatvédelmi tájékoztató és ASZF elfogadása kötelező</mat-error
+    >
+
     <div class="button-holder" mat-dialog-actions>
       <button
         (click)="onSave()"

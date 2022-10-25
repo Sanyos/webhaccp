@@ -2,12 +2,11 @@
   <form [formGroup]="haccpForm">
     <app-input-form-control
       [label]="
-        'Kérem, sorolja fel, milyen kínálattal rendelkezik (pl, panninik, krémlevesek, hideg-meleg előételek, hot dog, lángos, hamburger, stb.)'
+        'Kérem, sorolja fel, milyen kínálattal rendelkezik (pl, krémlevesek, hideg-meleg előételek, hot dog, lángos, hamburger, stb.)'
       "
       formControlName="haccp_supply"
       [formControl]="haccpForm.controls.haccp_supply"
       [infoIcon]="true"
-      [infoText]="supplyInfoText"
     ></app-input-form-control>
 
     <app-select-form-control

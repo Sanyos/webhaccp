@@ -5,11 +5,11 @@ const path = require("path");
 const staticUrl = path.join(__dirname, "..", "public", "angular");
 const enums = require("./enums/enums");
 const authHandler = require("./auth/authHandler");
-pdf = require("express-pdf");
+
 global.__basedir = __dirname;
 
 app.use(express.json());
-app.use(pdf);
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   next();

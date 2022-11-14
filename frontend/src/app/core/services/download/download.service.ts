@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 import { DownloadApiService } from '../../api/download-api/download-api.service';
 import { LoaderService } from '../loader/loader.service';
 
@@ -12,7 +11,7 @@ export class DownloadService {
     private readonly loaderService: LoaderService
   ) {}
 
-  download(route: string, data: any, name: any) {
+  download(route: string, data: any, name: any): void {
     this.loaderService.setLoaderValue(true);
     console.log('dokumentum letöltés: ', name);
     let dataObject: any = data;

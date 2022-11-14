@@ -1,7 +1,6 @@
 exports.html = (data) => {
   let html = `
     <div class="page">
-    <div style="height: 5rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>

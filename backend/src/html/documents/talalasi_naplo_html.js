@@ -22,8 +22,8 @@ exports.html = (data) => {
                   "
                 >
                   <strong
-                    ><span style="font-size: 24px"
-                      >T&aacute;lal&aacute;si napl&oacute; &nbsp; &nbsp; &nbsp; &nbsp;
+                    ><span style="font-size: 20px"
+                      >T&aacute;lal&aacute;si napl&oacute; &nbsp; &nbsp; &nbsp; 
                       &nbsp; &nbsp; &nbsp; &nbsp; D&aacute;tum: ${new Date()
                         .toISOString()
                         .split("T")[0]

@@ -7,7 +7,6 @@ exports.html = (data) => {
   let category = CompanyCategoryTypes[data.haccp_company_category];
   let html = `
     <div class="page">
-    <div style="height: 5rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>

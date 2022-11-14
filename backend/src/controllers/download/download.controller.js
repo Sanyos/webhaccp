@@ -8,8 +8,7 @@ const veszelyek_valodisaganak_becslese = require("../../html/documents/veszelyek
 const dontesi_fa = require("../../html/documents/dontesi_fa_html");
 const haccp = require("../../html/haccp/haccp_html");
 const haccp_kezikonyv = require("../../html/documents/haccp_kezikonyv_html");
-var html_to_pdf = require('html-pdf-node');
-
+var html_to_pdf = require("html-pdf-node");
 
 let documents = [
   {
@@ -57,45 +56,37 @@ let documents = [
 
 exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
-//  console.log("body: ", data);
-  const fileName = req.params.name;
-  console.log("HEEEEEEE dokumentum letöltés: ", req.params.name);
-  res.setHeader('Content-Type', 'application/pdf');
-  let options = { format:"A4", landscape: true    };
-  let file  = { content: haccp.html(data)  };
-  html_to_pdf.generatePdf(file, options).then(pdfBuffer => {
-	    res.send(pdfBuffer);
+  res.setHeader("Content-Type", "application/pdf");
+  let options = { format: "A4", landscape: true };
+  let file = { content: haccp.html(data) };
+  html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
+    res.send(pdfBuffer);
   });
-
-
 };
 
 exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
-  console.log("body: ", data);
-  const fileName = req.params.name;
-  console.log("dokumentum letöltés: ", req.params.name);
-  res.pdfFromHTML({
-    fileName: fileName + ".pdf",
-    htmlContent: haccp.html(data),
+  res.setHeader("Content-Type", "application/pdf");
+  let options = { format: "A4", landscape: true };
+  let file = { content: haccp.html(data) };
+  html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
+    res.send(pdfBuffer);
   });
 };
 
 exports.downloadDocument = (req, res, next) => {
   const data = req.body;
-  console.log("body: ", data);
   const fileName = req.params.name;
-  console.log("dokumentum letöltés: ", req.params.name);
-  const file = documents.filter((doc) => doc.name == fileName)[0];
-  if (file) {
-    res.pdfFromHTML({
-      fileName: fileName + ".pdf",
-      htmlContent: file.html.html(data),
-      options: {
-        height: file.orientation === "portrait" ? "13in" : "8.5in",
-        width: file.orientation === "portrait" ? "8.7in" : "11.7in",
-        orientation: file.orientation,
-      },
+  res.setHeader("Content-Type", "application/pdf");
+  const doc = documents.filter((doc) => doc.name == fileName)[0];
+  if (doc) {
+    let options = {
+      format: "A4",
+      landscape: doc.orientation === "landscape",
+    };
+    let file = { content: doc.html.html(data) };
+    html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
+      res.send(pdfBuffer);
     });
   } else {
     return new createError[500](`Could not download document: ${err}`);

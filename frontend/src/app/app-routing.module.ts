@@ -8,15 +8,25 @@ import { CompaniesComponent } from './feature/companies/page/companies/companies
 import { CompanyDetailsComponent } from './feature/companies/page/company-details/company-details.component';
 import { DocumentListComponent } from './feature/companies/page/document-list/document-list.component';
 import { HaccpCertificateComponent } from './feature/companies/page/haccp-certificate/haccp-certificate.component';
+import { GyikComponent } from './feature/gyik/gyik.component';
 import { DownloadHaccpComponent } from './feature/haccp/page/download-haccp/download-haccp.component';
 import { HaccpComponent } from './feature/haccp/page/haccp/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
+import { QuestionsComponent } from './feature/questions/questions.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+  },
+  {
+    path: 'questions',
+    component: QuestionsComponent,
+  },
+  {
+    path: 'gyik',
+    component: GyikComponent,
   },
   {
     path: 'login',
@@ -82,7 +92,11 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      anchorScrolling: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

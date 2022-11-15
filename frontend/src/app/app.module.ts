@@ -55,6 +55,8 @@ import { PubHaccpFormThirdComponent } from './feature/haccp/pub/component/pub-ha
 import { BuffetHaccpFormComponent } from './feature/haccp/buffet/component/buffet-haccp-form/buffet-haccp-form.component';
 import { BuffetHaccpFormSecondComponent } from './feature/haccp/buffet/component/buffet-haccp-form-second/buffet-haccp-form-second.component';
 import { BuffetHaccpFormThirdComponent } from './feature/haccp/buffet/component/buffet-haccp-form-third/buffet-haccp-form-third.component';
+import { QuestionsComponent } from './feature/questions/questions.component';
+import { GyikComponent } from './feature/gyik/gyik.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +109,8 @@ import { BuffetHaccpFormThirdComponent } from './feature/haccp/buffet/component/
     BuffetHaccpFormComponent,
     BuffetHaccpFormSecondComponent,
     BuffetHaccpFormThirdComponent,
+    QuestionsComponent,
+    GyikComponent,
   ],
   imports: [
     BrowserModule,

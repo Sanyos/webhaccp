@@ -93,6 +93,10 @@ export class NavMenuComponent implements OnInit {
         title: 'Online HACCP',
         route: '/haccp',
       },
+      {
+        title: 'GYIK',
+        route: '/gyik',
+      },
     ];
   }
 

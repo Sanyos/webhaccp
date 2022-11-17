@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-questions',
@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./questions.component.scss'],
 })
 export class QuestionsComponent implements OnInit {
-  constructor(private readonly router: Router) {}
+  premiumUrl: string = environment.premiumUrl;
+  constructor() {}
 
   ngOnInit(): void {}
 
   onOpenPremiumHaccp() {
-    window.open('https://www.premiumcsoport.hu/', '_blank');
+    window.open(this.premiumUrl, '_blank');
   }
 }

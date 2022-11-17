@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'https://webhaccp.hu/api',
+  premiumUrl: 'https://www.premiumcsoport.hu/',
 };
 
 /*

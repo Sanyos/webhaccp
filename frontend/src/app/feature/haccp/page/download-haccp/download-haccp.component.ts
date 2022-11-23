@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { pluck, takeUntil } from 'rxjs/operators';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
-import { PaymentApiService } from 'src/app/core/api/payment-api.service';
+import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { PaymentStatus } from '../../../../core/enum/payment-status.enum';

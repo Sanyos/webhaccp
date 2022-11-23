@@ -2,8 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  EventEmitter,
   forwardRef,
   Input,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -32,6 +34,8 @@ export class SelectFormControlComponent
   @Input() formControl: FormControl = new FormControl();
   @Input() options: any;
   @Input() optional: boolean = false;
+  @Output() selectionChange: EventEmitter<any> = new EventEmitter();
+
   private innerValue: any = '';
   disabled: boolean = false;
   constructor() {}
@@ -62,6 +66,7 @@ export class SelectFormControlComponent
     this.innerValue = value;
     // propagate value into form control using control value accessor interface
     this.propagateChange(this.innerValue);
+    this.selectionChange.emit(value);
   }
 
   //get accessor

@@ -70,7 +70,7 @@ exports.html = (data) => {
   </head>
   <body>
     <table
-      width="95%"
+      width="80%"
       style="border-collapse: collapse; margin: 1rem auto;"
       cellspacing="0"
     >
@@ -604,7 +604,7 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            CLIN
+            ${data.haccp_glass_cleaner}
           </p>
         </td>
         <td
@@ -821,7 +821,7 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            Sanytol
+            ${data.haccp_surface_disinfectant}
           </p>
         </td>
         <td
@@ -1059,32 +1059,9 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            RIA
+          ${data.haccp_hand_disinfectant}
           </p>
-          <p
-            class="s4"
-            style="
-              padding-left: 10pt;
-              padding-right: 10pt;
-              text-indent: 0pt;
-              line-height: 10pt;
-              text-align: center;
-            "
-          >
-            fertőtlenítős
-          </p>
-          <p
-            class="s4"
-            style="
-              padding-left: 10pt;
-              padding-right: 10pt;
-              text-indent: 0pt;
-              line-height: 10pt;
-              text-align: center;
-            "
-          >
-            folyékony szappan
-          </p>
+        
         </td>
         <td
           style="
@@ -1319,20 +1296,9 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            AT HAND
+          ${data.haccp_hand_disinfectant}
           </p>
-          <p
-            class="s4"
-            style="
-              padding-left: 19pt;
-              padding-right: 19pt;
-              text-indent: 0pt;
-              line-height: 10pt;
-              text-align: center;
-            "
-          >
-            Alkoholos kézfertőtlenítő
-          </p>
+         
         </td>
         <td
           style="
@@ -1536,7 +1502,7 @@ exports.html = (data) => {
             class="s4"
             style="padding-left: 21pt; text-indent: -8pt; text-align: left"
           >
-            RIA 2 fertőtlenítő mosogatószer
+          ${data.haccp_2phase_dishwashing_detergent}
           </p>
         </td>
         <td
@@ -1782,7 +1748,7 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            DOMESTOS
+            ${data.haccp_general_disinfectant}
           </p>
         </td>
         <td
@@ -2019,7 +1985,7 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            CILLIT
+          ${data.haccp_scale_remover}
           </p>
         </td>
         <td
@@ -2236,7 +2202,7 @@ exports.html = (data) => {
               text-align: center;
             "
           >
-            WELL DONE
+            ${data.haccp_degreaser}
           </p>
         </td>
         <td

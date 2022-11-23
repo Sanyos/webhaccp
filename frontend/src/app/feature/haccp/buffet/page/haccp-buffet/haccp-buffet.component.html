@@ -23,32 +23,6 @@
       </button>
     </div>
   </mat-step>
-  <mat-step [stepControl]="secondHaccpForm">
-    <app-buffet-haccp-form-second
-      (haccpFormEvent)="secondHaccpFormEvent($event)"
-    ></app-buffet-haccp-form-second>
-    <div class="button-holder" mat-dialog-actions>
-      <button
-        mat-button
-        color="primary"
-        id="primary-btn"
-        matStepperNext
-        mat-raised-button
-      >
-        Tovább
-      </button>
-      <button
-        mat-button
-        color="primary"
-        id="secondary-btn"
-        color="accent"
-        matStepperPrevious
-        mat-raised-button
-      >
-        Vissza
-      </button>
-    </div>
-  </mat-step>
   <mat-step [stepControl]="thirdHaccpForm">
     <app-buffet-haccp-form-third
       [sewageDrainOptions]="sewageDrainOptions"
@@ -60,6 +34,32 @@
       (haccpFormEvent)="thirdHaccpFormEvent($event)"
     >
     </app-buffet-haccp-form-third>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        mat-button
+        color="primary"
+        id="secondary-btn"
+        color="accent"
+        matStepperPrevious
+        mat-raised-button
+      >
+        Vissza
+      </button>
+      <button
+        mat-button
+        color="primary"
+        id="primary-btn"
+        matStepperNext
+        mat-raised-button
+      >
+        Tovább
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondHaccpForm">
+    <app-buffet-haccp-form-second
+      (haccpFormEvent)="secondHaccpFormEvent($event)"
+    ></app-buffet-haccp-form-second>
 
     <mat-checkbox [(ngModel)]="checked">
       <span (mousedown)="$event.stopPropagation()">
@@ -77,15 +77,6 @@
 
     <div class="button-holder" mat-dialog-actions>
       <button
-        (click)="onSave()"
-        mat-button
-        color="primary"
-        id="primary-btn"
-        mat-raised-button
-      >
-        Mentés
-      </button>
-      <button
         (click)="onCancel()"
         mat-button
         color="accent"
@@ -93,6 +84,15 @@
         mat-raised-button
       >
         Mégse
+      </button>
+      <button
+        (click)="onSave()"
+        mat-button
+        color="primary"
+        id="primary-btn"
+        mat-raised-button
+      >
+        Mentés
       </button>
     </div>
   </mat-step>

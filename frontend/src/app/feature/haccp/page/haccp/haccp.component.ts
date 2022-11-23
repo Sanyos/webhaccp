@@ -33,7 +33,7 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
 import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
-import { PaymentApiService } from 'src/app/core/api/payment-api.service';
+import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -139,6 +139,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
       .getSingleItem()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: EnumsModel) => {
+        console.log(res);
         this.ingredientsOptions = res.IngredientsEnum;
         this.coldStorageProductOptions = res.ColdStorageProductEnum;
         this.sewageDrainOptions = res.SewageDrainEnum;

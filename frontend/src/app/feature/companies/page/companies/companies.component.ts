@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
@@ -55,7 +56,23 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          this.tableData = res;
+          res.forEach((data) => {
+            if (data) {
+              if (data.company_category === 'RESTAURANT') {
+                data.company_category = CompanyCategoryTypes.RESTAURANT;
+              }
+              if (data.company_category === 'CASUALRESTAURANT') {
+                data.company_category = CompanyCategoryTypes.CASUALRESTAURANT;
+              }
+              if (data.company_category === 'PUB') {
+                data.company_category = CompanyCategoryTypes.PUB;
+              }
+              if (data.company_category === 'BUFFET') {
+                data.company_category = CompanyCategoryTypes.BUFFET;
+              }
+              this.tableData.push(data);
+            }
+          });
         },
         (err) => {
           console.log(err);

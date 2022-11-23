@@ -1,7 +1,7 @@
 <div class="container">
   <form [formGroup]="haccpForm">
     <app-input-form-control
-      [label]="'Egységhez tartozó egyedi hatósági jelzés'"
+      [label]="'Egységhez tartozó egyedi hatósági jelzés (rendszám)'"
       formControlName="haccp_authority_signal"
       [formControl]="haccpForm.controls.haccp_authority_signal"
     ></app-input-form-control>
@@ -11,6 +11,14 @@
       formControlName="haccp_kitchen_location"
       [formControl]="haccpForm.controls.haccp_kitchen_location"
     ></app-input-form-control>
+
+    <app-select-form-control
+      [label]="'Használja-e az alábbi speciális konyhai eljárások egyikét?'"
+      [options]="specialOptions"
+      (selectionChange)="onSelect($event)"
+    >
+    </app-select-form-control>
+
     <app-input-form-control
       [label]="
         'Kérem, sorolja fel, milyen kínálattal rendelkezik (pl, krémlevesek, hideg-meleg előételek, hot dog, lángos, hamburger, stb.)'
@@ -98,15 +106,19 @@
     ></app-radio-form-control>
 
     <app-radio-form-control
-      [label]="
-        'Rendelkezik-e öltözővel? Ha FOODTruck-ot üzemeltet befogadó nyilatkozattal rendelkezik?'
-      "
+      [label]="'Rendelkezik-e öltözővel?'"
       formControlName="haccp_dressing_room"
       [formControl]="haccpForm.controls.haccp_dressing_room"
       [options]="radioOptions"
       [infoIcon]="true"
       [infoText]="dressingRoomInfoText"
     ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Rendelkezik befogadó nyilatkozattal?'"
+      [options]="radioOptions"
+    >
+    </app-radio-form-control>
 
     <app-radio-form-control
       [label]="'Használ-e cukrászati vagy hidegkonyhai készítményt?'"

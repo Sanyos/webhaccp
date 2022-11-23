@@ -11,8 +11,10 @@ import {
 } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
+import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
@@ -34,13 +36,14 @@ export class DocumentListComponent implements OnInit {
   );
   documents: DocumentResponseModel[] = [];
   companyData: CompanyResponseModel;
+  haccpDocuments: HaccpModel[];
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly companyApiService: CompanyApiService,
     private readonly downloadService: DownloadService,
     private readonly documentApiService: DocumentApiService,
-    private readonly loaderService: LoaderService
+    private readonly haccpApiService: HaccpApiService
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +58,7 @@ export class DocumentListComponent implements OnInit {
   getCompanyData() {
     this.company$.subscribe((company) => {
       this.companyData = company;
+      this.getHaccpDocuments(company.company_id);
     });
   }
 
@@ -67,7 +71,28 @@ export class DocumentListComponent implements OnInit {
       });
   }
 
+  getHaccpDocuments(companyId: any): void {
+    this.haccpApiService
+      .getList('all/' + companyId)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (res: HaccpModel[]) => {
+          this.haccpDocuments = res;
+          console.log(res);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
   downloadDocument(documentName: string) {
-    this.downloadService.download('document', this.companyData, documentName);
+    let data;
+    if (this.haccpDocuments.length) {
+      data = { ...this.companyData, ...this.haccpDocuments[0] };
+    } else {
+      data = this.companyData;
+    }
+    this.downloadService.download('document', data, documentName);
   }
 }

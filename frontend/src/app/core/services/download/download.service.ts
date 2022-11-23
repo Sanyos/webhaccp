@@ -13,7 +13,6 @@ export class DownloadService {
 
   download(route: string, data: any, name: any): void {
     this.loaderService.setLoaderValue(true);
-    console.log('dokumentum letöltés: ', name);
     let dataObject: any = data;
     this.downloadApiService
       .downloadFile(route, dataObject, name)

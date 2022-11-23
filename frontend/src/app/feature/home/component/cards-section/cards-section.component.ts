@@ -14,7 +14,7 @@ export class CardsSectionComponent implements OnInit {
       icon: 'restaurant',
       price: '34.990Ft helyett bevezető áron most csak 29.990Ft',
       list: [
-        'Étterm - melegkonyhás',
+        'Étterem - melegkonyhás',
         'Pizzéria',
         'Szállodák',
         'Alkalmi kitelepülés - fesztiválra, rendezvényre',
@@ -42,7 +42,7 @@ export class CardsSectionComponent implements OnInit {
         'Forralt borozó',
         'Levesező',
         'Kenyeres autó',
-        'Hot-dog utánfutó -autó',
+        'Hot dog utánfutó -autó',
         'Kávézó',
       ],
     },

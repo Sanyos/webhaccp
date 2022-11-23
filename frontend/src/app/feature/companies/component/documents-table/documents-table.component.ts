@@ -10,7 +10,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { PaymentApiService } from 'src/app/core/api/payment-api.service';
+import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 
 @Component({

@@ -110,6 +110,7 @@ export enum EggEnum {
   liquidEgg = 'Létojás',
   powderedEgg = 'Portojás',
   noEgg = 'Nem használok tojást',
+  boiledEgg = 'Főtt tojás sós lében',
 }
 
 export enum DeliveryMethodEnum {

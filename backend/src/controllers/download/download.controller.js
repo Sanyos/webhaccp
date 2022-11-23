@@ -8,6 +8,7 @@ const veszelyek_valodisaganak_becslese = require("../../html/documents/veszelyek
 const dontesi_fa = require("../../html/documents/dontesi_fa_html");
 const haccp = require("../../html/haccp/haccp_html");
 const haccp_kezikonyv = require("../../html/documents/haccp_kezikonyv_html");
+const egeszsegugyi_belepesi_nyilatkozat = require("../../html/documents/egeszsegugyei_belepesi_nyilatkozat_html");
 var html_to_pdf = require("html-pdf-node");
 
 let documents = [
@@ -52,12 +53,23 @@ let documents = [
     name: "haccp_kezikonyv",
     orientation: "portrait",
   },
+  {
+    html: egeszsegugyi_belepesi_nyilatkozat,
+    name: "egeszsegugyi_belepesi_nyilatkozat",
+    orientation: "landscape",
+  },
 ];
 
 exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
-  let options = { format: "A4", landscape: true };
+  let options = {
+    format: "A4",
+    landscape: true,
+    margin: "1in",
+    preferCSSPageSize: true,
+    scale: 0.95,
+  };
   let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
     res.send(pdfBuffer);
@@ -67,7 +79,13 @@ exports.downloadHaccp = (req, res, next) => {
 exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
-  let options = { format: "A4", landscape: true };
+  let options = {
+    format: "A4",
+    landscape: true,
+    margin: "1in",
+    preferCSSPageSize: true,
+    scale: 0.95,
+  };
   let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
     res.send(pdfBuffer);
@@ -83,6 +101,9 @@ exports.downloadDocument = (req, res, next) => {
     let options = {
       format: "A4",
       landscape: doc.orientation === "landscape",
+      margin: "1in",
+      preferCSSPageSize: true,
+      scale: 0.95,
     };
     let file = { content: doc.html.html(data) };
     html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {

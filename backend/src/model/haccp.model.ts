@@ -110,6 +110,7 @@ const enum EggEnum {
   liquidEgg = "Létojás",
   powderedEgg = "Portojás",
   noEgg = "Nem használok tojást",
+  boiledEgg = "Főtt tojás sós lében",
 }
 
 const enum DeliveryMethodEnum {

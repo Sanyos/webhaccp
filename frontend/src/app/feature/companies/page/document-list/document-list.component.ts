@@ -94,7 +94,6 @@ export class DocumentListComponent implements OnInit {
     } else {
       data = this.companyData;
     }
-    console.log(data);
     this.downloadService.download('document', data, documentName);
   }
 }

@@ -1,6 +1,6 @@
 const pool = require("../../db");
 
-exports.getAllByCompanyId = (companyId) => {
+exports.getAll = () => {
   const selectQuery = `
   SELECT * 
   FROM documents 

@@ -24,15 +24,13 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
   haccp: HaccpModel;
   haccpIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   haccpName: string;
-  haccpDocuments: HaccpModel[];
   message: string;
   paymentStatus: PaymentStatus;
   documents: DocumentResponseModel[] = [];
-  companyData: CompanyResponseModel;
+  companyData: any;
   constructor(
     private readonly downloadService: DownloadService,
     private readonly activatedRoute: ActivatedRoute,
-    private readonly router: Router,
     private readonly paymentApiService: PaymentApiService,
     private readonly companyApiService: CompanyApiService,
     private readonly documentApiService: DocumentApiService,
@@ -77,10 +75,21 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((haccp: HaccpModel) => {
             this.haccp = haccp;
+            console.log(this.haccp);
             this.haccpName = `${this.haccp.haccp_unit_name}_${this.haccp.haccp_date}_haccp`;
-            this.getCompanyData(this.haccp.haccp_company_id);
-            this.getDocuments(this.haccp.haccp_company_id);
-            this.getHaccpDocuments(this.haccp.haccp_company_id);
+            if (this.haccp.haccp_company_id) {
+              this.getCompanyData(this.haccp.haccp_company_id);
+            } else {
+              this.companyData = {
+                company_name: this.haccp.haccp_company_name,
+                company_location: this.haccp.haccp_company_headquarters,
+                company_archived: false,
+                company_category: this.haccp.haccp_company_category,
+                company_billing_name: this.haccp.haccp_billing_name,
+                company_billing_address: this.haccp.haccp_billing_address,
+              };
+            }
+            this.getDocuments();
             this.getPaymentResponse();
           });
       }
@@ -96,27 +105,13 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
       });
   }
 
-  getDocuments(companyId: any): void {
+  getDocuments(): void {
     this.documentApiService
-      .getList(companyId)
+      .getList()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: DocumentResponseModel[]) => {
         this.documents = res;
       });
-  }
-
-  getHaccpDocuments(companyId: any): void {
-    this.haccpApiService
-      .getList('all/' + companyId)
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(
-        (res: HaccpModel[]) => {
-          this.haccpDocuments = res;
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
   }
 
   downloadHaccp(): void {
@@ -125,8 +120,8 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
 
   downloadDocument(documentName: string) {
     let data;
-    if (this.haccpDocuments.length) {
-      data = { ...this.companyData, ...this.haccpDocuments[0] };
+    if (this.haccp) {
+      data = { ...this.companyData, ...this.haccp };
     } else {
       data = this.companyData;
     }

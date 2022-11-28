@@ -58,12 +58,12 @@ export class CompaniesFormComponent implements OnInit {
       company_registration_number: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),
-        Validators.pattern(/([0-9]{2}-[0-9]{2}-[0-9]{6})/g),
+        Validators.pattern(/([0-9]{2}-[0-9]{2}-[0-9]{6})/),
       ]),
       company_vat_number: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),
-        Validators.pattern(/([0-9]{7}-[0-9]{1}-[0-9]{2})/g),
+        Validators.pattern(/([0-9]{7}-[0-9]{1}-[0-9]{2})/),
       ]),
       company_archived: new FormControl(false),
       company_user_id: new FormControl(this.userId),

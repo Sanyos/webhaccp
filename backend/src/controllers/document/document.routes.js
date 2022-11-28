@@ -2,7 +2,7 @@ const express = require("express");
 const routes = express.Router();
 const documentController = require("./document.controller");
 
-routes.get("/:companyId", (req, res, next) => {
+routes.get("/", (req, res, next) => {
   return documentController.getAllDocuments(req, res, next);
 });
 

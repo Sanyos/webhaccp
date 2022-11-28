@@ -1110,7 +1110,7 @@ exports.html = (data) => {
   
   <div style="text-align: center; margin-top: 15rem;">
   <h2>${data.company_name}</h2>
-  <h2>${data.company_headquarters}</h2>
+  <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(
     new Date().setFullYear(new Date().getFullYear() + 1)
   )

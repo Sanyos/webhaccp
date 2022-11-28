@@ -232,7 +232,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
     if (!company) {
       let company: CompanyRequestModel = {
-        company_name: this.haccp.haccp_unit_name,
+        company_name: this.haccp.haccp_company_name,
         company_location: this.haccp.haccp_company_headquarters,
         company_user_id: +this.userId,
         company_archived: false,

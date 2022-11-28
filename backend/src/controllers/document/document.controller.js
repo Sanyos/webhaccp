@@ -2,10 +2,8 @@ const documentService = require("./document.service");
 const createError = require("http-errors");
 
 exports.getAllDocuments = (req, res, next) => {
-  console.log(req.params);
-  const companyId = req.params.companyId;
   return documentService
-    .getAllByCompanyId(companyId)
+    .getAll()
     .then((documents) => {
       if (documents) {
         console.log("all documents: ", documents.rows);

@@ -30,7 +30,7 @@ exports.html = (data) => {
         <td style="width: 80%; border-width: 1pt 1pt 1pt 1.5pt; border-style: solid solid solid double; border-color: windowtext; border-image: initial; padding: 0cm 5.4pt; height: 25.5pt; vertical-align: top;">
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'><strong><span style='font-family:  "Times New Roman",serif;'>Telephely (neve, c&iacute;me): ${
               data.company_name
-            }, ${data.company_headquarters}</span></strong></p>
+            }, ${data.company_location}</span></strong></p>
         </td>
         <td style="width: 20%; border-top: 1pt solid windowtext; border-left: none; border-bottom: 1pt solid windowtext; border-right: 1.5pt double windowtext; padding: 0cm 5.4pt; height: 25.5pt; vertical-align: top;">
             <p style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;margin-left:0cm;line-height:normal;font-size:15px;font-family:"Calibri",sans-serif;'><strong><span style='font-family:"Times New Roman",serif;'>Kiad&aacute;sa:  ${new Date()

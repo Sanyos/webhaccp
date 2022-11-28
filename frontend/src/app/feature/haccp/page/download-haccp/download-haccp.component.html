@@ -7,6 +7,8 @@
         <h3>{{ haccpName }}</h3>
       </div>
     </div>
+    <h2>Letölthető dokumentumok</h2>
+    <br />
     <app-document-cards
       [documents]="documents"
       (downloadEvent)="downloadDocument($event)"

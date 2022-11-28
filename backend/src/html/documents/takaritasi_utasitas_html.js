@@ -126,7 +126,7 @@ exports.html = (data) => {
               text-align: left;
             "
           >
-            Telephely: ${data.company_headquarters}
+            Telephely: ${data.company_location}
           </p>
         </td>
         <td

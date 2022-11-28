@@ -25,7 +25,7 @@ import { DownloadService } from 'src/app/core/services/download/download.service
 export class DocumentListComponent implements OnInit {
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   company$: Observable<CompanyResponseModel> = this.companyIdParam$.pipe(
-    tap((id) => this.getDocuments(id)),
+    tap(() => this.getDocuments()),
     switchMap((id) =>
       this.companyApiService.getSingleItem(id).pipe(shareReplay())
     )
@@ -61,9 +61,9 @@ export class DocumentListComponent implements OnInit {
     });
   }
 
-  getDocuments(companyId: string): void {
+  getDocuments(): void {
     this.documentApiService
-      .getList(companyId)
+      .getList()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: DocumentResponseModel[]) => {
         this.documents = res;
@@ -87,10 +87,14 @@ export class DocumentListComponent implements OnInit {
   downloadDocument(documentName: string) {
     let data;
     if (this.haccpDocuments.length) {
-      data = { ...this.companyData, ...this.haccpDocuments[0] };
+      data = {
+        ...this.companyData,
+        ...this.haccpDocuments[this.haccpDocuments.length - 1],
+      };
     } else {
       data = this.companyData;
     }
+    console.log(data);
     this.downloadService.download('document', data, documentName);
   }
 }

@@ -50,6 +50,8 @@ export interface HaccpModel {
   haccp_user_email: string;
   haccp_billing_name: string;
   haccp_billing_address: string;
+  haccp_company_vat_number: string;
+  haccp_company_name: string;
 }
 
 export const enum IngredientEnum {

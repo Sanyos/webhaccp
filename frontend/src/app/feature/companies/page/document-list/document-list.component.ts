@@ -16,7 +16,6 @@ import { CompanyResponseModel } from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
-import { LoaderService } from 'src/app/core/services/loader/loader.service';
 
 @Component({
   selector: 'app-document-list',
@@ -56,13 +55,13 @@ export class DocumentListComponent implements OnInit {
   }
 
   getCompanyData() {
-    this.company$.subscribe((company) => {
+    this.company$.pipe(takeUntil(this.unsubscribe)).subscribe((company) => {
       this.companyData = company;
       this.getHaccpDocuments(company.company_id);
     });
   }
 
-  getDocuments(companyId: any): void {
+  getDocuments(companyId: string): void {
     this.documentApiService
       .getList(companyId)
       .pipe(takeUntil(this.unsubscribe))
@@ -78,7 +77,6 @@ export class DocumentListComponent implements OnInit {
       .subscribe(
         (res: HaccpModel[]) => {
           this.haccpDocuments = res;
-          console.log(res);
         },
         (err) => {
           console.log(err);

@@ -64,11 +64,8 @@ exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    format: "A4",
-    landscape: true,
-    margin: "1in",
-    preferCSSPageSize: true,
-    scale: 0.95,
+    width: "15in",
+    height: "9.6in",
   };
   let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
@@ -80,11 +77,8 @@ exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    format: "A4",
-    landscape: true,
-    margin: "1in",
-    preferCSSPageSize: true,
-    scale: 0.95,
+    width: "16in",
+    height: "9in",
   };
   let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
@@ -99,11 +93,8 @@ exports.downloadDocument = (req, res, next) => {
   const doc = documents.filter((doc) => doc.name == fileName)[0];
   if (doc) {
     let options = {
-      format: "A4",
-      landscape: doc.orientation === "landscape",
-      margin: "1in",
-      preferCSSPageSize: true,
-      scale: 0.95,
+      width: doc.orientation === "landscape" ? "13in" : "9.2in",
+      height: doc.orientation === "landscape" ? "9.2in" : "13in",
     };
     let file = { content: doc.html.html(data) };
     html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {

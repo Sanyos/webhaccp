@@ -2,11 +2,15 @@
   <div *ngIf="status === 'SUCCESS'">
     <h1>HACCP tanusítvány letöltés</h1>
     <div class="cards-container">
-      <div class="card" (click)="downloadDocument()">
+      <div class="card" (click)="downloadHaccp()">
         <mat-icon>source</mat-icon>
         <h3>{{ haccpName }}</h3>
       </div>
     </div>
+    <app-document-cards
+      [documents]="documents"
+      (downloadEvent)="downloadDocument($event)"
+    ></app-document-cards>
   </div>
   <h2 *ngIf="status !== 'SUCCESS'">
     {{ message }}

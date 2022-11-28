@@ -51,6 +51,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   }
 
   getCompanies(): void {
+    this.tableData = [];
     this.companyApiService
       .getList(`all/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))

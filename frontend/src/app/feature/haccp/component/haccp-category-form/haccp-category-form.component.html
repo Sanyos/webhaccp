@@ -9,9 +9,34 @@
 
     <app-input-form-control
       [label]="'Egység elnevezése'"
-      [readonly]="readonly"
       formControlName="haccp_unit_name"
       [formControl]="haccpForm.controls.haccp_unit_name"
+    ></app-input-form-control>
+
+    <mat-form-field>
+      <mat-label>Cég kategória</mat-label>
+      <mat-select formControlName="haccp_company_category">
+        <mat-option
+          *ngFor="let option of companyCategoryOptions | keyvalue"
+          [value]="option.key"
+          >{{ option.value }}</mat-option
+        >
+      </mat-select>
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_company_category'].dirty ||
+          haccpForm.controls['haccp_company_category'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <app-input-form-control
+      [label]="'Cégnév'"
+      [readonly]="readonly"
+      formControlName="haccp_company_name"
+      [formControl]="haccpForm.controls.haccp_company_name"
     ></app-input-form-control>
 
     <app-input-form-control
@@ -35,23 +60,12 @@
       [formControl]="haccpForm.controls.haccp_billing_address"
     ></app-input-form-control>
 
-    <mat-form-field>
-      <mat-label>Cég kategória</mat-label>
-      <mat-select formControlName="haccp_company_category">
-        <mat-option
-          *ngFor="let option of companyCategoryOptions | keyvalue"
-          [value]="option.key"
-          >{{ option.value }}</mat-option
-        >
-      </mat-select>
-      <mat-error
-        *ngIf="
-          haccpForm.controls['haccp_company_category'].dirty ||
-          haccpForm.controls['haccp_company_category'].touched
-        "
-      >
-        Mező kitöltése kötelező
-      </mat-error>
-    </mat-form-field>
+    <app-input-form-control
+      [label]="'Adószám'"
+      [readonly]="readonly"
+      formControlName="haccp_company_vat_number"
+      [formControl]="haccpForm.controls.haccp_company_vat_number"
+      [validationText]="'Az adószám formátuma nem megfelelő (1234567-1-12)'"
+    ></app-input-form-control>
   </form>
 </div>

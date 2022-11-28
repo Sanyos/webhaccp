@@ -10,10 +10,8 @@ import {
   tap,
 } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
-import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { CompanyResponseModel } from 'src/app/core/model/company.model';
-import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { DocumentsTableComponent } from '../../component/documents-table/documents-table.component';

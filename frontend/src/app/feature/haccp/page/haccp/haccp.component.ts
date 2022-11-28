@@ -111,12 +111,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
           .subscribe((res: CompanyWithUserResponseModel) => {
             this.companyData = res;
             this.readonly = true;
-            this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
-              this.companyData.company_name
-            );
             this.haccpCategoryForm.controls[
               'haccp_company_headquarters'
-            ].setValue(this.companyData.company_headquarters);
+            ].setValue(this.companyData.company_location);
             this.haccpCategoryForm.controls['haccp_company_category'].setValue(
               this.companyData.company_category
             );
@@ -129,6 +126,12 @@ export class HaccpComponent implements OnInit, OnDestroy {
             this.haccpCategoryForm.controls['haccp_company_id'].setValue(
               this.companyData.company_id
             );
+            this.haccpCategoryForm.controls[
+              'haccp_company_vat_number'
+            ].setValue(this.companyData.company_vat_number);
+            this.haccpCategoryForm.controls['haccp_company_name'].setValue(
+              this.companyData.company_name
+            );
           });
       }
     });
@@ -139,7 +142,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
       .getSingleItem()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: EnumsModel) => {
-        console.log(res);
         this.ingredientsOptions = res.IngredientsEnum;
         this.coldStorageProductOptions = res.ColdStorageProductEnum;
         this.sewageDrainOptions = res.SewageDrainEnum;
@@ -231,7 +233,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
     if (!company) {
       let company: CompanyRequestModel = {
         company_name: this.haccp.haccp_unit_name,
-        company_headquarters: this.haccp.haccp_company_headquarters,
+        company_location: this.haccp.haccp_company_headquarters,
         company_user_id: +this.userId,
         company_archived: false,
         company_category: this.haccp.haccp_company_category,

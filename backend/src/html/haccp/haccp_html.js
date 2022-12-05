@@ -533,7 +533,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-      <h3 style="margin-left: 1rem; padding-top: 4rem">
+      <h3 style="margin-left: 1rem; margin-top: 6rem;">
         2.6. Forgalmazás módja
       </h3>
       <p>`;
@@ -865,7 +865,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-    <div style="height: 6rem;"></div>
+    <div style="height: 8rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>

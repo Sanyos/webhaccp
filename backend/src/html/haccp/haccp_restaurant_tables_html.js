@@ -164,23 +164,7 @@ exports.html = (data) => {
           <td></td>
           <td></td>
         </tr>
-        <tr>
-          <td>4.3</td>
-          <td>Minőségi átvétel</td>
-          <td>1.</td>
-          <td>
-            B, K, F: mikrobákkal, vegyi anyagokkal, fizikai anyagokkal való szennyeződés
-            - szállítási körülmények nem garantálják az áru minőségi biztonságát
-          </td>
-          <td>
-            Szúrópróbaszerűen ellenőrizzük a szállítójármű és a szállító személyzet tisztaságát (érzékszervi ellenőrzés),
-            valamint az egészségügyi könyv érvényességét.
-          </td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
+        
       </table>
     </div>
   
@@ -202,6 +186,24 @@ exports.html = (data) => {
           <td>CCP</td>
         </tr>
   
+        <tr>
+        <td>4.3</td>
+        <td>Minőségi átvétel</td>
+        <td>1.</td>
+        <td>
+          B, K, F: mikrobákkal, vegyi anyagokkal, fizikai anyagokkal való szennyeződés
+          - szállítási körülmények nem garantálják az áru minőségi biztonságát
+        </td>
+        <td>
+          Szúrópróbaszerűen ellenőrizzük a szállítójármű és a szállító személyzet tisztaságát (érzékszervi ellenőrzés),
+          valamint az egészségügyi könyv érvényességét.
+        </td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
         <tr>
           <td></td>
           <td>Érzékszervi ellenőrzés, termékhőmérséklet ellenőrzés</td>

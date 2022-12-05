@@ -215,34 +215,31 @@ exports.html = (data) => {
       </table>
   
       <h2 style="margin-top: 2rem">1. ALKALMAZÁSI TERÜLETT</h2>
-      <p>
+      <small>
         A Kézikönyv szerint megalakított HACCP munkacsoport a következő
         vendéglátó-ipari folyamatokat vizsgálta élelmiszerbiztonság
         szempontjából:
         <b>${data.haccp_unit_name}</b> működése.
-      </p>
-      <p>
+     
         Az elemzés célja a folyamatok műveleti lépéseinek vizsgálatán keresztül
         feltárni azokat a pontokat, amelyek az emberi egészség és a késztermékek
         biztonsága szempontjából kritikusnak (CCP) tekinthetők. Az elemzés nem
         terjed ki az előállítás gazdaságosságára és az ételek
         élelmiszerbiztonságát nem veszélyeztető tulajdonságainak (pl.
         sótartalom, ízesítés, húshányad) megfelelőségére.
-      </p>
-      <p>
+      
         Jelen dokumentum egy átfogó élelmiszer-előállítási, kezelési
         technológiával kapcsolatos élelmiszerbiztonsági veszélyforrásokat,
         kritikus pontokat feltáró átfogó elemzés. Az adott helyszínen, az adott
         főzőkonyhai, étteremi tevékenységre csak a rá vonatkozó műveleteket,
         veszélyeket és szabályozó intézkedéseket kell értelmezni.
-      </p>
-      <p>
+     
         A HACCP rendszer alkalmazási területe az alap-, segéd-, járulékos és
         csomagolóanyagok átvételétől a késztermékek fogyasztó részére történő
         kiadásáig terjed. A rendszer kiépítése során törekszünk arra, hogy
         minden lehetséges veszélyt feltárjunk és ezeket a rendszer keretein
         belül, optimálisan szabályozzuk.
-      </p>
+      </small>
   
       <h2 style="margin-top: 2rem">2. TERMÉKLEÍRÁS</h2>
       <h3 style="margin-left: 1rem">2.1. Termékleírás</h3>
@@ -264,7 +261,7 @@ exports.html = (data) => {
       </table>
     </div>
     <div class="page">
-      <h3 style="margin-top: 2rem; margin-left: 1rem">2.2. Általános leírás</h3>`;
+      <h3 style="margin-left: 1rem">2.2. Általános leírás</h3>`;
   if (
     category === CompanyCategoryTypes.CASUALRESTAURANT ||
     category === CompanyCategoryTypes.RESTAURANT ||

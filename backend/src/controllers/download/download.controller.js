@@ -61,6 +61,7 @@ let documents = [
 ];
 
 exports.downloadHaccp = (req, res, next) => {
+  console.log(req.body);
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {

@@ -1198,7 +1198,7 @@ exports.html = (data) => {
         </tr> 
       </table>
     </div>
-    <div style="height: 8rem;"></div>`;
+    <div style="height: 5rem;"></div>`;
 
   if (
     category === CompanyCategoryTypes.RESTAURANT ||

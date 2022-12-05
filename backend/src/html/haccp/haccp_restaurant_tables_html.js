@@ -580,7 +580,6 @@ tilos.
     </table>
   </div>
 
-  <div style="height: 3rem;"></div>
   <div class="page">
   <table class="table-style">
     <tr>
@@ -718,7 +717,7 @@ maximum 1 órát tartózkodjanak szobahőmérsékleten a hőkezelés előtt.
   </table>
 </div>
 
-<div style="height: 15rem;"></div>
+<div style="height: 10rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

@@ -47,24 +47,28 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
   }
 
   getPaymentResponse(): void {
-    this.activatedRoute.queryParams.subscribe((params) => {
-      const body = { params: params, haccp: this.haccp };
-      return this.paymentApiService.finishTransaction(body).subscribe((res) => {
-        this.paymentStatus = res.e;
-        if (res.e === PaymentStatus.FAIL) {
-          this.message = `
+    this.activatedRoute.queryParams
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((params) => {
+        const body = { params: params, haccp: this.haccp };
+        return this.paymentApiService
+          .finishTransaction(body)
+          .subscribe((res) => {
+            this.paymentStatus = res.e;
+            if (res.e === PaymentStatus.FAIL) {
+              this.message = `
             Sikertelen tranzakció.
             SimplePay tranzakció azonosító: ${res.t}.
             Kérjük, ellenőrizze a tranzakció során megadott adatok helyességét.
             Amennyiben minden adatot helyesen adott meg, a visszautasítás okának kivizsgálása érdekében kérjük, szíveskedjen kapcsolatba lépni kártyakibocsátó bankjával.`;
-        } else if (res.e === PaymentStatus.TIMEOUT) {
-          this.message =
-            'Ön túllépte a tranzakció elindításának lehetséges maximális idejét.';
-        } else if (res.e === PaymentStatus.CANCEL) {
-          this.message = 'Ön megszakította a fizetést!';
-        }
+            } else if (res.e === PaymentStatus.TIMEOUT) {
+              this.message =
+                'Ön túllépte a tranzakció elindításának lehetséges maximális idejét.';
+            } else if (res.e === PaymentStatus.CANCEL) {
+              this.message = 'Ön megszakította a fizetést!';
+            }
+          });
       });
-    });
   }
 
   getHaccp(): void {
@@ -74,6 +78,7 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
           .getSingleItem(id)
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((haccp: HaccpModel) => {
+            console.log(haccp);
             this.haccp = haccp;
             this.haccpName = `${this.haccp.haccp_unit_name}_${this.haccp.haccp_date}_haccp`;
             if (this.haccp.haccp_company_id) {

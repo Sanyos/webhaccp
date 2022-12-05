@@ -23,7 +23,7 @@ export class PubHaccpFormComponent implements OnInit {
   @Input() eggOptions: any;
   @Input() deliveryMethodOptions: DeliveryMethodEnum;
   @Input() storageOptions: StorageEnum;
-  @Input() refigratorOptions: RefigratorEnum;
+  @Input() refigratorOptions: any;
   @Input() dishToWashOptions: DishToWashEnum;
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
@@ -41,6 +41,17 @@ export class PubHaccpFormComponent implements OnInit {
       (values) => {
         if (values.includes('egg')) {
           delete this.eggOptions.noEgg;
+        }
+      }
+    );
+
+    this.haccpForm.controls['haccp_ingredients'].valueChanges.subscribe(
+      (values) => {
+        if (
+          values.includes('mirelitBakedGoods') ||
+          values.includes('mirelit')
+        ) {
+          delete this.refigratorOptions.noRefrigator;
         }
       }
     );

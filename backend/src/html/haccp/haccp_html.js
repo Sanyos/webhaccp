@@ -327,9 +327,10 @@ exports.html = (data) => {
   }
   if (category === CompanyCategoryTypes.PUB) {
     html += `
-        <p>Kiskereskedelmi egység műkködése fagyasztott pékáruk készre sütésével egybe kötve.
+        <p>A vendégek részére felszolgált vendéglátó ipari termékeket a beérkezett nyersanyagokból az átmeneti tárolás, majd a megfelelő előkészítési műveletek után az ételkészítés lépésein keresztül állítjuk elő.
         A megfelelő beszállító kiválasztásával küszöböljük ki a mezőgazdasági, élelmiszeripari helytelen kezelésből adódó veszélyeket.
-        Célunk, hogy a nyersanyag mikrobiológiai állapotát megőrizzük, az ebből eredő veszélyeket a technológiai előírások betartásával megfelelő, minimális mértékre csökkentsük. Az hűteni kívánt ételeket 0-+5C-os hőmérsékleten tartjuk, kizárva ezzel az ételben a mikrobák szaporodását és a toxinképződést
+        Célunk, hogy a nyersanyag mikrobiológiai állapotát megőrizzük, az ebből eredő veszélyeket a technológiai előírások betartásával megfelelő, minimális mértékre csökkentsük. A nem hőkezeléssel előállított ételeknél fokozott gondot kell fordítani a megfelelő előkészítésre és a „Jó Vendéglátó Gyakorlat” betartására. Az elkészült ételeknél biztosítani kell, hogy azok azonnal, vagy 0-+5°C-os hőmérsékleten jusson el a fogyasztókhoz, kizárva ezzel az ételben a mikrobák szaporodását és a toxinktépződés.
+        
         </p>
         `;
   }

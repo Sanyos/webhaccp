@@ -24,7 +24,7 @@ export class MobileHaccpFormComponent implements OnInit {
   @Input() eggOptions: any;
   @Input() deliveryMethodOptions: DeliveryMethodEnum;
   @Input() storageOptions: StorageEnum;
-  @Input() refigratorOptions: RefigratorEnum;
+  @Input() refigratorOptions: any;
   @Input() dishToWashOptions: DishToWashEnum;
   specialOptions: any = {
     micromolekular: 'Mikromolekuláris eljárások',
@@ -47,6 +47,17 @@ export class MobileHaccpFormComponent implements OnInit {
       (values) => {
         if (values.includes('egg')) {
           delete this.eggOptions.noEgg;
+        }
+      }
+    );
+
+    this.haccpForm.controls['haccp_ingredients'].valueChanges.subscribe(
+      (values) => {
+        if (
+          values.includes('mirelitBakedGoods') ||
+          values.includes('mirelit')
+        ) {
+          delete this.refigratorOptions.noRefrigator;
         }
       }
     );

@@ -885,9 +885,6 @@ mosogatásukat helyben kell végezni.
   </table>
   </div>
 
-
-
-  <div style="height: 8rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

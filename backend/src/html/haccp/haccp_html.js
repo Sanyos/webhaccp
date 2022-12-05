@@ -38,7 +38,7 @@ exports.html = (data) => {
   
       .page {
         width: 13.5in;
-        height: 9.6in;
+        height: 10in;
         margin: 0 auto;
         box-sizing: border-box;
       }
@@ -348,6 +348,7 @@ exports.html = (data) => {
       </p>
     </div>
     <div class="page">
+      <div style="height: 4rem;"></div>
       <h3>Veszélyek</h3>
       <table>
         <tr style="background-color: #e4e4e4">

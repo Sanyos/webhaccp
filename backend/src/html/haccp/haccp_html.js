@@ -534,7 +534,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-      <h3 style="margin-left: 1rem; margin-top: 7rem;">
+      <h3 style="margin-left: 1rem; margin-top: 10rem;">
         2.6. Forgalmazás módja
       </h3>
       <p>`;

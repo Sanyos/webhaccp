@@ -65,8 +65,8 @@ exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    width: "15in",
-    height: "9.6in",
+    width: "17in",
+    height: "11in",
   };
   let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {

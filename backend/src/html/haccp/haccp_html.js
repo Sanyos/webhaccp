@@ -38,7 +38,7 @@ exports.html = (data) => {
   
       .page {
         width: 13.5in;
-        height: 10in;
+        height: 9.7in;
         margin: 0 auto;
         box-sizing: border-box;
       }

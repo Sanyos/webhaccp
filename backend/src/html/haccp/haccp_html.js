@@ -621,7 +621,8 @@ exports.html = (data) => {
      
     </div>
 
-    <div class="page">`;
+    <div class="page">
+    <div style="height: 8rem;"></div>`;
 
   if (
     category === CompanyCategoryTypes.RESTAURANT ||

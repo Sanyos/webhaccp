@@ -142,23 +142,23 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       'ÜZLET',
       'KATEGÓRIA',
       'TELEPHELY',
-      'CÉGJEGYZÉKSZÁM',
       'ADÓSZÁM',
+      'CÉGJEGYZÉKSZÁM',
       'LEHETŐSÉGEK',
     ];
     this.columns = [
       'company_name',
       'company_category',
       'company_location',
-      'company_registration_number',
       'company_vat_number',
+      'company_registration_number',
     ];
     this.displayedColumns = [
       'company_name',
       'company_category',
       'company_location',
-      'company_registration_number',
       'company_vat_number',
+      'company_registration_number',
       'actions',
     ];
   }

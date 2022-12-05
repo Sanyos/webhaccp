@@ -239,6 +239,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
         company_category: this.haccp.haccp_company_category,
         company_billing_name: this.haccp.haccp_billing_name,
         company_billing_address: this.haccp.haccp_billing_address,
+        company_vat_number: this.haccp.haccp_company_vat_number,
       };
 
       this.companyApiService

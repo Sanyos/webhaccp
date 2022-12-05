@@ -459,6 +459,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
+    <div style="height: 2rem;"></div>
     <p>
         47/2011. (V. 31.) VM rendelet az élelmiszer-vállalkozás működéséhez
         szükséges szakképesítés
@@ -533,7 +534,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-      <h3 style="margin-left: 1rem; margin-top: 6rem;">
+      <h3 style="margin-left: 1rem; margin-top: 7rem;">
         2.6. Forgalmazás módja
       </h3>
       <p>`;

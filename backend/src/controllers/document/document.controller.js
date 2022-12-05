@@ -6,7 +6,6 @@ exports.getAllDocuments = (req, res, next) => {
     .getAll()
     .then((documents) => {
       if (documents) {
-        console.log("all documents: ", documents.rows);
         res.status(200).json(documents.rows);
       }
     })
@@ -22,7 +21,6 @@ exports.getDocumentById = (req, res, next) => {
   return documentService
     .getById(documentId)
     .then((document) => {
-      console.log("document by id: ", document);
       res.status(200).json(document.rows[0]);
     })
     .catch((err) => {

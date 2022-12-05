@@ -52,7 +52,6 @@ exports.getAllUser = (req, res, next) => {
   return userService
     .getAll()
     .then((users) => {
-      console.log("users: ", users.rows);
       let responseUsers = [];
       users.rows.forEach((user) => {
         let responseUser = {
@@ -77,7 +76,6 @@ exports.getUserById = (req, res, next) => {
   return userService
     .getById(id)
     .then((resUser) => {
-      console.log("user by id: ", resUser.rows[0]);
       const user = resUser.rows[0];
       let responseUser = {
         user_name: user.user_name,
@@ -103,7 +101,6 @@ exports.archivingById = (req, res, next) => {
   return userService
     .updateById(id, req.body)
     .then((user) => {
-      console.log(user.rows[0]);
       res.status(200).json(user.rows[0]);
     })
     .catch((err) => {
@@ -121,12 +118,9 @@ exports.userUpdate = async (req, res, next) => {
     user_name,
     user_archived,
   } = req.body;
-
-  console.log("req.body", req.body);
   const id = req.params.id;
 
   userService.getById(id).then(async (userById) => {
-    console.log("get user by id", userById.rows[0]);
     const user = userById.rows[0];
 
     if (!user) {
@@ -137,7 +131,6 @@ exports.userUpdate = async (req, res, next) => {
     if (!validPass) {
       return res.send("passwordIsWrong");
     } else {
-      console.log(user_password);
       const salt = await bcrypt.genSalt(10);
       const hashedPassword = await bcrypt.hash(
         user_password !== "" && user_password === rePassword
@@ -156,7 +149,6 @@ exports.userUpdate = async (req, res, next) => {
       return userService
         .updateById(id, updatedUser)
         .then((user) => {
-          console.log("user updated: ", user.rows[0]);
           res.status(200).json(user.rows[0]);
         })
         .catch((err) => {

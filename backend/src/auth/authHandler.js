@@ -8,7 +8,6 @@ module.exports.login = async (req, res) => {
   const password = req.body.user_password;
   const selectQuery = `SELECT * FROM users WHERE user_email = $1`;
   pool.query(selectQuery, [email]).then(async (user) => {
-    console.log("user", user.rows[0]);
     const loggedInUser = user.rows[0];
     if (!loggedInUser)
       return res.status(400).send("Email or password is wrong");

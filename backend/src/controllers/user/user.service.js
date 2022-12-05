@@ -37,7 +37,6 @@ exports.updateById = (id, user) => {
   if (!user) {
     return new createError.BadRequest("Something went wrong");
   }
-  console.log("uservalues: ", user);
   const values = [
     id,
     user.user_name,

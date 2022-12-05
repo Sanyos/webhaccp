@@ -889,7 +889,7 @@ mosogatásukat helyben kell végezni.
 
 
   <div class="page">
-  <div style="height: 15rem;"></div>
+  <div style="height: 16rem;"></div>
 <table class="table-style">
   <tr>
     <td rowspan="2">Sorszám</td>
@@ -1004,7 +1004,7 @@ Megégett, túlsütött termék nem kerül kiszállításra. A tálalást minden
   </div>
 
   <div class="page">
-  <div style="height: 15rem;"></div>
+  <div style="height: 17rem;"></div>
 <table class="table-style">
   <tr>
     <td rowspan="2">Sorszám</td>

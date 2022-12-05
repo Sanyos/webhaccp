@@ -467,7 +467,7 @@ exports.html = (data) => {
     </div>
 
 
-    <div style="height: 8rem;"></div>
+    <div style="height: 5rem;"></div>
     <div class="page">
     <table class="table-style">
       <tr>
@@ -580,7 +580,7 @@ tilos.
     </table>
   </div>
 
-  <div style="height: 5rem;"></div>
+  <div style="height: 3rem;"></div>
   <div class="page">
   <table class="table-style">
     <tr>
@@ -888,7 +888,7 @@ mosogatásukat helyben kell végezni.
 
 
 
-  <div style="height: 16rem;"></div>
+  <div style="height: 8rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

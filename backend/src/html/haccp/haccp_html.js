@@ -101,7 +101,7 @@ exports.html = (data) => {
             .split("T")[0]
             .replace(/-/g, ".")}
         </h2>
-        <h3 style="margin-top: 7rem; margin-bottom: 7rem;">
+        <h3 style="margin-top: 7rem; margin-bottom: 5rem;">
           Üzemelteti:.....................................................
         </h3>
         <p>${data.haccp_unit_name}</p>
@@ -138,7 +138,7 @@ exports.html = (data) => {
   2.7. Összetétel....................................................................................................................................................................... 7
       </h4>
       <h4 style="margin-left: 1rem">
-  2.8. Jó vendéglátó gyakorlat és Higiéniai és takarítási utasítás...................................................................................................................... 7
+  2.8. Jó vendéglátó gyakorlat és Higiéniai és takarítási utasítás............................................................................................................ 7
       </h4>
       <h4 style="margin-left: 1rem">
   2.9. Az élelmiszerbiztonsági intézkedések igazolása................................................................................................................................... 7
@@ -264,7 +264,7 @@ exports.html = (data) => {
       </table>
     </div>
     <div class="page">
-      <h3 style="margin-top: 5rem; margin-left: 1rem">2.2. Általános leírás</h3>`;
+      <h3 style="margin-top: 2rem; margin-left: 1rem">2.2. Általános leírás</h3>`;
   if (
     category === CompanyCategoryTypes.CASUALRESTAURANT ||
     category === CompanyCategoryTypes.RESTAURANT ||

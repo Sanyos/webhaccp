@@ -966,7 +966,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-    <div style="height: 6rem;"></div>
+    <div style="height: 8rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>
@@ -1114,7 +1114,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-    <div style="height: 5rem;"></div>
+    <div style="height: 8rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>
@@ -1192,7 +1192,8 @@ exports.html = (data) => {
           <td></td>
         </tr> 
       </table>
-    </div>`;
+    </div>
+    <div style="height: 8rem;"></div>`;
 
   if (
     category === CompanyCategoryTypes.RESTAURANT ||

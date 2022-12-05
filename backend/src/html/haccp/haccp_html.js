@@ -639,10 +639,10 @@ exports.html = (data) => {
     
     </div>
     
+    <div style="height: 10rem;"></div>
     <div class="page">
-      <div style="height: 6rem;"></div>
       <h2>4. VESZÉLYELEMZÉS</h2>
-      <div style="height: 5rem;"></div>
+      <div style="height: 3rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>
@@ -748,7 +748,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-    <div style="height: 5rem;"></div>
+    <div style="height: 10rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>

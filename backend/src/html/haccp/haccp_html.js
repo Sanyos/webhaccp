@@ -640,7 +640,8 @@ exports.html = (data) => {
     </div>
     
     <div class="page">
-      <h2 style="padding-top: 5rem">4. VESZÉLYELEMZÉS</h2>
+      <div style="height: 6rem;"></div>
+      <h2>4. VESZÉLYELEMZÉS</h2>
       <div style="height: 5rem;"></div>
       <table class="table-style">
         <tr>

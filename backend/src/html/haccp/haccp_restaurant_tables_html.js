@@ -169,7 +169,7 @@ exports.html = (data) => {
     </div>
   
     <div class="page">
-    <div style="height: 5rem;"></div>
+    <div style="height: 4rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>
@@ -1003,8 +1003,8 @@ Megégett, túlsütött termék nem kerül kiszállításra. A tálalást minden
   </table>
   </div>
 
+  <div style="height: 3rem;"></div>
   <div class="page">
-  <div style="height: 17rem;"></div>
 <table class="table-style">
   <tr>
     <td rowspan="2">Sorszám</td>

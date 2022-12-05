@@ -1004,7 +1004,7 @@ Megégett, túlsütött termék nem kerül kiszállításra. A tálalást minden
   </div>
 
   <div class="page">
-  <div style="height: 10rem;"></div>
+  <div style="height: 17rem; background: red;"></div>
 <table class="table-style">
   <tr>
     <td rowspan="2">Sorszám</td>

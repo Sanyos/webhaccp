@@ -1112,7 +1112,7 @@ exports.html = (data) => {
         </tr>
       </table>
     </div>
-    <div style="height: 10rem;"></div>
+    <div style="height: 9rem;"></div>
     <div class="page">
     <div style="height: 10rem;"></div>
       <table class="table-style">
@@ -1209,7 +1209,7 @@ exports.html = (data) => {
   html += `
 
   <div class="page">
-  <div style="height: 2rem;"></div>
+  <div style="height: 5rem;"></div>
   <h2 style="margin-left: 1rem;">5.SZABÁLYOZÁS</h2>`;
   if (category === CompanyCategoryTypes.CASUALRESTAURANT) {
     html += `

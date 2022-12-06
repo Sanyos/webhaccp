@@ -105,16 +105,20 @@ exports.updateById = (id, haccp) => {
     haccp.haccp_unit_name,
     haccp.haccp_company_headquarters,
     haccp.haccp_supply,
-    haccp.haccp_products_require_cold_storage,
+    haccp.haccp_products_require_cold_storage
+      ? haccp.haccp_products_require_cold_storage.join("###")
+      : null,
     haccp.haccp_require_keeping_warm,
-    haccp.haccp_preparatory,
-    haccp.haccp_storages,
-    haccp.haccp_refrigerator,
+    haccp.haccp_preparatory ? haccp.haccp_preparatory.join("###") : null,
+    haccp.haccp_storages ? haccp.haccp_storages.join("###") : null,
+    haccp.haccp_refrigerator ? haccp.haccp_refrigerator.join("###") : null,
     haccp.haccp_delivery,
-    haccp.haccp_delivery_method,
+    haccp.haccp_delivery_method
+      ? haccp.haccp_delivery_method.join("###")
+      : null,
     haccp.haccp_dressing_room,
     haccp.haccp_cold_products,
-    haccp.haccp_egg,
+    haccp.haccp_egg ? haccp.haccp_egg.join("###") : null,
     haccp.haccp_glass_cleaner,
     haccp.haccp_surface_disinfectant,
     haccp.haccp_other_chemical,

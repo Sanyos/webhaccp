@@ -631,7 +631,7 @@ mosogatásukat helyben kell végezni.
   </div>
     
     
-  <div style="height: 10rem;"></div>
+  <div style="height: 2rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

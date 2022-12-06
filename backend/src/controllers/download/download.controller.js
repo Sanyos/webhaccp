@@ -69,7 +69,7 @@ exports.downloadHaccp = (req, res, next) => {
     width: "17in",
     height: "10.2in",
   };
-  let file = { content: haccp_certificate.html(data) };
+  let file = { content: haccp.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
     res.send(pdfBuffer);
   });
@@ -79,10 +79,10 @@ exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    width: "16in",
+    width: "15in",
     height: "9in",
   };
-  let file = { content: haccp.html(data) };
+  let file = { content: haccp_certificate.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
     res.send(pdfBuffer);
   });
@@ -95,7 +95,7 @@ exports.downloadDocument = (req, res, next) => {
   const doc = documents.filter((doc) => doc.name == fileName)[0];
   if (doc) {
     let options = {
-      width: doc.orientation === "landscape" ? "13in" : "11in",
+      width: doc.orientation === "landscape" ? "13in" : "13in",
       height: doc.orientation === "landscape" ? "9.2in" : "16in",
     };
     let file = { content: doc.html.html(data) };

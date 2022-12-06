@@ -10,7 +10,6 @@ exports.createNewHaccp = (req, res, next) => {
   return haccpService
     .create(newHaccp)
     .then((haccp) => {
-      console.log("new haccp created: ", haccp.rows[0]);
       res.status(201).json(haccp.rows[0]);
     })
     .catch((err) => {
@@ -24,7 +23,6 @@ exports.getAllHaccp = (req, res, next) => {
     return haccpService
       .getAllByCompanyId(companyId)
       .then((haccp) => {
-        console.log("all haccp: ", haccp.rows);
         if (haccp.rows) {
           res.status(200).json(haccp.rows);
         }
@@ -36,7 +34,6 @@ exports.getAllHaccp = (req, res, next) => {
       });
   } else {
     return haccpService.getAll().then((haccp) => {
-      console.log("all haccp: ", haccp.rows);
       if (haccp.rows) {
         res.status(200).json(haccp.rows);
       }
@@ -66,6 +63,7 @@ exports.updateHaccpById = (req, res, next) => {
   return haccpService
     .updateById(id, req.body)
     .then((updatedHaccp) => {
+      console.log("update haccp: ", haccp.rows[0]);
       res.status(200).json(updatedHaccp.rows[0]);
     })
     .catch((err) => {

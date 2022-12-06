@@ -2,6 +2,7 @@ const createError = require("http-errors");
 const pool = require("../../db");
 
 exports.create = (haccp) => {
+  console.log("to create: ", haccp.haccp_ingredients);
   if (!haccp) {
     return new createError.BadRequest("Something went wrong");
   }
@@ -95,6 +96,7 @@ exports.getById = (id) => {
 };
 
 exports.updateById = (id, haccp) => {
+  console.log("to update: ", haccp.haccp_ingredients);
   if (!haccp || !id) {
     return new createError.BadRequest("Something went wrong");
   }

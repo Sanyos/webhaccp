@@ -63,7 +63,6 @@ exports.updateHaccpById = (req, res, next) => {
   return haccpService
     .updateById(id, req.body)
     .then((updatedHaccp) => {
-      console.log("update haccp: ", haccp.rows[0]);
       res.status(200).json(updatedHaccp.rows[0]);
     })
     .catch((err) => {

@@ -6,7 +6,6 @@ exports.createNewHaccp = (req, res, next) => {
     return next(new createError.BadRequest("Invalid req body"));
   }
   const newHaccp = req.body;
-  console.log(newHaccp);
   return haccpService
     .create(newHaccp)
     .then((haccp) => {

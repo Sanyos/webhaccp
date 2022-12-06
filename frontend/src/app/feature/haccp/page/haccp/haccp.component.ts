@@ -256,13 +256,10 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   async updateHaccpWithCompanyId(): Promise<void> {
     if (this.haccpId) {
-      console.log('haccp to update', this.haccp);
       this.haccpApiService
         .update(this.haccp, this.haccpId)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res) => {
-          console.log('updated haccp', res);
-        });
+        .subscribe((res) => {});
     }
   }
 

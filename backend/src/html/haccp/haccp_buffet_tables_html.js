@@ -301,8 +301,8 @@ exports.html = (data) => {
       </table>
     </div>
   
-    <div class="page">
     <div style="height: 5rem;"></div>
+    <div class="page">
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>
@@ -490,8 +490,8 @@ tilos.
 
 
 
-  <div class="page">
   <div style="height: 10rem;"></div>
+  <div class="page">
   <table class="table-style">
     <tr>
       <td rowspan="2">Sorszám</td>
@@ -631,8 +631,8 @@ mosogatásukat helyben kell végezni.
   </div>
     
     
+  <div style="height: 10rem;"></div>
   <div class="page">
-  <div style="height: 5rem;"></div>
 <table class="table-style">
   <tr>
     <td rowspan="2">Sorszám</td>

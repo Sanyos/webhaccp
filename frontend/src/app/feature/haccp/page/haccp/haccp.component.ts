@@ -227,7 +227,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   saveCompanyIfNotExistAlready(): void {
     let company = this.companies.find(
-      (company) => company.company_name === this.haccp.haccp_unit_name
+      (company) => company.company_name === this.haccp.haccp_company_name
     );
 
     if (!company) {
@@ -256,6 +256,7 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
   async updateHaccpWithCompanyId(): Promise<void> {
     if (this.haccpId) {
+      console.log('haccp to update', this.haccp);
       this.haccpApiService
         .update(this.haccp, this.haccpId)
         .pipe(takeUntil(this.unsubscribe))

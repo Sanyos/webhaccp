@@ -10,6 +10,7 @@ const haccp = require("../../html/haccp/haccp_html");
 const haccp_kezikonyv = require("../../html/documents/haccp_kezikonyv_html");
 const egeszsegugyi_belepesi_nyilatkozat = require("../../html/documents/egeszsegugyei_belepesi_nyilatkozat_html");
 var html_to_pdf = require("html-pdf-node");
+const haccp_certificate = require("../../html/haccp/haccp_certificate_html");
 
 let documents = [
   {
@@ -68,7 +69,7 @@ exports.downloadHaccp = (req, res, next) => {
     width: "17in",
     height: "10.2in",
   };
-  let file = { content: haccp.html(data) };
+  let file = { content: haccp_certificate.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
     res.send(pdfBuffer);
   });

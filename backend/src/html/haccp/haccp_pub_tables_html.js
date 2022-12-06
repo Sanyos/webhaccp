@@ -414,7 +414,7 @@ tilos.
 
 
   <div class="page">
-  <div style="height: 10rem;"></div>
+  <div style="height: 12rem;"></div>
   <table class="table-style">
     <tr>
       <td rowspan="2">Sorszám</td>

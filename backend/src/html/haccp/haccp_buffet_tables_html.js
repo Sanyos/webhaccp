@@ -630,8 +630,6 @@ mosogatásukat helyben kell végezni.
   </table>
   </div>
     
-    
-  <div style="height: 2rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

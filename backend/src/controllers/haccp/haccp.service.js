@@ -141,7 +141,7 @@ exports.updateById = (id, haccp) => {
     haccp.haccp_user_id,
     haccp.haccp_company_id,
     haccp.haccp_require_keeping_cold,
-    haccp.haccp_ingredients,
+    haccp.haccp_ingredients ? haccp.haccp_ingredients.join("###") : null,
     haccp.haccp_company_category,
     haccp.haccp_transaction_id,
     haccp.payment_success,

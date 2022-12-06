@@ -95,6 +95,7 @@ exports.getById = (id) => {
 };
 
 exports.updateById = (id, haccp) => {
+  console.log("haccp", haccp);
   if (!haccp || !id) {
     return new createError.BadRequest("Something went wrong");
   }

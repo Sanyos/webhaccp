@@ -78,7 +78,6 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
           .getSingleItem(id)
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((haccp: HaccpModel) => {
-            console.log(haccp, 'haccp');
             this.haccp = haccp;
             this.haccpName = `${this.haccp.haccp_unit_name}_${this.haccp.haccp_date}_haccp`;
             if (this.haccp.haccp_company_id) {

@@ -34,6 +34,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
+import { ConsoleReporter } from 'jasmine';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -260,7 +261,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
       this.haccpApiService
         .update(this.haccp, this.haccpId)
         .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res) => {});
+        .subscribe((res) => {
+          console.log('updated haccp', res);
+        });
     }
   }
 

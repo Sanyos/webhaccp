@@ -46,7 +46,7 @@ exports.html = (data) => {
    #l10> li>*:first-child:before {content: "- "; color: black; font-family:"Times New Roman", serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
    table, tbody {vertical-align: top; overflow: visible; }
   </style></head><body>
-  <h1 style="padding-top: 3pt;padding-left: 121pt;text-indent: 0pt;text-align: center;">I. HACCP KÉZIKÖNYV</h1><p style="text-indent: 0pt;text-align: left;"><br/></p>
+  <h1 style="padding-top: 3pt;text-indent: 0pt;text-align: center;">I. HACCP KÉZIKÖNYV</h1><p style="text-indent: 0pt;text-align: left;"><br/></p>
   
   <div style="text-align: center; padding-top: 15rem; height: 9in;">
   <h2>${data.company_name}</h2>

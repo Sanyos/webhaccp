@@ -97,8 +97,7 @@ exports.downloadDocument = (req, res, next) => {
     let options = {
       width: doc.orientation === "landscape" ? "13in" : "10.5in",
       height: doc.orientation === "landscape" ? "9in" : "13.5in",
-      margin: "1rem",
-      scale: 0.8,
+      margin: { top: "50px", bottom: "50px", right: "50pxpx", left: "0px" },
     };
     let file = { content: doc.html.html(data) };
     html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {

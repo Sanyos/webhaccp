@@ -177,8 +177,8 @@ exports.html = (data) => {
   </style></head>
   
   <body>
-  <div style="max-width:"8in";>
-  <div style="text-align: center; margin-top: 25rem; margin-bottom: 25rem; height: 12in;">
+  <div style="max-width:"7in"; margin-right: 1rem;>
+  <div style="text-align: center; padding-top: 25rem; height: 12in;">
   <h2>${data.company_name}</h2>
   <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(

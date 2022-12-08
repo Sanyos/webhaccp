@@ -95,8 +95,8 @@ exports.downloadDocument = (req, res, next) => {
   const doc = documents.filter((doc) => doc.name == fileName)[0];
   if (doc) {
     let options = {
-      width: doc.orientation === "landscape" ? "13.5in" : "9in",
-      height: doc.orientation === "landscape" ? "9in" : "13.5in",
+      width: doc.orientation === "landscape" ? "13.5in" : "9.5in",
+      height: doc.orientation === "landscape" ? "9.5in" : "13.5in",
       margin: { top: "50px", bottom: "50px", right: "50px", left: "0px" },
     };
     let file = { content: doc.html.html(data) };

@@ -66,8 +66,6 @@ exports.downloadHaccp = (req, res, next) => {
   const data = req.body;
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    /* width: "17in",
-    height: "10.2in", */
     width: "17.5in",
     height: "10.85in",
     margin: { top: "30px", bottom: "30px", right: "0px", left: "0px" },

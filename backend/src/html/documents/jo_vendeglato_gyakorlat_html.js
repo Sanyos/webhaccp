@@ -2232,6 +2232,8 @@ exports.html = (data) => {
   <title></title>
   </head>
   <body>
+
+  <div style="width: 8in; word-wrap: break-word; white-space: initial;">
   <div id="sidebar">
   <div id="outline">
   </div>

@@ -91,7 +91,7 @@ exports.html = (data) => {
   
   <h1 style="padding-top: 4pt; line-height: 112%;text-align: center;">III. Jó Vendéglátó Gyakorlat (GHP II.)</h1>
   
-  <div style="text-align: center; padding-top: 25rem; height: 9in;">
+  <div style="text-align: center; padding-top: 25rem; height: 8in;">
   <h2>${data.company_name}</h2>
   <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(

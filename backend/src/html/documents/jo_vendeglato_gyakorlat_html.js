@@ -89,9 +89,9 @@ exports.html = (data) => {
    #l30> li>*:first-child:before {content: " "; color: black; font-family:Symbol, serif; font-style: normal; font-weight: normal; text-decoration: none; font-size: 12pt; }
   </style></head><body><p style="text-indent: 0pt;text-align: left;"><br/></p>
   
-  <h1 style="padding-top: 4pt;text-indent: -118pt;line-height: 112%;text-align: center;">III. Jó Vendéglátó Gyakorlat (GHP II.)</h1>
+  <h1 style="padding-top: 4pt; line-height: 112%;text-align: center;">III. Jó Vendéglátó Gyakorlat (GHP II.)</h1>
   
-  <div style="text-align: center; margin-top: 25rem;">
+  <div style="text-align: center; padding-top: 25rem; height: 9in;">
   <h2>${data.company_name}</h2>
   <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(

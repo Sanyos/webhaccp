@@ -970,8 +970,8 @@ exports.html = (data) => {
       </table>
     </div>
   
+    <div style="height: 6rem;"></div>
     <div class="page">
-    <div style="height: 5rem;"></div>
       <table class="table-style">
         <tr>
           <td rowspan="2">Sorszám</td>

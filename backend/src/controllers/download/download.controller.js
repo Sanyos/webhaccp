@@ -69,7 +69,7 @@ exports.downloadHaccp = (req, res, next) => {
     /* width: "17in",
     height: "10.2in", */
     width: "17.5in",
-    height: "11in",
+    height: "10.85in",
     margin: { top: "30px", bottom: "30px", right: "0px", left: "0px" },
   };
   let file = { content: haccp.html(data) };

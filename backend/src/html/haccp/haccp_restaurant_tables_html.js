@@ -168,7 +168,7 @@ exports.html = (data) => {
       </table>
     </div>
   
-    <div style="height: 4rem;"></div>
+    <div style="height: 3rem;"></div>
     <div class="page">
       <table class="table-style">
         <tr>

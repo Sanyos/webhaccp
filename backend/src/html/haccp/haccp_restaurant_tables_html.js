@@ -717,7 +717,7 @@ maximum 1 órát tartózkodjanak szobahőmérsékleten a hőkezelés előtt.
   </table>
 </div>
 
-<div style="height: 8rem;"></div>
+<div style="height: 4rem;"></div>
   <div class="page">
 <table class="table-style">
   <tr>

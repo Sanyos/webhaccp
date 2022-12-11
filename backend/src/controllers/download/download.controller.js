@@ -62,8 +62,8 @@ let documents = [
 ];
 
 exports.downloadHaccp = (req, res, next) => {
-  console.log(req.body);
   const data = req.body;
+  console.log(data);
   res.setHeader("Content-Type", "application/pdf");
   let options = {
     width: "17.5in",
@@ -78,10 +78,12 @@ exports.downloadHaccp = (req, res, next) => {
 
 exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
+  console.log(data);
   res.setHeader("Content-Type", "application/pdf");
   let options = {
-    width: "15in",
-    height: "9in",
+    width: "17.5in",
+    height: "10.85in",
+    margin: { top: "30px", bottom: "30px", right: "0px", left: "0px" },
   };
   let file = { content: haccp_certificate.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
@@ -91,6 +93,7 @@ exports.downloadHaccpCertificate = (req, res, next) => {
 
 exports.downloadDocument = (req, res, next) => {
   const data = req.body;
+  console.log(data);
   const fileName = req.params.name;
   res.setHeader("Content-Type", "application/pdf");
   const doc = documents.filter((doc) => doc.name == fileName)[0];

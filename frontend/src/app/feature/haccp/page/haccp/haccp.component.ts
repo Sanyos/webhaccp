@@ -34,6 +34,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
+import { prices } from 'src/app/core/config/prices-config';
 @Component({
   selector: 'app-haccp',
   templateUrl: './haccp.component.html',
@@ -200,13 +201,13 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
     let category: any = this.haccp.haccp_company_category;
     if (category == categoryTypes.BUFFET) {
-      return 24990;
+      return prices.buffet;
     } else if (category === categoryTypes.RESTAURANT) {
-      return 29990;
+      return prices.restaurant;
     } else if (category === categoryTypes.CASUALRESTAURANT) {
-      return 24990;
+      return prices.casualrestaurant;
     } else if (category === categoryTypes.PUB) {
-      return 19990;
+      return prices.pub;
     } else return;
   }
 

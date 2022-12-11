@@ -1,5 +1,3 @@
-export interface DocumentRequestModel {}
-
 export interface DocumentResponseModel {
   document_id?: string;
   document_name: string;

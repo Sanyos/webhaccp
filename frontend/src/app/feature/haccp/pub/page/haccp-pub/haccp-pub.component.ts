@@ -65,7 +65,7 @@ export class HaccpPubComponent {
     this.thirdHaccpForm = form;
   }
 
-  onSave() {
+  onSave(): void {
     if (this.checked === true) {
       this.aszfError = false;
       const arr = [
@@ -81,11 +81,11 @@ export class HaccpPubComponent {
     }
   }
 
-  onCancel() {
+  onCancel(): void {
     this.cancelEvent.emit();
   }
 
-  openASZF(e: Event) {
+  openASZF(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
     const path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';

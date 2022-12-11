@@ -35,7 +35,7 @@ export class AllDocumentsTableComponent implements OnInit {
     this.dataSource.sort = this.sort;
   }
 
-  downloadFile(haccp: HaccpModel) {
+  downloadFile(haccp: HaccpModel): void {
     this.downloadService.download(
       'haccp',
       haccp,
@@ -61,7 +61,7 @@ export class AllDocumentsTableComponent implements OnInit {
     this.setDataSource(this.tableData);
   }
 
-  setTableData() {
+  setTableData(): void {
     this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM'];
     this.columns = ['registered_user', 'haccp_unit_name', 'haccp_date'];
     this.displayedColumns = [

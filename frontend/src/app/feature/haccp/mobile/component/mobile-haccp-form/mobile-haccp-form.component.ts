@@ -3,10 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {
   ColdStorageProductEnum,
   ProductPreparatoryEnum,
-  EggEnum,
   DeliveryMethodEnum,
   StorageEnum,
-  RefigratorEnum,
   IngredientEnum,
   DishToWashEnum,
 } from 'src/app/core/model/haccp.model';
@@ -122,7 +120,7 @@ export class MobileHaccpFormComponent implements OnInit {
     { key: false, value: 'Nem' },
   ];
 
-  onSelect(event: any) {
+  onSelect(event: any): void {
     if (event.length) {
       Swal.fire({
         text: 'Ebben az esetben Önnek a WEB HACCP valószínűleg nem felel meg teljes mértékben, kérem, vegye fel a kapcsolatot munkatársunkkal!',

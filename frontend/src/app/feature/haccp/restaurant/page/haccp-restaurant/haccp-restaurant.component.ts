@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
@@ -85,7 +85,7 @@ export class HaccpRestaurantComponent {
     this.cancelEvent.emit();
   }
 
-  openASZF(e: Event) {
+  openASZF(e: Event): void {
     e.preventDefault();
     e.stopPropagation();
     const path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';

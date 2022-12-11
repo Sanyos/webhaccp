@@ -4,10 +4,8 @@ import {
   ColdStorageProductEnum,
   DeliveryMethodEnum,
   DishToWashEnum,
-  EggEnum,
   IngredientEnum,
   ProductPreparatoryEnum,
-  RefigratorEnum,
   StorageEnum,
 } from '../../../../../core/model/haccp.model';
 

@@ -45,7 +45,6 @@ exports.getHaccpById = (req, res, next) => {
   return haccpService
     .getById(id)
     .then((haccp) => {
-      console.log("haccp by id: ", haccp.rows[0]);
       res.status(200).json(haccp.rows[0]);
     })
     .catch((err) => {

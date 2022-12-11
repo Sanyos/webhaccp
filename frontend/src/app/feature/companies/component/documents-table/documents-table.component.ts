@@ -11,6 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { PaymentApiService } from 'src/app/core/api/payment-api/payment-api.service';
+import { prices } from 'src/app/core/config/prices-config';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
 
 @Component({
@@ -79,13 +80,13 @@ export class DocumentsTableComponent implements OnInit {
 
     let category: any = haccp.haccp_company_category;
     if (category == categoryTypes.BUFFET) {
-      return 24990;
+      return prices.buffet;
     } else if (category === categoryTypes.RESTAURANT) {
-      return 29990;
+      return prices.restaurant;
     } else if (category === categoryTypes.CASUALRESTAURANT) {
-      return 24990;
+      return prices.casualrestaurant;
     } else if (category === categoryTypes.PUB) {
-      return 19990;
+      return prices.pub;
     } else return;
   }
 

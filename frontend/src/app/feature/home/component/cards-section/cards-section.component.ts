@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { originalPrices, prices } from 'src/app/core/config/prices-config';
 
 @Component({
   selector: 'app-cards-section',
@@ -12,7 +13,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#009688',
       title: 'ÉTTERMEK ÉS VENDÉGLÁTÁS',
       icon: 'restaurant',
-      price: '34.990Ft helyett bevezető áron most csak 29.990Ft',
+      price: `${originalPrices.restaurant}Ft helyett bevezető áron most csak ${prices.restaurant}Ft`,
       list: [
         'Étterem - melegkonyhás',
         'Pizzéria',
@@ -30,7 +31,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#0097a7',
       title: 'MOZGÓBOLTOK',
       icon: 'lunch_dining',
-      price: '29.990Ft helyett bevezető áron most csak 24.990Ft',
+      price: `${originalPrices.casualrestaurant}Ft helyett bevezető áron most csak ${prices.casualrestaurant}Ft`,
       list: [
         'Pizzás',
         'Hamburgeres',
@@ -50,7 +51,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#0a81c0',
       title: 'BÁROK ÉS PUBOK',
       icon: 'sports_bar',
-      price: '24.990Ft helyett bevezető áron most csak 19.990Ft',
+      price: `${originalPrices.pub}Ft helyett bevezető áron most csak ${prices.pub}Ft`,
       list: [
         'Bár',
         'Pub',
@@ -65,7 +66,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#00695C',
       title: 'BÜFÉK',
       icon: 'bakery_dining',
-      price: '29.990Ft helyett bevezető áron most csak 24.990Ft',
+      price: `${originalPrices.buffet}Ft helyett bevezető áron most csak ${prices.buffet}Ft`,
       list: ['Iskolai büfé', 'Színházi büfé', 'Munkahelyi büfé', 'Fornettis'],
     },
   ];

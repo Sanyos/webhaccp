@@ -58,7 +58,7 @@ export class LoginFormComponent implements OnInit {
       cancelButtonText: 'Mégse',
     }).then((result) => {
       if (result.value) {
-        // TODO EMAIL CÍMRE JELSZÓ GENERÁLÁS
+        // TODO EMAIL KÜLDÉS + ÚJ JELSZÓ GENERÁLÁS
       }
     });
   }

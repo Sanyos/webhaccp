@@ -12,7 +12,7 @@ exports.html = (data) => {
           background-image: url("haccp_bg.png");
           background-size: cover;
           width: 13.5in;
-          height: 8.5in;
+          height: 8in;
           padding: 2rem;
         }
         .content {
@@ -41,6 +41,7 @@ exports.html = (data) => {
     </head>
     <body>
       <div class="bg">
+      <img src="haccp_bg.png">
         <div class="content">
           <h2>Alulírott igazolom</h2>
           <h2>a</h2>

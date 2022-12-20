@@ -58,7 +58,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
           res.forEach((data) => {
-            console.log(res);
             if (data) {
               if (data.company_category === 'RESTAURANT') {
                 data.company_category = CompanyCategoryTypes.RESTAURANT;

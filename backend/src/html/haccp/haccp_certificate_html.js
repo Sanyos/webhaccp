@@ -9,15 +9,16 @@ exports.html = (data) => {
       <title>Document</title>
       <style>
         .bg {
-          background-image: url("../../../public/angular/assets/haccp_bg.png");
+          background-image: url("backend/public/angular/assets/haccp_bg.png");
           background-size: cover;
-          width: 12.5in;
+          width: 11in;
           height: 9.5in;
           padding: 2rem;
         }
         .content {
           text-align: center;
           padding-top: 8rem;
+          width: 100%;
         }
         .title {
           color: #bf9237;

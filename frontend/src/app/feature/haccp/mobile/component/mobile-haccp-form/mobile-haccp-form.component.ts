@@ -28,6 +28,7 @@ export class MobileHaccpFormComponent implements OnInit {
     micromolekular: 'Mikromolekuláris eljárások',
     sousvide: 'Souse-wide',
     nightCook: 'Éjszakai sütés',
+    no: 'Nem használok',
   };
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
@@ -121,7 +122,7 @@ export class MobileHaccpFormComponent implements OnInit {
   ];
 
   onSelect(event: any): void {
-    if (event.length) {
+    if (event.length && !event.includes('no')) {
       Swal.fire({
         text: 'Ebben az esetben Önnek a WEB HACCP valószínűleg nem felel meg teljes mértékben, kérem, vegye fel a kapcsolatot munkatársunkkal!',
         icon: 'warning',

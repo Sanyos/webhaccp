@@ -38,6 +38,7 @@ export class HaccpCertificateComponent implements OnInit {
   columns: string[];
   headerTexts: string[];
   tableData: HaccpModel[] = [];
+  billingName: string;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -48,6 +49,11 @@ export class HaccpCertificateComponent implements OnInit {
 
   ngOnInit(): void {
     this.setTableData();
+    this.company$
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((res: CompanyResponseModel) => {
+        this.billingName = res.company_billing_name;
+      });
   }
 
   ngOnDestroy(): void {
@@ -64,9 +70,10 @@ export class HaccpCertificateComponent implements OnInit {
   }
 
   downloadCertificate(haccp: HaccpModel) {
+    let data = { haccp: haccp, billingName: this.billingName };
     this.downloadService.download(
       'haccp-certificate',
-      haccp,
+      data,
       `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
     );
   }

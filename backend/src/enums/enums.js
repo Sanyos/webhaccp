@@ -23,7 +23,7 @@ const enums = {
   },
   FoodWasteTransportEnum: {
     expert: "Szakértő céget bízok meg",
-    selfSolve: "Heti 40kg alatt van, ezért nem szerződöm",
+    selfSolve: "Heti 20kg alatt van, ezért nem szerződöm",
   },
   PestControlEnum: {
     expert: "Külső szakértő céget bízok meg",

@@ -89,7 +89,7 @@ const enum EntranceEnum {
 
 const enum FoodWasteTransportEnum {
   expert = "Szakértő céget bízok meg",
-  selfSolve = "Heti 40kg alatt van, ezért nem szerződöm",
+  selfSolve = "Heti 20kg alatt van, ezért nem szerződöm",
 }
 
 const enum PestControlEnum {

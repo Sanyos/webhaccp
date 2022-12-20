@@ -6,8 +6,8 @@
 
   <mat-form-field>
     <mat-label>Egység neve</mat-label>
-    <input formControlName="company_name" matInput />
-    <mat-error *ngIf="companyForm.controls['company_name'].hasError"
+    <input formControlName="company_unit_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_unit_name'].hasError"
       >Egység nevének megadása kötelező</mat-error
     >
   </mat-form-field>
@@ -72,6 +72,14 @@
     >
       A telefonszám formátuma nem megfelelő (pl. +36300000000 / 06300000000)
     </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cégnév</mat-label>
+    <input formControlName="company_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_name'].hasError"
+      >Cég nevének megadása kötelező</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field>

@@ -1,6 +1,7 @@
 import { CompanyCategoryTypes } from '../enum/company-category-type.enum';
 
 export interface CompanyRequestModel {
+  company_unit_name: string;
   company_category?: CompanyCategoryTypes;
   company_name: string;
   company_location?: string;
@@ -15,6 +16,7 @@ export interface CompanyRequestModel {
 }
 
 export interface CompanyResponseModel {
+  company_unit_name: string;
   company_id?: number;
   company_category: string;
   company_name: string;
@@ -30,6 +32,7 @@ export interface CompanyResponseModel {
 }
 
 export interface CompanyWithUserResponseModel {
+  company_unit_name: string;
   company_id?: number;
   company_category: string;
   company_name: string;

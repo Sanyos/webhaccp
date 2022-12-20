@@ -132,6 +132,9 @@ export class HaccpComponent implements OnInit, OnDestroy {
               'haccp_company_vat_number'
             ].setValue(this.companyData.company_vat_number);
             this.haccpCategoryForm.controls['haccp_unit_name'].setValue(
+              this.companyData.company_unit_name
+            );
+            this.haccpCategoryForm.controls['haccp_company_name'].setValue(
               this.companyData.company_name
             );
           });
@@ -234,7 +237,8 @@ export class HaccpComponent implements OnInit, OnDestroy {
 
     if (!company) {
       let company: CompanyRequestModel = {
-        company_name: this.haccp.haccp_unit_name,
+        company_unit_name: this.haccp.haccp_unit_name,
+        company_name: this.haccp.haccp_company_name,
         company_location: this.haccp.haccp_company_headquarters,
         company_user_id: +this.userId,
         company_archived: false,

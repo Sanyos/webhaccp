@@ -47,6 +47,10 @@ export class CompaniesFormComponent implements OnInit {
         Validators.required,
         Validators.maxLength(255),
       ]),
+      company_unit_name: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(255),
+      ]),
       company_headquarters: new FormControl('', [
         Validators.required,
         Validators.maxLength(255),

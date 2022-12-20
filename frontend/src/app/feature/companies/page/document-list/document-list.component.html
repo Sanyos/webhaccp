@@ -17,8 +17,12 @@
 
 <ng-template #noData>
   <div class="no-data">
-    <h3>A dokumentumok a HACCP elkészítését követően lesznek elérhetőek</h3>
-    <button mat-raised-button color="primary" [routerLink]="'/haccp'">
+    <h3>A dokumentumok a HACCP elkészítését követően lesznek elérhetőek.</h3>
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="'/haccp/' + company.company_id"
+    >
       KITÖLTÖM AZ ADATBEKÉRŐT
     </button>
   </div>

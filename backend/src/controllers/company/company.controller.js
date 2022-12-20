@@ -43,6 +43,7 @@ exports.getAllCompanies = (req, res, next) => {
                 user_name,
                 user_phone,
                 user_email,
+                company_unit_name,
               }) => ({
                 company_id,
                 company_category,
@@ -58,6 +59,7 @@ exports.getAllCompanies = (req, res, next) => {
                 user_name,
                 user_phone,
                 user_email,
+                company_unit_name,
               })
             );
           res.status(200).json(filteredCompanies);
@@ -89,6 +91,7 @@ exports.getAllCompanies = (req, res, next) => {
                 company_vat_number,
                 company_archived,
                 user_name,
+                company_unit_name,
               }) => ({
                 company_id,
                 company_category,
@@ -102,6 +105,7 @@ exports.getAllCompanies = (req, res, next) => {
                 company_vat_number,
                 company_archived,
                 user_name,
+                company_unit_name,
               })
             );
           res.status(200).json(filteredCompanies);

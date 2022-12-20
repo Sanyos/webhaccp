@@ -1,4 +1,5 @@
 export interface CompanyResponseModel {
+  company_unit_name: string;
   company_id?: number;
   company_category: string;
   company_name: string;
@@ -14,6 +15,7 @@ export interface CompanyResponseModel {
 }
 
 export interface CompanyWithUserResponseModel {
+  company_unit_name: string;
   company_id?: number;
   company_category: string;
   company_name: string;

@@ -94,6 +94,9 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyForm.controls['company_vat_number'].setValue(
           this.companyData.company_vat_number
         );
+        this.companyForm.controls['company_unit_name'].setValue(
+          this.companyData.company_unit_name
+        );
       });
   }
 

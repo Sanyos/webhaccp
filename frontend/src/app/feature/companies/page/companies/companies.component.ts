@@ -58,6 +58,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
           res.forEach((data) => {
+            console.log(res);
             if (data) {
               if (data.company_category === 'RESTAURANT') {
                 data.company_category = CompanyCategoryTypes.RESTAURANT;
@@ -142,22 +143,28 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       'ÜZLET',
       'KATEGÓRIA',
       'TELEPHELY',
+      'CÉGNÉV',
       'ADÓSZÁM',
+      'SZÉKHELY',
       'CÉGJEGYZÉKSZÁM',
       'LEHETŐSÉGEK',
     ];
     this.columns = [
-      'company_name',
+      'company_unit_name',
       'company_category',
       'company_location',
+      'company_name',
       'company_vat_number',
+      'company_headquarters',
       'company_registration_number',
     ];
     this.displayedColumns = [
-      'company_name',
+      'company_unit_name',
       'company_category',
       'company_location',
+      'company_name',
       'company_vat_number',
+      'company_headquarters',
       'company_registration_number',
       'actions',
     ];

@@ -82,7 +82,7 @@ exports.downloadHaccpCertificate = (req, res, next) => {
   res.setHeader("Content-Type", "application/pdf");
   let options = {
     width: "14in",
-    height: "10in",
+    height: "10.5in",
   };
   let file = { content: haccp_certificate.html(data) };
   html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {

@@ -9,9 +9,9 @@ exports.html = (data) => {
       <title>Document</title>
       <style>
         .bg {
-          background-image: url("haccp_bg.png");
+          background-image: url("../../../public/angular/assets/haccp_bg.png");
           background-size: cover;
-          width: 13.5in;
+          width: 12.5in;
           height: 9.5in;
           padding: 2rem;
         }

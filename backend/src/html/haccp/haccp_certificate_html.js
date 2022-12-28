@@ -8,6 +8,9 @@ exports.html = (data) => {
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Document</title>
       <style>
+       h2{
+        font-weight: normal;
+       }
         .haccp-bg{
           position: absolute;
           top: 0;

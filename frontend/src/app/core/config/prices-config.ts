@@ -1,13 +1,13 @@
 export const prices = {
-  restaurant: 29990,
-  buffet: 24990,
-  pub: 19990,
-  casualrestaurant: 24990,
+  restaurant: 47990,
+  buffet: 41990,
+  pub: 35990,
+  casualrestaurant: 41990,
 };
 
 export const originalPrices = {
-  restaurant: 34990,
-  buffet: 29990,
-  pub: 24990,
-  casualrestaurant: 29990,
+  restaurant: 37990,
+  buffet: 31990,
+  pub: 25990,
+  casualrestaurant: 31990,
 };

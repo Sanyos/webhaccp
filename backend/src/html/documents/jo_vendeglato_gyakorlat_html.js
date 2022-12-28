@@ -95,7 +95,9 @@ exports.html = (data) => {
   <h2>${data.company_name}</h2>
   <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(
-    new Date().setFullYear(new Date().getFullYear() + 1)
+    new Date(data.haccp_date).setFullYear(
+      new Date(data.haccp_date).getFullYear() + 1
+    )
   )
     .toISOString()
     .split("T")[0]

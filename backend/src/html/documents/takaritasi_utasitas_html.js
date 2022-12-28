@@ -152,7 +152,7 @@ exports.html = (data) => {
               text-align: left;
             "
           >
-            Kiadás időpontja: ${new Date()
+            Kiadás időpontja: ${new Date(data.haccp_date)
               .toISOString()
               .split("T")[0]
               .replace(/-/g, ".")}

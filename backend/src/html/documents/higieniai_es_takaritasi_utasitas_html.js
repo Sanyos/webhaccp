@@ -179,10 +179,13 @@ exports.html = (data) => {
   <body>
   <div style="max-width:"7in"; width: 80%;>
   <div style="text-align: center; padding-top: 25rem; height: 9in;">
+  <h1 style="color: rgb(49, 132, 155);">IV. Higiéniai és Takarítási Utasítás</h1>
   <h2>${data.company_name}</h2>
   <h2>${data.company_location}</h2>
   <h2>Felülvizsgálat: ${new Date(
-    new Date().setFullYear(new Date().getFullYear() + 1)
+    new Date(data.haccp_date).setFullYear(
+      new Date(data.haccp_date).getFullYear() + 1
+    )
   )
     .toISOString()
     .split("T")[0]

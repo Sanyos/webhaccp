@@ -24,7 +24,7 @@ exports.html = (data) => {
                   <strong
                     ><span style="font-size: 20px"
                       >T&aacute;lal&aacute;si napl&oacute; &nbsp; &nbsp; &nbsp; 
-                      &nbsp;  D&aacute;tum: ${new Date()
+                      &nbsp;  D&aacute;tum: ${new Date(data.haccp_date)
                         .toISOString()
                         .split("T")[0]
                         .replace(/-/g, ".")}</span

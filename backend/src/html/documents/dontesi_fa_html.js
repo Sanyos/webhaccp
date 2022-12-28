@@ -24,7 +24,9 @@ exports.html = (data) => {
                     <strong
                       ><span style="font-size: 30px"
                         >Döntési fa &nbsp; &nbsp; &nbsp; &nbsp;
-                        &nbsp; &nbsp; &nbsp; &nbsp; D&aacute;tum: ${new Date()
+                        &nbsp; &nbsp; &nbsp; &nbsp; D&aacute;tum: ${new Date(
+                          data.haccp_date
+                        )
                           .toISOString()
                           .split("T")[0]
                           .replace(/-/g, ".")}</span

@@ -54,7 +54,7 @@ export class DocumentListComponent implements OnInit {
     this.unsubscribe.complete();
   }
 
-  getCompanyData() {
+  getCompanyData(): void {
     this.company$.pipe(takeUntil(this.unsubscribe)).subscribe((company) => {
       this.companyData = company;
       this.getHaccpDocuments(company.company_id);
@@ -84,7 +84,7 @@ export class DocumentListComponent implements OnInit {
       );
   }
 
-  downloadDocument(documentName: string) {
+  downloadDocument(documentName: string): void {
     let data;
     if (this.haccpDocuments.length) {
       data = {

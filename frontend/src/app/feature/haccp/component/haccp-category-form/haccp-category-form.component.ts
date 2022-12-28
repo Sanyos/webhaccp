@@ -52,7 +52,7 @@ export class HaccpCategoryFormComponent implements OnInit {
       haccp_billing_address: new FormControl('', [Validators.maxLength(255)]),
       haccp_company_vat_number: new FormControl('', [
         Validators.required,
-        Validators.pattern(/([0-9]{7}-[0-9]{1}-[0-9]{2})/),
+        Validators.pattern(/([0-9]{8}-[0-9]{1}-[0-9]{2})/),
       ]),
       haccp_company_name: new FormControl('', [Validators.maxLength(255)]),
     });

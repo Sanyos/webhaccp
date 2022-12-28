@@ -101,11 +101,12 @@ exports.html = (data) => {
             .split("T")[0]
             .replace(/-/g, ".")}
         </h2>
-        <h3 style="margin-top: 7rem; margin-bottom: 5rem;">
+        <h3 style="margin-top: 7rem; margin-bottom: 3rem;">
           Üzemelteti:.....................................................
         </h3>
         <p>${data.haccp_unit_name}</p>
         <p>${data.haccp_company_headquarters}</p>
+        <p>Adószám: ${data.haccp_company_vat_number}</p>
       </div>
     </div>
     <div class="page">

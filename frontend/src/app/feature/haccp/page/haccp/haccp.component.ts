@@ -110,7 +110,6 @@ export class HaccpComponent implements OnInit, OnDestroy {
           .getSingleItem(id)
           .pipe(takeUntil(this.unsubscribe))
           .subscribe((res: CompanyWithUserResponseModel) => {
-            console.log(res);
             this.companyData = res;
             this.readonly = true;
             this.haccpCategoryForm.controls[

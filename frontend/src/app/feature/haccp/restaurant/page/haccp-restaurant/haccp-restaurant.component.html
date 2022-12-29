@@ -65,11 +65,13 @@
     <mat-checkbox [(ngModel)]="checked">
       <span (mousedown)="$event.stopPropagation()">
         Elfogadom az
-        <button mat-button (click)="openASZF($event)">
+        <button mat-button (click)="onOpen($event, 'privacyPolicy')">
           Adatvédelmi tájékoztatót
         </button>
         és az
-        <button mat-button>Általános Szerződési Feltételeket</button>
+        <button mat-button (click)="onOpen($event, 'aszf')">
+          Általános Szerződési Feltételeket
+        </button>
       </span>
     </mat-checkbox>
     <mat-error *ngIf="aszfError"

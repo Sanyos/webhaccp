@@ -84,10 +84,14 @@ export class HaccpBuffetComponent {
     this.cancelEvent.emit();
   }
 
-  openASZF(e: Event) {
+  onOpen(e: Event, type: string): void {
+    console.log(type);
     e.preventDefault();
     e.stopPropagation();
-    const path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';
+    let path;
+    type === 'aszf'
+      ? (path = '../../../../../../assets/aszf.pdf')
+      : (path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf');
     window.open(path, '_blank');
   }
 }

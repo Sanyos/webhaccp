@@ -13,9 +13,13 @@ export class FooterComponent {
     e.preventDefault();
     e.stopPropagation();
     let path;
-    type === 'aszf'
-      ? (path = '../../../../../../assets/aszf.pdf')
-      : (path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf');
+    if (type === 'aszf') {
+      path = '../../../../../../assets/aszf.pdf';
+    } else if (type === 'privacy') {
+      path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';
+    } else if (type === 'imp') {
+      path = '';
+    }
     window.open(path, '_blank');
   }
 

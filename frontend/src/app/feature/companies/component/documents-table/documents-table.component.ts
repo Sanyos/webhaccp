@@ -90,7 +90,7 @@ export class DocumentsTableComponent implements OnInit {
     } else return;
   }
 
-  startPayment(element: HaccpModel) {
+  startPayment(element: HaccpModel): void {
     const body: any = {
       amount: this.getPrice(element),
       transactionId: element.haccp_transaction_id,

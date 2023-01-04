@@ -62,7 +62,7 @@ export class AllDocumentsTableComponent implements OnInit {
   }
 
   setTableData(): void {
-    this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM'];
+    this.headerTexts = ['REGISZTRÁLT', 'EGYSÉG NEVE', 'DÁTUM'];
     this.columns = ['registered_user', 'haccp_unit_name', 'haccp_date'];
     this.displayedColumns = [
       'registered_user',

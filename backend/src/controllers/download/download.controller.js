@@ -1,6 +1,7 @@
 const takaritasi_utasitas = require("../../html/documents/takaritasi_utasitas_html");
 const allergen_tajekoztato = require("../../html/documents/allergen_tajekoztato_html");
 const etelek_homersekletenek_ellenorzo_lapja = require("../../html/documents/etelek_homersekletenek_ellenorzo_lapja_html");
+const hutoterek_homersekletenek_ellenorzo_lapja = require("../../html/documents/hutoterek_homersekletenek_ellenorzo_lapja_html");
 const higieniai_es_takaritasi_utasitas = require("../../html/documents/higieniai_es_takaritasi_utasitas_html");
 const jo_vendeglato_gyakorlat = require("../../html/documents/jo_vendeglato_gyakorlat_html");
 const talalasi_naplo = require("../../html/documents/talalasi_naplo_html");
@@ -26,6 +27,11 @@ let documents = [
   {
     html: etelek_homersekletenek_ellenorzo_lapja,
     name: "etelek_homersekletenek_ellenorzo_lapja",
+    orientation: "portrait",
+  },
+  {
+    html: hutoterek_homersekletenek_ellenorzo_lapja,
+    name: "hutoterek_homersekletenek_ellenorzo_lapja",
     orientation: "portrait",
   },
   {

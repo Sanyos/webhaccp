@@ -76,7 +76,7 @@ exports.updateById = (id, company) => {
   ];
   const sqlQuery = `
   UPDATE companies 
-  SET company_category = $2, company_name = $3, company_location = $4, company_phone = $5, company_headquarters = $6, company_billing_address = $7, company_registration_number = $8, company_vat_number = $9, company_archived = $10, company_billing_name = $11, company_unit_name = $11
+  SET company_category = $2, company_name = $3, company_location = $4, company_phone = $5, company_headquarters = $6, company_billing_address = $7, company_registration_number = $8, company_vat_number = $9, company_archived = $10, company_billing_name = $11, company_unit_name = $12
   WHERE company_id = $1
   RETURNING *;`;
   return pool.query(sqlQuery, values);

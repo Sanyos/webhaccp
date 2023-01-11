@@ -11,10 +11,12 @@ footer {
 .footer-text-holder {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   border-bottom: 1px solid rgb(229, 229, 229);
   width: 95%;
   margin: 1rem auto;
+  @media only screen and(max-width: 600px) {
+    flex-direction: column;
+  }
 }
 
 .footer-copyright {
@@ -27,10 +29,15 @@ footer {
   display: flex;
   flex-direction: column;
   text-align: left;
+  margin-bottom: 1.5rem;
   a {
     cursor: pointer;
     margin: 0.5rem 0;
     text-decoration: none;
     color: rgb(229, 229, 229);
   }
+}
+
+#simplepay-logo {
+  margin-top: 1rem;
 }

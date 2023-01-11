@@ -12,6 +12,7 @@ import {
 } from 'src/app/core/model/company.model';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
 import { HaccpModel } from 'src/app/core/model/haccp.model';
+import { PaymentResponse } from 'src/app/core/model/payment-response.model';
 import { DownloadService } from 'src/app/core/services/download/download.service';
 import { PaymentStatus } from '../../../../core/enum/payment-status.enum';
 @Component({
@@ -26,6 +27,7 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
   haccpName: string;
   message: string;
   paymentStatus: PaymentStatus;
+  transactionId: number;
   documents: DocumentResponseModel[] = [];
   companyData: any;
   constructor(
@@ -53,8 +55,10 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
         const body = { params: params, haccp: this.haccp };
         return this.paymentApiService
           .finishTransaction(body)
-          .subscribe((res) => {
+          .subscribe((res: PaymentResponse) => {
+            console.log(res);
             this.paymentStatus = res.e;
+            this.transactionId = res.t;
             if (res.e === PaymentStatus.FAIL) {
               this.message = `
             Sikertelen tranzakció.

@@ -48,8 +48,10 @@ export class HaccpBuffetComponent {
   secondHaccpForm: FormGroup;
   thirdHaccpForm: FormGroup;
 
+  aszfChecked: boolean = false;
   aszfError: boolean = false;
-  checked: boolean = false;
+  otpChecked: boolean = false;
+  otpError: boolean = false;
   constructor() {}
 
   firstHaccpFormEvent(form: FormGroup): void {
@@ -65,18 +67,23 @@ export class HaccpBuffetComponent {
   }
 
   onSave(): void {
-    if (this.checked === true) {
-      this.aszfError = false;
+    this.aszfChecked ? (this.aszfError = false) : (this.aszfError = true);
+    this.otpChecked ? (this.otpError = false) : (this.otpError = true);
+    if (this.aszfChecked && this.otpChecked) {
       const arr = [
         this.haccpForm.value,
         this.secondHaccpForm.value,
         this.thirdHaccpForm.value,
       ];
       const haccp: HaccpModel = Object.assign({}, ...arr);
+      haccp.haccp_aszf_checked = true;
+      haccp.haccp_privacy_policy_checked = true;
+      haccp.haccp_otp_checked = true;
       this.haccpEvent.emit(haccp);
       this.saveEvent.emit();
     } else {
-      this.aszfError = true;
+      this.aszfChecked ? (this.aszfError = false) : (this.aszfError = true);
+      this.otpChecked ? (this.otpError = false) : (this.otpError = true);
     }
   }
 

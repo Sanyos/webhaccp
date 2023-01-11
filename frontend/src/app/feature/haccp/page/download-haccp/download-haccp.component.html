@@ -1,5 +1,8 @@
 <div class="container">
   <div *ngIf="status === 'SUCCESS'">
+    <p>Sikeres fizetés!</p>
+    <p>SimplePay tranzakció azonosító: {{ transactionId }}</p>
+    <br />
     <h1>HACCP tanusítvány letöltés</h1>
     <div class="cards-container">
       <div class="card" (click)="downloadHaccp()">

@@ -49,6 +49,9 @@ export interface HaccpModel {
   haccp_billing_address: string;
   haccp_company_vat_number: string;
   haccp_company_name: string;
+  haccp_aszf_checked: boolean;
+  haccp_privacy_policy_checked: boolean;
+  haccp_otp_checked: boolean;
 }
 
 export enum CompanyCategoryTypes {

@@ -27,3 +27,12 @@ mat-horizontal-stepper {
   display: flex !important;
   align-items: center;
 }
+
+mat-checkbox {
+  margin-bottom: 1rem;
+  white-space: normal !important;
+}
+
+::ng-deep .mat-checkbox-layout {
+  white-space: normal !important;
+}

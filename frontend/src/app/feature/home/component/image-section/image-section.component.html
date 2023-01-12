@@ -20,7 +20,12 @@
       dönteni!
     </p>
     <br />
-    <button mat-raised-button color="primary" [routerLink]="'/questions'">
+    <button
+      mat-raised-button
+      color="primary"
+      [routerLink]="'/questions'"
+      (click)="scrollTop()"
+    >
       MEGNÉZEM A KÉRDÉSEKET
     </button>
   </div>

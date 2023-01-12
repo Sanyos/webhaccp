@@ -12,4 +12,8 @@ export class ImageSectionComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  scrollTop() {
+    window.scrollTo({ top: 0 });
+  }
+
 }

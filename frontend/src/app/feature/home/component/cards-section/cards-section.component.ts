@@ -76,5 +76,6 @@ export class CardsSectionComponent implements OnInit {
 
   navigateToHaccp() {
     this.router.navigate(['/haccp']);
+    window.scrollTo({ top: 0 });
   }
 }

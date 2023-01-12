@@ -24,7 +24,12 @@
 
       <p>Gyerekjáték a HACCP készítés, tegyen egy próbát!</p>
       <br />
-      <button mat-raised-button color="primary" [routerLink]="'/haccp'">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="'/haccp'"
+        (click)="scrollTop()"
+      >
         KITÖLTÖM AZ ADATBEKÉRŐT
       </button>
     </div>

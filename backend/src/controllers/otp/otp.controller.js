@@ -62,9 +62,10 @@ exports.ipn = (req, res, next) => {
   let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
   response.receiveDate = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1).split('.')[0]+'+01:00';
   let shaObj = new jsSHA("SHA-384", "TEXT", {
-    hmacKey: { value: 'MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma'+JSON.stringify(response), format: "TEXT" },
+    hmacKey: { value: 'MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma', format: "TEXT" },
   });
-  let base64data = Buffer.from(shaObj.getHash("HEX")).toString('base64');
+  shaObj.update(JSON.stringify(response));
+  let base64data = Buffer.from(shaObj.getHash("B64")).toString('base64');
   
   console.log(response);
 

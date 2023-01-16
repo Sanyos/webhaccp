@@ -2,6 +2,7 @@ const SimpleConnectionClient = require("simplepay-core").SimpleConnectionClient;
 const moment = require("moment");
 const haccpService = require("../haccp/haccp.service");
 const jsSHA = require("jssha");
+const integrity_1 = require("../../../node_modules/simplepay-core/lib/integrity");
 
 exports.startTransaction = (req, res, next) => {
   const protocol = req.protocol;
@@ -61,14 +62,16 @@ exports.ipn = (req, res, next) => {
   let response = req.body;
   let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
   response.receiveDate = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1).split('.')[0]+'+01:00';
-  let shaObj = new jsSHA("SHA-384", "TEXT", {
+  /*let shaObj = new jsSHA("SHA-384", "TEXT", {
     hmacKey: { value: 'MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma', format: "TEXT" },
   });
   shaObj.update(JSON.stringify(response));
   let base64data = Buffer.from(shaObj.getHash("B64")).toString('base64');
-  
-  console.log(response);
+  */
+  const hash = (0, integrity_1.getSignature)(JSON.stringify(response), "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma");
 
-  res.setHeader('Signature', base64data )
+  console.log(response)
+
+  res.setHeader('Signature', hash );
   res.send(response);
 };

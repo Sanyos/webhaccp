@@ -59,7 +59,7 @@ exports.finishTransaction = (req, res, next) => {
 exports.ipn = (req, res, next) => {
   let response = req.body;
   let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
-  response.receiveDate = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1).split('.')+'+01:00';
+  response.receiveDate = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1).split('.')[0]+'+01:00';
   console.log(response);
   res.send(response);
 };

@@ -54,3 +54,9 @@ exports.finishTransaction = (req, res, next) => {
   res.send(response);
   return response;
 };
+
+
+exports.ipn = (req, res, next) => {
+  console.log(req);
+  res.send();
+};

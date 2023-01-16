@@ -57,6 +57,7 @@ exports.finishTransaction = (req, res, next) => {
 
 
 exports.ipn = (req, res, next) => {
-  console.log(req);
-  res.send();
+  let response = req.body;
+  response.receiveDate = new Date().toISOString();
+  res.send(response);
 };

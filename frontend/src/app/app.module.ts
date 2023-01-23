@@ -119,7 +119,7 @@ import { GyikComponent } from './feature/gyik/gyik.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     {

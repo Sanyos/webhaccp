@@ -123,7 +123,7 @@ import { ChangePasswordComponent } from './feature/auth/change-password/change-p
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     {

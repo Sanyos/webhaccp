@@ -4,7 +4,7 @@
       <div class="flex-column">
         <p><b>LINKEK</b></p>
         <a routerLink="/home" (click)="scrollTop()">Főoldal</a>
-        <a routerLink="/haccp" (click)="scrollTop()">Online Haccp</a>
+        <a routerLink="/haccp" (click)="scrollTop()">HACCP készítés</a>
         <a routerLink="/gyik" (click)="scrollTop()">GYIK</a>
       </div>
       <div class="flex-column">
@@ -15,11 +15,14 @@
           Általános Szerződési Feltételek
         </a>
         <a (click)="onOpen($event, 'imp')"> Impresszum </a>
-        <img
+        <a href="http://simplepartner.hu/PaymentService/Fizetesi_tajekoztato.pdf" target="_blank">
+          <img
           id="simplepay-logo"
           width="330px"
           src="../../../assets/simplepay.png"
-        />
+          />
+        </a>
+        
       </div>
     </div>
     <div class="footer-copyright">

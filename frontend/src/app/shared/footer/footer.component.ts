@@ -17,7 +17,7 @@ export class FooterComponent {
     } else if (type === 'privacy') {
       path = '../../../../../../assets/adatkezelesi_tajekoztato.pdf';
     } else if (type === 'imp') {
-      path = '';
+      path = '../../../../../../assets/impresszum.pdf';
     }
     window.open(path, '_blank');
   }

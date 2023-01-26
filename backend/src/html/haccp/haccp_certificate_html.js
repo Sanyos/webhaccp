@@ -65,7 +65,7 @@ exports.html = (data) => {
               </h2>
         </div>
         <div class="flex">
-          <h3>Kelt: <span>Szentendre</span>, <span>${new Date(
+          <h3>Kelt: <span>Törökbálint</span>, <span>${new Date(
             data.haccp.haccp_date
           )
             .toISOString()

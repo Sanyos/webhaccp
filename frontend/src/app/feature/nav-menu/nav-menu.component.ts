@@ -90,7 +90,7 @@ export class NavMenuComponent implements OnInit {
         route: '/home',
       },
       {
-        title: 'Online HACCP',
+        title: 'HACCP készítés',
         route: '/haccp',
       },
       {

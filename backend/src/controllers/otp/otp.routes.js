@@ -10,4 +10,8 @@ routes.post("/finish", (req, res, next) => {
   return otpController.finishTransaction(req, res, next);
 });
 
+routes.post("/ipn", (req, res, next) => {
+  return otpController.ipn(req, res, next);
+});
+
 module.exports = Object.freeze(routes);

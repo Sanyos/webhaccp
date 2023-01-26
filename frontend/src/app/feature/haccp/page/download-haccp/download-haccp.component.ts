@@ -56,7 +56,6 @@ export class DownloadHaccpComponent implements OnInit, OnDestroy {
         return this.paymentApiService
           .finishTransaction(body)
           .subscribe((res: PaymentResponse) => {
-            console.log(res);
             this.paymentStatus = res.e;
             this.transactionId = res.t;
             if (res.e === PaymentStatus.FAIL) {

@@ -57,6 +57,8 @@ import { BuffetHaccpFormSecondComponent } from './feature/haccp/buffet/component
 import { BuffetHaccpFormThirdComponent } from './feature/haccp/buffet/component/buffet-haccp-form-third/buffet-haccp-form-third.component';
 import { QuestionsComponent } from './feature/questions/questions.component';
 import { GyikComponent } from './feature/gyik/gyik.component';
+import { RegConfirmComponent } from './feature/auth/reg-confirm/reg-confirm.component';
+import { ChangePasswordComponent } from './feature/auth/change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +113,8 @@ import { GyikComponent } from './feature/gyik/gyik.component';
     BuffetHaccpFormThirdComponent,
     QuestionsComponent,
     GyikComponent,
+    RegConfirmComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

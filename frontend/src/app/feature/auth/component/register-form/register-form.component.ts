@@ -11,6 +11,7 @@ import {
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import { UserRegistrationModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-form',
@@ -27,7 +28,8 @@ export class RegisterFormComponent implements OnInit {
     private fb: FormBuilder,
     private readonly userApiService: UserApiService,
     private readonly stepper: CdkStepper,
-    private readonly sweetAlertPopupService: SweetAlertPopupService
+    private readonly sweetAlertPopupService: SweetAlertPopupService,
+    private readonly router: Router
   ) {
     this.createForm();
   }
@@ -59,6 +61,7 @@ export class RegisterFormComponent implements OnInit {
         ]),
         rePassword: new FormControl('', [Validators.required]),
         user_archived: new FormControl(false),
+        user_reg_active: new FormControl(false),
       },
       {
         validators: this.passwordsNotMatch('user_password', 'rePassword'),
@@ -94,8 +97,12 @@ export class RegisterFormComponent implements OnInit {
     this.userApiService.register(this.userObject).subscribe(
       (user) => {
         if (user) {
-          this.sweetAlertPopupService.openSuccessPopup('Sikeres regisztráció');
-          this.stepper.previous();
+          this.sweetAlertPopupService
+            .openSuccessPopup(
+              'Sikeres regisztráció',
+              'Kérjük, a belépéshez erősítse meg regisztrációját az email címére kiküldött link segítségével! (Ellenőrizze a SPAM mappát is)'
+            )
+            .then(() => this.stepper.previous());
         }
       },
       (err) => {

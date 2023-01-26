@@ -5,7 +5,9 @@ export interface UserRegistrationModel {
   user_email: string;
   user_phone: string;
   user_role: string;
-  user_archived: string;
+  user_archived: boolean;
+  user_reg_active: boolean;
+  user_new_pw_exp_date: string;
 }
 
 export interface UserLoginModel {
@@ -21,7 +23,9 @@ export interface UserUpdateModel {
   user_email: string;
   user_phone: string;
   user_role: string;
-  user_archived: string;
+  user_archived: boolean;
+  user_reg_active: boolean;
+  user_new_pw_exp_date: string;
 }
 
 export interface UserResponseModel {
@@ -32,6 +36,8 @@ export interface UserResponseModel {
   user_role: string;
   accessToken: string;
   user_archived: boolean | string;
+  user_reg_active: boolean;
+  user_new_pw_exp_date: string;
 }
 
 export interface DecodedUserToken {

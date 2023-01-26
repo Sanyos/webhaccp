@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
 import {
@@ -22,7 +22,7 @@ import { DownloadService } from 'src/app/core/services/download/download.service
   templateUrl: './document-list.component.html',
   styleUrls: ['./document-list.component.scss'],
 })
-export class DocumentListComponent implements OnInit {
+export class DocumentListComponent implements OnInit, OnDestroy {
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   company$: Observable<CompanyResponseModel> = this.companyIdParam$.pipe(
     tap(() => this.getDocuments()),

@@ -1,6 +1,8 @@
 const SimpleConnectionClient = require("simplepay-core").SimpleConnectionClient;
 const moment = require("moment");
 const haccpService = require("../haccp/haccp.service");
+const emailSender = require("../../service/email-sender");
+const paymentSuccessEmail = require("../../mail/payment-success-mail-content");
 
 exports.startTransaction = (req, res, next) => {
   const protocol = req.protocol;
@@ -41,8 +43,10 @@ exports.startTransaction = (req, res, next) => {
 };
 
 exports.finishTransaction = (req, res, next) => {
-  let r = req.body.params.r;
-  let haccp = req.body.haccp;
+  const r = req.body.params.r;
+  const haccp = req.body.haccp;
+  const email = haccp.haccp_user_email;
+
   let response = ({ e, m, o, r, t } = JSON.parse(
     Buffer.from(r, "base64").toString()
   ));
@@ -50,6 +54,7 @@ exports.finishTransaction = (req, res, next) => {
     haccp.payment_success = true;
     haccp.haccp_transaction_id = response.t;
     haccpService.updateById(haccp.haccp_id, haccp);
+    emailSender.sendEmail(email, paymentSuccessEmail.paymentSuccessEmail());
   }
   res.send(response);
   return response;

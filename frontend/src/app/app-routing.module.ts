@@ -14,6 +14,8 @@ import { HaccpComponent } from './feature/haccp/page/haccp/haccp.component';
 import { HomeComponent } from './feature/home/page/home.component';
 import { ProfileComponent } from './feature/profile/page/profile.component';
 import { QuestionsComponent } from './feature/questions/questions.component';
+import { RegConfirmComponent } from './feature/auth/reg-confirm/reg-confirm.component';
+import { ChangePasswordComponent } from './feature/auth/change-password/change-password.component';
 
 const routes: Routes = [
   {
@@ -82,6 +84,14 @@ const routes: Routes = [
   {
     path: 'download-haccp/:id',
     component: DownloadHaccpComponent,
+  },
+  {
+    path: 'confirm-reg/:id',
+    component: RegConfirmComponent,
+  },
+  {
+    path: 'new-password/:id',
+    component: ChangePasswordComponent,
   },
   {
     path: '',

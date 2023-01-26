@@ -9,7 +9,6 @@ export class FooterComponent {
   constructor() {}
 
   onOpen(e: Event, type: string): void {
-    console.log(type);
     e.preventDefault();
     e.stopPropagation();
     let path;

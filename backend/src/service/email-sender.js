@@ -4,17 +4,18 @@ const nodemailer = require("nodemailer");
 const sgTransport = require("nodemailer-sendgrid-transport");
 
 exports.sendEmail = (userEmail, content) => {
-  const transporter = nodemailer.createTransport(
-    sgTransport({
-      auth: {
-        api_key:
-          "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",
-      },
-    })
-  );
+  const transporter = nodemailer.createTransport({
+    host: "mail.atw.hu",
+    port: 465,
+    secure: true,
+    auth: {
+      user: "info@webhaccp.hu",
+      pass: "FElhasznalo11",
+    },
+  });
 
   const mailData = {
-    from: "sanyos07@gmail.com",
+    from: "info@webhaccp.hu",
     to: userEmail,
     subject: content.subject,
     html: content.content,

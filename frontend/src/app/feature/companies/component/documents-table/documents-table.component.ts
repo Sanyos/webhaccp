@@ -32,7 +32,10 @@ export class DocumentsTableComponent implements OnInit {
   @Output() downloadHaccpEvent: EventEmitter<any> = new EventEmitter();
   @Output() downloadCertificateEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly paymentApiService: PaymentApiService, private readonly sweetAlertPopupService: SweetAlertPopupService) {
+  constructor(
+    private readonly paymentApiService: PaymentApiService,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -93,28 +96,29 @@ export class DocumentsTableComponent implements OnInit {
 
   startPayment(element: HaccpModel): void {
     this.sweetAlertPopupService
-        .openConfirmPopup(`<p>Tudomásul veszem, hogy <br> a PRÉMIUM CSOPORT Szolgáltató KFT. <br>( 2045
+      .openConfirmPopup(
+        `<p>Tudomásul veszem, hogy <br> a PRÉMIUM CSOPORT Szolgáltató KFT. <br>( 2045
           Törökbálint, Malom dűlő 40. ) adatkezelő által<br> a
           https://www.webhaccp.hu/ felhasználói adatbázisában tárolt <br> alábbi
           személyes adataim átadásra kerülnek az OTP Mobil Kft.,<br> mint
           adatfeldolgozó részére.<br> Az adatkezelő által továbbított adatok köre az
-          alábbi: e-mail cím.</p>`)
-        .then((result) => {
-          if (result.isConfirmed) {
-            const body: any = {
-              amount: this.getPrice(element),
-              transactionId: element.haccp_transaction_id,
-              haccpId: element.haccp_id,
-              userEmail: element.haccp_user_email,
-            };
-            this.paymentApiService.startTransaction(body).subscribe({
-              next: (res) => {
-                window.open(res.paymentUrl);
-              },
-              error: (err) => console.log(err),
-            });
-          }
-        });
-    
+          alábbi: e-mail cím.</p>`
+      )
+      .then((result) => {
+        if (result.isConfirmed) {
+          const body: any = {
+            amount: this.getPrice(element),
+            transactionId: element.haccp_transaction_id,
+            haccpId: element.haccp_id,
+            userEmail: element.haccp_user_email,
+          };
+          this.paymentApiService.startTransaction(body).subscribe({
+            next: (res) => {
+              window.open(res.paymentUrl);
+            },
+            error: (err) => console.log(err),
+          });
+        }
+      });
   }
 }

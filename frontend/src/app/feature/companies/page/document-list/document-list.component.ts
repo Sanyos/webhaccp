@@ -25,7 +25,6 @@ import { DownloadService } from 'src/app/core/services/download/download.service
 export class DocumentListComponent implements OnInit, OnDestroy {
   companyIdParam$ = this.activatedRoute.params.pipe(pluck('id'));
   company$: Observable<CompanyResponseModel> = this.companyIdParam$.pipe(
-    tap(() => this.getDocuments()),
     switchMap((id) =>
       this.companyApiService.getSingleItem(id).pipe(shareReplay())
     )
@@ -62,6 +61,22 @@ export class DocumentListComponent implements OnInit, OnDestroy {
     });
   }
 
+  getHaccpDocuments(companyId: any): void {
+    this.haccpApiService
+      .getList('all/' + companyId)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (res: HaccpModel[]) => {
+          this.haccpDocuments = res;
+          this.lastHaccp = this.haccpDocuments[this.haccpDocuments.length - 1];
+          this.getDocuments();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
+
   getDocuments(): void {
     this.documentApiService
       .getList()
@@ -74,21 +89,6 @@ export class DocumentListComponent implements OnInit, OnDestroy {
           );
         }
       });
-  }
-
-  getHaccpDocuments(companyId: any): void {
-    this.haccpApiService
-      .getList('all/' + companyId)
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(
-        (res: HaccpModel[]) => {
-          this.haccpDocuments = res;
-          this.lastHaccp = this.haccpDocuments[this.haccpDocuments.length - 1];
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
   }
 
   downloadDocument(documentName: string): void {

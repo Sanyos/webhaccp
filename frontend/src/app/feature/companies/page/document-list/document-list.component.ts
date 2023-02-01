@@ -36,6 +36,7 @@ export class DocumentListComponent implements OnInit, OnDestroy {
   documents: DocumentResponseModel[] = [];
   companyData: CompanyResponseModel;
   haccpDocuments: HaccpModel[];
+  lastHaccp: HaccpModel;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly activatedRoute: ActivatedRoute,
@@ -67,6 +68,11 @@ export class DocumentListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: DocumentResponseModel[]) => {
         this.documents = res;
+        if (!this.lastHaccp.haccp_require_keeping_warm) {
+          this.documents.filter(
+            (document) => document.document_name !== 'talalasi_naplo'
+          );
+        }
       });
   }
 
@@ -87,9 +93,10 @@ export class DocumentListComponent implements OnInit, OnDestroy {
   downloadDocument(documentName: string): void {
     let data;
     if (this.haccpDocuments.length) {
+      this.lastHaccp = this.haccpDocuments[this.haccpDocuments.length - 1];
       data = {
         ...this.companyData,
-        ...this.haccpDocuments[this.haccpDocuments.length - 1],
+        ...this.lastHaccp,
       };
     } else {
       data = this.companyData;

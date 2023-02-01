@@ -25,6 +25,8 @@ export class PubHaccpFormComponent implements OnInit {
   @Input() dishToWashOptions: DishToWashEnum;
   @Output() haccpFormEvent: EventEmitter<FormGroup> = new EventEmitter();
   haccpForm: FormGroup;
+  deliveryInfoText: string =
+    '<p>Bérszállítás lehet például: Foodpanda, Wolt, Bolt, egyéb szerződött partner</p>';
   dressingRoomInfoText: string =
     '<p>§A befogadó nyilatkozat egy olyan írásban tett kijelentés, amely tartalmazza, hogy az ingatlan tulajdonosa a Vállalkozót befogadja, és feljogosítja az adott dolgozót/dolgozókat, hogy bizonyos helyiségeket (pl.: öltöző, személyzeti wc, raktár), használjanak. Tartalmaznia kell az adott vendéglátóipari egység adatait, a felek adatait, és magát a tényt, hogy a befogadott részére átadja a nem életvitelszerűen lakás céljára használt ingatlant/ingatlanrészt.§</p>';
   coldProductInfoText: string =

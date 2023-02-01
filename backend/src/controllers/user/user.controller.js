@@ -48,7 +48,7 @@ exports.createNewUser = async (req, res, next) => {
 
         emailSender.sendEmail(
           responseUser.user_email,
-          confirmRegEmail.confirmRegEmail(user.user_id)
+          confirmRegEmail.confirmRegEmail(user.user_id, user.user_name)
         );
         res.status(200).json(responseUser);
       })
@@ -224,7 +224,7 @@ exports.sendPasswordResetMail = (req, res, next) => {
           res.status(200).json(updatedUser.rows[0]);
           emailSender.sendEmail(
             email,
-            forgotPasswordEmail.forgotPasswordEmail(id)
+            forgotPasswordEmail.forgotPasswordEmail(id, user.user_name)
           );
         })
         .catch((err) => {

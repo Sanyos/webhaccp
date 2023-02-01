@@ -83,6 +83,7 @@ export class DocumentListComponent implements OnInit, OnDestroy {
       .subscribe(
         (res: HaccpModel[]) => {
           this.haccpDocuments = res;
+          this.lastHaccp = this.haccpDocuments[this.haccpDocuments.length - 1];
         },
         (err) => {
           console.log(err);
@@ -92,8 +93,7 @@ export class DocumentListComponent implements OnInit, OnDestroy {
 
   downloadDocument(documentName: string): void {
     let data;
-    if (this.haccpDocuments.length) {
-      this.lastHaccp = this.haccpDocuments[this.haccpDocuments.length - 1];
+    if (this.lastHaccp) {
       data = {
         ...this.companyData,
         ...this.lastHaccp,

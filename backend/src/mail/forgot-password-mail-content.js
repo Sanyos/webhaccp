@@ -3,9 +3,8 @@ exports.forgotPasswordEmail = (id, name) => {
     subject: "Elfelejtett jelszó cseréje! - webhaccp.hu",
     content: `
     <h2>Tisztelt ${name}!</h2>
-    <br>
-    <p>Ön a webhaccp.hu weboldalon keresztül kezdeményezte elfelejtett jelszavának megújítását.
-    Jelszavát erre a linkre kattintva tudja megváltoztatni: <b>https://webhaccp.hu/new-password/${id}<b></p>
+    <p>Ön a webhaccp.hu weboldalon keresztül kezdeményezte elfelejtett jelszavának megújítását.</p>
+    <p>Jelszavát erre a linkre kattintva tudja megváltoztatni: <b>https://webhaccp.hu/new-password/${id}<b></p>
     <br>
     <p>Ha a fenti link valamiért nem működne, azt a böngészőbe bemásolva is megnyithatja.</p>
 
@@ -14,7 +13,7 @@ exports.forgotPasswordEmail = (id, name) => {
     <p>Amennyiben nem Ön kezdeményezte a jelszómódosítást, levelünket hagyja figyelmen kívül!</p>
 
     <p>Ha a belépési probléma továbbra is fennáll, kérjük, vegye fel velünk a kapcsolatot a helpdesk@webhaccp.hu e-mailcímen!</p>
-
+    <br>
     <p>Üdvözlettel,
     a webhaccp.hu csapata
     </p>`,

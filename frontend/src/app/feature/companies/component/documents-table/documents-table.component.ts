@@ -93,12 +93,13 @@ export class DocumentsTableComponent implements OnInit {
 
   startPayment(element: HaccpModel): void {
     this.sweetAlertPopupService
-        .openConfirmPopup(`<p>Tudomásul veszem, hogy <br> a PRÉMIUM CSOPORT Szolgáltató KFT. <br>( 2045
-          Törökbálint, Malom dűlő 40. ) adatkezelő által<br> a
-          https://www.webhaccp.hu/ felhasználói adatbázisában tárolt <br> alábbi
-          személyes adataim átadásra kerülnek az OTP Mobil Kft.,<br> mint
-          adatfeldolgozó részére.<br> Az adatkezelő által továbbított adatok köre az
-          alábbi: e-mail cím.</p>`)
+        .openConfirmPopup(`<p>Tudomásul veszem, hogy <br> a PRÉMIUM CSOPORT Szolgáltató KFT.
+	( 2045 Törökbálint, Malom dűlő 40. ) adatkezelő által
+	a https://www.webhaccp.hu/ felhasználói adatbázisában tárolt  
+	alábbi személyes adataim átadásra kerülnek az OTP Mobil Kft., 
+	mint adatfeldolgozó részére.
+	Az adatkezelő által továbbított adatok köre az alábbi: <br>
+	e-mail cím.</p>`)
         .then((result) => {
           if (result.isConfirmed) {
             const body: any = {

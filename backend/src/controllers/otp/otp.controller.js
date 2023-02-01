@@ -44,10 +44,10 @@ exports.startTransaction = (req, res, next) => {
 };
 
 exports.finishTransaction = (req, res, next) => {
-  const r = req.body.params.r;
-  const haccp = req.body.haccp;
-  const email = haccp.haccp_user_email;
-
+  console.log("BODY", req.body);
+  let r = req.body.params.r;
+  let haccp = req.body.haccp;
+  let email = haccp.haccp_user_email;
   let response = ({ e, m, o, r, t } = JSON.parse(
     Buffer.from(r, "base64").toString()
   ));
@@ -57,6 +57,7 @@ exports.finishTransaction = (req, res, next) => {
     haccpService.updateById(haccp.haccp_id, haccp);
     emailSender.sendEmail(email, paymentSuccessEmail.paymentSuccessEmail());
   }
+  console.log("finish tr", response);
   res.send(response);
   return response;
 };

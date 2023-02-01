@@ -61,7 +61,7 @@ exports.create = (haccp) => {
     haccp.haccp_billing_address,
     haccp.haccp_company_vat_number,
     haccp.haccp_company_name,
-    haccp.aszf_checked,
+    haccp.haccp_aszf_checked,
     haccp.haccp_privacy_policy_checked,
     haccp.haccp_otp_checked,
   ];
@@ -167,7 +167,7 @@ exports.updateById = (id, haccp) => {
     haccp.haccp_billing_address,
     haccp.haccp_company_vat_number,
     haccp.haccp_company_name,
-    haccp.aszf_checked,
+    haccp.haccp_aszf_checked,
     haccp.haccp_privacy_policy_checked,
     haccp.haccp_otp_checked,
   ];

@@ -32,7 +32,10 @@ export class DocumentsTableComponent implements OnInit {
   @Output() downloadHaccpEvent: EventEmitter<any> = new EventEmitter();
   @Output() downloadCertificateEvent: EventEmitter<any> = new EventEmitter();
 
-  constructor(private readonly paymentApiService: PaymentApiService, private readonly sweetAlertPopupService: SweetAlertPopupService) {
+  constructor(
+    private readonly paymentApiService: PaymentApiService,
+    private readonly sweetAlertPopupService: SweetAlertPopupService
+  ) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -115,7 +118,6 @@ export class DocumentsTableComponent implements OnInit {
               error: (err) => console.log(err),
             });
           }
-        });
-    
+        });        
   }
 }

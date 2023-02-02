@@ -83,8 +83,8 @@ export class DocumentListComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: DocumentResponseModel[]) => {
         this.documents = res;
-        if (!this.lastHaccp.haccp_require_keeping_warm) {
-          this.documents.filter(
+        if (!this.lastHaccp?.haccp_require_keeping_warm) {
+          this.documents = this.documents.filter(
             (document) => document.document_name !== 'talalasi_naplo'
           );
         }

@@ -103,4 +103,13 @@ export class DocumentListComponent implements OnInit, OnDestroy {
     }
     this.downloadService.download('document', data, documentName);
   }
+
+  downloadLastHaccp() {
+    this.downloadService.download(
+      'haccp',
+      this.lastHaccp,
+      `${this.lastHaccp.haccp_unit_name}_${this.lastHaccp.haccp_date}_haccp`
+    );
+  }
+
 }

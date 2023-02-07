@@ -7,6 +7,17 @@
   <h1>{{ companyName$ | async }} letölthető dokumentumok</h1>
   <div class="cards-holder" *ngIf="company$ | async as company">
     <ng-container *ngIf="lastHaccp?.payment_success; else noData">
+      <div class="cards-container">
+        <div class="flex">
+          <div
+            class="card"
+            (click)="downloadLastHaccp()"
+          >
+            <mat-icon>source</mat-icon>
+            <h3> HACCP terv </h3>
+          </div>
+        </div>
+      </div>
       <app-document-cards
         [documents]="documents"
         (downloadEvent)="downloadDocument($event)"

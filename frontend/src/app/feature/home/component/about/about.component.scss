@@ -1,6 +1,9 @@
 @use "../../../../../styles.scss" as s;
 @use "sass:map";
 
+.bold{
+  font-weight: 800;
+}
 .content {
   padding: 3rem 0;
   .flex-container {

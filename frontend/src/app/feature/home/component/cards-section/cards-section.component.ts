@@ -13,7 +13,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#009688',
       title: 'ÉTTERMEK ÉS VENDÉGLÁTÁS',
       icon: 'restaurant',
-      price: `${originalPrices.restaurant}Ft/év helyett bevezető áron most csak ${pricesWithoutVat.restaurant}Ft + ÁFA/év`,
+      price: `Most csak ${pricesWithoutVat.restaurant}Ft + ÁFA/év`,
       list: [
         'Étterem - melegkonyhás',
         'Pizzéria',
@@ -31,7 +31,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#0097a7',
       title: 'MOZGÓBOLTOK',
       icon: 'lunch_dining',
-      price: `${originalPrices.casualrestaurant}Ft/év helyett bevezető áron most csak ${pricesWithoutVat.casualrestaurant}Ft + ÁFA/év`,
+      price: `Most csak ${pricesWithoutVat.casualrestaurant}Ft + ÁFA/év`,
       list: [
         'Pizzás',
         'Hamburgeres',
@@ -51,7 +51,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#0a81c0',
       title: 'BÁROK ÉS PUBOK',
       icon: 'sports_bar',
-      price: `${originalPrices.pub}Ft/év helyett bevezető áron most csak ${pricesWithoutVat.pub}Ft + ÁFA/év`,
+      price: `Most csak ${pricesWithoutVat.pub}Ft + ÁFA/év`,
       list: [
         'Bár',
         'Pub',
@@ -66,7 +66,7 @@ export class CardsSectionComponent implements OnInit {
       color: '#00695C',
       title: 'BÜFÉK',
       icon: 'bakery_dining',
-      price: `${originalPrices.buffet}Ft/év helyett bevezető  most csak ${pricesWithoutVat.buffet}Ft + ÁFA/év`,
+      price: `Most csak ${pricesWithoutVat.buffet}Ft + ÁFA/év`,
       list: ['Iskolai büfé', 'Színházi büfé', 'Munkahelyi büfé', 'Fornettis'],
     },
   ];

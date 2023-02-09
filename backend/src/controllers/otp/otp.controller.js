@@ -14,9 +14,9 @@ exports.startTransaction = (req, res, next) => {
   const userEmail = req.body.userEmail;
   const url = `${protocol}://${host}/download-haccp/${haccpId}/`;
   const client = new SimpleConnectionClient({
-    merchant: "S629601",
-    secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
-    baseUrl: "https://sandbox.simplepay.hu/payment/v2/",
+    merchant: "SZ334901",
+    secret: "GjAzK85eh1X65m560eR38M6cxg2eHkHf",
+    baseUrl: "https://www.szamlazz.hu/szamla/payumerchant/407",
   });
 
   return client
@@ -70,7 +70,7 @@ exports.ipn = (req, res, next) => {
     "+01:00";
   const hash = (0, integrity_1.getSignature)(
     JSON.stringify(response),
-    "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma"
+    "GjAzK85eh1X65m560eR38M6cxg2eHkHf"
   );
 
   console.log(response);

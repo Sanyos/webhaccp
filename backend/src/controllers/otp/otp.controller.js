@@ -14,7 +14,7 @@ exports.startTransaction = (req, res, next) => {
   const userEmail = req.body.userEmail;
   const url = `${protocol}://${host}/download-haccp/${haccpId}/`;
   const client = new SimpleConnectionClient({
-    merchant: "SZ334901",
+    merchant: "S629601",
     secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
     baseUrl: "https://secure.simplepay.hu/payment/v2",
   });

@@ -4,8 +4,10 @@ const haccpService = require("../haccp/haccp.service");
 const emailSender = require("../../service/email-sender");
 const paymentSuccessEmail = require("../../mail/payment-success-mail-content");
 const integrity_1 = require("../../../node_modules/simplepay-core/lib/integrity");
+const szamla  = require("../szamlazz/szamlazz.controller");
 
 exports.startTransaction = (req, res, next) => {
+
   const protocol = req.protocol;
   const host = req.get("Host");
   const TRANSACTIONID = req.body.transactionId;
@@ -16,7 +18,7 @@ exports.startTransaction = (req, res, next) => {
   const client = new SimpleConnectionClient({
     merchant: "S629601",
     secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
-    baseUrl: "https://secure.simplepay.hu/payment/v2/",
+    baseUrl: "https://sandbox.simplepay.hu/payment/v2/",
   });
 
   return client
@@ -56,6 +58,7 @@ exports.finishTransaction = (req, res, next) => {
     haccp.haccp_transaction_id = response.t;
     haccpService.updateById(haccp.haccp_id, haccp);
     emailSender.sendEmail(email, paymentSuccessEmail.paymentSuccessEmail());
+    szamla.start(haccp);
   }
   console.log("finish tr", response);
   res.send(response);

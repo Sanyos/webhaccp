@@ -32,7 +32,9 @@
     "nodemon": "^2.0.15",
     "open": "^8.4.0",
     "pg": "^8.7.3",
-    "simplepay-core": "^0.0.5"
+    "require-or-import": "^0.1.1",
+    "simplepay-core": "^0.0.5",
+    "szamlazz.js": "^6.0.2"
   },
   "devDependencies": {
     "tslib": "^2.4.1"

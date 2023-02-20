@@ -5,6 +5,12 @@ const enums = {
     PUB: "Kávézó-Pub-Presszó",
     CASUALRESTAURANT: "Mozgóbolt",
   },
+  PricesWithoutVat : {
+    RESTAURANT: 37990,
+    BUFFET: 31990,
+    PUB: 35990,
+    CASUALRESTAURANT: 31990,
+  },
   Roles: {
     ADMIN: "Admin",
     USER: "User",

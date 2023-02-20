@@ -137,6 +137,7 @@ exports.getCompanyById = (req, res, next) => {
 
 exports.updateCompanyById = (req, res, next) => {
   const id = req.params.companyId;
+  console.log(req.body);
   return companyService
     .updateById(id, req.body)
     .then((updatedCompany) => {

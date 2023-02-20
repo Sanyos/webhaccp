@@ -55,6 +55,8 @@ export interface HaccpModel {
   haccp_aszf_checked: boolean;
   haccp_privacy_policy_checked: boolean;
   haccp_otp_checked: boolean;
+  haccp_billing_zip: string;
+  haccp_billing_city: string;
 }
 
 export const enum IngredientEnum {

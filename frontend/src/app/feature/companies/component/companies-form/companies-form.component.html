@@ -34,8 +34,24 @@
     >
   </mat-form-field>
 
+
   <mat-form-field>
-    <mat-label>Számlázási cím</mat-label>
+    <mat-label>Számlán szereplő irányító szám</mat-label>
+    <input formControlName="company_billing_zip" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
+      >Irányító szám megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Számlán szereplő város</mat-label>
+    <input formControlName="company_billing_city" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
+      >Város megadása kötelező</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Számlán szereplő cím (utca, házszám, egyéb)</mat-label>
     <input formControlName="company_billing_address" matInput />
     <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
       >Számlázási cím megadása kötelező</mat-error

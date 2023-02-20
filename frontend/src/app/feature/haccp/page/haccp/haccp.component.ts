@@ -118,6 +118,12 @@ export class HaccpComponent implements OnInit, OnDestroy {
             this.haccpCategoryForm.controls['haccp_company_category'].setValue(
               this.companyData.company_category
             );
+            this.haccpCategoryForm.controls['haccp_billing_city'].setValue(
+              this.companyData.company_billing_city
+            );
+            this.haccpCategoryForm.controls['haccp_billing_zip'].setValue(
+              this.companyData.company_billing_zip
+            );
             this.haccpCategoryForm.controls['haccp_billing_address'].setValue(
               this.companyData.company_billing_address
             );
@@ -244,6 +250,8 @@ export class HaccpComponent implements OnInit, OnDestroy {
         company_category: this.haccp.haccp_company_category,
         company_billing_name: this.haccp.haccp_billing_name,
         company_billing_address: this.haccp.haccp_billing_address,
+        company_billing_city: this.haccp.haccp_billing_city,
+        company_billing_zip: this.haccp.haccp_billing_zip,
         company_vat_number: this.haccp.haccp_company_vat_number,
       };
 

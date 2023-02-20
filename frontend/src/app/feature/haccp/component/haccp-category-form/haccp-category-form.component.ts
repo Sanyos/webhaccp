@@ -49,6 +49,8 @@ export class HaccpCategoryFormComponent implements OnInit {
         [Validators.required, Validators.maxLength(255), Validators.email]
       ),
       haccp_billing_name: new FormControl('', [Validators.maxLength(255)]),
+      haccp_billing_zip: new FormControl('', [Validators.maxLength(255)]),
+      haccp_billing_city: new FormControl('', [Validators.maxLength(255)]),
       haccp_billing_address: new FormControl('', [Validators.maxLength(255)]),
       haccp_company_vat_number: new FormControl('', [
         Validators.required,

@@ -85,6 +85,12 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyForm.controls['company_headquarters'].setValue(
           this.companyData.company_headquarters
         );
+        this.companyForm.controls['company_billing_zip'].setValue(
+          this.companyData.company_billing_zip
+        );
+        this.companyForm.controls['company_billing_city'].setValue(
+          this.companyData.company_billing_city
+        );
         this.companyForm.controls['company_billing_address'].setValue(
           this.companyData.company_billing_address
         );

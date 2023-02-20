@@ -8,6 +8,8 @@ export interface CompanyRequestModel {
   company_phone?: string;
   company_headquarters?: string;
   company_billing_address?: string;
+  company_billing_zip: string;
+  company_billing_city: string;
   company_registration_number?: string;
   company_vat_number?: string;
   company_archived: boolean;
@@ -24,6 +26,8 @@ export interface CompanyResponseModel {
   company_phone: string;
   company_headquarters: string;
   company_billing_address: string;
+  company_billing_zip: string;
+  company_billing_city: string;
   company_registration_number: string;
   company_vat_number: string;
   company_archived: boolean;
@@ -40,10 +44,13 @@ export interface CompanyWithUserResponseModel {
   company_location: string;
   company_headquarters: string;
   company_billing_address: string;
+  company_billing_zip: string;
+  company_billing_city: string;
   company_billing_name: string;
   company_registration_number: string;
   company_vat_number: string;
   company_archived: boolean;
   user_name: string;
   company_user_id: number;
+  
 }

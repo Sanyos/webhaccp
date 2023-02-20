@@ -53,8 +53,24 @@
       [formControl]="haccpForm.controls.haccp_billing_name"
     ></app-input-form-control>
 
+
     <app-input-form-control
-      [label]="'Számlázási cím (irányítószám, város, utca, házszám)'"
+      [label]="'Számlázási irányítószám'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_zip"
+      [formControl]="haccpForm.controls.haccp_billing_address"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Számlázási város'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_city"
+      [formControl]="haccpForm.controls.haccp_billing_address"
+    ></app-input-form-control>
+
+
+    <app-input-form-control
+      [label]="'Számlázási cím (utca, házszám)'"
       [readonly]="readonly"
       formControlName="haccp_billing_address"
       [formControl]="haccpForm.controls.haccp_billing_address"

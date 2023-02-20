@@ -18,7 +18,7 @@ exports.startTransaction = (req, res, next) => {
   const client = new SimpleConnectionClient({
     merchant: "S629601",
     secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",
-    baseUrl: "https://sandbox.simplepay.hu/payment/v2/",
+    baseUrl: "https://secure.simplepay.hu/payment/v2/",
   });
 
   return client

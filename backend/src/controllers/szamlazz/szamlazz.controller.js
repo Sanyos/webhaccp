@@ -32,7 +32,7 @@ exports.start= (haccp) => {
         })
       
         let soldItem1 = new res.Item({
-          label: 'HACCP Rendszer kiépítése ( '+ CompanyCategoryTypes[haccp.haccp_company_category] +' )',
+          label: 'WEBHACCP Rendszer kiépítése ( '+ CompanyCategoryTypes[haccp.haccp_company_category] +' )',
           quantity: 1,
           unit: 'db',
           vat: 27, 

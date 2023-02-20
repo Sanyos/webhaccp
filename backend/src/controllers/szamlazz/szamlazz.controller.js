@@ -32,11 +32,12 @@ exports.start= (haccp) => {
         })
       
         let invoice = new res.Invoice({
-          paymentMethod: res.PaymentMethods., // optional, default: BankTransfer
+          paymentMethod: res.PaymentMethods.CreditCard, // optional, default: BankTransfer
           currency: res.Currencies.Ft, // optional, default: Ft
           language: res.Languages.Hungarian, // optional, default: Hungarian
           seller: seller, // the seller, required
           buyer: buyer, // the buyer, required
+          paid: true,
           items: [ soldItem1 ], // the sold items, required
         })
       

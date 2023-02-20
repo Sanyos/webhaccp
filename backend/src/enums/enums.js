@@ -9,7 +9,7 @@ const enums = {
     RESTAURANT: 37990,
     BUFFET: 31990,
     PUB: 35990,
-    CASUALRESTAURANT: 1,
+    CASUALRESTAURANT: 31990,
   },
   Roles: {
     ADMIN: "Admin",

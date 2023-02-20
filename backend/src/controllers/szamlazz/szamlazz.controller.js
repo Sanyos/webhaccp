@@ -2,7 +2,6 @@ var requireOrImport = require("require-or-import")
 const szamlazz = requireOrImport( 'szamlazz.js')
 const { CompanyCategoryTypes, PricesWithoutVat } = require("../../enums/enums");
 
-
 exports.start= (haccp) => {
   console.log(haccp);
       szamlazz.then((res)=>{
@@ -11,14 +10,7 @@ exports.start= (haccp) => {
           eInvoice: true, // create e-invoice. optional, default: false
         })
         let seller = new res.Seller({ // everyting is optional
-          bank: {
-            name: 'Test Bank <name>',
-            accountNumber: '11111111-11111111-11111111'
-          },
-          email: {
-            replyToAddress: 'test@email.com',
-            subject: 'Invoice email subject',
-          },
+          
         })
       
         let buyer = new res.Buyer({
@@ -40,7 +32,7 @@ exports.start= (haccp) => {
         })
       
         let invoice = new res.Invoice({
-          paymentMethod: res.PaymentMethods.CreditCard, // optional, default: BankTransfer
+          paymentMethod: res.PaymentMethods., // optional, default: BankTransfer
           currency: res.Currencies.Ft, // optional, default: Ft
           language: res.Languages.Hungarian, // optional, default: Hungarian
           seller: seller, // the seller, required

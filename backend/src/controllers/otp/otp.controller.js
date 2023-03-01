@@ -48,7 +48,7 @@ exports.startTransaction = (req, res, next) => {
 exports.finishTransaction = (req, res, next) => {
   console.log("BODY", req.body);
   let r = req.body.params.r;
-  let haccp = req.body.haccp;
+  let haccp = haccpService.getById(req.body.haccp.haccp_id);
   let email = haccp.haccp_user_email;
   let response = ({ e, m, o, r, t } = JSON.parse(
     Buffer.from(r, "base64").toString()

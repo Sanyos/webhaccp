@@ -53,7 +53,7 @@ exports.finishTransaction = (req, res, next) => {
   let response = ({ e, m, o, r, t } = JSON.parse(
     Buffer.from(r, "base64").toString()
   ));
-  if (response.e === "SUCCESS") {
+  if (response.e === "SUCCESS" && !haccp.payment_success) {
     haccp.payment_success = true;
     haccp.haccp_transaction_id = response.t;
     haccpService.updateById(haccp.haccp_id, haccp);

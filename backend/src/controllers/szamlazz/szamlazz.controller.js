@@ -14,7 +14,7 @@ exports.start= (haccp) => {
         })
       
         let buyer = new res.Buyer({
-          name: haccp.haccp_company_name,
+          name: haccp.haccp_company_name+"".trim(),
           zip: haccp.haccp_billing_zip,
           city: haccp.haccp_billing_city,
           address: haccp.haccp_billing_address,

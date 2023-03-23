@@ -46,23 +46,26 @@ exports.startTransaction = (req, res, next) => {
 };
 
 exports.finishTransaction = (req, res, next) => {
-  console.log("BODY", req.body);
+  //console.log("BODY", req.body);
   let r = req.body.params.r;
-  let haccp = haccpService.getById(req.body.haccp.haccp_id);
-  let email = haccp.haccp_user_email;
-  let response = ({ e, m, o, r, t } = JSON.parse(
-    Buffer.from(r, "base64").toString()
-  ));
-  if (response.e === "SUCCESS" && !haccp.payment_success) {
-    haccp.payment_success = true;
-    haccp.haccp_transaction_id = response.t;
-    haccpService.updateById(haccp.haccp_id, haccp);
-    emailSender.sendEmail(email, paymentSuccessEmail.paymentSuccessEmail());
-    szamla.start(haccp);
-  }
-  console.log("finish tr", response);
-  res.send(response);
-  return response;
+  haccpService.getById(req.body.haccp.haccp_id).then(data=>{
+    let haccp = data.rows[0];
+    let email = haccp.haccp_user_email;
+    let response = ({ e, m, o, r, t } = JSON.parse(
+      Buffer.from(r, "base64").toString()
+    ));
+    if (response.e === "SUCCESS" && !haccp.payment_success) {
+      haccp.payment_success = true;
+      haccp.haccp_transaction_id = response.t;
+      haccpService.updateById(haccp.haccp_id, haccp);
+      emailSender.sendEmail(email, paymentSuccessEmail.paymentSuccessEmail());
+      console.log("KINT",haccp.haccp_billing_zip);
+      szamla.start(haccp);
+    }
+    console.log("finish tr", response);
+    res.send(response);
+    return response;
+  });
 };
 
 exports.ipn = (req, res, next) => {

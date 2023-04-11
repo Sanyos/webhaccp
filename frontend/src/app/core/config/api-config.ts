@@ -12,6 +12,7 @@ export const apiConfig = {
   },
   haccp: {
     default: 'haccp',
+    review: 'review'
   },
   enums: {
     default: 'enums',

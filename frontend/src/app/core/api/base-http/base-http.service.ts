@@ -29,9 +29,23 @@ export class BaseHttpService<T> {
     );
   }
 
+  createReview(paramObject: any, query: any = ''): Observable<T> {
+    return this.http.post<T>(
+      `${this.API_BASE_URL}/review/${query}`,
+      paramObject
+    );
+  }
+
   update(paramObject: any, query: any = ''): Observable<T> {
     return this.http.put<T>(
       `${this.API_BASE_URL}/${this.entity}/${query}`,
+      paramObject
+    );
+  }
+
+  updateReview(paramObject: any, query: any = ''): Observable<T> {
+    return this.http.put<T>(
+      `${this.API_BASE_URL}/review/${query}`,
       paramObject
     );
   }

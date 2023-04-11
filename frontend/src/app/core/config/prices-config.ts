@@ -12,6 +12,20 @@ export const pricesWithoutVat = {
   casualrestaurant: 31990,
 };
 
+export const reviewPrices = {
+  restaurant: 48247,
+  buffet: 40627,
+  pub: 45707,
+  casualrestaurant: 40627,
+};
+
+export const reviewPricesWithoutVat = {
+  restaurant: 37990,
+  buffet: 31990,
+  pub: 35990,
+  casualrestaurant: 31990,
+};
+
 export const originalPrices = {
   restaurant: 47990,
   buffet: 41990,

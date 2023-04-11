@@ -112,6 +112,28 @@ const enums = {
     bakedGoods: "Pékáru",
     sauce: "Öntetek-szószok",
   },
+  ReviewReasonEnum :{
+    yearly :'Tervezett éves felülvizsgálat',
+    unexpected :'Rendkívüli felülvizsgálat meglévő HACCP rendszer mellé '
+  },
+  ReviewerJobEnum:{
+    owner: "tulajdonos",
+    ceo: "ügyvezető",
+    shopLeader: "üzletvezető",
+    leader: "intézményvezető",
+    officerInCharge: "megbízott ügyintéző" 
+  },
+  LastAuthorityEnum:{
+    nnk : "Nemzeti Népegészségügyi Központ",
+    nebih : "Nemzeti Élelmiszerlánc-biztonsági Hivatal ",
+    ph : "Polgármesteri hivatal",
+    katved : "Katasztrófavédelem",
+    nav : "	Nemzeti Adó és Vámhivatal",
+    kf : "Közterület felügyelet",
+    nfh : "Nemzeti Fogyasztóvédelmi Hatóság",
+    artisjus : "artisjus",
+    jhebao :"Járási Hivatal Élelmiszerlánc-biztonsági és Állategészségügyi Osztálya "  
+  }
 };
 
 module.exports = Object.freeze(enums);

@@ -94,6 +94,10 @@ export class NavMenuComponent implements OnInit {
         route: '/haccp',
       },
       {
+        title: 'HACCP felülvizsgálat',
+        route: '/haccp-review',
+      },
+      {
         title: 'GYIK',
         route: '/gyik',
       },

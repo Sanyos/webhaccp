@@ -73,6 +73,32 @@ export const enum IngredientEnum {
   sauce = 'Öntetek-szószok',
 }
 
+export const enum ReviewReasonEnum {
+  yearly = 'Tervezett éves felülvizsgálat',
+  unexpected = 'Rendkívüli felülvizsgálat meglévő HACCP rendszer mellé '
+}
+
+export const enum ReviewerJobEnum{
+  owner = "tulajdonos",
+  ceo= "ügyvezető",
+  shopLeader= "üzletvezető",
+  leader= "intézményvezető",
+  officerInCharge= "megbízott ügyintéző"
+}
+
+export const enum LastAuthorityEnum{
+
+  nnk = "Nemzeti Népegészségügyi Központ",
+  nebih = "Nemzeti Élelmiszerlánc-biztonsági Hivatal ",
+  ph = "Polgármesteri hivatal",
+  katved = "Katasztrófavédelem",
+  nav = "	Nemzeti Adó és Vámhivatal",
+  kf = "Közterület felügyelet",
+  nfh = "Nemzeti Fogyasztóvédelmi Hatóság",
+  artisjus = "artisjus",
+  jhebao ="Járási Hivatal Élelmiszerlánc-biztonsági és Állategészségügyi Osztálya "
+}
+
 export enum SewageDrainEnum {
   channel = 'Csatorna bekötéses',
   tank = 'Ballonos - Tartályos',

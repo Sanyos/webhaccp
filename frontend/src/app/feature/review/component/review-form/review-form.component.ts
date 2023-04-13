@@ -50,6 +50,7 @@ export class ReviewFormComponent implements OnInit {
       has_health_care: new FormControl([], Validators.maxLength(255)),
       pest_control_date: new FormControl([], Validators.maxLength(255)),
       pest_control_company: new FormControl([], Validators.maxLength(255)),
+      haccp_date: new FormControl(this.formatDate(new Date())),
     });
   }
 
@@ -64,5 +65,16 @@ export class ReviewFormComponent implements OnInit {
   onSave(): void {
     console.log("save");
     this.reviewEvent.emit(this.haccpForm.value)
+  }
+  formatDate(date: Date) {
+    let d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 }

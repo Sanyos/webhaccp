@@ -6,6 +6,14 @@ routes.post("/start", (req, res, next) => {
   return otpController.startTransaction(req, res, next);
 });
 
+routes.post("/startreview", (req, res, next) => {
+  return otpController.startReviewTransaction(req, res, next);
+});
+
+routes.post("/finishreview", (req, res, next) => {
+  return otpController.finishReviewTransaction(req, res, next);
+});
+
 routes.post("/finish", (req, res, next) => {
   return otpController.finishTransaction(req, res, next);
 });

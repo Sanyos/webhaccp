@@ -77,12 +77,40 @@ exports.create = (haccp) => {
     Array.isArray(haccp.yearly_study_date)
     ? haccp.yearly_study_date.join("###")
     : haccp.yearly_study_date,
+    haccp.haccp_date,
   ];
   const sqlQuery = `
-  INSERT INTO reviews(haccp_additionals,haccp_billing_address,haccp_billing_city,haccp_billing_name,haccp_billing_zip,haccp_building,haccp_company_category,haccp_company_headquarters,haccp_company_id,haccp_company_name,haccp_company_vat_number,haccp_docs,haccp_layout,haccp_process,haccp_routes,haccp_transaction_id,haccp_unit_name,haccp_user_email,haccp_user_id,haccp_workers,has_health_care,has_paper,last_authority,last_authority_check,payment_success,pest_control_company,pest_control_date,review_reason,reviewer_job,reviewer_name,self_control,tracebility,yearly_study_date) 
-  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33)
+  INSERT INTO reviews(haccp_additionals,haccp_billing_address,haccp_billing_city,haccp_billing_name,haccp_billing_zip,haccp_building,haccp_company_category,haccp_company_headquarters,haccp_company_id,haccp_company_name,haccp_company_vat_number,haccp_docs,haccp_layout,haccp_process,haccp_routes,haccp_transaction_id,haccp_unit_name,haccp_user_email,haccp_user_id,haccp_workers,has_health_care,has_paper,last_authority,last_authority_check,payment_success,pest_control_company,pest_control_date,review_reason,reviewer_job,reviewer_name,self_control,tracebility,yearly_study_date, haccp_date) 
+  VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $30, $31, $32, $33, $34)
   RETURNING *`;
 
   return pool.query(sqlQuery, values);
 };
 
+
+exports.getById = (id) => {
+  const selectQuery = `
+  SELECT * 
+  FROM reviews
+  WHERE review_id = $1`;
+  return pool.query(selectQuery, [id]);
+};
+
+
+
+exports.updateById = (id, haccp) => {
+  if (!haccp || !id) {
+    return new createError.BadRequest("Something went wrong");
+  }
+  const values = [
+    id,
+    haccp.payment_success,
+    haccp.haccp_transaction_id
+  ];
+  const sqlQuery = `
+  UPDATE haccp
+  SET payment_success = $2, haccp_transaction_id = $3
+  WHERE haccp_id = $1
+  RETURNING *;`;
+  return pool.query(sqlQuery, values);
+}

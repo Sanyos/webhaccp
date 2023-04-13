@@ -35,6 +35,9 @@ export class BaseHttpService<T> {
       paramObject
     );
   }
+  getSingleReviewItem(query: string = ''): Observable<T> {
+    return this.http.get<T>(`${this.API_BASE_URL}/review/${query}`);
+  }
 
   update(paramObject: any, query: any = ''): Observable<T> {
     return this.http.put<T>(

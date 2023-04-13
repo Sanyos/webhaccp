@@ -16,3 +16,20 @@ exports.createNewReview = (req, res, next) => {
     });
 };
 
+
+exports.getReviewById = (req, res, next) => {
+  const id = req.params.reviewId;
+  return haccpService
+    .getById(id)
+    .then((haccp) => {
+      res.status(200).json(haccp.rows[0]);
+    })
+    .catch((err) => {
+      return next(
+        new createError[500](
+          `Could not find haccp whith this id: ${id} Error: ${err}`
+        )
+      );
+    });
+};
+

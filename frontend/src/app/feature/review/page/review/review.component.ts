@@ -195,7 +195,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
       haccpId: this.reviewId,
       userEmail: this.haccp.haccp_user_email,
     };
-    this.paymentApiService.startTransaction(body).subscribe({
+    this.paymentApiService.startReviewTransaction(body).subscribe({
       next: (res) => {
         window.open(res.paymentUrl);
       },

@@ -8,6 +8,7 @@ const talalasi_naplo = require("../../html/documents/talalasi_naplo_html");
 const veszelyek_valodisaganak_becslese = require("../../html/documents/veszelyek_valodisaganak_becslese_html");
 const dontesi_fa = require("../../html/documents/dontesi_fa_html");
 const haccp = require("../../html/haccp/haccp_html");
+const review = require("../../html/haccp/review_html");
 const haccp_kezikonyv = require("../../html/documents/haccp_kezikonyv_html");
 const egeszsegugyi_belepesi_nyilatkozat = require("../../html/documents/egeszsegugyei_belepesi_nyilatkozat_html");
 var html_to_pdf = require("html-pdf-node");
@@ -82,6 +83,21 @@ exports.downloadHaccp = (req, res, next) => {
   });
 };
 
+exports.downloadReview = (req, res, next) => {
+  const data = req.body;
+  console.log(data);
+  res.setHeader("Content-Type", "application/pdf");
+  let options = {
+    width: "17.5in",
+    height: "10.85in",
+    margin: { top: "30px", bottom: "30px", right: "0px", left: "0px" },
+  };
+  let file = { content: review.html(data) };
+  html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
+    res.send(pdfBuffer);
+  });
+};
+
 exports.downloadHaccpCertificate = (req, res, next) => {
   const data = req.body;
   console.log(data);
@@ -109,6 +125,7 @@ exports.downloadDocument = (req, res, next) => {
       margin: { top: "50px", bottom: "50px", right: "50px", left: "20px" },
     };
     let file = { content: doc.html.html(data) };
+    console.log("asdasdasd");
     html_to_pdf.generatePdf(file, options).then((pdfBuffer) => {
       res.send(pdfBuffer);
     });

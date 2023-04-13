@@ -23,5 +23,7 @@ export const apiConfig = {
   payment: {
     start: 'payment/start',
     finish: 'payment/finish',
+    startreview: 'payment/startreview',
+    finishreview: 'payment/finishreview',
   },
 };

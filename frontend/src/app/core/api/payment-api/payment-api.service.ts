@@ -16,8 +16,19 @@ export class PaymentApiService {
     return this.http.post(`${url}`, amount);
   }
 
+  startReviewTransaction(amount: any): Observable<any> {
+    const url = `${this.BASE_URL}/${apiConfig.payment.startreview}`;
+    return this.http.post(`${url}`, amount);
+  }
+
   finishTransaction(data: any): Observable<any> {
     const url = `${this.BASE_URL}/${apiConfig.payment.finish}`;
     return this.http.post(`${url}`, data);
   }
+
+  finishReviewTransaction(data: any): Observable<any> {
+    const url = `${this.BASE_URL}/${apiConfig.payment.finishreview}`;
+    return this.http.post(`${url}`, data);
+  }
+
 }

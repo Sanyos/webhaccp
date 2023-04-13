@@ -61,6 +61,7 @@ import { RegConfirmComponent } from './feature/auth/reg-confirm/reg-confirm.comp
 import { ChangePasswordComponent } from './feature/auth/change-password/change-password.component';
 import { ReviewComponent } from './feature/review/page/review/review.component';
 import { ReviewFormComponent } from './feature/review/component/review-form/review-form.component';
+import { DownloadReviewComponent } from './feature/review/page/download-review/download-review.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +120,7 @@ import { ReviewFormComponent } from './feature/review/component/review-form/revi
     ChangePasswordComponent,
     ReviewComponent,
     ReviewFormComponent,
+    DownloadReviewComponent,
   ],
   imports: [
     BrowserModule,

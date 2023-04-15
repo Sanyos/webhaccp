@@ -59,6 +59,9 @@ import { QuestionsComponent } from './feature/questions/questions.component';
 import { GyikComponent } from './feature/gyik/gyik.component';
 import { RegConfirmComponent } from './feature/auth/reg-confirm/reg-confirm.component';
 import { ChangePasswordComponent } from './feature/auth/change-password/change-password.component';
+import { ReviewComponent } from './feature/review/page/review/review.component';
+import { ReviewFormComponent } from './feature/review/component/review-form/review-form.component';
+import { DownloadReviewComponent } from './feature/review/page/download-review/download-review.component';
 
 @NgModule({
   declarations: [
@@ -115,6 +118,9 @@ import { ChangePasswordComponent } from './feature/auth/change-password/change-p
     GyikComponent,
     RegConfirmComponent,
     ChangePasswordComponent,
+    ReviewComponent,
+    ReviewFormComponent,
+    DownloadReviewComponent,
   ],
   imports: [
     BrowserModule,

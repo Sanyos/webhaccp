@@ -6,6 +6,10 @@ routes.post("/haccp/:name", (req, res, next) => {
   return downloadController.downloadHaccp(req, res, next);
 });
 
+routes.post("/review/:name", (req, res, next) => {
+  return downloadController.downloadReview(req, res, next);
+});
+
 routes.post("/haccp-certificate/:name", (req, res, next) => {
   return downloadController.downloadHaccpCertificate(req, res, next);
 });

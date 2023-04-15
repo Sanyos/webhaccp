@@ -15,6 +15,9 @@ import {
   StorageEnum,
   SewageDrainEnum,
   IngredientEnum,
+  ReviewReasonEnum,
+  ReviewerJobEnum,
+  LastAuthorityEnum,
 } from './haccp.model';
 
 export interface EnumsModel {
@@ -34,4 +37,7 @@ export interface EnumsModel {
   ProductPreparatoryEnum: ProductPreparatoryEnum;
   StorageEnum: StorageEnum;
   IngredientsEnum: IngredientEnum;
+  ReviewReasonEnum: ReviewReasonEnum;
+  ReviewerJobEnum: ReviewerJobEnum;
+  LastAuthorityEnum: LastAuthorityEnum;
 }

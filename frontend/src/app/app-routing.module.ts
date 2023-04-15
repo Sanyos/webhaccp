@@ -16,6 +16,8 @@ import { ProfileComponent } from './feature/profile/page/profile.component';
 import { QuestionsComponent } from './feature/questions/questions.component';
 import { RegConfirmComponent } from './feature/auth/reg-confirm/reg-confirm.component';
 import { ChangePasswordComponent } from './feature/auth/change-password/change-password.component';
+import { ReviewComponent } from './feature/review/page/review/review.component';
+import { DownloadReviewComponent } from './feature/review/page/download-review/download-review.component';
 
 const routes: Routes = [
   {
@@ -75,6 +77,17 @@ const routes: Routes = [
   {
     path: 'haccp',
     component: HaccpComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'haccp-review',
+    component: ReviewComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'haccp-review/:id',
+    component: ReviewComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'haccp/:id',
@@ -84,6 +97,10 @@ const routes: Routes = [
   {
     path: 'download-haccp/:id',
     component: DownloadHaccpComponent,
+  },
+  {
+    path: 'download-review/:id',
+    component: DownloadReviewComponent,
   },
   {
     path: 'confirm-reg/:id',

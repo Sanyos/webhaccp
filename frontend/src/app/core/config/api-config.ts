@@ -12,6 +12,7 @@ export const apiConfig = {
   },
   haccp: {
     default: 'haccp',
+    review: 'review'
   },
   enums: {
     default: 'enums',
@@ -22,5 +23,7 @@ export const apiConfig = {
   payment: {
     start: 'payment/start',
     finish: 'payment/finish',
+    startreview: 'payment/startreview',
+    finishreview: 'payment/finishreview',
   },
 };

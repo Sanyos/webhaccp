@@ -52,7 +52,8 @@ exports.start= (haccp) => {
       console.log(haccp);
           szamlazz.then((res)=>{
             let szamlazzClient = new res.Client({
-              authToken: '86ewnaemamje86ewnw25w2qe86ewn83ipqze86ewnd',
+             // authToken: '86ewnaemamje86ewnw25w2qe86ewn83ipqze86ewnd',
+             authToken: '85cvspetk7dcejcvspethivv5ncvspettq63cucvsp',
               eInvoice: true, // create e-invoice. optional, default: false
             })
             let seller = new res.Seller({ // everyting is optional

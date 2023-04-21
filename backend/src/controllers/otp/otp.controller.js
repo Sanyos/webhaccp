@@ -95,8 +95,8 @@ exports.startReviewTransaction = (req, res, next) => {
   const amount = req.body.amount;
   const haccpId = req.body.haccpId;
   const userEmail = req.body.userEmail;
-  //const url = `${protocol}://${host}/download-haccp/${haccpId}/`;
-  const url  = `${protocol}://localhost:4200/download-review/${haccpId}/`
+  const url = `${protocol}://${host}/download-review/${haccpId}/`;
+  //const url  = `${protocol}://localhost:4200/download-review/${haccpId}/`
   const client = new SimpleConnectionClient({
     merchant: "S629601",
     secret: "MjBxMe0gT1Jt0enn0mn28uVtXtNm63Ma",

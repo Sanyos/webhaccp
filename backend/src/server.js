@@ -21,15 +21,15 @@ app.use("/", (req, res, next) => {
   console.log(`${req.method} ${req.path}`);
   next();
 });
-app.post("/login", authHandler.login);
-app.use("/user", require("./controllers/user/user.routes"));
-app.use("/company", require("./controllers/company/company.routes"));
-app.use("/document", require("./controllers/document/document.routes"));
-app.use("/haccp", require("./controllers/haccp/haccp.routes"));
-app.use("/review", require("./controllers/review/review.routes"));
-app.use("/download", require("./controllers/download/download.routes"));
-app.use("/payment", require("./controllers/otp/otp.routes"));
-app.get("/enums", (req, res) => {
+app.post("/api/login", authHandler.login);
+app.use("/api/user", require("./controllers/user/user.routes"));
+app.use("/api/company", require("./controllers/company/company.routes"));
+app.use("/api/document", require("./controllers/document/document.routes"));
+app.use("/api/haccp", require("./controllers/haccp/haccp.routes"));
+app.use("/api/review", require("./controllers/review/review.routes"));
+app.use("/api/download", require("./controllers/download/download.routes"));
+app.use("/api/payment", require("./controllers/otp/otp.routes"));
+app.get("/api/enums", (req, res) => {
   res.send(enums);
 });
 app.get("*/*", express.static(staticUrl));

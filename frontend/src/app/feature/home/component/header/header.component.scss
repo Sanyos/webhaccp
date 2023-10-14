@@ -8,7 +8,6 @@ figure {
   text-align: center;
   margin: 0;
   padding: 0;
-  cursor: pointer;
   img {
     position: relative;
     display: block;
@@ -29,15 +28,21 @@ figure {
     height: 100%;
   }
   h1 {
+    font-family: "Cabin";
+    letter-spacing: 1px;
+    font-size: 2.2rem;
     position: absolute;
     top: 50%;
     left: 0;
     width: 100%;
-    color: #000000;
+    color: white;
     -webkit-transition: -webkit-transform 0.35s, color 0.35s;
     transition: transform 0.35s, color 0.35s;
     -webkit-transform: translate3d(0, -50%, 0);
     transform: translate3d(0, -50%, 0);
+    @media only screen and(max-width: 890px) {
+      left: 0;
+    }
   }
   p {
     letter-spacing: 3px;

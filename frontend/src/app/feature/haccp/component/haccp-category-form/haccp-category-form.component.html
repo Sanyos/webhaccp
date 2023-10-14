@@ -1,0 +1,87 @@
+<div class="form">
+  <form [formGroup]="haccpForm">
+    <app-input-form-control
+      [label]="'Felhasználó email címe'"
+      formControlName="haccp_user_email"
+      [formControl]="haccpForm.controls.haccp_user_email"
+      [validationText]="'Az email cím formátuma nem megfelelő'"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Egység elnevezése'"
+      formControlName="haccp_unit_name"
+      [formControl]="haccpForm.controls.haccp_unit_name"
+    ></app-input-form-control>
+
+    <mat-form-field>
+      <mat-label>Cég kategória</mat-label>
+      <mat-select formControlName="haccp_company_category">
+        <mat-option
+          *ngFor="let option of companyCategoryOptions | keyvalue"
+          [value]="option.key"
+          >{{ option.value }}</mat-option
+        >
+      </mat-select>
+      <mat-error
+        *ngIf="
+          haccpForm.controls['haccp_company_category'].dirty ||
+          haccpForm.controls['haccp_company_category'].touched
+        "
+      >
+        Mező kitöltése kötelező
+      </mat-error>
+    </mat-form-field>
+
+    <app-input-form-control
+      [label]="'Cégnév'"
+      [readonly]="readonly"
+      formControlName="haccp_company_name"
+      [formControl]="haccpForm.controls.haccp_company_name"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Telephely címe (irányítószám, város, utca, házszám)'"
+      [readonly]="readonly"
+      formControlName="haccp_company_headquarters"
+      [formControl]="haccpForm.controls.haccp_company_headquarters"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Számlázási név'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_name"
+      [formControl]="haccpForm.controls.haccp_billing_name"
+    ></app-input-form-control>
+
+
+    <app-input-form-control
+      [label]="'Számlázási irányítószám'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_zip"
+      [formControl]="haccpForm.controls.haccp_billing_zip"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Számlázási város'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_city"
+      [formControl]="haccpForm.controls.haccp_billing_city"
+    ></app-input-form-control>
+
+
+    <app-input-form-control
+      [label]="'Számlázási cím (utca, házszám)'"
+      [readonly]="readonly"
+      formControlName="haccp_billing_address"
+      [formControl]="haccpForm.controls.haccp_billing_address"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Adószám'"
+      [readonly]="readonly"
+      formControlName="haccp_company_vat_number"
+      [formControl]="haccpForm.controls.haccp_company_vat_number"
+      [validationText]="'Az adószám formátuma nem megfelelő (12345678-1-12)'"
+    ></app-input-form-control>
+  </form>
+</div>

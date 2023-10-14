@@ -1,3 +1,12 @@
 <app-nav-menu></app-nav-menu>
 <router-outlet></router-outlet>
+<app-loader [loader]="isLoading$ | async"></app-loader>
 <app-footer></app-footer>
+<div id="cookie" *ngIf="showCookiePolicy"> 
+    <p>
+        A szolgáltatásaink és a legjobb felhasználói élmény biztosítása érdekében cookie-kat használunk, melyek információkat szolgáltatnak számunkra az Ön oldallátogatási szokásairól,
+        de nem tárolnak személyes információkat. 
+        Az oldal használatával Ön elfogadja a cookie-k használatát, melyről bővebb információt <a target="_blank" href="../assets//cookie.pdf">ide kattintva érhet el.</a> 
+    </p>	
+    <button (click)="accepCookie()"> ELFOGADOM</button> 
+</div>

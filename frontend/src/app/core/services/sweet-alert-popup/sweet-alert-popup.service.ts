@@ -32,4 +32,22 @@ export class SweetAlertPopupService {
       confirmButtonColor: '#0097a7',
     });
   }
+
+  openErrorPopup(title: string, text?: string) {
+    return Swal.fire({
+      title: title,
+      text: text,
+      icon: 'error',
+      confirmButtonColor: '#0097a7',
+    });
+  }
+
+  openInfoPopup(title: string, text?: string) {
+    return Swal.fire({
+      title: title,
+      html: `<p style="font-size: 12px;">${text}</p>`,
+      icon: 'info',
+      confirmButtonColor: '#0097a7',
+    });
+  }
 }

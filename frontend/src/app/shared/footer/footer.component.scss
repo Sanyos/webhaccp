@@ -4,12 +4,40 @@
 footer {
   color: rgb(229, 229, 229);
   background: map.get(s.$colors-map, my-grey);
+  width: 100%;
+  padding: 1rem;
 }
 
 .footer-text-holder {
   display: flex;
-  flex-direction: column;
   justify-content: space-around;
-  align-items: center;
-  font-size: 1rem;
+  border-bottom: 1px solid rgb(229, 229, 229);
+  width: 95%;
+  margin: 1rem auto;
+  @media only screen and(max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
+.footer-copyright {
+  width: 95%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-bottom: 1.5rem;
+  a {
+    cursor: pointer;
+    margin: 0.5rem 0;
+    text-decoration: none;
+    color: rgb(229, 229, 229);
+  }
+}
+
+#simplepay-logo {
+  margin-top: 1rem;
 }

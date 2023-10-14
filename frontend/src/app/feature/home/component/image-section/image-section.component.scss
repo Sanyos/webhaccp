@@ -1,0 +1,33 @@
+.section {
+  position: relative;
+}
+.img-container {
+  background: url("../../../../../assets/layer.jpg");
+  min-height: 800px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  .black-layer {
+    background: rgba(0, 0, 0, 0.8);
+    min-height: 800px;
+  }
+}
+.text {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%);
+  color: white;
+  @media only screen and(max-width: 890px) {
+    top: 15%;
+  }
+  h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+}

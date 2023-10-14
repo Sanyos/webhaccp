@@ -11,6 +11,7 @@ body {
   margin: 0;
   padding: 0;
   background: #e5e5e5;
+  min-height: 100%;
 }
 
 * {
@@ -48,7 +49,7 @@ $colors-map: (
   my-dark-blue: #00695c,
   my-blue: #00796b,
   my-light-blue: #009688,
-  my-grey: #455a64,
+  my-grey: #3c484ed6,
 );
 
 // FONTS

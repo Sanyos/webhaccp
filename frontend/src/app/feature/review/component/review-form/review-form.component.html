@@ -1,0 +1,204 @@
+<div class="button-holder" mat-dialog-actions>
+
+
+
+  <div class="container">
+    <form [formGroup]="haccpForm">
+
+      <app-select-form-control
+      [label]="'Mi a HACCP felülvizsgálatának oka?'"
+      formControlName="review_reason"
+      [formControl]="haccpForm.controls.review_reason"
+      [options]="reviewReasonOptions"
+    ></app-select-form-control>
+    <app-input-form-control
+      [label]="
+        'Felülvizsgáló neve'
+      "
+      formControlName="reviewer_name"
+      [formControl]="haccpForm.controls.reviewer_name"
+    ></app-input-form-control>
+    <app-select-form-control
+      [label]="'Felülvizsgáló beosztása'"
+      formControlName="reviewer_job"
+      [formControl]="haccpForm.controls.reviewer_job"
+      [options]="reviewerJobOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Kérem ellenőrizze a dokumentumon szereplő adatok helyesek-e!'
+      "
+      formControlName="haccp_docs"
+      [formControl]="haccpForm.controls.haccp_docs"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Kérem ellenőrizze, hogy a dokumentumban megadott folyamatok az Ön tevékenységét fedik le.'
+      "
+      formControlName="haccp_process"
+      [formControl]="haccpForm.controls.haccp_process"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'A korábban kiépített HACCP ellenőrzőlapokat naprakészen vezetik? Ide értve az összes ellenőrzőlapot!'
+      "
+      formControlName="haccp_additionals"
+      [formControl]="haccpForm.controls.haccp_additionals"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Hogy ítéli meg az építmény/épület műszaki állapotát?'
+      "
+      formControlName="haccp_building"
+      [formControl]="haccpForm.controls.haccp_building"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'A dolgozó(k) tisztába vannak a jogszabályi követelményekkel? Ismerik a személyi higiénia követelményeket és az alapvető élelmiszer-biztonsági előírásokat?'
+      "
+      formControlName="haccp_workers"
+      [formControl]="haccpForm.controls.haccp_workers"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-input-form-control
+      [label]="
+        'Mikor volt a legutóbbi élelmiszer-biztonsági oktatás?'
+      "
+      formControlName="yearly_study_date"
+      [formControl]="haccpForm.controls.yearly_study_date"
+    ></app-input-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Biztosított a tevékenységéhez, minden olyan eszköz amelyet a technológia megkövetel?'
+      "
+      formControlName="haccp_layout"
+      [formControl]="haccpForm.controls.haccp_layout"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Kérem elevenítse fel, hogy a különböző árutípusok útvonala keresztezik-e egymást valahol az egység területén?'
+      "
+      formControlName="haccp_routes"
+      [formControl]="haccpForm.controls.haccp_routes"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Az egységben található nyersanyagok és késztermékek esetében betudná mutatni a számlákat a hatóság kérésére?'
+      "
+      formControlName="tracebility"
+      [formControl]="haccpForm.controls.tracebility"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+    <app-radio-form-control
+      [label]="
+        'Az egységére adoptáltan készült-e Önellenőrzési terv?  28/2017 (V.30.) FM rendelet szerint.'
+      "
+      formControlName="self_control"
+      [formControl]="haccpForm.controls.self_control"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-input-form-control
+      [label]="
+        'Utolsó hatósági ellenő rzés időpontja'
+      "
+      formControlName="last_authority_check"
+      [formControl]="haccpForm.controls.last_authority_check"
+    ></app-input-form-control>
+
+    <app-select-form-control
+      [label]="'Melyik hatóság volt ellenőrizni?'"
+      formControlName="last_authority"
+      [formControl]="haccpForm.controls.last_authority"
+      [options]="reviewerJobOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Az Ön tevékenysége végzettséghez kötött. Az egységében dolgozik vendéglátóipari végzettséggel rendelkező kolléga?'
+      "
+      formControlName="has_paper"
+      [formControl]="haccpForm.controls.has_paper"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+    <app-radio-form-control
+      [label]="
+        'Kérem ellenőrizze az összes munkavállaló egészségügyi könyvét, hogy az alkalmassági és orvosi vizsgálatok érvényesek legyenek. Ügyeljen arra, hogy a dolgozó egészségügyi nyilatkozata aláírásra kerüljön. (ezt az EÜ kis könyv 3-4 oldalán találja.)'
+      "
+      formControlName="has_health_care"
+      [formControl]="haccpForm.controls.has_health_care"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-input-form-control
+      [label]="
+        'Mikor volt az utolsó rovar-rágcsálóirtás az egységben?'
+      "
+      formControlName="pest_control_date"
+      [formControl]="haccpForm.controls.pest_control_date"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="
+        'Ki végezte a Rágcsáló-rovarirtást?'
+      "
+      formControlName="pest_control_company"
+      [formControl]="haccpForm.controls.pest_control_company"
+    ></app-input-form-control>
+
+
+    <mat-form-field>
+      <mat-label>HACCP kiállítás dátuma</mat-label>
+      <input
+        readonly
+        matInput
+        [matDatepicker]="picker"
+        formControlName="haccp_date"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker disabled="true" #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+    </form>
+  </div>
+
+
+
+
+
+  <button
+    (click)="onCancel()"
+    mat-button
+    color="accent"
+    id="secondary-btn"
+    mat-raised-button
+  >
+    Mégse
+  </button>
+  <button
+    (click)="onSave()"
+    mat-button
+    color="primary"
+    id="primary-btn"
+    mat-raised-button
+  >
+    Mentés
+  </button>
+</div>

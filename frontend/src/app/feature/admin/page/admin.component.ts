@@ -3,18 +3,15 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
 import { DocumentApiService } from 'src/app/core/api/document-api/document-api.service';
+import { HaccpApiService } from 'src/app/core/api/haccp-api/haccp-api.service';
 import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
 } from 'src/app/core/model/company.model';
-import {
-  DocumentResponseModel,
-  DocumentWithUserResponseModel,
-} from 'src/app/core/model/document.model';
+import { HaccpModel } from 'src/app/core/model/haccp.model';
 import { UserResponseModel } from 'src/app/core/model/user.model';
 import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/sweet-alert-popup.service';
-import Swal from 'sweetalert2';
 import { AllCompaniesTableComponent } from '../component/all-companies-table/all-companies-table.component';
 import { AllDocumentsTableComponent } from '../component/all-documents-table/all-documents-table.component';
 import { UsersTableComponent } from '../component/users-table/users-table.component';
@@ -41,7 +38,8 @@ export class AdminComponent implements OnInit, OnDestroy {
     private readonly sweetAlertPopupService: SweetAlertPopupService,
     private readonly userApiService: UserApiService,
     private readonly companyApiService: CompanyApiService,
-    private readonly documentApiService: DocumentApiService
+    private readonly documentApiService: DocumentApiService,
+    private readonly haccpApiService: HaccpApiService
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +77,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   deleteUser(user: UserResponseModel): void {
-    console.log(user);
     if (user.user_archived === 'igen') {
       this.sweetAlertPopupService.openSuccessPopup(
         'Ez a felhasználó már archiválva van.'
@@ -95,7 +92,6 @@ export class AdminComponent implements OnInit, OnDestroy {
             this.userApiService
               .update(data, `archiving/${id}`)
               .subscribe((res: UserResponseModel) => {
-                console.log(res);
                 if (res) {
                   user.user_archived = 'igen';
                   this.sweetAlertPopupService.openSuccessPopup(
@@ -115,7 +111,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          console.log('companies: ', res);
           this.companiesTableData = res;
         },
         (err) => {
@@ -128,18 +123,18 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   getDocuments(): void {
-    this.documentApiService
-      .getList('all')
+    this.haccpApiService
+      .getList('all/all')
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
-        (res: DocumentWithUserResponseModel[]) => {
-          console.log('documents: ', res);
-          res.forEach((document) => {
+        (res: HaccpModel[]) => {
+          res.forEach((haccp) => {
             let doc = {
-              registered_user:
-                document.document_user_id !== null ? 'igen' : 'nem',
-              document_name: document.document_name,
-              document_date: document.document_date,
+              registered_user: haccp.haccp_user_id !== null ? 'igen' : 'nem',
+              haccp_name: haccp.haccp_unit_name,
+              haccp_unit_name: haccp.haccp_unit_name,
+              haccp_date: haccp.haccp_date,
+              haccp_id: haccp.haccp_id,
             };
             this.documentsTableData.push(doc);
           });

@@ -8,15 +8,15 @@ module.exports.login = async (req, res) => {
   const password = req.body.user_password;
   const selectQuery = `SELECT * FROM users WHERE user_email = $1`;
   pool.query(selectQuery, [email]).then(async (user) => {
-    console.log("user", user.rows[0]);
     const loggedInUser = user.rows[0];
-    if (!loggedInUser)
-      return res.status(400).send("Email or password is wrong");
+    if (!loggedInUser) return res.status(400).send("invalid-password");
     const validPass = await bcrypt.compare(
       password,
       loggedInUser.user_password
     );
-    if (!validPass) return res.status(400).send("Invalid password");
+    const regActive = loggedInUser.user_reg_active;
+    if (!regActive) return res.status(400).send("reg-not-active");
+    if (!validPass) return res.status(400).send("invalid-password");
     if (loggedInUser && !loggedInUser.user_archived) {
       const accessToken = jwt.sign(
         { name: loggedInUser.user_name, role: loggedInUser.user_role },
@@ -32,7 +32,7 @@ module.exports.login = async (req, res) => {
         user_archived: loggedInUser.user_archived,
       });
     } else {
-      res.send("Email or password is incorrect");
+      res.send("invalid-password");
     }
   });
 };

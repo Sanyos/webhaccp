@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000',
+  apiUrl: 'https://webhaccp.hu/api',
+  //apiUrl: 'http://localhost:3000' ,
+  premiumUrl: 'https://www.premiumcsoport.hu/',
 };
 
 /*

@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -60,7 +53,7 @@ export class AllCompaniesTableComponent implements OnInit {
     this.setDataSource(this.tableData);
   }
 
-  setTableData() {
+  setTableData(): void {
     this.headerTexts = [
       'ÜZLET',
       'KATEGÓRIA',

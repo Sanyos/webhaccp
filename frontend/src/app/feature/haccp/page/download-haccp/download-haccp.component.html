@@ -1,0 +1,24 @@
+<div class="container">
+  <div *ngIf="status === 'SUCCESS'">
+    <br />
+    <p>Sikeres fizetés!</p>
+    <p>SimplePay tranzakció azonosító: {{ transactionId }}</p>
+    <br />
+    <h1>HACCP tanusítvány letöltés</h1>
+    <div class="cards-container">
+      <div class="card" (click)="downloadHaccp()">
+        <mat-icon>source</mat-icon>
+        <h3>{{ haccpName }}</h3>
+      </div>
+    </div>
+    <h2>Letölthető dokumentumok</h2>
+    <br />
+    <app-document-cards
+      [documents]="documents"
+      (downloadEvent)="downloadDocument($event)"
+    ></app-document-cards>
+  </div>
+  <h2 *ngIf="status !== 'SUCCESS'">
+    {{ message }}
+  </h2>
+</div>

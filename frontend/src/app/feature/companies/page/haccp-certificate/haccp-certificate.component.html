@@ -1,0 +1,19 @@
+<div class="container">
+  <button routerLink="/companies" mat-button>
+    <mat-icon>keyboard_backspace</mat-icon>
+    Vissza az üzleteimhez
+  </button>
+
+  <h1>{{ companyName$ | async }} HACCP dokumentumok</h1>
+
+  <div class="table-holder">
+    <app-documents-table
+      [headerTexts]="headerTexts"
+      [columns]="columns"
+      [displayedColumns]="displayedColumns"
+      [tableData]="tableData"
+      (downloadHaccpEvent)="downloadHaccp($event)"
+      (downloadCertificateEvent)="downloadCertificate($event)"
+    ></app-documents-table>
+  </div>
+</div>

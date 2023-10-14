@@ -4,7 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DocumentResponseModel } from 'src/app/core/model/document.model';
-
+import { HaccpModel } from 'src/app/core/model/haccp.model';
+import { DownloadService } from 'src/app/core/services/download/download.service';
 @Component({
   selector: 'app-all-documents-table',
   templateUrl: './all-documents-table.component.html',
@@ -20,7 +21,7 @@ export class AllDocumentsTableComponent implements OnInit {
   headerTexts: string[];
   @Input() tableData: DocumentResponseModel[] = [];
 
-  constructor() {
+  constructor(private readonly downloadService: DownloadService) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -32,6 +33,14 @@ export class AllDocumentsTableComponent implements OnInit {
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  downloadFile(haccp: HaccpModel): void {
+    this.downloadService.download(
+      'haccp',
+      haccp,
+      `${haccp.haccp_unit_name}_${haccp.haccp_date}_haccp`
+    );
   }
 
   applyFilter(event: Event): void {
@@ -52,13 +61,13 @@ export class AllDocumentsTableComponent implements OnInit {
     this.setDataSource(this.tableData);
   }
 
-  setTableData() {
-    this.headerTexts = ['REGISZTRÁLT', 'DOKUMENTUM NEVE', 'DÁTUM', 'ÉRVÉNYES'];
-    this.columns = ['registered_user', 'document_name', 'document_date'];
+  setTableData(): void {
+    this.headerTexts = ['REGISZTRÁLT', 'EGYSÉG NEVE', 'DÁTUM'];
+    this.columns = ['registered_user', 'haccp_unit_name', 'haccp_date'];
     this.displayedColumns = [
       'registered_user',
-      'document_name',
-      'document_date',
+      'haccp_unit_name',
+      'haccp_date',
       'download',
     ];
   }

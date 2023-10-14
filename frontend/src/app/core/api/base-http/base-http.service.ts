@@ -22,16 +22,33 @@ export class BaseHttpService<T> {
     return this.http.get<T>(`${this.API_BASE_URL}/${this.entity}/${query}`);
   }
 
-  create(paramObject: any, query: string = ''): Observable<T> {
+  create(paramObject: any, query: any = ''): Observable<T> {
     return this.http.post<T>(
       `${this.API_BASE_URL}/${this.entity}/${query}`,
       paramObject
     );
   }
 
-  update(paramObject: any, query: string = ''): Observable<T> {
+  createReview(paramObject: any, query: any = ''): Observable<T> {
+    return this.http.post<T>(
+      `${this.API_BASE_URL}/review/${query}`,
+      paramObject
+    );
+  }
+  getSingleReviewItem(query: string = ''): Observable<T> {
+    return this.http.get<T>(`${this.API_BASE_URL}/review/${query}`);
+  }
+
+  update(paramObject: any, query: any = ''): Observable<T> {
     return this.http.put<T>(
       `${this.API_BASE_URL}/${this.entity}/${query}`,
+      paramObject
+    );
+  }
+
+  updateReview(paramObject: any, query: any = ''): Observable<T> {
+    return this.http.put<T>(
+      `${this.API_BASE_URL}/review/${query}`,
       paramObject
     );
   }

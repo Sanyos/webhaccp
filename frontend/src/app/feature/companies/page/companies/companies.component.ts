@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { CompanyApiService } from 'src/app/core/api/company-api/company-api.service';
+import { UserApiService } from 'src/app/core/api/user-api/user-api.service';
+import { CompanyCategoryTypes } from 'src/app/core/enum/company-category-type.enum';
 import {
   CompanyResponseModel,
   CompanyWithUserResponseModel,
@@ -28,7 +30,8 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   constructor(
     private readonly router: Router,
     private readonly sweetAlertPopupService: SweetAlertPopupService,
-    private readonly companyApiService: CompanyApiService
+    private readonly companyApiService: CompanyApiService,
+    private readonly userApiService: UserApiService
   ) {}
 
   ngOnInit(): void {
@@ -43,18 +46,34 @@ export class CompaniesComponent implements OnInit, OnDestroy {
   }
 
   getUserId(): void {
-    this.userId = localStorage.getItem('id');
+    this.userId = this.userApiService.userId;
     this.getCompanies();
   }
 
   getCompanies(): void {
+    this.tableData = [];
     this.companyApiService
       .getList(`all/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
         (res: CompanyWithUserResponseModel[]) => {
-          console.log('get companies: ', res);
-          this.tableData = res;
+          res.forEach((data) => {
+            if (data) {
+              if (data.company_category === 'RESTAURANT') {
+                data.company_category = CompanyCategoryTypes.RESTAURANT;
+              }
+              if (data.company_category === 'CASUALRESTAURANT') {
+                data.company_category = CompanyCategoryTypes.CASUALRESTAURANT;
+              }
+              if (data.company_category === 'PUB') {
+                data.company_category = CompanyCategoryTypes.PUB;
+              }
+              if (data.company_category === 'BUFFET') {
+                data.company_category = CompanyCategoryTypes.BUFFET;
+              }
+              this.tableData.push(data);
+            }
+          });
         },
         (err) => {
           console.log(err);
@@ -81,7 +100,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           this.companyApiService
             .update(data, id)
             .subscribe((res: CompanyResponseModel) => {
-              console.log('company archived: ', res);
               if (res) {
                 this.getCompanies();
                 this.sweetAlertPopupService.openSuccessPopup(
@@ -107,17 +125,20 @@ export class CompaniesComponent implements OnInit, OnDestroy {
         route: '/haccp/',
       },
       {
-        label: 'Tanúsítvány készítés',
+        label: 'HACCP felülvizsgálat',
+        icon: 'assignment_turned_in',
+        route: '/haccp-review/',
+      },
+      {
+        label: 'Tanusítvány készítés',
         icon: 'verified',
         route: '/company/certificate/',
       },
       {
-        label: 'Dokumentum lista',
+        label: 'Letölthető dokumentumok',
         icon: 'source',
         route: '/company/documents/',
       },
-      { label: 'Ellenőrző lapjaim', icon: 'fact_check', route: '' },
-      { label: 'Oktatási segédlet', icon: 'info', route: '' },
     ];
   }
 
@@ -126,23 +147,29 @@ export class CompaniesComponent implements OnInit, OnDestroy {
       'ÜZLET',
       'KATEGÓRIA',
       'TELEPHELY',
-      'CÉGJEGYZÉKSZÁM',
+      'CÉGNÉV',
       'ADÓSZÁM',
+      'SZÉKHELY',
+      'CÉGJEGYZÉKSZÁM',
       'LEHETŐSÉGEK',
     ];
     this.columns = [
-      'company_name',
+      'company_unit_name',
       'company_category',
       'company_location',
-      'company_registration_number',
+      'company_name',
       'company_vat_number',
+      'company_headquarters',
+      'company_registration_number',
     ];
     this.displayedColumns = [
-      'company_name',
+      'company_unit_name',
       'company_category',
       'company_location',
-      'company_registration_number',
+      'company_name',
       'company_vat_number',
+      'company_headquarters',
+      'company_registration_number',
       'actions',
     ];
   }

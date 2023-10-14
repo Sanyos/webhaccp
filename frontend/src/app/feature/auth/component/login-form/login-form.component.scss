@@ -18,7 +18,7 @@
   }
   .login-bg {
     width: 60%;
-    background: url("https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80");
+    background: url("../../../../../assets/login.jpg");
     @media only screen and(max-width: 890px) {
       display: none;
     }
@@ -63,6 +63,9 @@
       .bottom {
         position: absolute;
         bottom: 0;
+        @media only screen and(max-width: 890px) {
+          position: static;
+        }
         button,
         p {
           font-size: 12px;

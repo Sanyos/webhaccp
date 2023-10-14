@@ -63,7 +63,6 @@ export class CompanyDetailsComponent implements OnInit {
       .getSingleItem(id)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: CompanyWithUserResponseModel) => {
-        console.log('company data: ', res);
         this.companyData = res;
         this.companyForm.controls['user_name'].setValue(
           this.companyData.user_name
@@ -74,8 +73,8 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyForm.controls['company_name'].setValue(
           this.companyData.company_name
         );
-        this.companyForm.controls['company_address'].setValue(
-          this.companyData.company_address
+        this.companyForm.controls['company_billing_name'].setValue(
+          this.companyData.company_billing_name
         );
         this.companyForm.controls['company_location'].setValue(
           this.companyData.company_location
@@ -86,6 +85,12 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyForm.controls['company_headquarters'].setValue(
           this.companyData.company_headquarters
         );
+        this.companyForm.controls['company_billing_zip'].setValue(
+          this.companyData.company_billing_zip
+        );
+        this.companyForm.controls['company_billing_city'].setValue(
+          this.companyData.company_billing_city
+        );
         this.companyForm.controls['company_billing_address'].setValue(
           this.companyData.company_billing_address
         );
@@ -95,31 +100,38 @@ export class CompanyDetailsComponent implements OnInit {
         this.companyForm.controls['company_vat_number'].setValue(
           this.companyData.company_vat_number
         );
+        this.companyForm.controls['company_unit_name'].setValue(
+          this.companyData.company_unit_name
+        );
       });
   }
 
   onSave(): void {
     const data = this.companyForm.value;
-    if (this.companyId) {
-      this.companyApiService
-        .update(data, this.companyId)
-        .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyWithUserResponseModel) => {
-          if (res) {
-            console.log('company updated: ', res);
-            this.sweetAlertPopupService
-              .openSuccessPopup('Üzlet sikeresen módosítva!')
-              .then(() => this.router.navigate(['/companies']));
-          }
-        });
+    if (this.companyForm.valid) {
+      if (this.companyId) {
+        this.companyApiService
+          .update(data, this.companyId)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((res: CompanyWithUserResponseModel) => {
+            if (res) {
+              this.sweetAlertPopupService
+                .openSuccessPopup('Üzlet sikeresen módosítva!')
+                .then(() => this.router.navigate(['/companies']));
+            }
+          });
+      } else {
+        this.companyApiService
+          .create(data)
+          .pipe(takeUntil(this.unsubscribe))
+          .subscribe((res: CompanyWithUserResponseModel) => {
+            this.router.navigate(['/companies']);
+          });
+      }
     } else {
-      this.companyApiService
-        .create(data)
-        .pipe(takeUntil(this.unsubscribe))
-        .subscribe((res: CompanyWithUserResponseModel) => {
-          console.log('company created: ', res);
-          this.router.navigate(['/companies']);
-        });
+      this.sweetAlertPopupService.openErrorPopup(
+        'A cég kitöltött adatai hiányosak vagy nem megfelelő!'
+      );
     }
   }
 

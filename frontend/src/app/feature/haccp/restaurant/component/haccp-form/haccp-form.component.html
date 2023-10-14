@@ -1,0 +1,116 @@
+<div class="container">
+  <form [formGroup]="haccpForm">
+    <app-input-form-control
+      [label]="
+        'Kérem, sorolja fel, milyen kínálattal rendelkezik (pl, krémlevesek, hideg-meleg előételek, hot dog, lángos, hamburger, stb.)'
+      "
+      formControlName="haccp_supply"
+      [formControl]="haccpForm.controls.haccp_supply"
+    ></app-input-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen alapanyagokat használ?'"
+      formControlName="haccp_ingredients"
+      [formControl]="haccpForm.controls.haccp_ingredients"
+      [options]="ingredientsOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'A gyártás/forgalmazás folyamán használ-e hűtést igénylő terméket?'
+      "
+      formControlName="haccp_require_keeping_cold"
+      [formControl]="haccpForm.controls.haccp_require_keeping_cold"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-select-form-control
+      [optional]="!haccpForm.controls['haccp_require_keeping_cold'].value"
+      [label]="'Hűtést igénylő termékek'"
+      formControlName="haccp_products_require_cold_storage"
+      [formControl]="haccpForm.controls.haccp_products_require_cold_storage"
+      [options]="coldStorageProductOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [label]="
+        'Az elkészült ételeit felszolgálás/kiszolgálásnál melegen tartja +63 oC-felett?'
+      "
+      formControlName="haccp_require_keeping_warm"
+      [formControl]="haccpForm.controls.haccp_require_keeping_warm"
+      [options]="radioOptions"
+    ></app-radio-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen előkészítő helyiségei vannak?'"
+      formControlName="haccp_preparatory"
+      [formControl]="haccpForm.controls.haccp_preparatory"
+      [options]="productPreparatoryOptions"
+    ></app-select-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen raktárakkal rendelkezik?'"
+      formControlName="haccp_storages"
+      [formControl]="haccpForm.controls.haccp_storages"
+      [options]="storageOptions"
+    >
+    </app-select-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen hűtőket vagy mélyhűtőket használ?'"
+      formControlName="haccp_refrigerator"
+      [formControl]="haccpForm.controls.haccp_refrigerator"
+      [options]="refigratorOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [label]="'Az Ön üzletéből történik kiszállítás?'"
+      formControlName="haccp_delivery"
+      [formControl]="haccpForm.controls.haccp_delivery"
+      [options]="radioOptions"
+      [infoIcon]="true"
+      [infoText]="deliveryInfoText"
+    ></app-radio-form-control>
+
+    <app-select-form-control
+      [optional]="!haccpForm.controls['haccp_delivery'].value"
+      [label]="'Kiszállítás módja, jármű?'"
+      formControlName="haccp_delivery_method"
+      [formControl]="haccpForm.controls.haccp_delivery_method"
+      [options]="deliveryMethodOptions"
+    ></app-select-form-control>
+
+    <app-radio-form-control
+      [optional]="!haccpForm.controls['haccp_delivery'].value"
+      [label]="'Melyik mosogatóban takarítja a szállítóedényeket?'"
+      formControlName="haccp_dish_washing_up"
+      [formControl]="haccpForm.controls.haccp_dish_washing_up"
+      [options]="dishToWashOptions | keyvalue"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Rendelkezik-e öltözővel? '"
+      formControlName="haccp_dressing_room"
+      [formControl]="haccpForm.controls.haccp_dressing_room"
+      [options]="radioOptions"
+      [infoIcon]="true"
+      [infoText]="dressingRoomInfoText"
+    ></app-radio-form-control>
+
+    <app-radio-form-control
+      [label]="'Használ-e cukrászati vagy hidegkonyhai készítményt?'"
+      formControlName="haccp_cold_products"
+      [formControl]="haccpForm.controls.haccp_cold_products"
+      [options]="radioOptions"
+      [infoIcon]="true"
+      [infoText]="coldProductInfoText"
+    ></app-radio-form-control>
+
+    <app-select-form-control
+      [label]="'Milyen típusú tojást használ?'"
+      formControlName="haccp_egg"
+      [formControl]="haccpForm.controls.haccp_egg"
+      [options]="eggOptions"
+    ></app-select-form-control>
+  </form>
+</div>

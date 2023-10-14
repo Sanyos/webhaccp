@@ -1,0 +1,19 @@
+<div class="flex">
+  <mat-form-field *ngIf="!optional">
+    <mat-label class="label">{{ label }}</mat-label>
+
+    <input
+      #input
+      matInput
+      (blur)="onChange($event, input.value)"
+      [formControl]="formControl"
+      [readonly]="readonly"
+    />
+    <mat-error *ngIf="formControl.dirty || formControl.touched">
+      {{ validationText }}
+    </mat-error>
+  </mat-form-field>
+  <mat-icon id="info-icon" *ngIf="infoIcon" (click)="onOpenInfo()"
+    >info</mat-icon
+  >
+</div>

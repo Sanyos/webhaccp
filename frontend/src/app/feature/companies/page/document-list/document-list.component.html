@@ -1,17 +1,41 @@
-<div class="container">
+<div class="page">
   <button routerLink="/companies" mat-button>
     <mat-icon>keyboard_backspace</mat-icon>
     Vissza az üzleteimhez
   </button>
 
-  <h1>{{ companyName$ | async }} dokumentumok</h1>
-
-  <div class="table-holder">
-    <app-documents-table
-      [headerTexts]="headerTexts"
-      [columns]="columns"
-      [displayedColumns]="displayedColumns"
-      [tableData]="tableData"
-    ></app-documents-table>
+  <h1>{{ companyName$ | async }} letölthető dokumentumok</h1>
+  <div class="cards-holder" *ngIf="company$ | async as company">
+    <ng-container *ngIf="lastHaccp?.payment_success; else noData">
+      <div class="cards-container">
+        <div class="flex">
+          <div
+            class="card"
+            (click)="downloadLastHaccp()"
+          >
+            <mat-icon>source</mat-icon>
+            <h3> HACCP terv </h3>
+          </div>
+        </div>
+      </div>
+      <app-document-cards
+        [documents]="documents"
+        (downloadEvent)="downloadDocument($event)"
+      ></app-document-cards>
+    </ng-container>
+    <ng-template #noData>
+      <div class="no-data">
+        <h3>
+          A dokumentumok a HACCP elkészítését követően lesznek elérhetőek.
+        </h3>
+        <button
+          mat-raised-button
+          color="primary"
+          [routerLink]="'/haccp/' + company.company_id"
+        >
+          KITÖLTÖM AZ ADATBEKÉRŐT
+        </button>
+      </div>
+    </ng-template>
   </div>
 </div>

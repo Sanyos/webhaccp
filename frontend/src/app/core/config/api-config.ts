@@ -1,8 +1,6 @@
 export const apiConfig = {
   user: {
     default: 'user',
-    edit: 'user/edit',
-    archive: 'user/archive',
     register: '/user/register',
     login: '/login',
   },
@@ -12,7 +10,20 @@ export const apiConfig = {
   document: {
     default: 'document',
   },
+  haccp: {
+    default: 'haccp',
+    review: 'review'
+  },
   enums: {
     default: 'enums',
+  },
+  download: {
+    default: 'download',
+  },
+  payment: {
+    start: 'payment/start',
+    finish: 'payment/finish',
+    startreview: 'payment/startreview',
+    finishreview: 'payment/finishreview',
   },
 };

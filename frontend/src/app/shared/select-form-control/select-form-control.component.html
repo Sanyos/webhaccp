@@ -1,0 +1,19 @@
+<mat-form-field *ngIf="!optional">
+  <mat-label>{{ label }}</mat-label>
+  <mat-select
+    #input
+    multiple
+    (selectionChange)="onChange($event, input.value)"
+    [formControl]="formControl"
+  >
+    <mat-option
+      *ngFor="let option of options | keyvalue"
+      [disabled]="disabled && !option.key.includes('no')"
+      [value]="option.key"
+      >{{ option.value }}</mat-option
+    >
+  </mat-select>
+  <mat-error *ngIf="formControl.dirty || formControl.touched">
+    Mező kitöltése kötelező
+  </mat-error>
+</mat-form-field>

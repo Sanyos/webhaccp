@@ -1,0 +1,41 @@
+@use "../../../../../styles.scss" as s;
+@use "sass:map";
+
+.bold{
+  font-weight: 800;
+}
+
+.page {
+  background: #00968734;
+  .content {
+    width: 80%;
+    margin: 0 auto;
+    padding: 3rem 0;
+    @media only screen and(max-width: 890px) {
+      width: 90%;
+    }
+    .row{
+      content: "";
+  display: table;
+  clear: both;
+    }
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+      text-align: justify;
+      font-family: map.get(s.$fonts-map, text);
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 1.5rem;
+      padding-bottom: 1rem;
+      color: rgb(0, 151, 167);
+      text-transform: uppercase;
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@use "../../../../../styles.scss" as s;
+
+.page {
+  width: 80%;
+  margin: 3rem auto;
+  min-height: -webkit-calc(100% - 256px);
+  min-height: 100%;
+  min-height: -moz-calc(100% - 256px);
+  min-height: calc(100% - 256px);
+  @media only screen and(max-width: 988px) {
+    min-height: -webkit-calc(100% - 230px);
+    min-height: -moz-calc(100% - 230px);
+    min-height: calc(100% - 230px);
+  }
+  @media only screen and(max-width: 1200px) {
+    width: 90%;
+  }
+  @media only screen and(max-width: 890px) {
+    width: 100%;
+  }
+}
+.form {
+  @include s.formCard;
+  h2 {
+    text-align: center;
+  }
+  .edit-icon {
+    @include s.editIcon;
+  }
+}
+
+#back-button {
+  position: absolute;
+  top: 2rem;
+}
+
+mat-horizontal-stepper {
+  background: whitesmoke !important;
+}
+
+:host ::ng-deep .mat-horizontal-stepper-header-container {
+  display: none !important;
+}

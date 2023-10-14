@@ -1,0 +1,55 @@
+<div>
+  <form [formGroup]="haccpForm">
+    <h3>
+      Kérem, sorolja fel a különböző területeken használt tisztítószereket a
+      takarítási utasítás elkészítéséhez!
+    </h3>
+    <app-input-form-control
+      [label]="'Üveg tisztító'"
+      formControlName="haccp_glass_cleaner"
+      [formControl]="haccpForm.controls.haccp_glass_cleaner"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Felületi fertőtlenítő'"
+      formControlName="haccp_surface_disinfectant"
+      [formControl]="haccpForm.controls.haccp_surface_disinfectant"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Kézfertőtlenítő'"
+      formControlName="haccp_hand_disinfectant"
+      [formControl]="haccpForm.controls.haccp_hand_disinfectant"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'2 fázisú mosogatószer'"
+      formControlName="haccp_2phase_dishwashing_detergent"
+      [formControl]="haccpForm.controls.haccp_2phase_dishwashing_detergent"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Általános fertőtlenítő (padozat)'"
+      formControlName="haccp_general_disinfectant"
+      [formControl]="haccpForm.controls.haccp_general_disinfectant"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Vízkőoldó'"
+      formControlName="haccp_scale_remover"
+      [formControl]="haccpForm.controls.haccp_scale_remover"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Zsíroldó'"
+      formControlName="haccp_degreaser"
+      [formControl]="haccpForm.controls.haccp_degreaser"
+    ></app-input-form-control>
+
+    <app-input-form-control
+      [label]="'Egyéb'"
+      formControlName="haccp_other_chemical"
+      [formControl]="haccpForm.controls.haccp_other_chemical"
+    ></app-input-form-control>
+  </form>
+</div>

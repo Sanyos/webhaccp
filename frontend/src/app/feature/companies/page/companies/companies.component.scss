@@ -2,3 +2,15 @@ h1 {
   text-align: center;
   padding-top: 2rem;
 }
+
+.container {
+  height: auto;
+  min-height: -webkit-calc(100vh - 170px);
+  min-height: -moz-calc(100vh - 170px);
+  min-height: calc(100vh - 170px);
+  @media only screen and(max-width: 988px) {
+    min-height: -webkit-calc(100vh - 147px);
+    min-height: -moz-calc(100vh - 147px);
+    min-height: calc(100vh - 147px);
+  }
+}

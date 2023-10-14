@@ -1,0 +1,116 @@
+<mat-horizontal-stepper [linear]="true">
+  <mat-step [stepControl]="haccpForm">
+    <app-mobile-haccp-form
+      [ingredientsOptions]="ingredientsOptions"
+      [coldStorageProductOptions]="coldStorageProductOptions"
+      [productPreparatoryOptions]="productPreparatoryOptions"
+      [eggOptions]="eggOptions"
+      [deliveryMethodOptions]="deliveryMethodOptions"
+      [refigratorOptions]="refigratorOptions"
+      [storageOptions]="storageOptions"
+      [dishToWashOptions]="dishToWashOptions"
+      (haccpFormEvent)="firstHaccpFormEvent($event)"
+    ></app-mobile-haccp-form>
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        mat-button
+        color="primary"
+        id="primary-btn"
+        matStepperNext
+        mat-raised-button
+      >
+        Tovább
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="thirdHaccpForm">
+    <app-mobile-haccp-form-third
+      [sewageDrainOptions]="sewageDrainOptions"
+      [waterSupplyOptions]="waterSupplyOptions"
+      [entranceOptions]="entranceOptions"
+      [foodWasteTransportOptions]="foodWasteTransportOptions"
+      [pestControlOptions]="pestControlOptions"
+      [dishwasherOptions]="dishwasherOptions"
+      (haccpFormEvent)="thirdHaccpFormEvent($event)"
+    >
+    </app-mobile-haccp-form-third>
+
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        mat-button
+        color="primary"
+        id="secondary-btn"
+        color="accent"
+        matStepperPrevious
+        mat-raised-button
+      >
+        Vissza
+      </button>
+      <button
+        mat-button
+        color="primary"
+        id="primary-btn"
+        matStepperNext
+        mat-raised-button
+      >
+        Tovább
+      </button>
+    </div>
+  </mat-step>
+  <mat-step [stepControl]="secondHaccpForm">
+    <app-mobile-haccp-form-second
+      (haccpFormEvent)="secondHaccpFormEvent($event)"
+    ></app-mobile-haccp-form-second>
+
+    <mat-checkbox [(ngModel)]="aszfChecked">
+      <span (mousedown)="$event.stopPropagation()">
+        Elfogadom az
+        <button mat-button (click)="onOpen($event, 'privacyPolicy')">
+          Adatvédelmi tájékoztatót
+        </button>
+        és az
+        <button mat-button (click)="onOpen($event, 'aszf')">
+          Általános Szerződési Feltételeket és az ÁSZF eltérő rendelkezéseit
+        </button>
+      </span>
+    </mat-checkbox>
+    <mat-error *ngIf="aszfError"
+      >Adatvédelmi tájékoztató és ASZF elfogadása kötelező</mat-error
+    >
+
+    <br />
+
+    <mat-checkbox [(ngModel)]="otpChecked">
+      <span>
+        Tudomásul veszem, hogy a PRÉMIUM CSOPORT Szolgáltató KFT. ( 2045
+        Törökbálint, Malom dűlő 40. ) adatkezelő által a
+        https://www.webhaccp.hu/ felhasználói adatbázisában tárolt alábbi
+        személyes adataim átadásra kerülnek az OTP Mobil Kft., mint
+        adatfeldolgozó részére. Az adatkezelő által továbbított adatok köre az
+        alábbi: e-mail cím.
+      </span>
+    </mat-checkbox>
+    <mat-error *ngIf="otpError">Mező elfogadása kötelező</mat-error>
+
+    <div class="button-holder" mat-dialog-actions>
+      <button
+        (click)="onCancel()"
+        mat-button
+        color="accent"
+        id="secondary-btn"
+        mat-raised-button
+      >
+        Mégse
+      </button>
+      <button
+        (click)="onSave()"
+        mat-button
+        color="primary"
+        id="primary-btn"
+        mat-raised-button
+      >
+        Mentés
+      </button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

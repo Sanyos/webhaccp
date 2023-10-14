@@ -5,10 +5,10 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Cégnév</mat-label>
-    <input formControlName="company_name" matInput />
-    <mat-error *ngIf="companyForm.controls['company_name'].hasError"
-      >Cégnév megadása kötelező</mat-error
+    <mat-label>Egység neve</mat-label>
+    <input formControlName="company_unit_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_unit_name'].hasError"
+      >Egység nevének megadása kötelező</mat-error
     >
   </mat-form-field>
 
@@ -27,15 +27,31 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Cím</mat-label>
-    <input formControlName="company_address" matInput />
-    <mat-error *ngIf="companyForm.controls['company_address'].hasError"
-      >Cím megadása kötelező</mat-error
+    <mat-label>Számlázási név</mat-label>
+    <input formControlName="company_billing_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_name'].hasError"
+      >Számlázási név megadása kötelező</mat-error
+    >
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Számlán szereplő irányító szám</mat-label>
+    <input formControlName="company_billing_zip" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
+      >Irányító szám megadása kötelező</mat-error
     >
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Számlázási cím</mat-label>
+    <mat-label>Számlán szereplő város</mat-label>
+    <input formControlName="company_billing_city" matInput />
+    <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
+      >Város megadása kötelező</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Számlán szereplő cím (utca, házszám, egyéb)</mat-label>
     <input formControlName="company_billing_address" matInput />
     <mat-error *ngIf="companyForm.controls['company_billing_address'].hasError"
       >Számlázási cím megadása kötelező</mat-error
@@ -70,8 +86,16 @@
         companyForm.controls['company_phone'].touched
       "
     >
-      A telefonszám formátuma nem megfelelő
+      A telefonszám formátuma nem megfelelő (pl. +36300000000 / 06300000000)
     </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Cégnév</mat-label>
+    <input formControlName="company_name" matInput />
+    <mat-error *ngIf="companyForm.controls['company_name'].hasError"
+      >Cég nevének megadása kötelező</mat-error
+    >
   </mat-form-field>
 
   <mat-form-field>
@@ -81,6 +105,14 @@
       *ngIf="companyForm.controls['company_registration_number'].hasError"
       >Cégjegyzékszám megadása kötelező</mat-error
     >
+    <mat-error
+      *ngIf="
+        companyForm.controls['company_registration_number'].dirty ||
+        companyForm.controls['company_registration_number'].touched
+      "
+    >
+      A cégjegyzékszám formátuma nem megfelelő (12-12-123456)
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -89,5 +121,13 @@
     <mat-error *ngIf="companyForm.controls['company_vat_number'].hasError"
       >Adószám megadása kötelező</mat-error
     >
+    <mat-error
+      *ngIf="
+        companyForm.controls['company_vat_number'].dirty ||
+        companyForm.controls['company_vat_number'].touched
+      "
+    >
+      Az adószám formátuma nem megfelelő (12345678-1-12)
+    </mat-error>
   </mat-form-field>
 </form>

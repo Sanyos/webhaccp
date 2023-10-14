@@ -6,4 +6,6 @@ export interface UserResponseModel {
   user_role: string;
   accessToken: string;
   user_archived: boolean;
+  user_reg_active: boolean;
+  user_new_pw_exp_date: string;
 }

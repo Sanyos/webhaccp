@@ -9,7 +9,6 @@ exports.createNewCompany = (req, res, next) => {
   return companyService
     .create(newCompany)
     .then((company) => {
-      console.log("new compny created: ", company);
       res.status(201).json(company.rows[0]);
     })
     .catch((err) => {
@@ -25,7 +24,6 @@ exports.getAllCompanies = (req, res, next) => {
     return companyService
       .getAllByUserId(companyUserId)
       .then((companies) => {
-        console.log("all companies: ", companies.rows);
         if (companies.rows) {
           const filteredCompanies = companies.rows
             .filter((company) => company.company_archived === false)
@@ -34,7 +32,7 @@ exports.getAllCompanies = (req, res, next) => {
                 company_id,
                 company_category,
                 company_name,
-                company_address,
+                company_billing_name,
                 company_location,
                 company_phone,
                 company_headquarters,
@@ -45,11 +43,12 @@ exports.getAllCompanies = (req, res, next) => {
                 user_name,
                 user_phone,
                 user_email,
+                company_unit_name,
               }) => ({
                 company_id,
                 company_category,
                 company_name,
-                company_address,
+                company_billing_name,
                 company_location,
                 company_phone,
                 company_headquarters,
@@ -60,6 +59,7 @@ exports.getAllCompanies = (req, res, next) => {
                 user_name,
                 user_phone,
                 user_email,
+                company_unit_name,
               })
             );
           res.status(200).json(filteredCompanies);
@@ -74,7 +74,6 @@ exports.getAllCompanies = (req, res, next) => {
     return companyService
       .getAll()
       .then((companies) => {
-        console.log("all companies: ", companies.rows);
         if (companies.rows) {
           const filteredCompanies = companies.rows
             .filter((company) => company.company_archived === false)
@@ -83,7 +82,7 @@ exports.getAllCompanies = (req, res, next) => {
                 company_id,
                 company_category,
                 company_name,
-                company_address,
+                company_billing_name,
                 company_location,
                 company_phone,
                 company_headquarters,
@@ -92,11 +91,12 @@ exports.getAllCompanies = (req, res, next) => {
                 company_vat_number,
                 company_archived,
                 user_name,
+                company_unit_name,
               }) => ({
                 company_id,
                 company_category,
                 company_name,
-                company_address,
+                company_billing_name,
                 company_location,
                 company_phone,
                 company_headquarters,
@@ -105,6 +105,7 @@ exports.getAllCompanies = (req, res, next) => {
                 company_vat_number,
                 company_archived,
                 user_name,
+                company_unit_name,
               })
             );
           res.status(200).json(filteredCompanies);
@@ -123,7 +124,6 @@ exports.getCompanyById = (req, res, next) => {
   return companyService
     .getById(id)
     .then((company) => {
-      console.log("company by id: ", company);
       res.status(200).json(company.rows[0]);
     })
     .catch((err) => {
@@ -137,6 +137,7 @@ exports.getCompanyById = (req, res, next) => {
 
 exports.updateCompanyById = (req, res, next) => {
   const id = req.params.companyId;
+  console.log(req.body);
   return companyService
     .updateById(id, req.body)
     .then((updatedCompany) => {

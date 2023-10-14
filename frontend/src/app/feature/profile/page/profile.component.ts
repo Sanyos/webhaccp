@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
@@ -11,12 +11,12 @@ import { SweetAlertPopupService } from 'src/app/core/services/sweet-alert-popup/
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit, OnDestroy {
   profileData: UserResponseModel;
   profileForm: FormGroup;
   passwordIsWrong: boolean = false;
   emailIsAlreadyTaken: boolean = false;
-  userId: any = localStorage.getItem('id');
+  userId: any = this.userApiService.userId;
   unsubscribe = new Subject<void>();
   constructor(
     private readonly userApiService: UserApiService,
@@ -36,7 +36,6 @@ export class ProfileComponent implements OnInit {
       .getSingleItem(`id/${this.userId}`)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe((res: UserResponseModel) => {
-        console.log('user data: ', res);
         if (res) {
           this.profileData = res;
           this.profileForm.controls['user_name'].setValue(
@@ -63,9 +62,9 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.valid) {
       this.userApiService
         .update(userData, `edit/${this.profileData.user_id}`)
+        .pipe(takeUntil(this.unsubscribe))
         .subscribe(
           (res) => {
-            console.log('user updated: ', res);
             this.userApiService.userSubject$.next(res);
             this.passwordIsWrong = false;
             this.emailIsAlreadyTaken = false;
@@ -75,8 +74,7 @@ export class ProfileComponent implements OnInit {
               .then(() => this.router.navigate(['/companies']));
           },
           (err) => {
-            console.log(err.error.text);
-            if (err.error.text === 'passwordIsWrong') {
+            if (err.error.text === 'password-is-wrong') {
               this.passwordIsWrong = true;
               this.emailIsAlreadyTaken = false;
             } else if (err) {

@@ -91,15 +91,22 @@ figure.header p {
   transition: opacity 0.35s, transform 0.35s;
 }
 
-figure.header:hover h1 {
-  color: #fff;
-  -webkit-transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
-  transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
-}
 
-figure.header:hover figcaption::before,
+
+@media only screen and (min-width: 890px) {
+    figure.header:hover h1 {
+
+      color: #fff;
+      -webkit-transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+      transform: translate3d(0, -50%, 0) translate3d(0, -40px, 0);
+    }
+    figure.header:hover figcaption::before,
 figure.header:hover p {
   opacity: 1;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
+}
+
+
+

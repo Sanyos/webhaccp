@@ -1,29 +1,29 @@
 export const prices = {
-  restaurant: 48247,
-  buffet: 40627,
-  pub: 45707,
-  casualrestaurant: 40627,
+  restaurant: 12687,
+  buffet: 12687,
+  pub: 12687,
+  casualrestaurant: 12687,
 };
 
 export const pricesWithoutVat = {
-  restaurant: 37990,
-  buffet: 31990,
-  pub: 35990,
-  casualrestaurant: 31990,
+  restaurant: 9990,
+  buffet: 9990,
+  pub: 9990,
+  casualrestaurant: 9990,
 };
 
 export const reviewPrices = {
-  restaurant: 41897,
-  buffet: 33007,
-  pub: 33007,
-  casualrestaurant: 36817,
+  restaurant: 12687,
+  buffet: 12687,
+  pub: 12687,
+  casualrestaurant: 12687,
 };
 
 export const reviewPricesWithoutVat = {
-  restaurant: 32990,
-  buffet: 25990,
-  pub: 25990,
-  casualrestaurant: 28990,
+  restaurant: 9990,
+  buffet: 9990,
+  pub: 9990,
+  casualrestaurant: 9990,
 };
 
 export const originalPrices = {

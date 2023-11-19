@@ -57,7 +57,7 @@ export class RegisterFormComponent implements OnInit {
         ]),
         user_password: new FormControl('', [
           Validators.required,
-          Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
+          Validators.pattern(/^(?=.*\d).{8,}$/),
         ]),
         rePassword: new FormControl('', [Validators.required]),
         user_archived: new FormControl(false),
